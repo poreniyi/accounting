@@ -1,6 +1,6 @@
 # accounting
 ## project for application domain class
-
+## make sure you perform npm install after cloning
 
 
 ## do not touch docker files
