@@ -1,8 +1,8 @@
-#navbar {
+#navbarUL {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
-p{
-    color:red;
-}
+  #navbarUL >li {
+    display: inline;
+  }
