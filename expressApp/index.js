@@ -1,12 +1,12 @@
 let express=require('express');
 let app=express();
 let path=require('path');
-let loginRoute= require('./routes/login');
-let navBar=require('./routes/home');
 
 //routing
-app.use('/',loginRoute);
-app.use('/nav',navBar);
+let routeHandler= require('./routes/routeAdder/addRoutes');
+routeHandler.addRoutes(app);
+
+
 
 app.use(express.static(__dirname + '/public'));
 //view engine
