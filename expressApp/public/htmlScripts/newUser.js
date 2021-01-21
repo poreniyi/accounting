@@ -1,6 +1,5 @@
 let userPass=document.getElementById('pass');
 let regexChecker=document.getElementById('regexChecker');
-regexChecker.textContent="aooe";
 
 userPass.addEventListener("change", ()=>{
     let regexCheckerValue=regexFunction(userPass.value);

@@ -6,7 +6,7 @@
  <h1>Project Logo</h1>
 
   <body> 
-    <form action='' method='POST' id='newUserForm'>
+    <form action='./newUser/create' method='POST' id='newUserForm'>
       <span>User Type</span>
     <select id='newUserForm'>        
         <option>Regular User</option>
@@ -14,14 +14,14 @@
         <option>Manager</option>
     </select>
     <br>
-    <span>First Name</span><input type="text"><br>
-    <span>Last Name</span><input type="text"><br>
-    <span>Date of Birth</span><input id="DOB"type="text"><br>
-    <span>Email Address</span><input type="text"><br>
+    <span>First Name</span><input name='first' id='first' type="text"><br>
+    <span>Last Name</span><input name='last' id='last'  type="text"><br>
+    <span>Date of Birth</span><input id="DOB" name='DOB' type="text"><br>
+    <span>Email Address</span><input  name='email' id='email' type="text"><br>
 
 
     <span>Password</span>
-    <input id='pass' type="password">
+    <input id='pass' name='pass' type="password">
     <button>Submit</button>
     </form>
 <span  id='regexChecker'></span>
