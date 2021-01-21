@@ -6,9 +6,9 @@ console.log(createNewUser);
 console.log(password);
 
 createNewUser.addEventListener('click',()=>{
-    window.location.href="newUser.html";
+    window.location.href="/newUser";
 });
 
 forgotPasswordButton.addEventListener('click',()=>{
-    window.location.href="forgotPassword.html";
+    window.location.href="/forgotPassword";
 });
