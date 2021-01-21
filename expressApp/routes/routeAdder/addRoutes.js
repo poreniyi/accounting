@@ -11,7 +11,6 @@ let addRoutes=(app)=>{
             console.log(`Now adding ${jsFiles[i].slice(0,-3)} route`);
             let newRoute= require('../'+jsFiles[i]);
             app.use(newRoute.path,newRoute.router);
-            console.log(newRoute.path);
         }
         console.log('Finished adding routes. '+jsFiles.length+' were added');
 }
