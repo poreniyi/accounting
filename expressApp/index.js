@@ -2,6 +2,10 @@ let express=require('express');
 let app=express();
 let path=require('path');
 
+//middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 //routing
 let routeHandler= require('./routes/routeAdder/addRoutes');
 routeHandler.addRoutes(app);
