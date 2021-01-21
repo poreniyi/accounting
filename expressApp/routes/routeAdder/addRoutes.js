@@ -6,7 +6,6 @@ let addRoutes=(app)=>{
     console.log('Now adding routes ');
     let fileList=fs.readdirSync(directory);
     let jsFiles=fileList.filter(individual=>individual.endsWith('js'));
-        console.log(jsFiles.length);
         for(let i=0;i<jsFiles.length;i++){
             console.log(`Now adding ${jsFiles[i].slice(0,-3)} route`);
             let newRoute= require('../'+jsFiles[i]);
