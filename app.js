@@ -12,10 +12,15 @@ var app = express();
 //database connection goes here
 //passport setup goes here
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+
 app.set("port", process.env.PORT || 3000);
+app.use(express.static(path.join(__dirname,'expressApp' ,'public')));
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
-
 
 app.use("/", require("./routes/web")); //route for web front end files
 app.use("/api", require("./routes/api")); //route for api
