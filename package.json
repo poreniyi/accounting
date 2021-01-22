@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./expressApp/index.js",
-    "dev": "nodemon ./expressApp/index.js"
+    "start": "node app",
+    "dev": "nodemon app"
   },
   "repository": {
     "type": "git",
@@ -20,8 +20,13 @@
   "homepage": "https://github.com/Kumboi/accounting#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
     "ejs": "^3.1.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "flash": "^1.1.0",
+    "passport": "^0.4.1",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

@@ -12,8 +12,8 @@ router.post('/create',(req,res,next)=>{
    let userId=`${req.body.first.slice(0,1).toUpperCase()}${req.body.last}${month}${date.getFullYear()}`;
    console.log(userId);
    res.send('received');
-})
+}) //move body of this function to ./routes/web/home.js under signup
 module.exports={
    router:router,
    path:"/newUser",
-}
+} 
