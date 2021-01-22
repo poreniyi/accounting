@@ -3,8 +3,7 @@ var express = require("express");
 var path = require("path");
 var passport = require("passport");
 //var flash = require("connect-flash");
-var cookieParser = require("cookie-parser");
-var bodyParser = require("body-parser");
+var session = require("express-session");
 //create a passport setup file
 
 

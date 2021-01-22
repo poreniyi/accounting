@@ -13,7 +13,7 @@ router.get("/home", function (req,res){
 });
 
 router.get("/about", function (req,res){
-    res.render("home/about");
+    res.render("home/forgotPassword");
 });
 
 router.get("/login", function (req,res){
