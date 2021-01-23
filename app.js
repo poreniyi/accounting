@@ -23,7 +23,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.use("/", require("./routes/homepage")); //route for web front end files
-app.use("/admin", require("./routes/adminpage")); //route for web front end files
+app.use("/admin", require("./routes/adminpage")); //route for admin files
 
 
 app.listen(app.get("port"), function(){
