@@ -1,1 +1,53 @@
-//query all users
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report</title>
+    <link rel='stylesheet' href='stylesheets/allusers.css'>
+</head>
+<body>
+    <table>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>DOB</th>
+        <th>Email Address</th>
+        <th>PED</th>
+        <th>DOC</th>
+        <%users.forEach(element=>{ %>
+           <% let link=`./edit?user=${element.First}?&last=${element.Last}
+           &dob=${element.DOB}&email=${element.email}&ped=${element.ped}&doc=${element.DOC}`;%>
+           <%=link %>
+            <tr>
+                <td><a href=<%=link%>>
+                        <%= element.First %>
+                </td>
+                <td>
+                    <%= element.Last %>
+                </td>
+                <td>
+                    <%= element.DOB %>
+                </td>
+                <td>
+                <%= element.email %>
+                </td>
+                <td>
+                    <%= element.ped %>
+                </td>
+                <td>
+                <%= element.DOC %>
+                </td>
+                <td>
+                <%= users[0].First %>
+                 </td>
+                <td>
+                <%= users[0].First %>
+             </td>
+            </tr>
+        <% })%>
+       
+    </table>
+    <script src="ejsscripts/signup.js"></script>
+
+</body>
+</html>
