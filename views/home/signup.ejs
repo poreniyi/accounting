@@ -1,11 +1,10 @@
-<html> 
+<%- include('../_partial/_header'); -%>
   <head>
     <title> NewUser</title> 
   </head>
  <h1>Project Name</h1>
  <h1>Project Logo</h1>
 
-  <body> 
     <form action='./newUser/create' method='POST' id='newUserForm'>
       <span>User Type</span>
     <select id='newUserForm'>        
@@ -26,5 +25,5 @@
     </form>
 <div  id='regexChecker'></div>
   </body>
-  <script src="htmlScripts/signup.js"></script>
-</html>
+  <script src="ejsscripts/signup.js"></script>
+  <%- include ('../_partial/_footer'); -%>

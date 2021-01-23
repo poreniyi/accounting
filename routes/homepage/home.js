@@ -40,4 +40,8 @@ router.get("/signup", function (req,res){
 // signup function goes here
 // }) 
 
+//route forgot password
+
+//make views corresponding with routes
+
 module.exports = router;

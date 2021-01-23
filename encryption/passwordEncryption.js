@@ -15,7 +15,6 @@ let decryptPassword=async(password)=>{
 }
 decryptPassword('password');
 
-
 module.exports={
     encryptPassword:encryptPassword,
     decryptPassword:decryptPassword,
