@@ -19,7 +19,7 @@ let sampleJson={
     }]
  }
 router.get("/report", (req,res,next)=>{
-   /*
+   /*   1
         Database function that returns an array of json objects with the following properties:
         FirstName,LastName,DOB,email address,ped,doc
         and store this value in data
@@ -35,7 +35,7 @@ router.get('editUser',()=>{
 
 router.get('/edit', (req,res)=>{
   //  http://localhost:3000/admin/edit?user=me?&last=bl&dob=a&email=email&ped=tomorrow&doc=yesterday
-    /*
+    /*  2
         Database function that finds one user from the following properties:
         FirstName,LastName,DOB,email address,ped,doc
         store the result of this function in data
