@@ -6,12 +6,12 @@
  <h1>Project Logo</h1>
 
   <body> 
-    <form>
+    <form method="POST" action='/login'>
         <span>Username:</span>
-        <input type='text'>
+        <input id='userId'  name='userId' type='text'>
         <br>
-        <span>Password:</span><input id='pass' type="password">
-        <button>Login</button>
+        <span>Password:</span><input name='pass' id='pass' type="password">
+        <input type='submit' value='Login'> </input>
     </form>
     <button id='forgotPassword'>Forgot Password</button><br>
     <button id='newUser'>Create New User</button>
