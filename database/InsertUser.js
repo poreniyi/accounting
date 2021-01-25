@@ -2,28 +2,32 @@
 const DB = require("./DBConnection");
 const encryption = require("../encryption/passwordEncryption");
 
-function emailFound(email){
+async function emailFound(username, firstName, lastName, DOB, password, PED, email, DOC, question, 
+    answer){
 
     var query = `SELECT IF ((SELECT EMAIL FROM USER WHERE EMAIL = '${email}') = '${email}', 'true', 'false') as emailExists;`;
    
-    let result = DB.syncConnection.query(query);
-
-     if (result[0].emailExists == 'true'){
-         return true;
-     }
-     else{
-         return false;
-    }
+    let result2 =  DB.asyncConnection.query(query,(err,result,fields)=>{
+            console.log(result);
+            if(result){
+                newFunction(result[0].emailExists,username, firstName, lastName, DOB, password, PED, email, DOC, question, 
+                    answer);
+            }
+      
+    });
+    //console.log(result2);
 }
 
+let newFunction= (value,username, firstName, lastName, DOB, password, PED, email, DOC, question, 
+    answer) =>{
+        console.log(value);
+    if(value=='false'){
+        insertUser(username, firstName, lastName, DOB, password, PED, email, DOC, question, 
+            answer);
+    }
+}
 async function insertUser (username, firstName, lastName, DOB, password, PED, email, DOC, question, 
         answer){
-
-    if(emailFound(email)){
-        console.log("EMAIL EXISTS")
-        return false;
-        // Email is already linked to another user. Therefore, the account cannot be created
-    }
 
     var query = `SET @count := (SELECT COUNT(USERNAME) FROM USER WHERE USERNAME LIKE '${username}%')`;
 
@@ -53,7 +57,7 @@ async function insertUser (username, firstName, lastName, DOB, password, PED, em
         // user was inserted succesfully
 }
 
-module.exports = insertUser;
+module.exports = emailFound;
 
 
 

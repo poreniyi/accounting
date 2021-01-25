@@ -1,11 +1,8 @@
 var express = require("express");
 var passport = require("passport");
-<<<<<<< HEAD
 const InsertUser = require("../../database/InsertUser");
 
-=======
 let crypto=require('crypto');
->>>>>>> 29c38ef1965e73dee890081202b69c91e30ea632
 var router = express.Router();
 
 
