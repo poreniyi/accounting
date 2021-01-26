@@ -64,14 +64,6 @@ router.post('/reset/:token',(req,res)=>{
     }
 })
 
-router.get("/login", function (req,res){
-    res.render("home/login");
-});
-
-router.get("/logout", function (req,res){
-    req.logout();
-    res.redirect("/home");
-});
 
 // router.post ("/login", passport.authenticate("login", {
 //    successRedirect: "/",

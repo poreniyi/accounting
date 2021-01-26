@@ -12,6 +12,7 @@ router.use(function(req,res, next){
 //error and info handling not implemented yet
 
 router.use("/", require("./home"));
+router.use('/', require ('./authentication').router);
 
 
 module.exports = router;
