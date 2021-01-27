@@ -1,5 +1,4 @@
 var express = require("express");
-const { session } = require("passport");
 const passport= require('passport');
 
 var router = express.Router();
@@ -36,7 +35,7 @@ router.get('/sessionTest',(req,res)=>{
     res.send(req.session.testSession);
 })
 router.get('/secret',(req,res)=>{
-    console.log(req.user);
+    console.log(`Secret page:The user is ${req.user}`);
     console.log(`The amount of views is${req.session.views}`);
     req.session.views++;
     if(req.isAuthenticated()) {
@@ -69,6 +68,7 @@ router.post('/login',(req,res,next)=>{
     req.login(user, () =>{
         req.session.views=0;
             res.redirect('/secret');
+            //set user type here on req.session.x
             console.log(req.user);
     })
    })(req,res,next)

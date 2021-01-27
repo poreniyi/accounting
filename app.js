@@ -22,14 +22,12 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.set('trust proxy', 1) // trust first proxy
-
-app.use(session({
-    'secret': '343ji43j4n3jn4jk3n',
-    resave:true,
-    saveUninitialized:true,
-  }));
+app.use(session({ 
+    secret: "cats",
+resave:true,
+saveUninitialized:false }));
 app.use(passport.initialize());
-passport.use(passport.session());
+app.use(passport.session());
 const user={
     id:'id',
     email:'mancara',
@@ -41,20 +39,17 @@ passport.serializeUser((user, done) => {
     done(null,user.id);
 })
 
-passport.deserializeUser((id,done)=>{
-    console.log(`Deserialize called`);
+
+passport.deserializeUser((id, done) => {
+    console.log(`Deserialzing user`);
+    const _user= user.id === id ? user : false;
+    if(user.id==id){
+        found= user;
+    }else{
+        console.log(`else in deserialize`);
+    }
+    done(null,_user);
 })
-// passport.deserializeUser((id, done) => {
-//     console.log(`Deserialzing user`);
-//     const _user= user.id === id ? user : false;
-//     console.log(`_user`);
-//     if(user.id==id){
-//         found= user;
-//     }else{
-//         console.log(`else in deserialize`);
-//     }
-//     done(err,_user);
-// })
 passport.use(new passportLocal({
 },(username,password,done)=>{
     if(username===user.email && password===user.password){
