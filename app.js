@@ -64,6 +64,11 @@ app.use("/", require("./routes/homepage")); //route for web front end files
 app.use("/admin", require("./routes/adminpage")); //route for admin files
 
 
+app.use((req,res,next) => {
+    res.status(404).render(`home/404`);
+})
+
+
 
 
 app.listen(app.get("port"), function(){
