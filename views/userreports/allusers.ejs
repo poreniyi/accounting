@@ -14,10 +14,10 @@
         <th>Email Address</th>
         <th>PED</th>
         <th>DOC</th>
-        <%users.forEach(element=>{ %>
-           <% let link=`./edit?user=${element.First}&last=${element.Last}&dob=${element.DOB}&email=${element.email}&ped=${element.ped}&doc=${element.DOC}`;%>
+        <%data.forEach(element=>{ %>
+            <% let link=`./edit?user=${element.First}&last=${element.Last}&dob=${element.DOB}&email=${element.email}&ped=${element.ped}&doc=${element.DOC}`;%>
             <tr>
-                <%=link%>
+                <%= link %>
                 <td><a href=<%=link%>>
                         <%= element.First %>
                 </td>
