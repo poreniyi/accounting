@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%- include('../_partial/_header'); -%>
 <table style="border-collapse: collapse; width: 100%; height: 36px;" border="1">
+    
     <tbody>
 
     <th style="width: 14.2857%; height: 18px; text-align: center;">Username</th>
@@ -11,27 +12,24 @@
     <th style="width: 14.2857%; height: 18px; text-align: center;">Password</th>
     <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
     
-    <!--<%users.forEach(element=>{ %>
-        <% let link=`./edit?Username=${element.Username}?&First=${element.First}?&Last=${element.Last}
-        &email=${element.email}&DOB=${element.DOB}&Password=${element.Password}&Status=${element.Status}`;%>
         <tr>
             <td>
-                <input type="text" name="Username" id="inputUsername" value="<%=element.Username %>" placeholder="Username" autofocus>
+                <input type="text" name="Username" id="inputUsername" value="<%=Username%>" placeholder="Username" autofocus>
             </td>
             <td>
-                <input type="text" name="first" id="inputFirstName" value="<%=element.First %>" placeholder="First" autofocus>
+                <input type="text" name="First" id="inputFirstName" value="<%=First%>" placeholder="First" autofocus>
             </td>
             <td>
-                <input type="text" name="Last" id="inputLastName" value="<%=element.Last %>" placeholder="Last" autofocus>
+                <input type="text" name="Last" id="inputLastName" value="<%=Last%>" placeholder="Last" autofocus>
             </td>
             <td>
-                <input type="text" name="email" id="inputEmail" value="<%=element.email %>" placeholder="Email" autofocus>
+                <input type="text" name="email" id="inputEmail" value="<%=email%>" placeholder="Email" autofocus>
             </td>
             <td>
-                <input type="text" name="DOB" id="inputDOB" value="<%=element.DOB %>" placeholder="DOB" autofocus>
+                <input type="text" name="DOB" id="inputDOB" value="<%=DOB%>" placeholder="DOB" autofocus>
             </td>
             <td>
-                <input type="text" name="Password" id="inputPassword" value="<%=element.Password %>" placeholder="Password" autofocus>
+                <input type="text" name="Password" id="inputPassword" value="<%=Password%>" placeholder="Password" autofocus>
             </td>
             <td style="width: 14.2857%; height: 18px; text-align: center;" >
                 <select Status = "Select" on change = "getValue(this)">
@@ -41,9 +39,6 @@
             </td>
             <td><form><input type = "submit"/></form></td>
         </tr>
-    <% })%>-->
     </tbody>
-    <%= users %>
-    
     </div>
 <%- include('../_partial/_footer'); -%>

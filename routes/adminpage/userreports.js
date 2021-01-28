@@ -3,12 +3,15 @@ let router = express.Router();
 
 let sampleJson={
     users:[{
+        Username: "RD2020",
         First:"Red",
         Last:"Delicious",
         DOB:2000,
         email:"apple@mail.com",
         ped:2001,
         DOC:1999,
+        Password: "VerySecret",
+
     },{
         First:"Yellow",
         Last:"Banana",
@@ -41,13 +44,12 @@ router.get('/edit', (req,res)=>{
         store the result of this function in data
     */
    // store data in some session variable, to be implemented later
-   let data = req.query;
-   if(false) res.send('404');
-   console.log(req.query);
+    let data = req.query;
+    console.log(req.query);
     console.log(req.query.user);
     //res.render('userreports/allusers.ejs',sampleJson);
 
-    res.render('userreports/editpage',data);
+    res.render('userreports/editpage',req.query);
 })
 let editPageTest={
     users:[{

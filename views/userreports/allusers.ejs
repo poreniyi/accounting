@@ -14,8 +14,8 @@
         <th>Email Address</th>
         <th>PED</th>
         <th>DOC</th>
-        <%data.forEach(element=>{ %>
-            <% let link=`./edit?user=${element.First}&last=${element.Last}&dob=${element.DOB}&email=${element.email}&ped=${element.ped}&doc=${element.DOC}`;%>
+        <%users.forEach(element=>{ %>
+            <% let link=`./edit?Username=${element.Username}&First=${element.First}&Last=${element.Last}&DOB=${element.DOB}&email=${element.email}&ped=${element.ped}&doc=${element.DOC}&Password=${element.Password}`;%>
             <tr>
                 <%= link %>
                 <td><a href=<%=link%>>
