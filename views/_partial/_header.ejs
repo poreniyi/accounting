@@ -19,12 +19,11 @@
         <ul class="nav navbar-nav navbar-right">
         <li><a href="/forgotPassowrd">Forgot Password</a></li>
         <li><a href="/signup">Signup</a></li>
-        <li><a href="/logout">Logout</a></li>
 
 
         <% if(currentUser != null) { %>
             <li><a href="#">Welcome <%= currentUser.username %> !</a></li>
-            <!-- <li><a href="/logout">Logout</a></li> -->
+            <li><a href="/logout">Logout</a></li>
         <%}%>
         <% if(currentUser == null) { %> 
         <li><a href="/login">Log In</a></li>

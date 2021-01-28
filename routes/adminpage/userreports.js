@@ -41,15 +41,29 @@ router.get('/edit', (req,res)=>{
         store the result of this function in data
     */
    // store data in some session variable, to be implemented later
-   let data=req.query;
-
+   let data = req.query;
    if(false) res.send('404');
    console.log(req.query);
     console.log(req.query.user);
     //res.render('userreports/allusers.ejs',sampleJson);
 
-    res.send('displaying user to be added here');
+    res.render('userreports/editpage',data);
 })
+let editPageTest={
+    users:[{
+        Username:"RD2021",
+        First:"Red",
+        Last:"Delicious",
+        email:"apple@mail.com",
+        DOB:2000,
+        Password:"Extremelysecretpassword1@",
+        Status:"",
+    }]
+ }
+router.get("/editpage", function (req,res){
+    let data = editPageTest
+    res.render('userreports/editpage',data);
+});
 
 
 module.exports = router;

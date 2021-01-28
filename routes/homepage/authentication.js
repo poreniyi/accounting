@@ -66,7 +66,7 @@ router.post('/login',(req,res,next)=>{
         return res.send('Wrong email or password');
     }
     req.login(user, () =>{
-        req.session.views=0;
+        req.session.views=123;
             res.redirect('/secret');
             //set user type here on req.session.x
             console.log(req.user);

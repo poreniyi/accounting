@@ -41,7 +41,6 @@ passport.serializeUser((user, done) => {
 
 
 passport.deserializeUser((id, done) => {
-    console.log(`Deserialzing user`);
     const _user= user.id === id ? user : false;
     if(user.id==id){
         found= user;

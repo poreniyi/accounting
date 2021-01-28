@@ -21,6 +21,7 @@ let data={
 //         credentials:'include',
 //     }
 // })
+
 console.log(createNewUser);
 console.log(password);
 
