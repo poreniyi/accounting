@@ -65,7 +65,7 @@ app.use("/admin", require("./routes/adminpage")); //route for admin files
 
 
 app.use((req,res,next) => {
-    res.status(404).render(`home/404`);
+    res.status(404).render(`home/404`);//this needs to be last
 })
 
 
