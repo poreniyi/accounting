@@ -41,7 +41,8 @@ router.get('/edit', (req,res)=>{
         store the result of this function in data
     */
    // store data in some session variable, to be implemented later
-   let data;
+   let data=req.query;
+
    if(false) res.send('404');
    console.log(req.query);
     console.log(req.query.user);
