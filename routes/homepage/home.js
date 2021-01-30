@@ -81,17 +81,18 @@ router.post("/newUser/create", function (req, res, next){
     let date=new Date();
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
     let userId=`${req.body.first.slice(0,1).toLowerCase()}${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
-    let DBResult = InsertUser(userId, req.body.first, req.body.last, date, req.body.pass, 
-        date, req.body.email, date, 'question', 'answer')
-    DBResult.then(function(result){
-        if(result){
-            res.send('Your request has been submitted. You will receive an email after you account has been approved.');
-        }
-        else{
-            res.send('Email already exists');
-            return "This email is already linked to an existing account."
-        }
-    })
+    // let DBResult = InsertUser(userId, req.body.first, req.body.last, date, req.body.pass, 
+    //     date, req.body.email, date, 'question', 'answer')
+    // DBResult.then(function(result){
+    //     if(result){
+    //         res.send('Your request has been submitted. You will receive an email after you account has been approved.');
+    //     }
+    //     else{
+    //         res.send('Email already exists');
+    //         return "This email is already linked to an existing account."
+    //     }
+    // })
+    res.send('done');
 }) 
 
 //route forgot password
