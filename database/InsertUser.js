@@ -8,7 +8,6 @@ async function emailFound(username, firstName, lastName, DOB, password, PED, ema
     var query = `SELECT IF ((SELECT EMAIL FROM USER WHERE EMAIL = '${email}') = '${email}', 'true', 'false') as emailExists;`;
    
     let result2 =  DB.asyncConnection.query(query,(err,result,fields)=>{
-            console.log(result);
             if(result){
                 newFunction(result[0].emailExists,username, firstName, lastName, DOB, password, PED, email, DOC, question, 
                     answer);
@@ -33,6 +32,9 @@ async function insertUser (username, firstName, lastName, DOB, password, PED, em
 
     DB.asyncConnection.query(query, function (err, result, fields){
         if(err) throw err;
+        console.log(`The result of set count@ query is :`)
+        console.log(result);
+
     })
 
     query = `CALL Create_Username('${username}', @count, @username)`;
@@ -40,19 +42,22 @@ async function insertUser (username, firstName, lastName, DOB, password, PED, em
 
     DB.asyncConnection.query(query, function (err, result, fields){
         if(err) throw err;
+        console.log(`The result of callCreate_username query`)
+        console.log(result);
+
     })
 
     password = await encryption.encryptPassword(password)
 
     query = 'INSERT INTO USER (USERNAME, FIRSTNAME, LASTNAME, DOB, PASSWORD, PED, EMAIL, DOC,  \
         QUESTION, ANSWER) VALUES (@username,?,?,?,?,?,?,?,?,?)';
-
-    DB.asyncConnection.query(query, [firstName, lastName, DOB, password, PED, email, DOC, question, 
+        console.log(`The username is ${username}`);
+    DB.asyncConnection.query(query, [username,firstName, lastName, DOB, password, PED, email, DOC, question, 
         answer], function (err, result, fields) {
         if (err) throw err;
     });
 
-    DB.asyncConnection.end();
+    // DB.asyncConnection.end();
         return true;
         // user was inserted succesfully
 }

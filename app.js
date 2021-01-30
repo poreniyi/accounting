@@ -4,6 +4,7 @@ var path = require("path");
 var passport = require("passport");
 let passportLocal = require('passport-local');
 let session = require("express-session");
+let asyncConnection= require('./database/DBConnection').asyncConnection;
 //create a passport setup file
 
 
@@ -11,6 +12,21 @@ var app = express();
 
 //database connection goes here
 //passport setup goes here
+ asyncConnection.on('connect', () =>{
+     console.log(`Connected to database`);
+ })
+
+asyncConnection.on('error', function (error){
+    console.log(error.toString());
+})
+
+asyncConnection.on('end',()=>{
+    //console.log('Connection to the database closed');
+    console.log(`Attempting to reconnect to the database`);
+    asyncConnection.connect();
+
+
+})
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

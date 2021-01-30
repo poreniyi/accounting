@@ -38,11 +38,11 @@ router.get('/reset/:token',(req,res)=>{
         Replace samplepasslinks with function to query database on token and return a json object if one found
     */
     let samplepasslinks=[`0f4b6378da93d531c979e328b3e9e56d5aca7dee55df14e485790c54ed6f070bbde7dc1ce56be3ee05b363862669a5c632fa`,
-    `91a82538c7da494db47a6019f8e472822c56a0017bc929076677644a8cbf91ed1dd1304cd05605bd584aef136e13c241329c`];
-    console.log(req.params.token);
+    `91a82538c7da494db47a6019f8e472822c56a0017bc929076677644a8cbf91ed1dd1304cd05605bd584aef136e13c241329c`,'01'];
+    console.log('Visited'+req.params.token);
     let token=req.params.token;
     if( samplepasslinks.includes(token)){
-        res.send(`reset passwordpage`);
+        res.render(`home/resetPassword`);
         /*database
 
         */

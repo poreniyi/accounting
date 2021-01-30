@@ -22,8 +22,9 @@ router.get("/login",function (req,res){
      res.render("home/login");
 });
 router.get('/test',isLoggedIn,(req,res)=>{
-    res.send("YOU");
-    console.log(req.session.message);
+    if (req.session.userType==0){
+        res.send(`You are an admin`);
+    }else res.send(`NOT AN AdMIN`);
 })
 router.get('/sessionTest',(req,res)=>{
     if(req.session.testSession){
@@ -66,7 +67,14 @@ router.post('/login',(req,res,next)=>{
         return res.send('Wrong email or password');
     }
     req.login(user, () =>{
+        const user={
+            id:'id',
+            email:'mancara',
+            password:'password',
+            type:1
+        }
         req.session.views=123;
+        req.session.userType=user.type;
             res.redirect('/secret');
             //set user type here on req.session.x
             console.log(req.user);

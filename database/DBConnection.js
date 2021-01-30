@@ -3,7 +3,7 @@ var syncMysql = require("sync-mysql");
 const passport = require("passport");
 const { Passport } = require("passport");
 
-var asyncConnection = mysql.createConnection({
+var asyncConnection = mysql.createPool({
     host     : 'us-cdbr-east-03.cleardb.com',
     user     : 'b8d03e7734ddc4',
     password : 'ebec160b',
@@ -17,11 +17,7 @@ var syncConnection = new syncMysql({
    database : 'heroku_f886e82f73ac5d5'
 });
 
-asyncConnection.connect();
 
-asyncConnection.on('error', function (error){
-    console.log(error.toString());
-})
 
 module.exports= {
     asyncConnection,
