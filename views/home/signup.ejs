@@ -7,20 +7,25 @@
 
     <form action='./newUser/create' method='POST' id='newUserForm'>
       <span>User Type</span>
-    <select id='newUserForm'>        
-        <option>Regular User</option>
-        <option>Administrator</option>
-        <option>Manager</option>
+    <select name='userType' id='userType' form='newUserForm'>        
+        <option value='regular'>Regular User</option>
+        <option value='administrator'>Administrator</option>
+        <option value='manager'>Manager</option>
     </select>
     <br>
     <span>First Name</span><input name='first' id='first' type="text"><br>
     <span>Last Name</span><input name='last' id='last'  type="text"><br>
-    <span>Date of Birth</span><input id="DOB" name='DOB' type="text"><br>
+    <span>Date of Birth</span><input id="DOB" name='DOB' type="date"><br>
     <span>Email Address</span><input  name='email' id='email' type="email"><br>
-
-
-    <span>Password</span>
-    <input id='pass' name='pass' type="password">
+    Choose a security Question
+    <select name='securityQuestion' id='securityQuestion' form='newUserForm'>        
+      <option value='What was the house number and street name you lived in as a child?'>What was the house number and street name you lived in as a child?</option>
+      <option value='What primary school did you attend?'>What primary school did you attend?</option>
+      <option value='What were the last four digits of your childhood telephone number?'>What were the last four digits of your childhood telephone number?</option>
+  </select><br>
+  <span>Security Question Answer:</span><input id='answer' name='answer'type='text'><br>
+  <span>Password</span>
+  <input id='pass' name='pass' type="password">
     <button>Submit</button>
     </form>
 <div  id='regexChecker'></div>

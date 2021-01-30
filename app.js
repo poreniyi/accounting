@@ -21,6 +21,7 @@ mongoose.connection.on('error',()=>{
     console.log(err);
 })
 
+
 mongoose.connect(process.env.mongo_uri, { useNewUrlParser: true,useUnifiedTopology:true },()=>{
  });
  mongoose.connection.on('open',()=>{
