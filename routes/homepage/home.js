@@ -78,6 +78,8 @@ router.get("/signup", function (req,res){
 
 router.post("/newUser/create", function (req, res, next){
     console.log(req.body);
+    let dob=new Date(req.body.DOB)
+    console.log(`The users DOB is ${dob} and found in the variable dob`);
     let date=new Date();
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
     let userId=`${req.body.first.slice(0,1).toLowerCase()}${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
