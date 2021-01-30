@@ -27,7 +27,7 @@ mongoose.connection.on('error',()=>{
     console.log(`Connection starting`);
 })
 mongoose.connection.on('open',()=>{
-    console.log(`Connection opened to thee database`);
+    console.log(`Connection opened to the database`);
     // Users.create(sampleUser,(err,result)=>{
     //     console.log(result);
     // });

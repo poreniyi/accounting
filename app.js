@@ -1,5 +1,7 @@
 //Entry point for app
-var express = require("express");
+
+require('dotenv').config();
+let express= require('express');
 var path = require("path");
 var passport = require("passport");
 let passportLocal = require('passport-local');
@@ -11,6 +13,25 @@ let asyncConnection= require('./database/DBConnection').asyncConnection;
 var app = express();
 
 //database connection goes here
+let mongoose=require('mongoose');
+mongoose.connection.on('connecting',()=>{
+    `Connected to the mongo database`;
+})
+mongoose.connection.on('error',()=>{
+    console.log(err);
+})
+
+mongoose.connect(process.env.mongo_uri, { useNewUrlParser: true,useUnifiedTopology:true },()=>{
+ });
+ mongoose.connection.on('open',()=>{
+    console.log(`Connection opened to the Mongo Database`);
+})
+mongoose.connection.on('disconnected',()=>{
+    console.log(`Connection closed`);
+})
+mongoose.connection.on('disconnecting',()=>{
+    console.log(`Connection closed`);
+})
 //passport setup goes here
  asyncConnection.on('connect', () =>{
      console.log(`Connected to database`);
