@@ -83,8 +83,9 @@ router.post("/newUser/create", async function (req, res, next){
     let date=new Date();
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
     let userId=`${req.body.first.slice(0,1).toLowerCase()}${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
-    let result =  await InsertUser(userId, req.body.first, req.body.last, date, req.body.pass, 
-        date, req.body.email, date, 'question', 'answer')
+    console.log(userId)
+    let result =  await InsertUser(req.body.userType, userId, req.body.first, req.body.last, date, req.body.pass, 
+        date, req.body.email, date, req.body.securityQuestion, req.body.answer)
         if(result){
             res.send("Your request has been submitted. You will receive an email after your account has been approved.")
         }
