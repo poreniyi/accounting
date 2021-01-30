@@ -76,25 +76,21 @@ router.get("/signup", function (req,res){
     res.render("home/signup");
 });
 
-router.post("/newUser/create", function (req, res, next){
+router.post("/newUser/create", async function (req, res, next){
     console.log(req.body);
     let dob=new Date(req.body.DOB)
     console.log(`The users DOB is ${dob} and found in the variable dob`);
     let date=new Date();
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
     let userId=`${req.body.first.slice(0,1).toLowerCase()}${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
-    // let DBResult = InsertUser(userId, req.body.first, req.body.last, date, req.body.pass, 
-    //     date, req.body.email, date, 'question', 'answer')
-    // DBResult.then(function(result){
-    //     if(result){
-    //         res.send('Your request has been submitted. You will receive an email after you account has been approved.');
-    //     }
-    //     else{
-    //         res.send('Email already exists');
-    //         return "This email is already linked to an existing account."
-    //     }
-    // })
-    res.send('done');
+    let result =  await InsertUser(userId, req.body.first, req.body.last, date, req.body.pass, 
+        date, req.body.email, date, 'question', 'answer')
+        if(result){
+            res.send("Your request has been submitted. You will receive an email after your account has been approved.")
+        }
+        else{
+            res.send("Email already exists.")
+        }
 }) 
 
 //route forgot password
