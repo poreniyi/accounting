@@ -17,7 +17,6 @@
         <%TextRow.forEach(element=>{ %>
             <% let link=`./edit?USERNAME=${element.USERNAME}&FIRSTNAME=${element.FIRSTNAME}&LASTNAME=${element.LASTNAME}&DOB=${element.DOB}&EMAIL=${element.EMAIL}&PED=${element.PED}&DOC=${element.DOC}&PASSWORD=${element.PASSWORD}`;%>
             <tr>
-                <%= link %>
                 <td><a href=<%=link%>>
                         <%= element.FIRSTNAME %>
                 </td>
@@ -36,12 +35,6 @@
                 <td>
                 <%= element.DOC %>
                 </td>
-                <td>
-                <%= TextRow[0].First %>
-                 </td>
-                <td>
-                <%= TextRow[0].First %>
-             </td>
             </tr>
         <% })%>
        
