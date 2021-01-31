@@ -19,8 +19,18 @@ async function login(username, password){
         let result2 = await DB.asyncConnection.query(query2);
 
         if(result2[0] == ''){
-            console.log("USER NOT FOUND")
-            return false; // user not found
+
+            var query3 = `SELECT PASSWORD AS password FROM ADMIN WHERE USERNAME = '${username}'`;
+            let result3 = await DB.asyncConnection.query(query3);
+
+            if(result3[0] == ''){
+                console.log("USER NOT FOUND")
+                return false; // user not found
+            }
+            else{
+                DBPassword = result3[0][0].password
+            }
+            
         }
         else{
             DBPassword = result2[0][0].password

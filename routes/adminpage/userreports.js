@@ -1,5 +1,5 @@
 let express = require('express');
-let DB = require("/workspaces/accounting/database/DBConnection.js")
+let DB = require("../../database/DBConnection.js")
 let router = express.Router();
 
 router.get("/report", async function (req,res,next){
@@ -21,10 +21,8 @@ router.get('editUser',()=>{
     redirect('/edit');
 })
 
-router.get("/editpage", function (req,res){
-    let data = editPageTest
-    res.render('userreports/editpage',data);
-});
-
+router.get('/edit', (req,res)=>{
+    res.render('userreports/editpage',req.query);
+})
 
 module.exports = router;
