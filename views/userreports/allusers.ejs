@@ -14,33 +14,33 @@
         <th>Email Address</th>
         <th>PED</th>
         <th>DOC</th>
-        <%users.forEach(element=>{ %>
-            <% let link=`./edit?Username=${element.Username}&First=${element.First}&Last=${element.Last}&DOB=${element.DOB}&email=${element.email}&ped=${element.ped}&doc=${element.DOC}&Password=${element.Password}`;%>
+        <%TextRow.forEach(element=>{ %>
+            <% let link=`./edit?USERNAME=${element.USERNAME}&FIRSTNAME=${element.FIRSTNAME}&LASTNAME=${element.LASTNAME}&DOB=${element.DOB}&EMAIL=${element.EMAIL}&PED=${element.PED}&DOC=${element.DOC}&PASSWORD=${element.PASSWORD}`;%>
             <tr>
                 <%= link %>
                 <td><a href=<%=link%>>
-                        <%= element.First %>
+                        <%= element.FIRSTNAME %>
                 </td>
                 <td>
-                    <%= element.Last %>
+                    <%= element.LASTNAME %>
                 </td>
                 <td>
                     <%= element.DOB %>
                 </td>
                 <td>
-                <%= element.email %>
+                <%= element.EMAIL %>
                 </td>
                 <td>
-                    <%= element.ped %>
+                    <%= element.PED %>
                 </td>
                 <td>
                 <%= element.DOC %>
                 </td>
                 <td>
-                <%= users[0].First %>
+                <%= TextRow[0].First %>
                  </td>
                 <td>
-                <%= users[0].First %>
+                <%= TextRow[0].First %>
              </td>
             </tr>
         <% })%>

@@ -33,10 +33,10 @@ async function insertUser (table, username, firstName, lastName, DOB, password, 
     password = await encryption.encryptPassword(password)
 
     if(table == 'USER'){
-        query = 'CALL Create_User(?,?,?,?, ?,?,?,?,?,?)';
+        query = 'CALL Create_User(?,?,?,?,?,?,?,?,?,?)';
     }
     else{
-        query = 'CALL Create_Manager(?,?,?,?, ?,?,?,?,?,?)';
+        query = 'CALL Create_Manager(?,?,?,?,?,?,?,?,?,?)';
     }
     DB.asyncConnection.query(query, [username, firstName, lastName, DOB, password, PED, email, DOC, question, 
         answer], function (err, result, fields) {

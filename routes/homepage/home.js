@@ -78,14 +78,15 @@ router.get("/signup", function (req,res){
 
 router.post("/newUser/create", async function (req, res, next){
     console.log(req.body);
-    let dob=new Date(req.body.DOB)
-    console.log(`The users DOB is ${dob} and found in the variable dob`);
-    let date=new Date();
+    let DOB=new Date(req.body.DOB)
+    console.log(`The users DOB is ${DOB} and found in the variable dob`);
+    let date = new Date()
+    let DOC = date.getFullYear() + "-" + date.getMonth()+1 + "-" + date.getDate();
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
     let userId=`${req.body.first.slice(0,1).toLowerCase()}${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
-    console.log(userId)
-    let result =  await InsertUser(req.body.userType, userId, req.body.first, req.body.last, date, req.body.pass, 
-        date, req.body.email, date, req.body.securityQuestion, req.body.answer)
+    let PED = date.getFullYear() + "-" + date.getMonth()+5 + "-" + date.getDate();
+    let result =  await InsertUser(req.body.userType, userId, req.body.first, req.body.last, DOB, req.body.pass, 
+        PED, req.body.email, DOC, req.body.securityQuestion, req.body.answer)
         if(result){
             res.send("Your request has been submitted. You will receive an email after your account has been approved.")
         }
