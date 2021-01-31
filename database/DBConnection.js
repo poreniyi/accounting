@@ -6,7 +6,8 @@ var db_config = {
     host     : 'us-cdbr-east-03.cleardb.com',
     user     : 'b8d03e7734ddc4',
     password : 'ebec160b',
-    database : 'heroku_f886e82f73ac5d5'
+    database : 'heroku_f886e82f73ac5d5',
+    multipleStatements: true
 };
 
 var asyncConnection = mysql_npm.createPool(db_config);

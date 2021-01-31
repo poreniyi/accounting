@@ -1,54 +1,43 @@
 const encryption = require("../encryption/passwordEncryption");
 const DB = require("./DBConnection");
 
-login('qqq012021','Guasacaca1-')
+login('gg012021-17','Guasacaca1')
 
 async function login(username, password){
 
     let DBPassword;
 
-   var query1 = `SELECT PASSWORD AS password FROM USER WHERE USERNAME = '${username}'`;
+   var query1 = `SELECT PASSWORD AS password FROM USER WHERE USERNAME = '${username}'; 
+                 SELECT PASSWORD AS password FROM MANAGER WHERE USERNAME = '${username}'; 
+                 SELECT PASSWORD AS password FROM ADMINISTRATOR WHERE USERNAME = '${username}'`;
 
-   let result1 = await DB.asyncConnection.query(query1);
+   let [result1] = await DB.asyncConnection.query(query1);
 
-   console.log(result1[0])
-
-   if(result1[0] == ''){
-
-        var query2 = `SELECT PASSWORD AS password FROM MANAGER WHERE USERNAME = '${username}'`;
-        let result2 = await DB.asyncConnection.query(query2);
-
-        if(result2[0] == ''){
-
-            var query3 = `SELECT PASSWORD AS password FROM ADMIN WHERE USERNAME = '${username}'`;
-            let result3 = await DB.asyncConnection.query(query3);
-
-            if(result3[0] == ''){
-                console.log("USER NOT FOUND")
-                return false; // user not found
-            }
-            else{
-                DBPassword = result3[0][0].password
-            }
-            
-        }
-        else{
-            DBPassword = result2[0][0].password
-        }
+   if([result1][0][0] != ''){ // it's a user
+        DBPassword = [result1][0][0][0].password
    }
-   else{
-       DBPassword = result1[0][0].password
+   else if([result1][0][1] != ''){ // it's a manager
+        DBPassword = [result1][0][1][0].password
+   }
+   else if([result1][0][2] != ''){ //it's an admin
+        DBPassword = [result1][0][2][0].password
+   }
+    else{
+        console.log('USERNAME NOT FOUND')
+        return false;
    }
 
-   console.log("DBPassword" + DBPassword)
+   let check = await encryption.decryptPassword(password, DBPassword)
 
-   if(encryption.decryptPassword(password, DBPassword)){
+   console.log('CHECK: ' + check)
+
+   if(check){
        // login
-       console.log("CORRECT PASSWORD")
+       return true;
    }
    else{
-    console.log("WRONG PASSWORD")
         // wrong password
+        return false;
    }
 
 }
