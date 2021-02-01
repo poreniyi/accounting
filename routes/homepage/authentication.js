@@ -64,20 +64,11 @@ router.post('/login',(req,res,next)=>{
         return next (err)
     }
     if(!user){
-        return res.send('Wrong email or password');
+        return res.redirect('/login');
     }
     req.login(user, () =>{
-        const user={
-            id:'id',
-            email:'mancara',
-            password:'password',
-            type:1
-        }
-        req.session.views=123;
-        req.session.userType=user.type;
             res.redirect('/secret');
             //set user type here on req.session.x
-            console.log(req.user);
     })
    })(req,res,next)
 })

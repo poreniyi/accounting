@@ -7,6 +7,7 @@ var passport = require("passport");
 let passportLocal = require('passport-local');
 let session = require("express-session");
 let asyncConnection= require('./database/DBConnection').asyncConnection;
+let Users=require('./mongooseDB/models/userModels');
 //create a passport setup file
 
 
@@ -73,27 +74,28 @@ const user={
 }
 
 passport.serializeUser((user, done) => {
-    console.log(`Serializing user`);
-    done(null,user.id);
+    done(null,user._id);
 })
 
 
 passport.deserializeUser((id, done) => {
-    const _user= user.id === id ? user : false;
-    if(user.id==id){
-        found= user;
-    }else{
-        console.log(`else in deserialize`);
-    }
-    done(null,_user);
+    Users.findOne({_id:id},(err,user)=>{
+        done(err,user._id);
+    })
 })
 passport.use(new passportLocal({
-},(username,password,done)=>{
-    if(username===user.email && password===user.password){
-        return done(null,user)
-    }else{
-        return done(null,false)
-    }
+},async (username,password,done)=>{
+    let user= await Users.findOne({'username':username},'username Password _id');
+        if(!user){
+            console.log(`User not found`);
+            return done(null,false);
+        }
+        console.log(user);
+        if(user.Password!=password){
+            return done(null,false);
+        }
+        return done(null,user);
+
 }))
 
 

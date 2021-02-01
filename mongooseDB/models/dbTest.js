@@ -26,11 +26,10 @@ mongoose.connection.on('error',()=>{
  mongoose.connection.on('connecting',()=>{
     console.log(`Connection starting`);
 })
-mongoose.connection.on('open',()=>{
+mongoose.connection.on('open',async ()=>{
     console.log(`Connection opened to the database`);
-    // Users.create(sampleUser,(err,result)=>{
-    //     console.log(result);
-    // });
+    let allUseers= await Users.find();
+    console.log(allUseers);
 })
 mongoose.connection.on('disconnected',()=>{
     console.log(`Connection closed`);
