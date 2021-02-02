@@ -1,9 +1,10 @@
 var express = require("express");
 var passport = require("passport");
 const InsertUser = require("../../database/InsertUser");
-
+let Users= require('../../mongooseDB/models/userModels');
 let crypto=require('crypto');
 var router = express.Router();
+let encryption=require('../../encryption/passwordEncryption');
 
 
 router.get("/", function (req,res){
@@ -76,22 +77,30 @@ router.get("/signup", function (req,res){
     res.render("home/signup");
 });
 
-router.post("/newUser/create", function (req, res, next){
+router.post("/newUser/create", async function (req, res, next){
     console.log(req.body);
+   
+    let DOB=new Date(req.body.DOB)
     let date=new Date();
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
-    let userId=`${req.body.first.slice(0,1).toLowerCase()}${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
-    let DBResult = InsertUser(userId, req.body.first, req.body.last, date, req.body.pass, 
-        date, req.body.email, date, 'question', 'answer')
-    DBResult.then(function(result){
-        if(result){
-            res.send('Your request has been submitted. You will receive an email after you account has been approved.');
-        }
-        else{
-            res.send('Email already exists');
-            return "This email is already linked to an existing account."
-        }
-    })
+    let userId=`${req.body.first.slice(0,1).toLowerCase()}
+    ${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
+    let password=await encryption.encryptPassword(req.body.pass);
+    let newUser={
+        username:userId,
+        firstName:req.body.first,
+        lastName:req.body.last,
+        DOB:DOB,
+        Question:req.body.securityQuestion,
+        Answer:req.body.answer,
+        userType:req.body.userType,
+        Email:req.body.email,
+        Password:password,
+        DOC:Date.now(),
+    }
+     data= await Users.create(newUser);
+   res.send(`new user created`);
+
 }) 
 
 //route forgot password

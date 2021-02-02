@@ -40,7 +40,7 @@ router.get('/secret',(req,res)=>{
     console.log(`The amount of views is${req.session.views}`);
     req.session.views++;
     if(req.isAuthenticated()) {
-        res.send('YOu can see this page');
+        res.send('Login succesful you can see this page');
     } else {
         return res.send('ACESS DENIED');//change to login
     }

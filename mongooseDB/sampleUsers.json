@@ -1,0 +1,25 @@
+{   "users":[
+    {
+    "username":"stingray2135",
+    "firstName":"test",
+    "lastName":"d",
+    "Email":"email@email.com",
+    "Password":"P@1343op2  ",
+    "userType":"admin"
+    },  {
+        "username":"catdog215",
+        "firstName":"test",
+        "lastName":"d",
+        "Email":"email@email.com",
+        "Password":"Z!ebra241w",
+        "userType":"manager"
+        },  {
+            "username":"pandag56",
+            "firstName":"test",
+            "lastName":"d",
+            "Email":"email@email.com",
+            "Password":"Appl!e14",
+            "userType":"regular"
+            }
+    ]
+}

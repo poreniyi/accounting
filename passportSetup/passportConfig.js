@@ -1,6 +1,7 @@
 let Users=require('../mongooseDB/models/userModels');
 var passport = require("passport");
 let passportLocal = require('passport-local');
+let encryption=require('../encryption/passwordEncryption');
 
 module.exports=(passport) => {
     passport.use(new passportLocal({
@@ -10,9 +11,14 @@ module.exports=(passport) => {
                 console.log(`User not found`);
                 return done(null,false);
             }
+            let samePass= await encryption.decryptPassword(password,user.Password);
             console.log(user);
-            if(user.Password!=password){
-                return done(null,false);
+            // if(user.Password!=password){
+            //     return done(null,false);
+            // }
+            console.log();
+            if(samePass){
+                return done(null,user);
             }
             return done(null,user);
     }))
