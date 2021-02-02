@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--<%- include('../_partial/_header'); -%> -->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Report</title>
+        <link rel='stylesheet' href='../../css/allusers.css'>
+        <link rel='icon' href='../../images/Mankara Logo (Transparent).png' sizes='any'>
+    </head>
+    <body>
+        <div class="tablecontainer">
+            <div class="container">
+                <table>
+        
+                    <tbody>
+                
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Username</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">First Name</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Password</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
+                    
+                        <tr>
+                            <td>
+                                <input type="text" name="Username" id="inputUsername" value="<%=USERNAME%>" placeholder="Username" autofocus>
+                            </td>
+                            <td>
+                                <input type="text" name="First" id="inputFirstName" value="<%=FIRSTNAME%>" placeholder="First" autofocus>
+                            </td>
+                            <td>
+                                <input type="text" name="Last" id="inputLastName" value="<%=LASTNAME%>" placeholder="Last" autofocus>
+                            </td>
+                            <td>
+                                <input type="text" name="email" id="inputEmail" value="<%=EMAIL%>" placeholder="Email" autofocus>
+                            </td>
+                            <td>
+                                <input type="text" name="DOB" id="inputDOB" value="<%=DOB%>" placeholder="DOB" autofocus>
+                            </td>
+                            <td>
+                                <input type="text" name="Password" id="inputPassword" value="<%=PASSWORD%>" placeholder="Password" autofocus>
+                            </td>
+                            <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                                <select Status = "Select" on change = "getValue(this)">
+                                    <option value ="$">deny</option>
+                                    <option value ="allow">allow</option>
+                                </select>
+                            </td>
+                            <td><form><input type = "submit"/></form></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
+<!-- <%- include('../_partial/_footer'); -%> -->

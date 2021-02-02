@@ -1,0 +1,27 @@
+<html> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title> Login</title>
+  <link rel="stylesheet" href="../../css/login.css">
+  <link rel='icon' href='../../images/Mankara Logo (Transparent).png' sizes='any'>  
+</head>
+<body>
+  <div class="loginscreen">
+    <img src='../../images/Mankara Logo (Transparent).png' style='width:10%; '>
+    <h2>Mankara</h2> 
+    <div class="container">
+      <form  id='form' method="POST" action='/login'>
+        <span>Username: </span>
+        <input id='username'  name='username' type='text'>
+        <br>
+        <span>Password: </span><input name='password' id='password' type="password">
+        <button type='submit' value='Login'>Login</button><br>
+      </form>
+      <button id='forgotPassword'>Forgot Password</button><br>
+      <button id='newUser'>Create New User</button>
+    </div>
+  </div>
+</body>
+<script src="/htmlScripts/login.js"></script>
+</html>
