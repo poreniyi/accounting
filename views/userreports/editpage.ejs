@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <!--<%- include('../_partial/_header'); -%> -->
     <head>
@@ -56,3 +57,53 @@
     </body>
 </html>
 <!-- <%- include('../_partial/_footer'); -%> -->
+=======
+<!DOCTYPE html>
+<%- include('../_partial/_header'); -%>
+<table style="border-collapse: collapse; width: 100%; height: 36px;" border="1">
+    
+    <tbody>
+
+    <th style="width: 14.2857%; height: 18px; text-align: center;">Username</th>
+    <th style="width: 14.2857%; height: 18px; text-align: center;">First Name</th>
+    <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
+    <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
+    <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
+    <th style="width: 14.2857%; height: 18px; text-align: center;">User Type</th>
+    <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
+    
+        <tr>
+            <td>
+                <input type="text" name="Username" id="inputUsername" value="<%=USERNAME%>" placeholder="Username" autofocus>
+            </td>
+            <td>
+                <input type="text" name="First" id="inputFirstName" value="<%=FIRSTNAME%>" placeholder="First" autofocus>
+            </td>
+            <td>
+                <input type="text" name="Last" id="inputLastName" value="<%=LASTNAME%>" placeholder="Last" autofocus>
+            </td>
+            <td>
+                <input type="text" name="email" id="inputEmail" value="<%=EMAIL%>" placeholder="Email" autofocus>
+            </td>
+            <td>
+                <input type="text" name="DOB" id="inputDOB" value="<%=DOB%>" placeholder="DOB" autofocus>
+            </td>
+            <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                <select value = "<%=USERTYPE%>">
+                    <option value="Manager" "<%= (USERTYPE == 'Manager')?'selected':'' %>" >Manager</option>
+                    <option value="Accountant" "<%= (USERTYPE == 'Accountant')?'selected':'' %>" >Accountant</option>
+                </select>
+            </td>
+            <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                <select Status = "Select" value= "<%=APPROVED%>">
+                    <option value =""><%=APPROVED%></option>
+                    <option value ="1">Active</option>
+                    <option value ="0">Deactivated</option>
+                </select>
+            </td>
+            <td><form><input type = "submit"/></form></td>
+        </tr>
+    </tbody>
+    </div>
+<%- include('../_partial/_footer'); -%>
+>>>>>>> 55fae96cbcbf0c5bd4d25a48bbb21a5726b2f549
