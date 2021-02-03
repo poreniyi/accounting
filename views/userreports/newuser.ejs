@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Report</title>
+        <link rel='stylesheet' href='/stylesheets/allusers.css'>
+        <link rel='icon' href='images/logo.png' sizes='any'>
+    </head>
+    <body>
+        <div class="tablecontainer">
+            <div class="container">
+                <table>
+                    <tbody>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">First Name</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Question</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Answer</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Type</th>
+                        <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
+                        <tr>
+                            <form action="./add" method="POST">
+                            <td>
+                                <input type="text" name="firstname" id="inputFirstName" value="">
+                            </td>
+                            <td>
+                                <input type="text" name="lastname" id="inputLastName" value="">
+                            </td>
+                            <td>
+                                <input type="text" name="email" id="inputEmail" value=""  >
+                            </td>
+                            <td>
+                                <input type="text" name="DOB" id="inputDOB" value="">
+                            </td>
+                            <td>
+                                <input type="text" name="Question" id="inputQuestion" value="">
+                            </td>
+                            <td>
+                                <input type="text" name="Answer" id="inputAnswer" value="">
+                            </td>
+                            <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                                <select value = "" name="usertype" id="inputUserType">
+                                        <option value="Manager">Manager</option>
+                                        <option value="Accountant">Accountant </option>
+                                </select>
+                            </td>
+                            <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                                <select value = "" name="usertype" id="inputUserType">
+                                        <option value="0">Inactive</option>
+                                        <option value="1">Active </option>
+                                </select>
+                            </td>
+                            <td>   <button type="submit">Submit Changes</button></td>
+                        </form>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel='stylesheet' href='/stylesheets/allusers.css'>
     <link rel='icon' href='images/logo.png' sizes='any'>
 </head>
+
 <body>
     <table>
         <th>Username</th>
@@ -15,25 +17,27 @@
         <th>User Type</th>
         <th>Status</th>
         <%TextRow.forEach(element=>{ %>
-            <% let link=`./edit?USERNAME=${element.USERNAME}&FIRSTNAME=${element.FIRSTNAME}&LASTNAME=${element.LASTNAME}&DOB=${element.DOB}&EMAIL=${element.EMAIL}&PED=${element.PED}&DOC=${element.DOC}&USERTYPE=${element.USERTYPE}&APPROVED=${element.APPROVED}`;%>
-            <tr>
-                <td><a href=<%=link%>>
+            <% let
+                link=`./edit?USERNAME=${element.USERNAME}&FIRSTNAME=${element.FIRSTNAME}&LASTNAME=${element.LASTNAME}&DOB=${element.DOB}&EMAIL=${element.EMAIL}&PED=${element.PED}&DOC=${element.DOC}&USERTYPE=${element.USERTYPE}&APPROVED=${element.APPROVED}`;%>
+                <tr>
+                    <td><a href=<%=link%>>
                         <%= element.USERNAME %>
-                </td>
-                <td>
-                    <%= element.FIRSTNAME %>
-                </td>
-                <td>
-                    <%= element.LASTNAME %>
-                </td>
-                <td>
-                <%= element.USERTYPE %>
-                </td>
-                <td>
-                    <%= element.APPROVED %>
-                </td>
-            </tr>
-        <% })%>
+                    </td>
+                    <td>
+                        <%= element.FIRSTNAME %>
+                    </td>
+                    <td>
+                        <%= element.LASTNAME %>
+                    </td>
+                    <td>
+                        <%= element.USERTYPE %>
+                    </td>
+                    <td>
+                        <%= element.APPROVED %>
+                    </td>
+                </tr>
+                <% })%>
     </table>
 </body>
+
 </html>

@@ -1,7 +1,8 @@
 let express = require('express');
-let report = require("../../database/UserReport.js")
+let report = require("../../database/UserReport.js");
 let router = express.Router();
-let updateUser = require("../../database/UpdateUser.js")
+let updateUser = require("../../database/UpdateUser.js");
+let addUser = require("../../database/AddUser");
 
 router.get("/report", async function (req,res,next){
 
@@ -23,5 +24,10 @@ router.post('/edit', (req, res)=>{
     console.log(req.body)
     res.send('YEET')
 })
+
+router.get('/add', (req,res)=>{
+    res.render('userreports/newuser');
+})
+
 
 module.exports = router;
