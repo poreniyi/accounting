@@ -9,7 +9,7 @@
     <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
     <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
     <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
-    <th style="width: 14.2857%; height: 18px; text-align: center;">Password</th>
+    <th style="width: 14.2857%; height: 18px; text-align: center;">User Type</th>
     <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
     
         <tr>
@@ -28,13 +28,17 @@
             <td>
                 <input type="text" name="DOB" id="inputDOB" value="<%=DOB%>" placeholder="DOB" autofocus>
             </td>
-            <td>
-                <input type="text" name="Password" id="inputPassword" value="<%=PASSWORD%>" placeholder="Password" autofocus>
+            <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                <select value = "<%=USERTYPE%>">
+                    <option value="Manager" "<%= (USERTYPE == 'Manager')?'selected':'' %>" >Manager</option>
+                    <option value="Accountant" "<%= (USERTYPE == 'Accountant')?'selected':'' %>" >Accountant</option>
+                </select>
             </td>
             <td style="width: 14.2857%; height: 18px; text-align: center;" >
-                <select Status = "Select" on change = "getValue(this)">
-                    <option value ="$">deny</option>
-                    <option value ="allow">allow</option>
+                <select Status = "Select" value= "<%=APPROVED%>">
+                    <option value =""><%=APPROVED%></option>
+                    <option value ="1">Active</option>
+                    <option value ="0">Deactivated</option>
                 </select>
             </td>
             <td><form><input type = "submit"/></form></td>

@@ -8,32 +8,28 @@
 </head>
 <body>
     <table>
+        <th>Username</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>DOB</th>
-        <th>Email Address</th>
-        <th>PED</th>
-        <th>DOC</th>
+        <th>User Type</th>
+        <th>Status</th>
         <%TextRow.forEach(element=>{ %>
-            <% let link=`./edit?USERNAME=${element.USERNAME}&FIRSTNAME=${element.FIRSTNAME}&LASTNAME=${element.LASTNAME}&DOB=${element.DOB}&EMAIL=${element.EMAIL}&PED=${element.PED}&DOC=${element.DOC}&PASSWORD=${element.PASSWORD}`;%>
+            <% let link=`./edit?USERNAME=${element.USERNAME}&FIRSTNAME=${element.FIRSTNAME}&LASTNAME=${element.LASTNAME}&DOB=${element.DOB}&EMAIL=${element.EMAIL}&PED=${element.PED}&DOC=${element.DOC}&USERTYPE=${element.USERTYPE}&APPROVED=${element.APPROVED}`;%>
             <tr>
                 <td><a href=<%=link%>>
-                        <%= element.FIRSTNAME %>
+                        <%= element.USERNAME %>
+                </td>
+                <td>
+                    <%= element.FIRSTNAME %>
                 </td>
                 <td>
                     <%= element.LASTNAME %>
                 </td>
                 <td>
-                    <%= element.DOB %>
+                <%= element.USERTYPE %>
                 </td>
                 <td>
-                <%= element.EMAIL %>
-                </td>
-                <td>
-                    <%= element.PED %>
-                </td>
-                <td>
-                <%= element.DOC %>
+                    <%= element.APPROVED %>
                 </td>
             </tr>
         <% })%>
