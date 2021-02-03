@@ -1,4 +1,3 @@
-1) hide submit button before making sure password is good on sign up page
 2) cookies
 3) passport
 4) forget password / token
