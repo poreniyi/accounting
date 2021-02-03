@@ -1,6 +1,7 @@
 let express = require('express');
-let report = require("/workspaces/accounting/database/UserReport.js")
+let report = require("../../database/UserReport.js")
 let router = express.Router();
+let updateUser = require("../../database/UpdateUser.js")
 
 router.get("/report", async function (req,res,next){
 
@@ -15,6 +16,12 @@ router.get('editUser',()=>{
 
 router.get('/edit', (req,res)=>{
     res.render('userreports/editpage',req.query);
+})
+
+router.post('/edit', (req, res)=>{
+   updateUser.updateUser(req.body.username, req.body.firstname, req.body.lastname, req.body.ped, req.body.email, req.body.usertype, req.body.approved)
+    console.log(req.body)
+    res.send('YEET')
 })
 
 module.exports = router;

@@ -77,7 +77,6 @@ router.get("/signup", function (req,res){
 });
 
 router.post("/newUser/create", async function (req, res, next){
-    console.log(req.body);
     let DOB=new Date(req.body.DOB)
     console.log(`The users DOB is ${DOB} and found in the variable dob`);
     let date = new Date()
@@ -88,7 +87,7 @@ router.post("/newUser/create", async function (req, res, next){
     let userId=`${req.body.first.slice(0,1).toLowerCase()}${req.body.last.replace(/\s+/g, '').toLowerCase()}${month}${date.getFullYear()}`;
     month = ("0" + (date.getMonth() + 4)).slice(-2); 
     let PED = date.getFullYear() + "-" + month + "-" + day;
-    console.log(PED)
+
     let result =  await InsertUser(req.body.userType, userId, req.body.first, req.body.last, DOB, req.body.pass, 
         PED, req.body.email, DOC, req.body.securityQuestion, req.body.answer, req.body.userType)
         if(result){

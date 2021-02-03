@@ -14,9 +14,6 @@ async function getReport(){
     for(var i = 0; i < [rows][0].length; i++){
         data.TextRow.push([rows][0][i])
     }
-
-    console.log(data)
-
     return data;
 }
 
