@@ -1,12 +1,16 @@
 let userPass=document.getElementById('pass');
 let regexChecker=document.getElementById('regexChecker');
+let submitButton=document.getElementById('submitButton');
 
 
 userPass.addEventListener("input", ()=>{
     let regexCheckerValue=regexFunction(userPass.value);
+    console.log(regexCheckerValue.isPassed);
     if(regexCheckerValue.isPassed){
         regexChecker.textContent="";
+        submitButton.style.visibility='visible';
     }else{
+        submitButton.style.visibility='hidden';
         regexChecker.textContent=regexCheckerValue.message;
         regexChecker.style.whiteSpace='pre-wrap';
         regexChecker.style.color='red';
@@ -24,16 +28,15 @@ let regexFunction=(string)=>{
 
     if(containsNumber&&containsSpecialCharacter&&startsWithCapital&&isCorrectLength){
         isPassed= true;
-        return isPassed;
+       // return isPassed;
+    }else{
+        let newline="\r\n";
+        message+= containsNumber ? '': 'No number at least 1 number is required'+newline;
+        message+= containsSpecialCharacter ? '': 'Please add a special character'+newline;
+        message+= isCorrectLength ? '': 'Too short please add more characters'+newline;
+        message+= startsWithCapital ? '': 'Password needs to start with a capital'+newline;
     }
-    let newline="\r\n";
-    message+= containsNumber ? '': 'No number at least 1 number is required'+newline;
-    message+= containsSpecialCharacter ? '': 'Please add a special character'+newline;
-    message+= isCorrectLength ? '': 'Too short please add more characters'+newline;
-    message+= startsWithCapital ? '': 'Password needs to start with a capital'+newline;
-    
 
-    console.log(message);
     return{
         message:message,
         isPassed:isPassed,
