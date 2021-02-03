@@ -82,7 +82,7 @@ router.post("/newUser/create", async function (req, res, next){
     console.log(`The users DOB is ${DOB} and found in the variable dob`);
     let date = new Date()
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
-    let day=("0" + (date.getDate() + 1)).slice(-2); 
+    let day=("0" + (date.getDate())).slice(-2); 
     let DOC = date.getFullYear() + "-" + month + "-" + day;
     console.log(DOC)
     
