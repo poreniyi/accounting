@@ -1,6 +1,11 @@
-item# |filename with location from root
-1|  routes/adminpage/userreports.js
-2|  routes/adminpage/userreports.js
-3|  routes/homepage/home.js
-4|  routes/homepage/home.js
-5|  routes/homepage/home.js
+1) hide submit button before making sure password is good on sign up page
+2) cookies
+3) passport
+4) forget password / token
+5) expired password report
+6) emails
+7) store old user password
+8) username picture
+9) admin should create users         
+10) used passwords cannot be used on reset 
+11) 

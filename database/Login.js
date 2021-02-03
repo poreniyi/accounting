@@ -1,8 +1,6 @@
 const encryption = require("../encryption/passwordEncryption");
 const DB = require("./DBConnection");
 
-login('gg012021-17','Guasacaca1')
-
 async function login(username, password){
 
     let DBPassword;
@@ -11,7 +9,7 @@ async function login(username, password){
 
    let [result1] = await DB.asyncConnection.query(query1);
 
-   if([result1][0][0] != ''){ // it's a user
+   if([result1][0][0] != ''){ 
         DBPassword = [result1][0][0][0].password
    }
     else{
