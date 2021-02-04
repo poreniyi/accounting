@@ -27,6 +27,17 @@ router.get("/login",function (req,res){
      res.render("home/login");
 });
 
+router.get('/succesfulLogin',(req,res)=>{
+    console.log('succesful');
+    if(req.session.userType.toLowerCase()=='admin'){
+        console.log('admin page');
+        res.redirect('/admin/home');
+    }else if(req.session.userType.toLowerCase()=='accountant'){
+
+    }else{//manager
+
+    }
+})
 
 router.get('/secret',(req,res)=>{
     console.log(`Secret page:The user is ${req.user}`);
@@ -61,10 +72,8 @@ router.post('/login',(req,res,next)=>{
     }
     req.login(user, () =>{
         req.session.views=123;
-            res.redirect('/secret');
-            //set user type here on req.session.x
-            req.session.userType='Admin';
-            console.log(req.user);
+        req.session.userType='admin';
+        res.redirect('/succesfulLogin');
     })
    })(req,res,next)
 })

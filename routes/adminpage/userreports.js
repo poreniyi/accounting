@@ -2,7 +2,7 @@ let express = require('express');
 let report = require("../../database/UserReport.js");
 let router = express.Router();
 let updateUser = require("../../database/UpdateUser.js");
-let addUser = require("../../database/AddUser");
+//let addUser = require("../../database/AddUser");
 
 router.get("/report", async function (req,res,next){
 
