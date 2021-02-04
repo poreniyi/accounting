@@ -1,33 +1,30 @@
-const encryption = require("../encryption/passwordEncryption");
 const DB = require("./DBConnection");
 
-async function login(username, password){
+async function login(username){
 
-    let DBPassword;
+   var query = `SELECT USERNAME, USERTYPE, PASSWORD FROM USER WHERE USERNAME = '${username}'`;
 
-   var query1 = `SELECT PASSWORD AS password FROM USER WHERE USERNAME = '${username}'`;
+   let [result] = await DB.asyncConnection.query(query);
 
-   let [result1] = await DB.asyncConnection.query(query1);
+   let data;
 
-   if([result1][0][0] != ''){ 
-        DBPassword = [result1][0][0][0].password
+   if([result][0][0]){ 
+        data = [[result][0][0].USERNAME, [result][0][0].PASSWORD, [result][0][0].USERTYPE]
+        return data
    }
     else{
         console.log('USERNAME NOT FOUND')
-        return false;
+        return;
    }
-
-   let check = await encryption.decryptPassword(password, DBPassword)
-
-   console.log('CHECK: ' + check)
-
-   if(check){
-       // login
-       return true;
-   }
-   else{
-        // wrong password
-        return false;
-   }
-
 }
+
+async function findUser(username){
+
+     var query = `SELECT USERNAME FROM USER WHERE USERNAME = '${username}'`;
+
+     let [result] = await DB.asyncConnection.query(query);
+
+     return [result][0][0].USERNAME
+}
+
+module.exports = {login, findUser}

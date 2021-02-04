@@ -4,6 +4,8 @@ var path = require("path");
 var passport = require("passport");
 let passportLocal = require('passport-local');
 let session = require("express-session");
+let login = require("./database/Login")
+const encryption = require("./encryption/passwordEncryption");
 //create a passport setup file
 
 
@@ -28,32 +30,35 @@ resave:true,
 saveUninitialized:false }));
 app.use(passport.initialize());
 app.use(passport.session());
-const user={
-    id:'id',
-    email:'mancara',
-    password:'password',
-}
 
-passport.serializeUser((user, done) => {
+passport.serializeUser((data, done) => {
     console.log(`Serializing user`);
-    done(null,user.id);
+    done(null,data[0]); // data[0] = username
 })
 
 
-passport.deserializeUser((id, done) => {
-    const _user= user.id === id ? user : false;
-    if(user.id==id){
-        found= user;
-    }else{
-        console.log(`else in deserialize`);
+passport.deserializeUser( async (username, done) => {
+
+    let DBUsername = await login.findUser(username)
+    if(DBUsername == username){
+        done(null,username);
     }
-    done(null,_user);
+   
 })
+
 passport.use(new passportLocal({
-},(username,password,done)=>{
-    if(username===user.email && password===user.password){
-        return done(null,user)
+}, async (username,password,done)=>{
+    let data = await login.login(username, password) // data[0] = username, data[1] = password, data[2] = usertype
+    if(!data){
+        console.log('APP.JS   username not found')
+        return done(null, false)
+    }
+    let checkPassword = await encryption.decryptPassword(password, data[1])
+    console.log(checkPassword)
+    if(checkPassword){ 
+        return done(null,data)
     }else{
+        console.log('APP.JS  WRONG PASSWORD')
         return done(null,false)
     }
 }))
