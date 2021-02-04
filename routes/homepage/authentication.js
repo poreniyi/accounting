@@ -29,6 +29,7 @@ router.get("/login",function (req,res){
 
 router.get('/succesfulLogin',(req,res)=>{
     console.log(req.user);
+    console.log(`The usertype is${req.session.userType}`);
 
     console.log('succesful');
     if(req.session.userType.toLowerCase()=='admin'){
@@ -37,7 +38,7 @@ router.get('/succesfulLogin',(req,res)=>{
     }else if(req.session.userType.toLowerCase()=='accountant'){
         res.redirect('/accountant/home');
     }else{//manager
-
+        res.redirect('/manager/home');
     }
 })
 
