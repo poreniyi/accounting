@@ -27,15 +27,17 @@ router.get("/login",function (req,res){
      res.render("home/login");
 });
 
+router.get('/succesfulLogin',(req,res)=>{
+    console.log(req.user);
 
-router.get('/secret',(req,res)=>{
-    console.log(`Secret page:The user is ${req.user}`);
-    console.log(`The amount of views is${req.session.views}`);
-    req.session.views++;
-    if(req.isAuthenticated()) {
-        res.send('YOu can see this page');
-    } else {
-        return res.send('ACESS DENIED');//change to login
+    console.log('succesful');
+    if(req.session.userType.toLowerCase()=='admin'){
+        console.log('admin page');
+        res.redirect('/admin/home');
+    }else if(req.session.userType.toLowerCase()=='accountant'){
+        res.redirect('/accountant/home');
+    }else{//manager
+
     }
 })
 
@@ -60,11 +62,9 @@ router.post('/login',(req,res,next)=>{
         return res.send('Wrong email or password');
     }
     req.login(user, () =>{
-        req.session.views=123;
-            res.redirect('/secret');
-            //set user type here on req.session.x
-            req.session.userType='Admin';
-            console.log(req.user);
+        console.log(req.user);
+        req.session.userType=user[2];
+        res.redirect('/succesfulLogin');
     })
    })(req,res,next)
 })
