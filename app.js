@@ -66,6 +66,9 @@ passport.use(new passportLocal({
 
 app.use("/", require("./routes/homepage")); //route for web front end files
 app.use("/admin", require("./routes/adminpage")); //route for admin files
+app.use("/accountant", require("./routes/accountantpages")); //route for accountant files
+app.use("/manager", require("./routes/managerpages")); //route for manager files
+
 
 
 app.use((req,res,next) => {
