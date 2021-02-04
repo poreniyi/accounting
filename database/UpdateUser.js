@@ -1,11 +1,14 @@
 const DB = require("./DBConnection");
 
-async function updateUser(username, firstname, lastname, ped, email, usertype, approved){
+async function updateUser(username, firstname, lastname, DOB, PED, email, usertype, approved){
 
-    let query = `UPDATE USER SET FIRSTNAME = '${firstname}', LASTNAME = '${lastname}', PED = '${ped}', 
-                EMAIL = '${email}', USERTYPE = '${usertype}', APPROVED = ${approved} WHERE USERNAME = '${username}'`
+    let query = `UPDATE USER SET FIRSTNAME = ?, LASTNAME = ?, DOB = ?, PED = ?, 
+                EMAIL = ?, USERTYPE = ?, APPROVED = ? WHERE USERNAME = ?`
 
-    DB.asyncConnection.query(query, [username, firstname, lastname, ped, email, usertype, approved], function (err, result, fields) {
+    DOB=new Date(DOB)
+    PED=new Date(PED)
+
+    DB.asyncConnection.query(query, [firstname, lastname, DOB, PED, email, usertype, approved, username], function (err, result, fields) {
             if(err){
                 console.log("Query failed")
                 console.log(err)

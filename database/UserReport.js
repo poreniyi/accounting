@@ -5,7 +5,8 @@ async function getReport(){
     var query = `
     SELECT USER.USERNAME, USER.FIRSTNAME, USER.LASTNAME, DATE_FORMAT(USER.DOB, "%c/%d/%Y") AS DOB, 
     USER.EMAIL, DATE_FORMAT(USER.PED, "%c/%d/%Y") AS PED,
-    DATE_FORMAT(USER.DOC, "%c/%d/%Y") AS DOC, USERTYPE, IF(APPROVED = 1,'Active', 'Inactive') AS APPROVED FROM USER ORDER BY APPROVED, USERTYPE DESC`
+    DATE_FORMAT(USER.DOC, "%c/%d/%Y") AS DOC, IF(APPROVED = 1,'Active', 'Inactive') AS APPROVED, USERTYPE FROM USER 
+    WHERE USERTYPE = 'Accountant' OR USERTYPE = 'Manager' ORDER BY APPROVED DESC, USERTYPE ASC`
       
     let [rows] = await DB.asyncConnection.query(query)
     
