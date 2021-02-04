@@ -1,0 +1,31 @@
+.sidenav {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    border-collapse: collapse;
+    height: 100vh;
+}
+
+.navcolumn {
+      background-color: #FFFAEC;
+      border-right: solid #126359 5px;
+}
+
+.navcolumn li {
+    list-style-type: none;   
+}
+.navcolumn a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #000000;
+    display: block;
+}
+.adminlist {
+    padding-inline-start: 10px;
+}
+h1 {
+    padding: 0 21.44px;
+}
+.adminlist a:hover {
+    background-color: #bdb8aa;
+}

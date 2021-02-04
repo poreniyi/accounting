@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel='icon' href='/images/logo.png' sizes='any'>
+  <link rel='stylesheet' href='/stylesheets/dashboard.css'>
+</head>
+<body>
+    <%- include('../_partial/_header'); -%>
+    <div class="sidenav">
+        <div class="navcolumn">
+          <ul class="adminlist">
+            <li><a href="/admin/report">User Reports</a></li>
+            <li><a href="/admin/add">Add a User</a></li>
+          </ul>
+        </div>
+        <div class="main">
+          <h1>Welcome Admin</h1>
+        </div>
+    </div>
+</body>
+</html>

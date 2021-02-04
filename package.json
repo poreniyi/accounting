@@ -1,17 +1,37 @@
 {
-  "name": "app",
-  "version": "0.0.0",
-  "private": true,
+  "name": "dev",
+  "version": "1.0.0",
+  "description": "This is the development branch",
+  "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app",
+    "dev": "nodemon app"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kumboi/accounting.git"
+  },
+  "author": "Niyi Adekunle, Markus Bezerra, Andres Di Gregorio, Khalid Diab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kumboi/accounting/issues"
+  },
+  "homepage": "https://github.com/Kumboi/accounting#readme",
   "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1",
-    "mysql": "^2.18.1",
-    "pug": "2.0.0-beta11"
+    "bcrypt": "^5.0.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "flash": "^1.1.0",
+    "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.17",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "path": "^0.12.7",
+    "sync-mysql": "^3.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
