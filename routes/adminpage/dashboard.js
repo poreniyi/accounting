@@ -7,7 +7,7 @@ router.get('/home',(req,res)=>{
 });
 
 router.get('/dashboard',(req,res)=>{
-    res.send('admin logged in');
+    res.render('dashboard/dashboard.ejs');
 });
 
 
