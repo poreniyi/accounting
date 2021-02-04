@@ -46,7 +46,7 @@ router.post('/add', async (req,res)=>{
     let PED = date.getFullYear() + "-" + month + "-" + day;
 
     let result = await insertUser(username, req.body.firstname, req.body.lastname, req.body.DOB, 'DEFAULTPASS1-', 
-        PED, req.body.email, DOC, 'What were the last four digits of your childhood telephone number?', '1234', req.body.userType, req.body.approved)
+        PED, req.body.email, DOC, 'What were the last four digits of your childhood telephone number?', '1234', req.body.usertype, req.body.approved)
     
     if(result){
         res.send("Your have added a user. The user will get an email to notify them their account has been created.")
