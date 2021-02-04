@@ -92,10 +92,10 @@ router.post("/newUser/create", async function (req, res, next){
     let result =  await InsertUser(userId, req.body.first, req.body.last, DOB, req.body.pass, 
         PED, req.body.email, DOC, req.body.securityQuestion, req.body.answer, req.body.userType, 0)
         if(result){
-            res.send("Your request has been submitted. You will receive an email after your account has been approved.")
+            res.render("home/submitAccount");
         }
         else{
-            res.send("Email already exists.")
+            res.render("home/submitAccount");
         }
 }) 
 
