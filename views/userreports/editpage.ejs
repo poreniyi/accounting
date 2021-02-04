@@ -20,7 +20,7 @@
                          <th style="width: 14.2857%; height: 18px; text-align: center;">User Type</th>
                          <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>   
                         <tr>
-                            <form action="" method="POST">
+                            <form action="./edit" method="POST">
                             <td>
                                 <input type="text" name="username" id="inputUsername" value="<%=USERNAME%>">
                             </td>
@@ -52,7 +52,7 @@
                             <td style="width: 14.2857%; height: 18px; text-align: center;" >
                                 <select value = "<%=APPROVED%>" name ="approved" id="inputApproved">
                                     <option value="<%=APPROVED%>" 'selected':'' ><%=APPROVED%></option>
-                                    <% if(APPROVED == '1'){  %>
+                                    <% if(APPROVED == 'Active'){  %>
                                         <option value="0">Inactive</option>
                                     <% }  else { %>
                                         <option value="1">Active </option>
