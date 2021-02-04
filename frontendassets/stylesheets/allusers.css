@@ -17,6 +17,9 @@ td, th {
   border-collapse: collapse;
 }
 
+table {
+  margin: auto;
+}
 table, td {
     padding: 8px;
     background-color: #FFFFFF;

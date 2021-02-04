@@ -10,12 +10,14 @@ header {
     display: block;
     background-color: #1B998B;
     border-bottom: solid #126359 5px;
+    display: flex;
+    justify-content: space-between;
 }
 
 nav {
     height: 100%;
     display: block;
-    margin: 0 auto;
+    margin: auto 1em;
 }
 
 .navbar-nav {
@@ -24,6 +26,11 @@ nav {
     padding-bottom: 15px;
     margin: 0;
     list-style-type: none;
+}
+
+.navbar-nav img {
+    height: 50px;
+    width: 50px;
 }
 
 nav ul li {
@@ -35,12 +42,15 @@ nav ul li a {
     color: #FFFFFF;
     display: right;
     width: 50%;
-    margin: auto;
+    margin: auto 1em;
     text-align: center;
     padding: 1em;
 }
-nav ul li img {
-    margin-right: 1em;
+header img {
     width: 100px;
     height: 100px;
+    top: 0px;
+    right: 0px;
 }
+
+

@@ -7,26 +7,27 @@
 <head>
     <meta charset="utf-8">
     <title>Home Page</title>
-    <link rel="stylesheet" href="stylesheets/header.css"> 
-    <link rel='icon' href='images/logo.png' sizes='any'>
+    <link rel="stylesheet" href="/stylesheets/header.css"> 
+    <link rel='icon' href='/images/logo.png' sizes='any'>
 </head>
  
 <header>
     <nav>
         <ul class="navbar-nav navbar-right">
-            <li><img src='images/logo.png'></li>
-            <li><a class="navbar-brand" href="/">Mankara</a></li>
             <% if(currentUser != null) { %>
+                <img src='/images/profile.png'>
+                <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="#">Welcome <%= currentUser.username %> !</a></li>
                 <li><a href="/logout">Logout</a></li>
-                <li><img src='images/profile.png' style='width:10%;' ></li>
 
             <%}%>
             <% if(currentUser == null) { %> 
+                <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="/forgotPassowrd">Forgot Password</a></li>
                 <li><a href="/signup">Signup</a></li>
                 <li><a href="/login">Log In</a></li>
             <% } %>
         </ul>
     </nav>
+    <img src='/images/logo.png'>
 </header>
