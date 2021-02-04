@@ -29,7 +29,7 @@ async function insertUser (username, firstName, lastName, DOB, password, PED, em
 
     if(password != 'DEFAULTPASS1-'){
         password = await encryption.encryptPassword(password)
-        query = 'CALL Create_User(?,?,?,?,?,?,?,?,?,?,?)';
+        query = 'CALL Create_User(?,?,?,?,?,?,?,?,?,?,?,?)';
     }
     else{
         query = 'CALL ADMIN_Create_User(?,?,?,?,?,?,?,?,?,?,?,?)';
