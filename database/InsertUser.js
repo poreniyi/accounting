@@ -1,6 +1,7 @@
 
 const DB = require("./DBConnection");
 const encryption = require("../encryption/passwordEncryption");
+const sendEmail= require('../email/emailExample').sendEmail;
 
 
 
@@ -15,6 +16,9 @@ async function emailFound(username, firstName, lastName, DOB, password, PED, ema
     if(result == 'false'){
         insertUser(username, firstName, lastName, DOB, password, PED, email, DOC, question, 
             answer, userType, approved)
+            //email sent to
+            sendEmail('MancaraAppDomain@outlook.com','account creation',`${username} with email of ${email} has just requested to make an account wwith
+             type ${userType}`) 
         return true; // email does not exist so it can be added
     }
     else{
