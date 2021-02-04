@@ -22,8 +22,7 @@ router.get('/edit', (req,res)=>{
 
 router.post('/edit', (req, res)=>{
    updateUser.updateUser(req.body.username, req.body.firstname, req.body.lastname, req.body.DOB, req.body.PED, req.body.email, req.body.usertype, req.body.approved)
-    console.log('UPDATE ' + req.body)
-    res.send('YEET')
+    res.redirect('dashboard')
 })
 
 router.get('/add', async (req,res)=>{
