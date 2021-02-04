@@ -11,11 +11,11 @@
 
 <body>
     <table id='table'>
-        <th id='userNameHeader'>Username</th>
-        <th id='firstNameHeader'>First Name</th>
-        <th id='lastNameHeader'>Last Name</th>
-        <th id='typeHeader'>User Type</th>
-        <th id='statusHeader'>Status</th>
+        <th id='userNameHeader'>Username.</th>
+        <th id='firstNameHeader'>First Name.</th>
+        <th id='lastNameHeader'>Last Name.</th>
+        <th id='typeHeader'>User Type.</th>
+        <th id='statusHeader'>Status.</th>
         <%TextRow.forEach(element=>{ %>
             <% let
                 link=`./edit?USERNAME=${element.USERNAME}&FIRSTNAME=${element.FIRSTNAME}&LASTNAME=${element.LASTNAME}&DOB=${element.DOB}&EMAIL=${element.EMAIL}&PED=${element.PED}&DOC=${element.DOC}&USERTYPE=${element.USERTYPE}&APPROVED=${element.APPROVED}`;%>

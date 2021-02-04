@@ -4,7 +4,6 @@ let lastNames=document.getElementById('lastNameHeader');
 let types=document.getElementById('typeHeader');
 let status=document.getElementById('statusHeader');
 let table=document.getElementById('table');
-console.log(table.rows);
 let headers=[];
 headers.push(userNames);
 headers.push(firstNames);
@@ -14,19 +13,20 @@ headers.push(status);
 
 for(let i=0;i<headers.length;i++){
     console.log(headers[i]);
-    headers[i].addEventListener('click',()=>{
+    let isClicked=1;
+    headers[i].addEventListener('click',()=>{  
+    if(isClicked){
+        headers[i].textContent=headers[i].textContent.slice(0,-1)+'\u25B2';
+        isClicked=0
+    } else{
+        headers[i].textContent=headers[i].textContent.slice(0,-1)+'\u25BC';
+        isClicked=1;
+    }
     sortUsernames(i);
     })
 }
 
-// userNames.addEventListener('click',()=>{
-//     sortUsernames(0);
-// })
-// firstNames.addEventListener('click',()=>{
-//     sortUsernames(1);
-// })
-
-let sortUsernames=(n)=>{
+let sortUsernames=(n,shower)=>{
     var  rows, switching, i, x, y, shouldSwitch,switchcount=0;
     let dir='asc';
  switching=true;
@@ -59,6 +59,7 @@ let sortUsernames=(n)=>{
             if(switchcount==0 &&dir=='asc'){
                 dir = "desc";
                 switching = true;
+                console.log(shower);
             }
         }
     }  
