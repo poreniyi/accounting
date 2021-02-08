@@ -42,9 +42,14 @@ nav ul li a {
     color: #FFFFFF;
     display: right;
     width: 50%;
-    margin: auto 1em;
+    margin: auto 0;
+    margin-left: .25em;
     text-align: center;
     padding: 1em;
+}
+
+nav ul li a:hover {
+    background-color: #126359;
 }
 header img {
     width: 100px;

@@ -21,8 +21,11 @@
     display: block;
 }
 .adminlist {
-    padding-inline-start: 20px;
+    padding-inline-start: 10px;
 }
 h1 {
     padding: 0 21.44px;
+}
+.adminlist a:hover {
+    background-color: #bdb8aa;
 }
