@@ -3,9 +3,10 @@ let router = express.Router();
  
 
 
+router.get('/chart',(req,res)=>{
+    res.send('chart of accounts');
+});
 
- router.use("/", require("./dashboard"));
- router.use("/", require("./chartOfAccounts"));
 
 
 
