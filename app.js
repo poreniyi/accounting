@@ -1,11 +1,9 @@
 //Entry point for app
 var express = require("express");
 var path = require("path");
-var passport = require("passport");
-let passportLocal = require('passport-local');
+let passport= require('passport');
+require('./passport/passportConfig')(passport);
 let session = require("express-session");
-let login = require("./database/Login")
-const encryption = require("./encryption/passwordEncryption");
 //create a passport setup file
 
 
@@ -31,37 +29,7 @@ saveUninitialized:false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser((data, done) => {
-    console.log(`Serializing user`);
-    done(null,data[0]); // data[0] = username
-})
 
-
-passport.deserializeUser( async (username, done) => {
-
-    let DBUsername = await login.findUser(username)
-    if(DBUsername == username){
-        done(null,username);
-    }
-   
-})
-
-passport.use(new passportLocal({
-}, async (username,password,done)=>{
-    let data = await login.login(username, password) // data[0] = username, data[1] = password, data[2] = usertype
-    if(!data){
-        console.log('APP.JS   username not found')
-        return done(null, false)
-    }
-    let checkPassword = await encryption.decryptPassword(password, data[1])
-    console.log(checkPassword)
-    if(checkPassword){ 
-        return done(null,data)
-    }else{
-        console.log('APP.JS  WRONG PASSWORD')
-        return done(null,false)
-    }
-}))
 
 
 app.use("/", require("./routes/homepage")); //route for web front end files
