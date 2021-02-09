@@ -20,10 +20,13 @@
   "homepage": "https://github.com/Kumboi/accounting#readme",
   "dependencies": {
     "bcrypt": "^5.0.0",
+    "connect-mongo": "^3.2.0",
+    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "flash": "^1.1.0",
+    "mongoose": "^5.11.15",
     "mysql2": "^2.2.5",
     "nodemailer": "^6.4.17",
     "passport": "^0.4.1",
