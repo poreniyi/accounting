@@ -5,7 +5,9 @@ let router = express.Router();
 
 
  router.use("/", require("./dashboard"));
- router.use("/", require("./chartOfAccounts"));
+ router.use('/',require('../chartOfAccounts/nonAdmin'));
+
+ //router.use("/", require("../chartOfAccounts/view"));
 
 
 

@@ -1,14 +1,9 @@
 let express = require('express');
 let router = express.Router();
- 
 
-
-router.get('/chart',(req,res)=>{
-    res.locals.hi='Hello'
+router.get('/charts',(req,res) =>{
     res.render('charts/adminChart');
-});
-
-
+})
 router.put('/edit',(req,res)=>{
     req.body.Credit+=5000;
     res.send(req.body);
