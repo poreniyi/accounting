@@ -1,3 +1,5 @@
+const { defaultMaxListeners } = require("mysql2/typings/mysql/lib/Pool");
+
 class Account{
     constructor(options={}){
         Object.assign(this,options);
@@ -42,3 +44,5 @@ console.log(typeof Assets.Credit);
 let balance=Number(Assets.Debit)-Number(Assets.Credit);
 console.log(balance);
 
+//module.exports=Account;
+module.exports= Account;
