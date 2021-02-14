@@ -18,6 +18,25 @@
                 <img src='/images/profile.png'>
                 <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="#">Welcome <%= currentUser %>  ! you are an <%=userType%></a></li>
+                <% let dashboard=''%>
+                  
+                <% switch(userType){
+                    case 'Admin': %>
+                   <% dashboard='admin'%>
+                    <%break;
+                    case 'Accountant': %>
+                    <% dashboard='accountant'%>
+                    <%break;
+                    case 'Manager': %>
+                    <% dashboard='manager'%>
+                    <%break;
+                }%>
+                <% let dashboardLink=`./${dashboard}/dashboard`%>
+                
+                    <li><a href=<%=dashboardLink%>>Dashboard</a></li>
+
+                
+
                 <li><a href="/logout">Logout</a></li>
 
             <%}%>
