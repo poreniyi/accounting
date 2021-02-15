@@ -9,10 +9,15 @@ router.get('/addAccount',(req,res)=>{
     returns an array of used account numbers
     assign this array to res.locals.takenNumbers
     */
+   /*
+      returns an array of used order numbers
+    assign this array to res.locals.orderNumbers
+   */
     res.render('charts/addChart');
 })
 
-router.post('addAccount',(req,res) => {
-
+router.post('/addAccount',(req,res) => {
+    res.send(req.body);
+    
 })
 module.exports = router;
