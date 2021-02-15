@@ -3,7 +3,7 @@ let router = express.Router();
  
 
 router.use("/", require("./dashboard/dasboard"));
-
+router.use("/",require('./chartOfAccounts'));
 
 
 
