@@ -2,6 +2,7 @@
 
 <html lang="en">
 <head>
+    <link rel='stylesheet' href='/stylesheets/charts/addAccount.css'>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,53 +12,63 @@
 
 <body>
     <table id='table'>
+        <form id='form'>
         <tr>
             <th>Name</th>
-            <td></td>
+            <td class='formInput'><input type="text"></td>
         </tr>
         <tr>
-            <th>Name</th>
-            <td></td>
+            <th>Number</th>
+            <td class='formInput'><input type="text"></td>
         </tr>  <tr>
-            <th>Name</th>
-            <td></td>
+            <th>Description</th>
+            <td class='formInput'><input type="text"></td>
         </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
-        </tr>  <tr>
-            <th>Name</th>
-            <td></td>
+            <th>NormalSide</th>
+            <td class='formInput'>
+                <select form='form'>
+                    <option value='Credit'>Credit</option>
+                    <option value='Debit'>Debit</option>
+                </select>
+            </td>
+        </tr>  
+        <tr>
+            <th>Category</th>
+            <td class='formInput'><input type="text"></td>
+        </tr>  
+        <tr>
+            <th>Sub-Category</th>
+            <td class='formInput'><input type="text"></td>
+       </tr>
+       <tr>
+        <th>Sub-Category</th>
+        <td class='formInput'><input type="text"></td>
         </tr>
+        <tr>
+            <th>Initial Balancee</th>
+            <td class='formInput'><input type="number"></td>
+        </tr>
+        <tr>
+        <th>Credit</th>
+        <td class='formInput'><input type="number"></td>
+        </tr>
+        <th>Debit</th>
+        <td class='formInput'><input type="number"></td>
+        </tr>
+        <th>Balance</th>
+        <td class='formInput'><input type="number"></td>
+        </tr>
+        <th>Order</th>
+        <td class='formInput'><input type="number"></td>
+        </tr>
+        <th>Statement</th>
+        <td class='formInput'><input type="text"></td>
+        </tr>
+        <th>Comment</th>
+        <td class='formInput'><input type="text"></td>
+        </tr>
+        <button type="submit">Submit</button>
+        </form>
     </table>
 </body>
 </html>
