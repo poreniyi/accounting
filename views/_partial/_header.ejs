@@ -31,10 +31,13 @@
                     <% dashboard='manager'%>
                     <%break;
                 }%>
+
                     <%if(!locals.isDashboard){%>
+                        <% let dashboardLink=`./${dashboard}/dashboard`%>
                         <li><a href=<%=dashboardLink%>>Dashboard</a></li>
-                    <%}%>
+                        <%}%>            
                 <li><a href="/logout">Logout</a></li>
+
             <%}else{%>
                 <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="/forgotPassowrd">Forgot Password</a></li>
