@@ -4,7 +4,7 @@ let router = express.Router();
 
 
 
-router.use("/", require("../dashboard"));
+router.use("/", require("../registeredUsers"));
 //router.use("/", require("../chartOfAccounts/view/"));
 
 
