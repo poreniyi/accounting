@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<%- include('../_partial/_header'); -%>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +9,12 @@
 </head>
 <body>
     <button id='viewButton'>View</button>
+    <input id='cashInput' type="text" value=''>
+    <input  id='hiddenNumber' type="number">
+    <% if(userType=='Admin'){%>
+        <%- include('../_partial/editChart'); -%>
 
+<script src='/ejsscripts/editChart.js'></script>
+        <%}%>
 </body>
 </html>
