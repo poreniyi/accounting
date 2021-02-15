@@ -7,9 +7,9 @@ router.get('/home',(req,res)=>{
 });
 
 router.get('/dashboard',(req,res)=>{
-    res.send('Accountant logged in nothing to see ATM');
+    res.locals.isDashboard=true;
+    res.render('dashboard/dashboard.ejs');
 });
-
 
 
 

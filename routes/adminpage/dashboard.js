@@ -7,6 +7,7 @@ router.get('/home',(req,res)=>{
 });
 
 router.get('/dashboard',(req,res)=>{
+    res.locals.isDashboard=true;
     res.render('dashboard/dashboard.ejs');
 });
 
