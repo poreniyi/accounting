@@ -11,8 +11,11 @@
     <input id='cashInput' type="text" value=''>
     <input  id='hiddenNumber' type="number">
     <% if(userType=='Admin'){%>
-        <%- include('../_partial/editChart'); -%>
-
+    <div id='adminCommands'>
+        <button id='Edit'>Edit</button>
+        <button id='Add'>Add an Account</button>
+        <button id='Deactivate'>Deactivate</button>
+    </div> 
 <script src='/ejsscripts/editChart.js'></script>
         <%}%>
 </body>
