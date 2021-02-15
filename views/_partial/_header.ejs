@@ -33,7 +33,7 @@
                 }%>
 
                     <%if(!locals.isDashboard){%>
-                        <% let dashboardLink=`./${dashboard}/dashboard`%>
+                        <% let dashboardLink=`/${dashboard}/dashboard`%>
                         <li><a href=<%=dashboardLink%>>Dashboard</a></li>
                         <%}%>            
                 <li><a href="/logout">Logout</a></li>
