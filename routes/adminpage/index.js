@@ -14,7 +14,7 @@ router.use(isLoggedIn);
 router.use(isAdmin);
 
 router.use("/", require("./userreports"));
-router.use("/", require("./dashboard"));
+router.use("/", require("../dashboard"));
 router.use('/',require('../chartOfAccounts/admin'));
 
 
