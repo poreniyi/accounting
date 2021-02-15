@@ -15,7 +15,6 @@ router.use(isAdmin);
 
 router.use("/", require("./userreports"));
 router.use("/", require("../registeredUsers"));
-router.use('/',require('../chartOfAccounts/admin'));
 
 
 
