@@ -1,0 +1,6 @@
+DB functions
+#1 found in chartOfAccounts.js line 77
+#2 found in chartOfAccounts.js line 84
+#3 found in chartOfAcounts.js line 88
+
+remove mysql if no longer using it using command npm uninstall mysql
