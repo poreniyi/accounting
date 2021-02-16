@@ -54,7 +54,8 @@
         <th id='Name'> Comment</th>
         <% data.forEach(element=>{%>
             <tr>
-                <td><%=element.accountName%></td> 
+                <%let link=`./editAccount/${element.Number}`%>
+                <td><a href=<%=link%>><%=element.accountName%></td> </a>
                 <td><%=element.Number%></td> 
                 <td><%=element.description%></td> 
                 <td><%=element.normalSide%></td> 
