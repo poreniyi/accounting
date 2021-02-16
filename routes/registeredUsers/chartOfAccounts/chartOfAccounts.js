@@ -2,9 +2,9 @@ let express = require('express');
 let router = express.Router();
 let sampleData=[{
     accountName:'Cash',//a
-    Number:2,   //b
-    description:5,  //c
-    normalSide:'No clue',//dd
+    Number:1001,   //b
+    description:'Checking account balance',  //c
+    normalSide:'Debit',//dd
     category:'Asset',   //e
     subCategory:'Asset',   //f
     initialBalance:0,//g
@@ -17,15 +17,15 @@ let sampleData=[{
     statement:64612,//n
     comment:'Acomment'//1
 },{
-    accountName:'Stocks',//a
-    Number:52,   //b
-    description:5,  //c
-    normalSide:'No clue',//dd
-    category:'Asset',   //e
-    subCategory:'Asset',   //f
+    accountName:'Wages Payable',//a
+    Number:2100,   //b
+    description:'Amount owned to employees',  //c
+    normalSide:'Credit',//dd
+    category:'Liability',   //e
+    subCategory:'Payable',   //f
     initialBalance:0,//g
     debit:506540,//h
-    credit:78431,//i
+    credit:6131,//i
     balance:0,//j
     DOC:new Date(),//k
     userID:'26481',//l
@@ -47,22 +47,22 @@ let sampleData=[{
     userID:'26481',//l
     order:5184,//m
     statement:64612,//n
-    comment:'Acomment'//1
+    comment:'Depcrciation'//1
 },{
-    accountName:'String',//a
-    Number:2,   //b
-    description:5,  //c
-    normalSide:'No clue',//dd
-    category:'Asset',   //e
-    subCategory:'Asset',   //f
+    accountName:'Mary Smith Capital',//a
+    Number:2900,   //b
+    description:'Amount invested in the company',  //c
+    normalSide:'Credit',//dd
+    category:'Equity',   //e
+    subCategory:'Capital',   //f
     initialBalance:0,//g
-    debit:506540,//h
+    debit:5540,//h
     credit:78431,//i
     balance:0,//j
     DOC:new Date(),//k
     userID:'26481',//l
     order:5184,//m
-    statement:64612,//n
+    statement:6,//n
     comment:'Acomment'//1
 },
     ]
