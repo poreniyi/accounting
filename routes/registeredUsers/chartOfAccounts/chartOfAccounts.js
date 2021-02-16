@@ -91,9 +91,27 @@ router.get('/addAccount',(req,res)=>{
    */
     res.render('charts/addChart');
 })
-
+router.get('/editAccount/:number', (req,res) => {
+    console.log(req.params.number);
+    /* Sprint 2DB function 4
+    A query based on req.params.number that returns every field that we will allow the admin to edit
+    if not found return null
+    */
+    let account=false;
+    if(account){
+        res.send(`You requested to edit Account ${req.params.number}`)
+        //no edit page yet
+    }else{
+        res.render(`home/404`)
+    }
+})
+router.put('/editAccount/:number', (req,res) => {
+     /* Sprint 2DB function 5
+    A query that updates the values that is in req.body
+    */
+    res.send(`You edited the account`);
+})
 router.post('/addAccount',(req,res) => {
-    res.send(req.body);
-    
+    res.send(req.body);    
 })
 module.exports = router;
