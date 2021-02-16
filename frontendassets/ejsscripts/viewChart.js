@@ -4,9 +4,13 @@ let input = document.getElementById('search');
 let tr=table.getElementsByTagName('tr');
 let tableHeaders=document.getElementsByTagName('th');
 let select=document.getElementById('searchSelect');
-let td,textValue,searchCategory;
+let td,textValue,searchCategory,placeHolderText;
 searchCategory=0;
+let selectOptions=select.options;
 select.addEventListener('change',() => {
+    console.log(selectOptions[select.selectedIndex].text)
+    placeHolderText=selectOptions[select.selectedIndex].text;
+    input.placeholder=`Search on ${placeHolderText}...`;
     searchCategory=select.value;
     console.log(searchCategory);
 })
