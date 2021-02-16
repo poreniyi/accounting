@@ -1,6 +1,4 @@
 var mysql_npm = require("mysql2/promise");
-const passport = require("passport");
-const { Passport } = require("passport");
 
 var db_config = {
     host     : 'us-cdbr-east-03.cleardb.com',
