@@ -108,7 +108,8 @@ router.get('/editAccount/:number', (req,res) => {
 })
 router.put('/editAccount/:number', (req,res) => {
      /* Sprint 2DB function 5
-    A query that updates the values that is in req.body
+    A query that updates the account found in req.params.number
+    fields to be edited will be found in req.body
     */
     res.send(`You edited the account`);
 })
