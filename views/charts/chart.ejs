@@ -33,8 +33,25 @@
         <th id='Name'> Order</th>
         <th id='Name'> Statement</th>
         <th id='Name'> Comment</th>
-
-
+        <% data.forEach(element=>{%>
+            <tr>
+                <td><%=element.accountName%></td> 
+                <td><%=element.Number%></td> 
+                <td><%=element.description%></td> 
+                <td><%=element.normalSide%></td> 
+                <td><%=element.category%></td>
+                <td><%=element.subCategory%></td>
+                <td><%=element.initialBalance%></td>
+                <td><%=element.debit%></td>
+                <td><%=element.credit%></td>
+                <td><%=element.balance%></td>
+                <td><%=element.DOC%></td>
+                <td><%=element.userID%></td>
+                <td><%=element.order%></td>
+                <td><%=element.statement%></td>
+                <td><%=element.comment%></td>
+            </tr>
+        <% })%>
     </table>
 <script src='/ejsscripts/editChart.js'></script>
         <%}%>
