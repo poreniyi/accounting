@@ -94,7 +94,8 @@ router.get('/addAccount',(req,res)=>{
 router.get('/editAccount/:number', (req,res) => {
     console.log(req.params.number);
     /* Sprint 2DB function 4
-    A query based on req.params.number that returns every field that we will allow the admin to edit
+    A query on req.params.number that returns every field that we will allow the admin to edit
+    and returns this into variable account
     if not found return null
     */
     let account=false;
