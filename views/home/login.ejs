@@ -12,6 +12,11 @@
   <div class="loginscreen">
     <img src='images/logo.png' style='width:20%; '>
     <h2>Mankara</h2> 
+    <div id='message'>
+      <% if(locals.message) {%>
+        <h1><%=message%></h1>
+        <%}%>
+    </div>
     <div class="container">
       <form  id='form' method="POST" action='/login'>
         <span>Username: </span>
