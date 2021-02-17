@@ -1,0 +1,36 @@
+#overlayLabel{
+  position: fixed;
+  top:0;
+  right:20%;
+ 
+}
+  label {
+    cursor:pointer;
+  }
+  
+  .overlay {
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    background-color: rgb(0,0,0,.5);
+    visibility: hidden;
+    color: white;
+    text-align:center;
+  }
+  .overlay-trigger:checked.overlay {
+    visibility: visible;
+  }
+  
+  .overlay-trigger {
+    display: none;
+  }
+  
+  #trigger{
+    border: 2px;
+    border-color: black;
+    border-style: solid;
+  }
+  
+  
