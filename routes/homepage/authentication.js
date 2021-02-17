@@ -54,13 +54,17 @@ router.get("/logout", function (req,res){
 //         failureRedirect: '/login' })
 // );
 
+router.get('/wrongCredentials',(req,res)=>{
+    res.locals.message='Wrong username or password';
+    res.render('home/login');
+})
 router.post('/login',(req,res,next)=>{
    passport.authenticate('local',(err,user) => {
     if(err){
         return next (err)
     }
     if(!user){
-        return res.send('Wrong email or password');
+        res.redirect('/wrongCredentials');
     }
     req.login(user, () =>{
         console.log(req.user);
