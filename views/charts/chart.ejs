@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<%- include('../_partial/_header'); -%>
 
 <html lang="en">
 <head>
@@ -8,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chart of Accounts</title>
 </head>
+<%- include('../_partial/_header'); -%>
+
 <body>
     <%- include('../_partial/help/viewChartHelp'); -%>
     <input id='cashInput' type="text" value=''>
@@ -77,5 +78,7 @@
 <script src='/ejsscripts/editChart.js'></script>
         <%}%>
 <script src='/ejsscripts/viewChart.js'></script>
+<%- include('../_partial/_footer'); -%>
+
 </body>
 </html>
