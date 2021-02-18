@@ -28,12 +28,7 @@ router.get("/login",function (req,res){
 });
 
 router.get('/succesfulLogin',(req,res)=>{
-    console.log(req.user);
-    console.log(`The usertype is${req.session.userType}`);
-
-    console.log('succesful');
     if(req.session.userType.toLowerCase()=='admin'){
-        console.log('admin page');
         res.redirect('/admin/home');
     }else if(req.session.userType.toLowerCase()=='accountant'){
         res.redirect('/accountant/home');
@@ -67,7 +62,6 @@ router.post('/login',(req,res,next)=>{
         res.redirect('/wrongCredentials');
     }
     req.login(user, () =>{
-        console.log(req.user);
         req.session.userType=user[2];
         res.redirect('/succesfulLogin');
     })

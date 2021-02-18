@@ -10,15 +10,12 @@ module.exports=(passport) => {
     },async (username,password,done)=>{
         let data = await login.login(username, password) // data[0] = username, data[1] = password, data[2] = usertype
         if(!data){
-            console.log('APP.JS   username not found')
             return done(null, false)
         }
         let checkPassword = await encryption.decryptPassword(password, data[1])
-        console.log(checkPassword)
         if(checkPassword){ 
             return done(null,data)
         }else{
-            console.log('APP.JS  WRONG PASSWORD')
             return done(null,false)
         }
     }))
