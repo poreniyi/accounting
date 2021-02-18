@@ -5,3 +5,7 @@ table, th, td {
   .searchMatchedText{
     font-weight: bold;
   }
+  .journal{
+    width: 20px;
+    height: 20px;
+  }
