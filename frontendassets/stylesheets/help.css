@@ -39,7 +39,18 @@
   }
 
   #trigger{
-    border: 2px;
     border-color: black;
     border-style: solid;
+  /* max-height: 100%;
+	max-width: 100%;
+	width:100px;
+	height:100px;
+  background-size: cover;
+	background-image: url('/images/help.png') ;
+  background-image: url('/images/help.png') ; */
+
+  /* background-color: transparent; */
+  }
+  #triggerimg{
+    /* background-color: transparent; */
   }
