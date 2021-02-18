@@ -19,7 +19,7 @@
     cursor:pointer;
   }
  :root{
-  --Help: "Help Menu";
+  --Help: "Hello Welcome to the Mancara Help:\A This is the help menu \A";
  }
   .overlay-trigger:checked+.overlay::after {
     content:var(--Help);
@@ -39,6 +39,7 @@
   }
 
   #trigger{
+    color: black;
     border-color: black;
     border-style: solid;
   /* max-height: 100%;
