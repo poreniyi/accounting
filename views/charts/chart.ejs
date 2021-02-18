@@ -57,7 +57,9 @@
         <% data.forEach(element=>{%>
             <tr>
                 <%let link=`./editAccount/${element.Number}`%>
-                <td><a href=<%=link%>><%=element.accountName%></td> </a>
+                <td><a href=<%=link%>><%=element.accountName%></a>
+                    <a href=<%="./viewLedger/"+element.Number%>><img  class='journal'src='/images/journal3.jpeg'></a>
+                </td> 
                 <td><%=element.Number%></td> 
                 <td><%=element.description%></td> 
                 <td><%=element.normalSide%></td> 
