@@ -54,6 +54,8 @@
         <th id='Name'> Order</th>
         <th id='Name'> Statement</th>
         <th id='Name'> Comment</th>
+        <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
+        
         <% data.forEach(element=>{%>
             <tr>
                 <%let link=`./editAccount/${element.Number}`%>
@@ -65,10 +67,10 @@
                 <td><%=element.normalSide%></td> 
                 <td><%=element.category%></td>
                 <td><%=element.subCategory%></td>
-                <td><%=element.initialBalance%></td>
-                <td><%=element.debit%></td>
-                <td><%=element.credit%></td>
-                <td><%=element.debit - element.credit%></td>
+                <td><%=formatter.format(element.initialBalance)%></td>
+                <td><%=formatter.format(element.debit)%></td>
+                <td><%=formatter.format(element.credit)%></td>
+                <td><%=formatter.format(element.debit - element.credit)%></td>
                 <td><%=element.DOC%></td>
                 <td><%=element.userID%></td>
                 <td><%=element.order%></td>
