@@ -13,27 +13,7 @@
                 <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="#">Welcome <%= currentUser %>  ! you are an <%=userType%></a></li>
                 <li><a href="/journal">Journal</a></li>
-
-                <% let dashboard=''%>
-                  
-                <% switch(userType){
-                    case 'Admin': %>
-                   <% dashboard='admin'%>
-                    <%break;
-                    case 'Accountant': %>
-                    <% dashboard='accountant'%>
-                    <%break;
-                    case 'Manager': %>
-                    <% dashboard='manager'%>
-                    <%break;
-                }%>
-
-                    <%if(!locals.isDashboard){%>
-                        <% let dashboardLink=`/${dashboard}/dashboard`%>
-                        <li><a href=<%=dashboardLink%>>Dashboard</a></li>
-                        <%}%>         
                 <li><a href="/logout">Logout</a></li>
-
             <%}else{%>
                 <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="/forgotPassowrd">Forgot Password</a></li>
@@ -42,5 +22,24 @@
             <% } %>
         </ul>
     </nav>
-    <img src='/images/logo.png'>
+
+    <% let dashboard=''%>
+                  
+    <% switch(userType){
+        case 'Admin': %>
+       <% dashboard='admin'%>
+        <%break;
+        case 'Accountant': %>
+        <% dashboard='accountant'%>
+        <%break;
+        case 'Manager': %>
+        <% dashboard='manager'%>
+        <%break;
+    }%>
+        <%if(!locals.isDashboard){%>
+            <% let dashboardLink=`/${dashboard}/dashboard`%>
+            <li><a href=<%=dashboardLink%>><img src='/images/logo.png'></a></li>
+            <%}else{%>      
+                <img src='/images/logo.png'>}  
+            <%}%> 
 </header>
