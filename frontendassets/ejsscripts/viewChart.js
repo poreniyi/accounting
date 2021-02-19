@@ -12,7 +12,17 @@ select.addEventListener('change',() => {
     placeHolderText=selectOptions[select.selectedIndex].text;
     input.placeholder=`Search on ${placeHolderText}...`;
     searchCategory=select.value;
-    console.log(searchCategory);
+    for(let i=0 ; i<tr.length ; i++){
+        td= tr[i].getElementsByTagName('td');
+        for(let j = 0 ;j<td.length;j++){
+            if(j==searchCategory){
+                console.log(td[j]);
+                 td[j].classList.add('searchMatchedText');
+            }else{
+                td[j].classList.remove('searchMatchedText');
+            }
+        }
+    }
 })
 
 
@@ -25,10 +35,8 @@ input.addEventListener('keyup',() =>{
             console.log(textValue);
             if(textValue.toUpperCase().indexOf(filter)>-1){
                 tr[i].style.display='';
-                td.classList.toggle('searchMatchedText');
             }else{
                 tr[i].style.display='none';
-                td.classList.toggle('searchMatchedText');
             }
         }
     }
