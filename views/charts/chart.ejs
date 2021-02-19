@@ -10,6 +10,12 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
+    <% if(userType=='Admin'){%>
+        <div id='adminCommands'>
+            <button id='Add'><a href='./addAccount'>Add an Account</a></button>
+        </div> 
+    <script src='/ejsscripts/editChart.js'></script>
+            <%}%>
     <%- include('../_partial/help/viewChartHelp'); -%>
     <input id='cashInput' type="text" value=''>
     <input  id='hiddenNumber' type="number">
@@ -72,14 +78,7 @@
             </tr>
         <% })%>
     </table>
-    <% if(userType=='Admin'){%>
-    <div id='adminCommands'>
-        <button id='Edit'>Edit</button>
-        <button id='Add'><a href='./addAccount'>Add an Account</a></button>
-        <button id='Deactivate'>Deactivate</button>
-    </div> 
-<script src='/ejsscripts/editChart.js'></script>
-        <%}%>
+  
 <script src='/ejsscripts/viewChart.js'></script>
 <%- include('../_partial/_footer'); -%>
 
