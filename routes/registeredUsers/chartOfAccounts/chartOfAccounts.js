@@ -118,6 +118,7 @@ router.post('/addAccount',(req,res) => {
 })
 
 router.get('/sampleEdit',(req,res) => {
+    res.locals.data=sampleData[1];
     res.render('charts/editChart');
 })
 module.exports = router;
