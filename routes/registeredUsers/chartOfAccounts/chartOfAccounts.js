@@ -117,4 +117,7 @@ router.post('/addAccount',(req,res) => {
     res.send(req.body);    
 })
 
+router.get('/sampleEdit',(req,res) => {
+    res.render('charts/editChart');
+})
 module.exports = router;
