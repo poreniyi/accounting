@@ -9,3 +9,7 @@ table, th, td {
     width: 20px;
     height: 20px;
   }
+  A{
+    text-decoration: none;
+    color: inherit;
+  }
