@@ -30,14 +30,7 @@
         <option value=12>Order</option>
         <option value=13>Statement</option>
         <option value=14>Comment</option>
-
     </select>
-    <% if(userType=='Admin'){%>
-    <div id='adminCommands'>
-        <button id='Edit'>Edit</button>
-        <button id='Add'><a href='./addAccount'>Add an Account</a></button>
-        <button id='Deactivate'>Deactivate</button>
-    </div> 
     <table id=table>
         <th id='Name'> Name</th>
         <th id='Name'> Number</th>
@@ -79,6 +72,12 @@
             </tr>
         <% })%>
     </table>
+    <% if(userType=='Admin'){%>
+    <div id='adminCommands'>
+        <button id='Edit'>Edit</button>
+        <button id='Add'><a href='./addAccount'>Add an Account</a></button>
+        <button id='Deactivate'>Deactivate</button>
+    </div> 
 <script src='/ejsscripts/editChart.js'></script>
         <%}%>
 <script src='/ejsscripts/viewChart.js'></script>
