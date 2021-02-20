@@ -46,7 +46,8 @@ app.set('trust proxy', 1) // trust first proxy
 app.use(session({ 
     store:new MongoStore({
                             url:process.env.mongo_uri,
-                            ttl:2 * 24 * 60 * 60}), //amount of time to save session in seconds
+                            ttl:2 * 24 * 60 * 60,//amount of time to save session in seconds
+                        stringify:false}), 
     secret: process.env.session_secret,
     resave:true,
     saveUninitialized:false,}));
