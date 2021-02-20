@@ -22,7 +22,7 @@ async function accountExists(accountName){
 async function createAccount(accountName, description, normalSide, category, subcategory, 
     initialBalance, debit, credit, balance, DOC, username, orderNumber, statement, comment, active){
 
-    if (accountExists(accountName) == true){
+    if (await accountExists(accountName) == true){
         return false //'Account name already exists'
     }
 
@@ -65,6 +65,9 @@ async function createAccount(accountName, description, normalSide, category, sub
     return true
 
 }
+
+createAccount('Cash', 'Am', 1, 'Asset', 'Subcategory', 120, 'J', 'J',
+2343, '2020-01-01', 'admin', 01, 1, 'A', 1)
 
 module.exports= {
     createAccount
