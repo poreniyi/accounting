@@ -1,4 +1,5 @@
 let express = require('express');
+let report = require("../../../database/SearchAccount");
 let router = express.Router();
 let sampleData=[{
     accountName:'Cash',//a
@@ -73,12 +74,12 @@ let sampleData=[{
 
 
 
-router.get('/viewChart',(req,res) => {
-     /*Sprint2 DBFunction 1
-    returns an array of every single Account with every field 
-    */
-    res.locals.data=sampleData;
-    res.render('charts/chart')
+router.get('/viewChart', async (req,res) => {
+     
+    let data = await report.getAllAccounts()
+
+  //  res.locals.data=data;
+    res.render('charts/chart', data)
 })
 router.get('/addAccount',(req,res)=>{
     /*Sprint2 DBFunction 2
@@ -91,13 +92,11 @@ router.get('/addAccount',(req,res)=>{
    */
     res.render('charts/addChart');
 })
-router.get('/editAccount/:number', (req,res) => {
+router.get('/editAccount/:number', async (req,res) => {
+    
     console.log(req.params.number);
-    /* Sprint 2DB function 4
-    A query on req.params.number that returns every field that we will allow the admin to edit
-    and returns this into variable account
-    if not found return null
-    */
+    
+    let data = await report.searchByNumber(req.params.number)
     let account=false;
     if(account){
         res.send(`You requested to edit Account ${req.params.number}`)

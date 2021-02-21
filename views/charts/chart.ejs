@@ -55,26 +55,26 @@
         <th id='Name'> Comment</th>
         <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
         
-        <% data.forEach(element=>{%>
+        <%TextRow.forEach(element=>{%>
             <tr>
-                <%let link=`./editAccount/${element.Number}`%>
-                <td><a href=<%=link%>><%=element.accountName%></a>
+                <%let link=`./editAccount/${element.NUMBER}`%>
+                <td><a href=<%=link%>><%=element.NAME%></a>
                     <a href=<%="./viewLedger/"+element.Number%>><img  class='journal'src='/images/journal3.jpeg'></a>
                 </td> 
-                <td><%=element.Number%></td> 
-                <td><%=element.description%></td> 
-                <td><%=element.normalSide%></td> 
-                <td><%=element.category%></td>
-                <td><%=element.subCategory%></td>
-                <td><%=formatter.format(element.initialBalance)%></td>
-                <td><%=formatter.format(element.debit)%></td>
-                <td><%=formatter.format(element.credit)%></td>
-                <td><%=formatter.format(element.debit - element.credit)%></td>
+                <td><%=element.NUMBER%></td> 
+                <td><%=element.DESCRIPTION%></td> 
+                <td><%=element.NORMALSIDE%></td> 
+                <td><%=element.CATEGORY%></td>
+                <td><%=element.SUBCATEGORY%></td>
+                <td><%=formatter.format(element.INITIALBALANCE)%></td>
+                <td><%=formatter.format(element.DEBIT)%></td>
+                <td><%=formatter.format(element.CREDIT)%></td>
+                <td><%=formatter.format(element.DEBIT - element.CREDIT)%></td>
                 <td><%=element.DOC%></td>
-                <td><%=element.userID%></td>
-                <td><%=element.order%></td>
-                <td><%=element.statement%></td>
-                <td><%=element.comment%></td>
+                <td><%=element.USERNAME%></td>
+                <td><%=element.ORDERNUMBER%></td>
+                <td><%=element.STATEMENT%></td>
+                <td><%=element.COMMENT%></td>
             </tr>
         <% })%>
     </table>

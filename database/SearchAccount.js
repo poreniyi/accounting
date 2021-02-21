@@ -27,10 +27,25 @@ async function searchByNumber(accountNumber){
 
 }
 
-searchByNumber(10200)
+async function getAllAccounts(){
+
+    let query = 'SELECT * FROM MASTER'
+
+    let [rows] = await DB.asyncConnection.query(query)
+
+    var data= { TextRow: [] }
+    
+    for(var i = 0; i < [rows][0].length; i++){
+        data.TextRow.push([rows][0][i])
+    }
+
+   return data
+
+}
 
 
 module.exports= {
     searchByName:searchByName,
-    searchByNumber:searchByNumber
+    searchByNumber:searchByNumber,
+    getAllAccounts:getAllAccounts
 }
