@@ -12,14 +12,14 @@ let isLoggedIn=(req,res,next) => {
     }
 }
 
-let isActivated=((req,res,next) =>{
+let isActivated=(req,res,next) =>{
     console.log(req.session.status);
     if(req.session.status){
-        return (next); 
+        return next(); 
     }else{
         res.send(`Your account is deactivated`);
     }
-})
+}
 
 router.get("/login",function (req,res){
     if (req.isAuthenticated()){
@@ -64,6 +64,7 @@ router.post('/login',(req,res,next)=>{
     }
     req.login(user, () =>{
         req.session.userType=user[2];
+        req.session.status=true;
         res.redirect('/succesfulLogin');
     })
    })(req,res,next)
