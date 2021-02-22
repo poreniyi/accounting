@@ -8,8 +8,6 @@ async function accountExists(accountName){
 
     let [rows] = await DB.asyncConnection.query(query)
 
-    console.log([rows][0][0].itExists)
-
     if([rows][0][0].itExists == '1'){
         return true
     }
