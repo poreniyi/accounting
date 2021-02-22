@@ -12,8 +12,9 @@ let isLoggedIn=(req,res,next) => {
     }
 }
 
-let isDeactivated=((req,res,next) =>{
-    if(true){
+let isActivated=((req,res,next) =>{
+    console.log(req.session.status);
+    if(req.session.status){
         return (next);
     }else{
         res.send(`Your account is deactivated`);
@@ -71,4 +72,5 @@ router.post('/login',(req,res,next)=>{
 module.exports={
     router:router,
     isLoggedIn:isLoggedIn,
+    isActivated:isActivated,
 };
