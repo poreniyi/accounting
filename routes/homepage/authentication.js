@@ -15,7 +15,7 @@ let isLoggedIn=(req,res,next) => {
 let isActivated=((req,res,next) =>{
     console.log(req.session.status);
     if(req.session.status){
-        return (next);
+        return (next); 
     }else{
         res.send(`Your account is deactivated`);
     }
