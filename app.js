@@ -10,27 +10,6 @@ let session = require("express-session");
 var app = express();
 
 //database connection goes here
-let mongoose=require('mongoose');
-const MongoStore= require('connect-mongo')(session);
-mongoose.connection.on('connecting',()=>{
-    `Connected to the mongo database`;
-})
-mongoose.connection.on('error',(err)=>{
-    console.log(err);
-})
-mongoose.connect(process.env.mongo_uri, { useNewUrlParser: true,useUnifiedTopology:true },()=>{
- });
- mongoose.connection.on('open',()=>{
-    console.log(`Connection opened to the Mongo Database`);
-})
-mongoose.connection.on('disconnected',()=>{
-    console.log(`Connection closed`);
-})
-mongoose.connection.on('disconnecting',()=>{
-    console.log(`Connection closed`);
-})
-
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -43,6 +22,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
 app.set('trust proxy', 1) // trust first proxy
+const MongoStore= require('connect-mongo')(session);
 app.use(session({ 
     store:new MongoStore({
                             url:process.env.mongo_uri,
