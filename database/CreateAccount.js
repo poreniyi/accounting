@@ -63,9 +63,6 @@ async function createAccount(accountName, description, normalSide, category, sub
 
 }
 
-createAccount('CYEET', 'Am', 1, 'Asset', 'Subcategory', 120, 'J', 'J',
-2343, '2020-01-01', 'admin', 01, 1, 'A', 1)
-
 module.exports= {
     accountExists:accountExists,
     createAccount:createAccount
