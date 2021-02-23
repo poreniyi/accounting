@@ -6,3 +6,7 @@ DB functions
 #5 found in chartOfAcounts.js line 109
 
 remove mysql if no longer using it using command npm uninstall mysql
+
+Frontend
+wanted to add help button as image but background of the image wouldn't change
+choose one of the journal images
