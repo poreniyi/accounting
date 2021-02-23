@@ -16,6 +16,12 @@ class Account{
         })
         return formatter.format(value);
     }
+    get Balance(){
+        return this.formattMoney(this.debit-this.credit);
+    }
+    get creationDate(){
+        return `${this.DOC.getMonth()+1}/${this.DOC.getDate()}/${this.DOC.getFullYear()}`;
+    }
 }
 let exampleAccount={
     accountName:'String',//a
@@ -40,8 +46,8 @@ const Assets = new Account(exampleAccount);
 console.log(Assets.Debit);
 console.log(Assets.Credit);
 console.log(typeof Assets.Credit);
-let balance=Number(Assets.Debit)-Number(Assets.Credit);
-console.log(balance);
+console.log(Assets.Balance);
+console.log(Assets.creationDate);
 
 //module.exports=Account;
 module.exports= Account;
