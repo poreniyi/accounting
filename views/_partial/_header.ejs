@@ -22,24 +22,9 @@
             <% } %>
         </ul>
     </nav>
+    <% let dashboard=`/./${userType.toLowerCase()}/dashboard`%>
+    
+    <a href=<%=dashboard%>><img src='/images/logo.png'></a>
 
-    <% let dashboard=''%>
-                  
-    <% switch(userType){
-        case 'Admin': %>
-       <% dashboard='admin'%>
-        <%break;
-        case 'Accountant': %>
-        <% dashboard='accountant'%>
-        <%break;
-        case 'Manager': %>
-        <% dashboard='manager'%>
-        <%break;
-    }%>
-        <%if(!locals.isDashboard && currentUser != null){%>
-            <% let dashboardLink=`/${dashboard}/dashboard`%>
-            <a href=<%=dashboardLink%>><img src='/images/logo.png'></a>
-            <%}else{%>      
-                 <img src='/images/logo.png'> 
-            <%}%> 
+
 </header>
