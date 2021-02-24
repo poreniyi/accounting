@@ -49,7 +49,7 @@ router.get("/logout", function (req,res){
 //         failureRedirect: '/login' })
 // );
 
-router.get('/wrongCredentials',(req,res)=>{
+router.get('/wrongCredentials', async (req,res)=>{
     res.locals.message='Wrong username or password';
     res.render('home/login');
 })
@@ -63,7 +63,7 @@ router.post('/login',(req,res,next)=>{
     }
     req.login(user, () =>{
         req.session.userType=user[2];
-        req.session.status=true;
+        req.session.status= user[3];
         res.redirect('/succesfulLogin');
     })
    })(req,res,next)

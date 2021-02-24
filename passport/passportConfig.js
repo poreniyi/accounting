@@ -8,7 +8,7 @@ let login = require("../database/Login");
 module.exports=(passport) => {
     passport.use(new passportLocal({
     },async (username,password,done)=>{
-        let data = await login.login(username, password) // data[0] = username, data[1] = password, data[2] = usertype
+        let data = await login.login(username, password) // data[0] = username, data[1] = password, data[2] = usertype, data[3] = approved (1 or 0)
         if(!data){
             return done(null, false)
         }
