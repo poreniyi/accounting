@@ -12,8 +12,6 @@
 <body>
     <script src='/ejsscripts/editChart.js'></script>
     <%- include('../_partial/help/viewChartHelp'); -%>
-    <input id='cashInput' type="text" value=''>
-    <input  id='hiddenNumber' type="number">
     <input id='search' placeholder="Search on Name" type ="search">
     <select id='searchSelect'>
         <option value=0>Name</option>
@@ -34,6 +32,11 @@
         <option value=15>Status</option>
 
     </select>
+    <% if(userType=='Admin'){%>
+        <div id='adminCommands'>
+            <button id='Add'><a href='./addAccount'>Add an Account</a></button>
+        </div> 
+            <%}%>
     <table id=table>
         <th id='Name'> Name</th>
         <th id='Name'> Number</th>
@@ -81,11 +84,7 @@
                 </tr>
                 <% })%>
             </table>
-            <% if(userType=='Admin'){%>
-                <div id='adminCommands'>
-                    <button id='Add'><a href='./addAccount'>Add an Account</a></button>
-                </div> 
-                    <%}%>
+      
             
             <script src='/ejsscripts/viewChart.js'></script>
             <%- include('../_partial/_footer'); -%>

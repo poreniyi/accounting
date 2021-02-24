@@ -18,11 +18,12 @@ async function accountExists(accountName){
 }
 
 async function createAccount(body, username){
-
+    body.Name=body.Name.replace("'","");
+    body.Name=body.Name.replace(' ','_');
     if (await accountExists(body.Name) == true){
         return false //'Account name already exists'
     }
-
+  
     let credit =  Math.abs(body.Credit)
     let debit = Math.abs(body.Debit)
     let initialBalance = parseInt(body.InitialBalance,10)
