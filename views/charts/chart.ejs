@@ -49,7 +49,7 @@
         <th id='Name'> Credit</th>
         <th id='Name'> Balance</th>
         <th id='Name'> DOC</th>
-        <th id='Name'> made by USER</th>
+        <th id='Name'> Made by</th>
         <th id='Name'> Order</th>
         <th id='Name'> Statement</th>
         <th id='Name'> Comment</th>
@@ -59,7 +59,7 @@
             <tr>
                 <%let link=`./editAccount/${element.NUMBER}`%>
                 <td><a href=<%=link%>><%=element.NAME%></a>
-                    <a href=<%="./viewLedger/"+element.Number%>><img  class='journal'src='/images/journal3.jpeg'></a>
+                    <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal3.jpeg'></a>
                 </td> 
                 <td><%=element.NUMBER%></td> 
                 <td><%=element.DESCRIPTION%></td> 
@@ -69,7 +69,7 @@
                 <td><%=formatter.format(element.INITIALBALANCE)%></td>
                 <td><%=formatter.format(element.DEBIT)%></td>
                 <td><%=formatter.format(element.CREDIT)%></td>
-                <td><%=formatter.format(element.DEBIT - element.CREDIT)%></td>
+                <td><%=formatter.format(element.BALANCE)%></td>
                 <td><%=`${element.DOC.getMonth()+1}/${element.DOC.getDate()}/${element.DOC.getFullYear()}`%>
                 <td><%=element.USERNAME%></td>
                 <td><%=element.ORDERNUMBER%></td>

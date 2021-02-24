@@ -18,10 +18,6 @@
             <td class='formInput'><input name='Name'type="text"></td>
         </tr>
         <tr>
-            <th>Number</th>
-            <td class='formInput'><input type="number" name='Number' value=1000 type="text" min=1000 max=2000></td>
-        </tr>  
-        <tr>
             <th>Description</th>
             <td class='formInput'><input name='Description'type="text"></td>
         </tr> 
@@ -36,7 +32,13 @@
         </tr>  
         <tr>
             <th>Category</th>
-            <td class='formInput'><input name='Category' type="text"></td>
+            <td class='formInput'></td>
+            <select form='form' name='Category'>
+                <option value='Asset'>Asset</option>
+                <option value='Liability'>Liability</option>
+                <option value='Revenue'>Revenue</option>
+                <option value='Expense'>Expense</option>
+            </select>
         </tr>  
        <tr>
         <th>Sub-Category</th>
@@ -68,5 +70,6 @@
         <button type="submit">Submit</button>
         </form>
     </table>
+    <script src='/ejsscripts/viewChart.js'></script>
 </body>
 </html>

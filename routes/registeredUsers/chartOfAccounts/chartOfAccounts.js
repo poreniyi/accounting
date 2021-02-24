@@ -78,14 +78,10 @@ router.get('/viewChart', async (req,res) => {
      
     let data = await report.getAllAccounts()
 
-  //  res.locals.data=data;
     res.render('charts/chart', data)
 })
 router.get('/addAccount',(req,res)=>{
-    /*Sprint2 DBFunction 2
-    returns an array of used account numbers
-    assign this array to res.locals.takenNumbers
-    */
+    
    /*Sprint2 DBFunction 3
       returns an array of used order numbers
     assign this array to res.locals.orderNumbers
@@ -106,10 +102,14 @@ router.get('/editAccount/:number', async (req,res) => {
     }
 })
 router.put('/editAccount/:number', (req,res) => {
+
+    console.log(req)
      /* Sprint 2DB function 5
     A query that updates the account found in req.params.number
     fields to be edited will be found in req.body
     */
+
+
     res.send(`You edited the account`);
 })
 router.post('/addAccount',(req,res) => {

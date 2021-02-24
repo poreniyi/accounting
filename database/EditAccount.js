@@ -20,11 +20,13 @@ async function editAccount(currentUser, date, accountName, number, description, 
 }
 
 // used to add credits and/or debits, which also changes the balance
-async function addToAccount(accountName, debit, credit, balance, currentUser, date){
+async function addToAccount(accountName, debit, credit, balance, currentUser){
 
      let query = `CALL Add_To_Account(?,?,?,?,?,?)`
 
-     DB.asyncConnection.query(query, [accountName, debit, credit, balance,currentUser, date], 
+     let date = new Date()
+
+     DB.asyncConnection.query(query, [accountName, debit, credit, balance, date, currentUser], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")

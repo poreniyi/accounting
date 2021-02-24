@@ -3,7 +3,6 @@
 4) forget password / token
 5) expired password report
 6) emails
-7) store old user password
-9) admin should create users         
+7) store old user password  
 10) used passwords cannot be used on reset 
 11) 
