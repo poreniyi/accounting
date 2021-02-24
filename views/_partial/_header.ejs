@@ -38,8 +38,8 @@
     }%>
         <%if(!locals.isDashboard && currentUser != null){%>
             <% let dashboardLink=`/${dashboard}/dashboard`%>
-            <li><a href=<%=dashboardLink%>><img src='/images/logo.png'></a></li>
+            <a href=<%=dashboardLink%>><img src='/images/logo.png'></a>
             <%}else{%>      
-                <img src='/images/logo.png'>}  
+                 <img src='/images/logo.png'> 
             <%}%> 
 </header>
