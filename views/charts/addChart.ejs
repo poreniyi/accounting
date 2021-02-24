@@ -12,7 +12,7 @@
 
 <body>
     <table id='table'>
-        <form id='form' method="POST" action='./addAccount'>
+        <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action='./addAccount'>
         <tr>
             <th>Name</th>
             <td class='formInput'><input name='Name'type="text" required></td>
