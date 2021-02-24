@@ -2,3 +2,11 @@ table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
   }
+
+  #allTables{
+    float:left;
+  }
+#AccountInfo{
+  border-bottom: 5px solid black;
+
+}
