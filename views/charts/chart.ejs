@@ -10,12 +10,7 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-    <% if(userType=='Admin'){%>
-        <div id='adminCommands'>
-            <button id='Add'><a href='./addAccount'>Add an Account</a></button>
-        </div> 
     <script src='/ejsscripts/editChart.js'></script>
-            <%}%>
     <%- include('../_partial/help/viewChartHelp'); -%>
     <input id='cashInput' type="text" value=''>
     <input  id='hiddenNumber' type="number">
@@ -36,6 +31,8 @@
         <option value=12>Order</option>
         <option value=13>Statement</option>
         <option value=14>Comment</option>
+        <option value=15>Status</option>
+
     </select>
     <table id=table>
         <th id='Name'> Name</th>
@@ -50,9 +47,9 @@
         <th id='Name'> Balance</th>
         <th id='Name'> DOC</th>
         <th id='Name'> Made by</th>
-        <th id='Name'> Order</th>
         <th id='Name'> Statement</th>
         <th id='Name'> Comment</th>
+        <th id='Name'> Status</th>
         <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
         
         <%TextRow.forEach(element=>{%>
@@ -67,20 +64,25 @@
                 <td><%=element.CATEGORY%></td>
                 <td><%=element.SUBCATEGORY%></td>
                 <td><%=formatter.format(element.INITIALBALANCE)%></td>
-                <td><%=formatter.format(element.DEBIT)%></td>
-                <td><%=formatter.format(element.CREDIT)%></td>
+                <td><%=formatter.format(element.DEBITTOTAL)%></td>
+                <td><%=formatter.format(element.CREDITTOTAL)%></td>
                 <td><%=formatter.format(element.BALANCE)%></td>
                 <td><%=`${element.DOC.getMonth()+1}/${element.DOC.getDate()}/${element.DOC.getFullYear()}`%>
                 <td><%=element.USERNAME%></td>
-                <td><%=element.ORDERNUMBER%></td>
                 <td><%=element.STATEMENT%></td>
                 <td><%=element.COMMENT%></td>
-            </tr>
-        <% })%>
-    </table>
-  
-<script src='/ejsscripts/viewChart.js'></script>
-<%- include('../_partial/_footer'); -%>
-
-</body>
-</html>
+                <td><%=element.STATUS%></td>
+                </tr>
+                <% })%>
+            </table>
+            <% if(userType=='Admin'){%>
+                <div id='adminCommands'>
+                    <button id='Add'><a href='./addAccount'>Add an Account</a></button>
+                </div> 
+                    <%}%>
+            
+            <script src='/ejsscripts/viewChart.js'></script>
+            <%- include('../_partial/_footer'); -%>
+            
+        </body>
+        </html>
