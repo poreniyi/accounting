@@ -5,7 +5,7 @@ sprint 1
 6) emails, 1 line
 7) store old user password  
 10) used passwords cannot be used on reset 
-
+fix status needs to return true or false
 sprint 2
 11) event log with views and query
 12) post method for editpage + testing for dupe names + numbers
