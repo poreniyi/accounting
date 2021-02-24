@@ -8,8 +8,8 @@ async function editAccount(body, username){
 
     let date = new Date()
 
-    let result = await DB.asyncConnection.query(query, ['admin', date, body.Name, body.Description, body.Normal, body.Category, body.SubCategory, 
-        body.InitialBalance, debit, credit, balance, DOC, username, body.Statement, body.Comment, req.status], 
+    let [result] = await DB.asyncConnection.query(query, ['admin', date, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
+        body.InitialBalance, body.Debit, body.Credit, body.Balance, body.DOC, username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
