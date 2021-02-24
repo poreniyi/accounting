@@ -30,7 +30,7 @@ router.get('/editAccount/:number', async (req,res) => {
         res.render(`home/404`)
     }
 })
-router.post('/editAccount/:number', async (req,res) => {
+router.put('/editAccount/:number', async (req,res) => {
 
     console.log(req)
     
