@@ -14,7 +14,7 @@ async function searchByName(accountName){
 
      let [result] = await DB.asyncConnection.query(query)
 
-    return result
+    return result[0]
 }
 
 async function searchByNumber(accountNumber){
@@ -23,7 +23,7 @@ async function searchByNumber(accountNumber){
 
      let [result] = await DB.asyncConnection.query(query)
 
-    return result
+    return result[0]
 
 }
 

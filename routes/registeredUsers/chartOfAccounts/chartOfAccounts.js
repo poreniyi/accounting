@@ -1,6 +1,7 @@
 let express = require('express');
 let search = require("../../../database/SearchAccount");
 let create = require("../../../database/CreateAccount");
+let edit = require("../../../database/EditAccount");
 let router = express.Router();
 
 router.get('/viewChart', async (req,res) => {
@@ -21,22 +22,21 @@ router.get('/editAccount/:number', async (req,res) => {
     
     console.log(req.params.number);
     
-    let data = await report.searchByNumber(req.params.number)
-    let account=false;
-    if(account){
-        res.send(`You requested to edit Account ${req.params.number}`)
-        //no edit page yet
+    let data = await search.searchByNumber(req.params.number)
+
+    if(data){
+        res.render('charts/editChart', data[0]);
     }else{
         res.render(`home/404`)
     }
 })
-router.put('/editAccount/:number', (req,res) => {
+router.post('/editAccount/:number', async (req,res) => {
 
     console.log(req)
-     /* Sprint 2DB function 5
-    A query that updates the account found in req.params.number
-    fields to be edited will be found in req.body
-    */
+    
+    let result = await edit.editAccount(req.body, req.user)
+
+    
 
 
     res.send(`You edited the account`);

@@ -15,23 +15,23 @@
         <th>Field</th>
         <th>New Value</th>
         <th>Original Value</th>
-        <td><%=data.Name %></td>
+        <%=NAME%>
 
         <form id='form' method="POST" action=''>
         <tr>
             <th>Name</th>
             <td class='formInput'><input name='Name'type="text"></td>
-            <td><%=data.accountName %></td>
+            <td><%=NAME%></td>
         </tr>
         <tr>
             <th>Number</th>
             <td class='formInput'><input type="number" name='Number' value=1000 type="text" min=1000 max=2000></td>
-            <td><%=data.Number %></td>
+            <td><%=NUMBER %></td>
         </tr>  
         <tr>
             <th>Description</th>
             <td class='formInput'><input name='Description'type="text"></td>
-            <td><%=data.description %></td>
+            <td><%=DESCRIPTION %></td>
         </tr> 
         <tr>
             <th>Normal Side</th>
@@ -41,47 +41,47 @@
                     <option value='Debit'>Debit</option>
                 </select>
             </td>
-            <td><%=data.normalSide %></td>
+            <td><%=NORMALSIDE %></td>
         </tr>  
         <tr>
             <th>Category</th>
             <td class='formInput'><input name='Category' type="text"></td>
-            <td><%=data.category %></td>
+            <td><%=CATEGORY %></td>
         </tr>  
        <tr>
         <th>Sub-Category</th>
         <td class='formInput'><input name='Sub-Category' type="text"></td>
-        <td><%=data.subCategory %></td>
+        <td><%=SUBCATEGORY %></td>
     </tr>
         <tr>
             <th>Initial Balance</th>
             <td class='formInput'><input name='Initial-Balance'type="number"></td>
-            <td><%=data.initialBalance %></td>
+            <td><%=INITIALBALANCE %></td>
         </tr>
         <tr>
         <th>Credit</th>
         <td class='formInput'><input name='Credit' type="number"></td>
-        <td><%=data.credit %></td>
+        <td><%=CREDIT %></td>
     </tr>
+    <tr>
         <th>Debit</th>
         <td class='formInput'><input name='Debit' type="number"></td>
-        <td><%=data.debit %></td>
+        <td><%=DEBIT %></td>
     </tr>
+    <tr>
         <th>Balance</th>
         <td class='formInput'><input name='Balance' type="number"></td>
-        <td><%=data.balance %></td>
+        <td><%=BALANCE %></td>
     </tr>
-        <th>Order</th>
-        <td class='formInput'><input name='Order'type="number"></td>
-        <td><%=data.order %></td>
-    </tr>
+    <tr>
         <th>Statement</th>
         <td class='formInput'><input name='Statement'type="text"></td>
-        <td><%=data.statement %></td>
+        <td><%=STATEMENT %></td>
     </tr>
+    <tr>
         <th>Comment</th>
         <td class='formInput'><input name='Comment'type="text"></td>
-        <td><%=data.comment %></td>
+        <td><%=COMMENT %></td>
     </tr>
         <button type="submit">Submit</button>
         </form>
