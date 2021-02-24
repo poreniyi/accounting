@@ -82,8 +82,8 @@
             <th>Field</th>
             <th>New Value</th>
             <th>Original Value</th>
-            <form id='form' method="PUT" action=''>
-            <tr>
+            <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action=''>
+                <tr>
                 <th>Description</th>
                 <td class='formInput'><input name='Description'type="text"></td>
                 <td><%=DESCRIPTION %></td>
