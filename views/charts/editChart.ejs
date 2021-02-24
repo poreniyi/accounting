@@ -82,7 +82,7 @@
             <th>Field</th>
             <th>New Value</th>
             <th>Original Value</th>
-            <form id='form' method="PUT" action=''>
+            <form id='form' method="PUT" action='/editAccount'>
             <tr>
                 <th>Description</th>
                 <td class='formInput'><input name='Description'type="text"></td>
@@ -155,13 +155,13 @@
             <td class='formInput'>
                 <select form='form' name='Status'>
                     <option value='1'>Active</option>
-                    <option value='0'>Decativated</option>
+                    <option value='0'>Deactivated</option>
                 </select>
             </td>
             <% if(STATUS == '1'){  %>
                 <td>Active</td>
             <% }  else { %>
-                <td>Decativated</td>
+                <td>Deactivated</td>
             <% } %>
             <button type="submit">Submit</button>
             </form>
