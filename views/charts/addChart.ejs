@@ -54,15 +54,20 @@
         <th>Credit</th>
         <td class='formInput'><input name='Credit' type="number"></td>
         </tr>
+        <tr>
         <th>Debit</th>
         <td class='formInput'><input name='Debit' type="number"></td>
         </tr>
-        <th>Balance</th>
-        <td class='formInput'><input name='Balance' type="number"></td>
-        </tr>
+        <tr>
         <th>Statement</th>
-        <td class='formInput'><input name='Statement'type="text"></td>
+        <td class='formInput'>
+            <select form='form' name='Statement'>
+                <option value='Income Statement'>Income Statement</option>
+                <option value='Balance Sheet'>Balance Sheet</option>
+            </select>
+        </td>
         </tr>
+        <tr>
         <th>Comment</th>
         <td class='formInput'><input name='Comment'type="text"></td>
         </tr>
