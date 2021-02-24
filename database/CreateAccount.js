@@ -26,6 +26,7 @@ async function createAccount(body, username){
   
     let credit =  Math.abs(body.Credit)
     let debit = Math.abs(body.Debit)
+    let initialBalance = parseInt(body.InitialBalance,10)
 /*
     let JSONCredit = {
         "Credits": [credit]
@@ -42,10 +43,10 @@ async function createAccount(body, username){
     let balance;
 
     if(body.Normal == 'Debit'){
-        balance = debit - credit;
+        balance = initialBalance + (debit - credit);
     }
     else{
-        balance = credit - debit;
+        balance = initialBalance + (credit - debit);
     }
 
     let DOC = new Date()

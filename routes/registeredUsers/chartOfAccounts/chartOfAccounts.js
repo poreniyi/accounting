@@ -20,8 +20,8 @@ router.get('/addAccount',(req,res)=>{
     res.render('charts/addChart');
 })
 router.get('/editAccount/:number', async (req,res) => {
+    
     let data = await search.searchByNumber(req.params.number)
-    console.log(data);
 
     if(data){
         res.render('charts/editChart', data[0]);
@@ -31,7 +31,8 @@ router.get('/editAccount/:number', async (req,res) => {
 })
 router.post('/editAccount/:number',async (req,res) => {
     console.log(req.body)  
-    //let result = await edit.editAccount(req.body, req.user)
+
+    let result = await edit.editAccount(req.body, req.user)
 
     res.send(`You edited the account`);
 })
