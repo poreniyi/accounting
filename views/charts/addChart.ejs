@@ -15,7 +15,9 @@
         <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action='./addAccount'>
         <tr>
             <th>Name</th>
-            <td class='formInput'><input name='Name'type="text" required></td>
+            <td class='formInput'>
+                <input name='Name' type="text" pattern ="^[a-zA-Z]+" required>
+            </td>
         </tr>
         <tr>
             <th>Description</th>
