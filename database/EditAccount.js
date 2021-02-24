@@ -8,7 +8,7 @@ async function editAccount(body, username){
 
     let date = new Date()
 
-     await DB.asyncConnection.query(query, [username, date, body.Name, body.Description, body.Normal, body.Category, body.SubCategory, 
+    let result = await DB.asyncConnection.query(query, [username, date, body.Name, body.Description, body.Normal, body.Category, body.SubCategory, 
         body.InitialBalance, debit, credit, balance, DOC, username, body.Statement, body.Comment, req.status], 
         function (err, result, fields) {
             if(err){
@@ -16,6 +16,8 @@ async function editAccount(body, username){
                 throw err;
             } 
     });
+
+        console.log(result)
 
     return true
 }

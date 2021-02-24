@@ -2,6 +2,7 @@ let express = require('express');
 let search = require("../../../database/SearchAccount");
 let create = require("../../../database/CreateAccount");
 let edit = require("../../../database/EditAccount");
+let validator = require('express-validator');
 let router = express.Router();
 
 router.get('/viewChart', async (req,res) => {
@@ -20,8 +21,6 @@ router.get('/addAccount',(req,res)=>{
 })
 router.get('/editAccount/:number', async (req,res) => {
     
-    console.log(req.params.number);
-    
     let data = await search.searchByNumber(req.params.number)
 
     if(data){
@@ -30,14 +29,10 @@ router.get('/editAccount/:number', async (req,res) => {
         res.render(`home/404`)
     }
 })
-router.put('/editAccount/:number', async (req,res) => {
+router.post('/editAccount/:number',async (req,res) => {
+    console.log(req.body)  
 
-    console.log(req)
-    
     let result = await edit.editAccount(req.body, req.user)
-
-    
-
 
     res.send(`You edited the account`);
 })
