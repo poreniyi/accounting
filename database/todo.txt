@@ -13,3 +13,4 @@ sprint 2
 14) each button must have a title attribute <- html
 15) no numbers in names
 16) 5,6,15,17 requirment numbers
+Balance is not correct if there is an intial balance? Balance=Initial Balance+NormalSide -Credit/Debit
