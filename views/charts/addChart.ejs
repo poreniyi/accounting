@@ -12,7 +12,7 @@
 
 <body>
     <table id='table'>
-        <form id='form' method="POST" action=''>
+        <form id='form' method="POST" action='./addAccount'>
         <tr>
             <th>Name</th>
             <td class='formInput'><input name='Name'type="text"></td>
@@ -38,6 +38,7 @@
                 <option value='Liability'>Liability</option>
                 <option value='Revenue'>Revenue</option>
                 <option value='Expense'>Expense</option>
+                <option value='Equity'>Equity</option>
             </select>
             </td>
         </tr>  
@@ -64,15 +65,6 @@
         </tr>
         <th>Comment</th>
         <td class='formInput'><input name='Comment'type="text"></td>
-        </tr>
-        <tr>
-            <th>Status</th>
-            <td class='formInput'>
-            <select form='form' name='STATUS'>
-                    <option value="0">Inactive</option>
-                    <option value="1">Active </option>
-            </select>
-            </td>
         </tr>
         <button type="submit">Submit</button>
         </form>

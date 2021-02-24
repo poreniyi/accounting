@@ -17,41 +17,69 @@ async function accountExists(accountName){
 
 }
 
-async function createAccount(accountName, description, normalSide, category, subcategory, 
-    initialBalance, debit, credit, balance, DOC, username, orderNumber, statement, comment, active){
+async function createAccount(body, username){
 
-    if (await accountExists(accountName) == true){
+    if (await accountExists(body.Name) == true){
         return false //'Account name already exists'
     }
 
+    console.log("HWEEEEERE: " + body.Normal)
+
+    let credit =  Math.abs(body.Credit)
+    let debit = Math.abs(body.Debit)
+
+    let JSONCredit = {
+        "Credits": [credit]
+    }
+
+    let CreditString = JSON.stringify(JSONCredit)
+
+    let JSONDebit = {
+        "Debits": [debit]
+    }
+
+    let DebitString = JSON.stringify(JSONDebit)
+
+    let balance;
+
+    if(body.Normal == 'Debit'){
+        balance = debit - credit;
+    }
+    else{
+        balance = credit - debit;
+    }
+
+    let DOC = new Date()
+
     let  query = `
-    CREATE TABLE ${accountName} (
+    CREATE TABLE ${body.Name} (
     
     NAME			VARCHAR(40),
     NUMBER			INT				NOT NULL,
     DESCRIPTION		TINYTEXT		NOT NULL,
-    NORMALSIDE		BOOLEAN			NOT NULL,
+    NORMALSIDE		VARCHAR(10)		NOT NULL,
     CATEGORY		VARCHAR(50)		NOT NULL,
     SUBCATEGORY		VARCHAR(50)		NOT NULL,
-    INITIALBALANCE	DOUBLE			NOT NULL,
+    INITIALBALANCE	DOUBLE			DEFAULT 0,
     DEBIT			LONGTEXT		NOT NULL,
+    DEBITTOTAL      DOUBLE          DEFAULT 0,
     CREDIT			LONGTEXT		NOT NULL,
+    CREDITTOTAL      DOUBLE         DEFAULT 0,
     BALANCE			DOUBLE			NOT NULL,
     DOC				DATE			NOT NULL,
     USERNAME		VARCHAR(40)		NOT NULL,
-    ORDERNUMBER		INT				NOT NULL,
-    STATEMENT		INT				NOT NULL,
+    STATEMENT		VARCHAR(50)		NOT NULL,
     COMMENT			TINYTEXT		NOT NULL,
-    ACTIVE          BOOLEAN         NOT NULL,
+    STATUS          BOOLEAN         NOT NULL,
     EVENTID         INT             NOT NULL
     );`
 
      await DB.asyncConnection.query(query)
 
-     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
-     DB.asyncConnection.query(query, [accountName, description, normalSide, category, subcategory, 
-        initialBalance, debit, credit, balance, DOC, username, orderNumber, statement, comment, active], 
+     await DB.asyncConnection.query(query, [body.Name, body.Description, body.Normal, body.Category, body.SubCategory, 
+        body.InitialBalance, DebitString, debit, CreditString, credit, balance, DOC, username, body.Statement, body.Comment, 1], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
@@ -64,6 +92,5 @@ async function createAccount(accountName, description, normalSide, category, sub
 }
 
 module.exports= {
-    accountExists:accountExists,
     createAccount:createAccount
 }
