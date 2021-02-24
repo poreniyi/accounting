@@ -43,15 +43,13 @@ router.put('/editAccount/:number', (req,res) => {
 })
 router.post('/addAccount', async (req,res) => {
 
-    console.log("YEEEEET")
-
     let result = await create.createAccount(req.body, req.user);
     
     if(result){
         res.send("Success")
     }
     else{
-        res.send("You stupid")
+        res.send("Unsuccesful")
     }
  
 })

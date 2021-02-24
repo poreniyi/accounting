@@ -23,11 +23,9 @@ async function createAccount(body, username){
         return false //'Account name already exists'
     }
 
-    console.log("HWEEEEERE: " + body.Normal)
-
     let credit =  Math.abs(body.Credit)
     let debit = Math.abs(body.Debit)
-
+/*
     let JSONCredit = {
         "Credits": [credit]
     }
@@ -39,7 +37,7 @@ async function createAccount(body, username){
     }
 
     let DebitString = JSON.stringify(JSONDebit)
-
+*/
     let balance;
 
     if(body.Normal == 'Debit'){
@@ -61,25 +59,23 @@ async function createAccount(body, username){
     CATEGORY		VARCHAR(50)		NOT NULL,
     SUBCATEGORY		VARCHAR(50)		NOT NULL,
     INITIALBALANCE	DOUBLE			DEFAULT 0,
-    DEBIT			LONGTEXT		NOT NULL,
-    DEBITTOTAL      DOUBLE          DEFAULT 0,
-    CREDIT			LONGTEXT		NOT NULL,
-    CREDITTOTAL      DOUBLE         DEFAULT 0,
+    DEBIT           DOUBLE          DEFAULT 0,
+    CREDIT          DOUBLE         DEFAULT 0,
     BALANCE			DOUBLE			NOT NULL,
     DOC				DATE			NOT NULL,
     USERNAME		VARCHAR(40)		NOT NULL,
     STATEMENT		VARCHAR(50)		NOT NULL,
-    COMMENT			TINYTEXT		NOT NULL,
+    COMMENT			VARCHAR(500)	DEFAULT '',
     STATUS          BOOLEAN         NOT NULL,
     EVENTID         INT             NOT NULL
     );`
 
      await DB.asyncConnection.query(query)
 
-     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
      await DB.asyncConnection.query(query, [body.Name, body.Description, body.Normal, body.Category, body.SubCategory, 
-        body.InitialBalance, DebitString, debit, CreditString, credit, balance, DOC, username, body.Statement, body.Comment, 1], 
+        body.InitialBalance, debit, credit, balance, DOC, username, body.Statement, body.Comment, 1], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")

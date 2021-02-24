@@ -29,8 +29,8 @@ async function searchByNumber(accountNumber){
 
 async function getAllAccounts(){
 
-    let query = `SELECT NAME, NUMBER, DESCRIPTION, NORMALSIDE, CATEGORY, SUBCATEGORY, INITIALBALANCE, DEBIT, DEBITTOTAL, CREDIT,
-      CREDITTOTAL, BALANCE, DOC, USERNAME, STATEMENT, COMMENT, IF(STATUS = 1,'Active', 'Deactivated') AS STATUS FROM MASTER`
+    let query = `SELECT NAME, NUMBER, DESCRIPTION, NORMALSIDE, CATEGORY, SUBCATEGORY, INITIALBALANCE, DEBIT, CREDIT,
+                 BALANCE, DOC, USERNAME, STATEMENT, COMMENT, IF(STATUS = 1,'Active', 'Deactivated') AS STATUS FROM MASTER`
 
     let [rows] = await DB.asyncConnection.query(query)
 
