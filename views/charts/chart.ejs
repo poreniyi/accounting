@@ -54,10 +54,16 @@
         
         <%TextRow.forEach(element=>{%>
             <tr>
+                <td>
+                <% if(userType=='Admin'){%>
                 <%let link=`./editAccount/${element.NUMBER}`%>
-                <td><a href=<%=link%>><%=element.NAME%></a>
+                <a href=<%=link%>><%=element.NAME%></a>
+                <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal3.jpeg'></a>
+                <% }  else { %>
+                    <%=element.NAME%>
                     <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal3.jpeg'></a>
-                </td> 
+                </td>
+                <%}%> 
                 <td><%=element.NUMBER%></td> 
                 <td><%=element.DESCRIPTION%></td> 
                 <td><%=element.NORMALSIDE%></td> 
