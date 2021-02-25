@@ -51,19 +51,8 @@
         <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
         
         <%TextRow.forEach(element=>{%>
-            <tr>
-                <td>
-                <% if(userType=='Admin'){%>
-                <%let link=`./editAccount/${element.NUMBER}`%>
-                <a href=<%=link%>><%=element.NAME%></a>
-                <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal3.jpeg'></a>
-                <% }  else { %>
-                    <%=element.NAME%>
-                    <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal3.jpeg'></a>
-                    <%}%> 
-                </td>
-            <tr>
-                
+                <tr>
+                <td><%=element.NAME%></td>
                 <td><%=element.NUMBER%></td> 
                 <td><%=element.DESCRIPTION%></td> 
                 <td><%=element.NORMALSIDE%></td> 
