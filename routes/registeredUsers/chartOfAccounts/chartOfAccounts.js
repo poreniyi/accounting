@@ -65,4 +65,9 @@ router.get('/eventLog/:name',async (req,res)=>{
      res.render('charts/eventLog', data);
  })
 
+ router.get('/ledger', (req,res) => {
+
+    res.render('charts/ledger')
+})
+
 module.exports = router;
