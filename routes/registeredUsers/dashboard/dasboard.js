@@ -16,10 +16,16 @@ router.get('/sucess',(req,res)=>{
 
 
 router.get('/confirmation',(req,res)=>{
+    let data=req.session.confirmationData;
+    let message=req.session.confirmationMessage;
+    let back=req.session.Previous || `../../${req.session.userType.toLowerCase()}/dashboard`;
+    req.session.Previous=''
+    req.session.confirmationData=''
+    req.session.confirmationMessage=''
     res.status(200).render('dashboard/confirmation.ejs',{
-        data:req.session.confirmationData,
-        message:req.session.confirmationMessage,
-        back:req.session.Previous,
+        data:data,
+        message:message,
+        back:back,
     });
 });
 
