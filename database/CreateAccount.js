@@ -69,7 +69,7 @@ async function createAccount(body, username){
     STATEMENT		VARCHAR(50)		NOT NULL,
     COMMENT			VARCHAR(500)	DEFAULT '',
     STATUS          BOOLEAN         NOT NULL,
-    EVENTID         INT             NOT NULL
+    EVENTID         VARCHAR(80)     NOT NULL
     );`
 
      await DB.asyncConnection.query(query)
