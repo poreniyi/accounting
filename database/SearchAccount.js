@@ -51,9 +51,13 @@ async function getEventLog(table){
     BALANCE, DOC, USERNAME, STATEMENT, COMMENT, IF(STATUS = 1,'Active', 'Deactivated') AS STATUS, EVENTID FROM ${table}
     ORDER BY EVENTID`
 
-     let [result] = await DB.asyncConnection.query(query)
+    let [rows] = await DB.asyncConnection.query(query)
 
-    return result[0]
+    var data= { TextRow: [] }
+    
+    for(var i = 0; i < [rows][0].length; i++){
+        data.TextRow.push([rows][0][i])
+    }
 
 }
 

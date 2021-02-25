@@ -50,7 +50,7 @@ router.post('/addAccount', async (req,res) => {
 })
 
 router.get('/eventLog',async (req,res)=>{
-     let data = await search.getAllAccounts()
+     let data = await search.getEventLog('Account')
      res.render('charts/eventLog', data);
  })
 
