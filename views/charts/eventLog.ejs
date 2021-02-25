@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='/stylesheets/charts/viewChart.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart of Accounts</title>
+</head>
+<%- include('../_partial/_header'); -%>
+
+<body>
+    <script src='/ejsscripts/editChart.js'></script>
+    <%- include('../_partial/help/viewChartHelp'); -%>
+    <input id='search' placeholder="Search on Name" type ="search">
+    <select id='searchSelect'>
+        <option value=0>Name</option>
+        <option value=1>Number</option>
+        <option value=2>Description</option>
+        <option value=3>Normal Side</option>
+        <option value=4>Category</option>
+        <option value=5>Subcategory</option>
+        <option value=6>Initial Balance	</option>
+        <option value=7>Debit</option>
+        <option value=8>Credit</option>
+        <option value=9>Balance</option>
+        <option value=10>DOC</option>
+        <option value=11>Creator ID</option>
+        <option value=12>Order</option>
+        <option value=13>Statement</option>
+        <option value=14>Comment</option>
+        <option value=15>Status</option>
+
+    </select>
+    <table id=table>
+        <th id='Name'> Name</th>
+        <th id='Name'> Number</th>
+        <th id='Name'> Description</th>
+        <th id='Name'> Normal Side</th>
+        <th id='Name'> Category</th>
+        <th id='Name'> Subcategory</th>
+        <th id='Name'> Initial Balance</th>
+        <th id='Name'> Debit</th>
+        <th id='Name'> Credit</th>
+        <th id='Name'> Balance</th>
+        <th id='Name'> DOC</th>
+        <th id='Name'> Made by</th>
+        <th id='Name'> Statement</th>
+        <th id='Name'> Comment</th>
+        <th id='Name'> Status</th>
+        <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
+        
+        <%TextRow.forEach(element=>{%>
+            <tr>
+                <td>
+                <% if(userType=='Admin'){%>
+                <%let link=`./editAccount/${element.NUMBER}`%>
+                <a href=<%=link%>><%=element.NAME%></a>
+                <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal3.jpeg'></a>
+                <% }  else { %>
+                    <%=element.NAME%>
+                    <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal3.jpeg'></a>
+                    <%}%> 
+                </td>
+            <tr>
+                
+                <td><%=element.NUMBER%></td> 
+                <td><%=element.DESCRIPTION%></td> 
+                <td><%=element.NORMALSIDE%></td> 
+                <td><%=element.CATEGORY%></td>
+                <td><%=element.SUBCATEGORY%></td>
+                <td><%=formatter.format(element.INITIALBALANCE)%></td>
+                <td><%=formatter.format(element.DEBIT)%></td>
+                <td><%=formatter.format(element.CREDIT)%></td>
+                <td><%=formatter.format(element.BALANCE)%></td>
+                <td><%=`${element.DOC.getMonth()+1}/${element.DOC.getDate()}/${element.DOC.getFullYear()}`%>
+                <td><%=element.USERNAME%></td>
+                <td><%=element.STATEMENT%></td>
+                <td><%=element.COMMENT%></td>
+                <td><%=element.STATUS%></td>
+                </tr>
+                <% })%>
+            </table>
+      
+            
+            <script src='/ejsscripts/viewChart.js'></script>
+            <%- include('../_partial/_footer'); -%>
+            
+        </body>
+        </html>
