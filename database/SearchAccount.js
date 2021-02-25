@@ -45,9 +45,22 @@ async function getAllAccounts(){
 
 }
 
+async function getEventLog(table){
+
+    let query = `SELECT NAME, NUMBER, DESCRIPTION, NORMALSIDE, CATEGORY, SUBCATEGORY, INITIALBALANCE, DEBIT, CREDIT,
+    BALANCE, DOC, USERNAME, STATEMENT, COMMENT, IF(STATUS = 1,'Active', 'Deactivated') AS STATUS, EVENTID FROM ${table}
+    ORDER BY EVENTID`
+
+     let [result] = await DB.asyncConnection.query(query)
+
+    return result[0]
+
+}
+
 
 module.exports= {
     searchByName:searchByName,
     searchByNumber:searchByNumber,
-    getAllAccounts:getAllAccounts
+    getAllAccounts:getAllAccounts,
+    getEventLog:getEventLog
 }
