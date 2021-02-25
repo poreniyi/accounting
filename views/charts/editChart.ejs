@@ -84,11 +84,11 @@
             <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action=''>
                 <tr>
                     <th>Name</th>
-                    <td class='formInput'><input name='Name' type="text"value=<%=NAME %>></td>
+                    <td class='formInput'><input name='Name' type="text"value=<%=NAME %> readonly ></td>
                 </tr>
                 <tr>
                     <th>Number</th>
-                    <td class='formInput'><input name='Number' type="text"value=<%=NUMBER %>></td>
+                    <td class='formInput'><input name='Number' type="text"value=<%=NUMBER %> readonly ></td>
                 </tr>
                 <tr>
                 <th>Description</th>
@@ -133,11 +133,11 @@
         </tr>
         <tr>
             <th>Balance</th>
-            <td class='formInput'><input name='Balance' type="text"value=<%=BALANCE %>></td>
+            <td class='formInput'><input name='Balance' type="text"value=<%=BALANCE %> readonly ></td>
         </tr>
         <tr>
             <th>Doc</th>
-            <td class='formInput'><input name='DOC' type="text"value=<%=DOC %>></td>
+            <td class='formInput'><input name='DOC' type="text"value=<%=DOC %> readonly ></td>
         </tr>
         <tr>
             <th>Statement</th>
@@ -150,7 +150,7 @@
             </tr>
             <tr>
                 <th>Creator</th>
-                <td class='formInput'><input name='Username' type="text"value=<%=USERNAME %>></td>
+                <td class='formInput'><input name='Username' value=<%=USERNAME %> readonly ></td>
             </tr>
         </tr>
         <tr>
@@ -168,7 +168,5 @@
             </form>
         </table>
     </div>
-                       
-   
 </body>
 </html>
