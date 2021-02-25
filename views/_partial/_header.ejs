@@ -7,21 +7,25 @@
  
 <header>
     <nav>
-        <ul class="navbar-nav navbar-right">
+        <div class="navbar-nav navbar-right">
             <% if(currentUser != null) { %>
-                <img src='/images/profile.png'>
-                <li><a href="#">Welcome <%= currentUser %>  ! you are an <%=userType%></a></li>
-                <li><a class="navbar-brand" href="/">Mankara</a></li>
-                <li><a href="/journal">Journal</a></li>
-                <li><a href="/logout">Logout</a></li>
+                <ul id="user-navbar">
+                    <img src='/images/profile.png'>
+                    <li><a href="#">Welcome <%= currentUser %>  ! you are an <%=userType%></a></li>
+                    <li><a class="navbar-brand" href="/">Mankara</a></li>
+                    <li><a href="/journal" class="tooltip" id="journalTool">Journal</a></li>
+                    <li><a href="/logout" class="tooltip" id="logoutTool">Logout</a></li>
+                </ul>
             <%}else{%>
-                <li><a class="navbar-brand" href="/">Mankara</a></li>
-                <li><a href="/forgotPassowrd">Forgot Password</a></li>
-                <li><a href="/signup">Signup</a></li>
-                <li><a href="/login">Log In</a></li>
+                <ul id="default-navbar">
+                    <li><a class="navbar-brand" href="/">Mankara</a></li>
+                    <li><a href="/forgotPassowrd">Forgot Password</a></li>
+                    <li><a href="/signup">Signup</a></li>
+                    <li><a href="/login">Log In</a></li>
+                </ul>
             <% } %>
             <%- include('../_partial/help/viewChartHelp'); -%>
-        </ul>
+        </div>
     </nav>
     <%if(userType){ %>
         <% let dashboard=`/./${userType.toLowerCase()}/dashboard`%>

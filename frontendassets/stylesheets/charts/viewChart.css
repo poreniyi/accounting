@@ -37,3 +37,69 @@ A{
   text-decoration: none;
   color: inherit;
 }
+
+th.tooltip {
+  position: relative ;
+}
+
+th.tooltip:hover::after {
+  position: absolute;
+  top: 2em ;
+  left: 1em ;
+  min-width: 100px ;
+  border: 1px #808080 solid ;
+  padding: 8px ;
+  color: black ;
+  background-color: #cfc ;
+  z-index: 1 ;
+}
+
+th#Name:hover::after {
+  content: "Account Name";
+}
+th#Num:hover::after {
+  content: "Account Number";
+}
+th#Desc:hover::after {
+  content: "Account Description";
+}
+th#Normal:hover::after {
+  content: "Normal Side Text";
+}
+th#Category:hover::after {
+  content: "Account Category";
+}
+th#Subcat:hover::after {
+  content: "Account Subcategory";
+}
+th#Initial:hover::after {
+  content: "Initial Balance at Start of Term";
+}
+th#Debit:hover::after {
+  content: "Change in Debit";
+}
+th#Credit:hover::after {
+  content: "Change in Credit";
+}
+th#Balance:hover::after {
+  content: "Current Balance of Term";
+}
+th#DOC:hover::after {
+  content: "Date of Creation";
+}
+th#MadeBy:hover::after {
+  content: "Account Creator";
+}
+th#Statement:hover::after {
+  content: "Statement Text";
+}
+th#Comment:hover::after {
+  content: "Comment Text";
+}
+th#Status:hover::after {
+  content: "Status Text";
+}
+th#Log:hover::after {
+  content: "Entry Log Text";
+  right: 2em;
+}

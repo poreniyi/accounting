@@ -29,3 +29,31 @@ h1 {
 .adminlist a:hover {
     background-color: #bdb8aa;
 }
+
+a.tooltip {
+    position: relative ;
+}
+
+a.tooltip:hover::after {
+    position: absolute;
+    top: 2em ;
+    left: 1em ;
+    min-width: 100px ;
+    border: 1px #808080 solid ;
+    padding: 8px ;
+    color: black ;
+    background-color: #cfc ;
+    z-index: 1 ;
+}
+
+a#reportTool:hover::after {
+    content: "View All Registered Users";
+}
+
+a#userTool:hover::after {
+    content: "Add and Invite New User to Register";
+}
+
+a#chartTool:hover::after {
+    content: "View Chart of Accounts";
+}
