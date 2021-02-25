@@ -17,7 +17,7 @@ router.get('/sucess',(req,res)=>{
 
 router.get('/confirmation',(req,res)=>{
     res.status(200).render('dashboard/confirmation.ejs',{
-        data:'a',
+        data:req.session.confirmationData,
         message:req.session.confirmationMessage
     });
 });

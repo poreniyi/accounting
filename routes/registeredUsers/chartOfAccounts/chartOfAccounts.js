@@ -31,8 +31,10 @@ router.get('/editAccount/:number', async (req,res) => {
 })
 router.post('/editAccount/:number',async (req,res) => {
     let result = await edit.editAccount(req.body, req.user);
-    res.redirect(`../../${req.session.userType.toLowerCase()}/sucess`);
     req.session.confirmationMessage=`User edited succesfully`;
+    req.session.confirmationData=result;
+
+    res.redirect(`../../${req.session.userType.toLowerCase()}/sucess`);
 
 })
 router.post('/addAccount', async (req,res) => {
