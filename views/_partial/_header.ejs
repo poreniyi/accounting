@@ -10,8 +10,8 @@
         <ul class="navbar-nav navbar-right">
             <% if(currentUser != null) { %>
                 <img src='/images/profile.png'>
-                <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="#">Welcome <%= currentUser %>  ! you are an <%=userType%></a></li>
+                <li><a class="navbar-brand" href="/">Mankara</a></li>
                 <li><a href="/journal">Journal</a></li>
                 <li><a href="/logout">Logout</a></li>
             <%}else{%>
@@ -20,16 +20,9 @@
                 <li><a href="/signup">Signup</a></li>
                 <li><a href="/login">Log In</a></li>
             <% } %>
+            <%- include('../_partial/help/viewChartHelp'); -%>
         </ul>
     </nav>
-    <%if(userType){ %>
-    
     <% let dashboard=`/./${userType.toLowerCase()}/dashboard`%>
     <a href=<%=dashboard%>><img src='/images/logo.png'></a>
-    <% }else{%>
-     <img src='/images/logo.png'>
-        <%}%>
-    
-
-
 </header>

@@ -1,11 +1,32 @@
+h1 {
+  margin-left: 2.5%;
+}
+
+.container {
+  text-align: center;
+  width: auto;
+  height: 1080px;
+  padding: 0 auto;
+}
+
 table, th, td {
-    border: 1px solid black;
+    border: none;
     border-collapse: collapse;
+    text-align: left;
   }
 
-  #allTables{
-    float:left;
-  }
+table {
+  margin: 2.5% auto;
+  margin-bottom: 1%
+}
+
+th, td {
+  padding: .25em 1px;
+}
+
+#allTables{
+  float:left;
+}
 #AccountInfo{
   border-bottom: 5px solid black;
 

@@ -5,19 +5,25 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: #FFFAEC;
 }
+
+h1 {
+  margin-left: 2.5%;
+}
+
 .container {
-    text-align: center;
-    width: auto;
-    height: 1080px;
-    padding: 6em ;
+  text-align: center;
+  width: auto;
+  height: 1080px;
+  padding: 1em 6em ;
 }
 
 td, th {
+  border: none;
   border-collapse: collapse;
 }
 
 table {
-  margin: auto;
+  margin: 0 auto;
 }
 table, td {
     padding: 8px;

@@ -1,15 +1,39 @@
+h1 {
+  margin-left: 2.5%;
+}
+
 table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-  .searchMatchedText{
-    font-weight: bold;
-  }
-  .journal{
-    width: 50px;
-    height: 50px;
-  }
-  A{
-    text-decoration: none;
-    color: inherit;
-  }
+  margin: 0 2.5%;
+  border: none;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding-left: 4px
+}
+
+th {
+  border-bottom: 5px solid #1B998B;
+  text-align: center;
+}
+
+
+tr:nth-child(even) {
+  background-color: #e4f0ef;
+}
+
+#searchSelect, #adminCommands {
+  margin: 0 0 .5em 2.5%;
+}
+
+.searchMatchedText{
+  font-weight: bold;
+}
+.journal{
+  width: 50px;
+  height: 50px;
+}
+A{
+  text-decoration: none;
+  color: inherit;
+}
