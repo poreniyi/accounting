@@ -10,8 +10,19 @@ table, th, td {
 }
 
 th, td {
-  padding-left: 4px;
   vertical-align: middle;
+}
+
+th:nth-child(1), td:nth-child(1) {
+  padding-left: 8px;
+}
+
+th:nth-child(16), td:nth-child(16) {
+  padding-right: 8px;
+}
+
+td:nth-child(1), td:nth-child(16) {
+  color: rgb(33, 33, 219);
 }
 
 th {
@@ -35,6 +46,7 @@ tr:nth-child(even) {
   width: 30px;
   height: 30px;
 }
+
 A{
   text-decoration: none;
   color: inherit;
