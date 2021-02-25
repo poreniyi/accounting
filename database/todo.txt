@@ -6,11 +6,6 @@ sprint 1
 7) store old user password  
 10) used passwords cannot be used on reset 
 fix status needs to return true or false
+
 sprint 2
-
-11) event log with views and query
-
-13) accounts with balance >0 cannot be deactivcted
 14) each button must have a title attribute <- html
-
-16) 5,6,15,17 requirment numbers
