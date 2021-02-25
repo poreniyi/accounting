@@ -137,7 +137,7 @@
         </tr>
         <tr>
             <th>Doc</th>
-            <td class='formInput'><input name='DOC' type="text"value=<%=DOC %> readonly ></td>
+            <td class='formInput'><input type="datetime" name='DOC' type="text" value=<%=`${DOC.getMonth()+1}/${DOC.getDate()}/${DOC.getFullYear()}` %> readonly></td>
         </tr>
         <tr>
             <th>Statement</th>
