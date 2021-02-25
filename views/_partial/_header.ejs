@@ -15,6 +15,8 @@
                     <li><a class="navbar-brand" href="/">Mankara</a></li>
                     <li><a href="/journal" class="tooltip" id="journalTool">Journal</a></li>
                     <li><a href="/logout" class="tooltip" id="logoutTool">Logout</a></li>
+                    <%- include('../_partial/help/baseHelp'); -%>
+
                 </ul>
             <%}else{%>
                 <ul id="default-navbar">
@@ -24,7 +26,6 @@
                     <li><a href="/login">Log In</a></li>
                 </ul>
             <% } %>
-            <%- include('../_partial/help/viewChartHelp'); -%>
         </div>
     </nav>
     <%if(userType){ %>
