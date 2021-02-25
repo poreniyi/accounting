@@ -19,9 +19,9 @@ router.get('/confirmation',(req,res)=>{
     let data=req.session.confirmationData;
     let message=req.session.confirmationMessage;
     let back=req.session.Previous || `../../${req.session.userType.toLowerCase()}/dashboard`;
-    req.session.Previous=''
-    req.session.confirmationData=''
-    req.session.confirmationMessage=''
+    delete req.session.Previous;
+    delete req.session.confirmationData;
+    delete req.session.confirmationMessage;
     res.status(200).render('dashboard/confirmation.ejs',{
         data:data,
         message:message,
