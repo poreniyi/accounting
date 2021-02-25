@@ -38,3 +38,7 @@ th {
 td {
   border-bottom: 1px solid #54a097;
 }
+
+tr:nth-child(even) {
+  background-color: #e4f0ef;
+}

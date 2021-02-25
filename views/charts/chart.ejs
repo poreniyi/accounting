@@ -64,7 +64,7 @@
                             <%let link=`./editAccount/${element.NUMBER}`%>
                             <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal4.png'></a>
                             <a href=<%=link%>><%=element.NAME%></a>
-                        <% }  else { %>
+                        <%}else{%>
                             <a href=<%="./viewLedger/"+element.NUMBER%>><img  class='journal'src='/images/journal4.png'></a>
                             <%=element.NAME%>
                         <%}%>
