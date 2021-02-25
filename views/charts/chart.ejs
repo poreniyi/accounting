@@ -53,6 +53,8 @@
         <th id='Name'> Statement</th>
         <th id='Name'> Comment</th>
         <th id='Name'> Status</th>
+        <th id='Name'> Event Log</th>
+
         <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
         
         <%TextRow.forEach(element=>{%>
@@ -81,6 +83,7 @@
                 <td><%=element.STATEMENT%></td>
                 <td><%=element.COMMENT%></td>
                 <td><%=element.STATUS%></td>
+                <td><a href=<%="./eventLog/"+element.NAME%>>Event Log</a></td>
                 </tr>
                 <% })%>
             </table>
