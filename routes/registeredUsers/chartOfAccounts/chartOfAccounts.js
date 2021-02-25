@@ -48,8 +48,9 @@ router.post('/addAccount', async (req,res) => {
  
 })
 
-router.get('/sampleEdit',(req,res) => {
-    res.locals.data=sampleData[1];
-    res.render('charts/editChart');
-})
+router.get('/eventLog',async (req,res)=>{
+     let data = await search.getAllAccounts()
+     res.render('charts/eventLog', data);
+ })
+
 module.exports = router;
