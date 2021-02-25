@@ -38,6 +38,7 @@ router.post('/editAccount/:number',async (req,res) => {
         req.session.confirmationMessage=`Denied: that account has a balance greater than 0 so it can't be deactivated`;
     }
     
+    req.session.Previous=`../../${req.session.userType.toLowerCase()}/viewChart`
     req.session.confirmationData=result;
 
     res.redirect(`../../${req.session.userType.toLowerCase()}/sucess`);
