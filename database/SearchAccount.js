@@ -45,9 +45,27 @@ async function getAllAccounts(){
 
 }
 
+async function getEventLog(table){
+
+    let query = `SELECT NAME, NUMBER, DESCRIPTION, NORMALSIDE, CATEGORY, SUBCATEGORY, INITIALBALANCE, DEBIT, CREDIT,
+    BALANCE, DOC, USERNAME, STATEMENT, COMMENT, IF(STATUS = 1,'Active', 'Deactivated') AS STATUS, EVENTID FROM ${table}
+    ORDER BY EVENTID DESC`
+
+    let [rows] = await DB.asyncConnection.query(query)
+
+    var data= { TextRow: [] }
+    
+    for(var i = 0; i < [rows][0].length; i++){
+        data.TextRow.push([rows][0][i])
+    }
+
+    return data;
+}
+
 
 module.exports= {
     searchByName:searchByName,
     searchByNumber:searchByNumber,
-    getAllAccounts:getAllAccounts
+    getAllAccounts:getAllAccounts,
+    getEventLog:getEventLog
 }

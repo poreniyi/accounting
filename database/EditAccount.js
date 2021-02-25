@@ -8,17 +8,27 @@ async function editAccount(body, username){
 
     let date = new Date()
 
-    let [result] = await DB.asyncConnection.query(query, ['admin', date, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
-        body.InitialBalance, body.Debit, body.Credit, body.Balance, body.DOC, username, body.Statement, body.Comment, body.Status], 
+    let credit =  Math.abs(body.Credit)
+    let debit = Math.abs(body.Debit)
+    let initialBalance = parseInt(body.InitialBalance,10)
+
+    let balance;
+
+    if(body.Normal == 'Debit'){
+        balance = initialBalance + (debit - credit);
+    }
+    else{
+        balance = initialBalance + (credit - debit);
+    }
+
+    DB.asyncConnection.query(query, ['admin', date, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
+        initialBalance, debit, credit, balance, body.DOC, username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
                 throw err;
             } 
     });
-
-        console.log(result)
-
     return true
 }
 
