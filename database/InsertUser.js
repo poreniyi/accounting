@@ -36,6 +36,7 @@ async function insertUser (username, firstName, lastName, DOB, password, PED, em
         query = 'CALL Create_User(?,?,?,?,?,?,?,?,?,?,?,?)';
     }
     else{
+        password = await encryption.encryptPassword(password)
         query = 'CALL ADMIN_Create_User(?,?,?,?,?,?,?,?,?,?,?,?)';
     }
 
