@@ -1,0 +1,11 @@
+sprint 1
+
+4) forget password / token
+5) expired password report
+6) emails, 1 line
+7) store old user password  
+10) used passwords cannot be used on reset 
+fix status needs to return true or false
+
+sprint 2
+14) each button must have a title attribute <- html

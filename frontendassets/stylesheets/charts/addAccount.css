@@ -1,0 +1,38 @@
+h1 {
+  margin-left: 2.5%;
+}
+
+h2 {
+  margin-left: 5%;
+}
+
+.container, #AccountInfo, #EditInfo {
+  text-align: center;
+  width: auto;
+}
+
+table, th, td {
+    border: none;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+table {
+  margin: 2.5% auto 1%;
+}
+
+th, td {
+  padding: .25em 1px;
+}
+
+#allTables{
+  float:left;
+}
+
+#AccountInfo, #EditInfo{
+  padding-bottom: 2.5em;
+}
+#AccountInfo{
+  margin: auto 2.5em;
+  border-bottom: 5px solid #1B998B;
+}

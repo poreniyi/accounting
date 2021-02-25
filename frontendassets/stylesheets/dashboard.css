@@ -1,0 +1,59 @@
+.sidenav {
+    display: grid;
+    grid-template-columns: 15% 85%;
+    border-collapse: collapse;
+    height: 100vh;
+}
+
+.navcolumn {
+      background-color: #FFFAEC;
+      border-right: solid #126359 5px;
+}
+
+.navcolumn li {
+    list-style-type: none;   
+}
+.navcolumn a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #000000;
+    display: block;
+}
+.adminlist {
+    padding-inline-start: 10px;
+}
+h1 {
+    padding: 0 21.44px;
+}
+.adminlist a:hover {
+    background-color: #bdb8aa;
+}
+
+a.tooltip {
+    position: relative ;
+}
+
+a.tooltip:hover::after {
+    position: absolute;
+    top: 2em ;
+    left: 1em ;
+    min-width: 100px ;
+    border: 1px #808080 solid ;
+    padding: 8px ;
+    color: black ;
+    background-color: #cfc ;
+    z-index: 1 ;
+}
+
+a#reportTool:hover::after {
+    content: "View All Registered Users";
+}
+
+a#userTool:hover::after {
+    content: "Add and Invite New User to Register";
+}
+
+a#chartTool:hover::after {
+    content: "View Chart of Accounts";
+}

@@ -1,0 +1,4 @@
+
+Frontend
+wanted to add help button as image but background of the image wouldn't change
+choose one of the journal images

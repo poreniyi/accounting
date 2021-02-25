@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='/stylesheets/charts/addAccount.css'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Account</title>
+</head>
+<%- include('../_partial/_header'); -%>
+
+<body>
+    <div id='AllTables'>
+        <h1><%=NAME%> :<%=NUMBER%></h1>
+        <h2>All Account Info</h2>
+        <div id='AccountInfo'>
+            <table id='allInfoTable'>
+                <tr>
+                    <th>Name</th>
+                    <td><%=NAME%></td>
+                </tr>
+                <tr>
+                    <th>Number</th>
+                    <td><%=NUMBER%></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td><%=DESCRIPTION%></td>
+                </tr>
+                <tr>
+                    <th>Normal Side</th>
+                    <td><%=NORMALSIDE%></td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td><%=CATEGORY%></td>
+                </tr>
+                <tr>
+                    <th>Sub Category</th>
+                    <td><%=SUBCATEGORY%></td>
+                </tr>
+                <tr>
+                    <th>InitialBalance</th>
+                    <td><%=INITIALBALANCE%></td>
+                </tr>
+                <tr>
+                    <th>Debit</th>
+                    <td><%=DEBIT%></td>
+                </tr>
+                <tr>
+                    <th>Credit</th>
+                    <td><%=CREDIT%></td>
+                </tr>
+                <tr>
+                    <th>Balance</th>
+                    <td><%=BALANCE%></td>
+                </tr>
+                <tr>
+                    <th>Doc</th>
+                    <td><%=DOC%></td>
+                </tr>
+                <tr>
+                    <th>Statement</th>
+                    <td><%=STATEMENT%></td>
+                </tr>
+                <tr>
+                    <th>Creator</th>
+                    <td><%=USERNAME%></td>
+                </tr>
+                <tr>
+                    <th>Comment</th>
+                    <td><%=COMMENT%></td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td><%=STATUS%></td>
+                </tr>
+            </table>
+        </div>
+        <h2>Edit Account</h2>
+        <div id='EditInfo'>
+            <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action=''>
+                <table id='table'>
+                    <th>Field</th>
+                    <th>Edit Field</th>
+                    <tr>
+                        <th>Name</th>
+                        <td class='formInput'><input name='Name' type="text"value=<%=NAME %> readonly ></td>
+                    </tr>
+                    <tr>
+                        <th>Number</th>
+                        <td class='formInput'><input name='Number' type="text"value=<%=NUMBER %> readonly ></td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td class='formInput'><input name='Description'type="text" value=<%=DESCRIPTION %>></td>
+                    </tr> 
+                    <tr>
+                        <th>Normal Side</th>
+                        <td class='formInput'>
+                            <select form='form' name='Normal'>
+                                <option value='Credit'>Credit</option>
+                                <option value='Debit'>Debit</option>
+                            </select>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <th>Category</th>
+                        <td class='formInput'>
+                            <select form='form' name='Category'>
+                                <option value='Asset'>Asset</option>
+                                <option value='Liability'>Liability</option>
+                                <option value='Revenue'>Revenue</option>
+                                <option value='Expense'>Expense</option>
+                                <option value='Equity'>Equity</option>
+                            </select>
+                        </td>
+                    </tr>  
+                    <tr>
+                        <th>SubCategory</th>
+                        <td class='formInput'><input name='SubCategory' type="text"value=<%=SUBCATEGORY %>></td>
+                    </tr>
+                    <tr>
+                        <th>InitialBalance</th>
+                        <td class='formInput'><input name='InitialBalance'type="number"value=<%=INITIALBALANCE %>></td>
+                    </tr>
+                    <tr>
+                        <th>Debit</th>
+                        <td class='formInput'><input name='Debit' type="number" value=<%=DEBIT %>></td>
+                    </tr>
+                    <tr>
+                        <th>Credit</th>
+                        <td class='formInput'><input name='Credit' type="number"value=<%=CREDIT %>></td>
+                    </tr>
+                    <tr>
+                        <th>Balance</th>
+                        <td class='formInput'><input name='Balance' type="text"value=<%=BALANCE %> readonly ></td>
+                    </tr>
+                    <tr>
+                        <th>Doc</th>
+                        <td class='formInput'><input type="datetime" name='DOC' type="text" value=<%=`${DOC.getMonth()+1}/${DOC.getDate()}/${DOC.getFullYear()}` %> readonly></td>
+                    </tr>
+                    <tr>
+                        <th>Statement</th>
+                        <td class='formInput'>
+                            <select form='form' name='Statement'>
+                                <option value='Income Statement'>Income Statement</option>
+                                <option value='Balance Sheet'>Balance Sheet</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Creator</th>
+                        <td class='formInput'><input name='Username' value=<%=USERNAME %> readonly ></td>
+                    </tr>
+                    <tr>
+                        <th>Comment</th>
+                        <td class='formInput'><input name='Comment' type="text" value=<%=COMMENT %>></td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td class='formInput'>
+                            <select form='form' name='Status'>
+                                <option value='1'>Active</option>
+                                <option value='0'>Deactivated</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

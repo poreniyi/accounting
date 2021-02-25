@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html> 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel='icon' href='/images/logo.png' sizes='any'>
+  <link rel='stylesheet' href='/stylesheets/dashboard.css'>
+</head>
+<body>
+    <%- include('../_partial/_header'); -%>
+    <div class="sidenav">
+        <div class="navcolumn">
+          <ul class="adminlist">
+           <% if(userType=='Admin'){%>
+            <li><a href="./report" class="tooltip" id="reportTool">User Reports</a></li>
+            <li><a href="./add" class="tooltip" id="userTool">Add a User</a></li>
+            <% }%>
+            <li><a href="./viewChart" class="tooltip" id="chartTool">Chart of Accounts</a></li>
+          </ul>
+        </div>
+        <div class="main">
+          <h1>Dashboard</h1>
+        </div>
+    </div>
+</body>
+</html>

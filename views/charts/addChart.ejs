@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <link rel='stylesheet' href='/stylesheets/charts/addAccount.css'>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add an Account</title>
+</head>
+<%- include('../_partial/_header'); -%>
+
+<body>
+    <h1>Add New Account</h1>
+    <div class="container">
+        <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action='./addAccount'>
+            <table id='table'>
+                <tr>
+                    <th>Name</th>
+                    <td class='formInput'>
+                        <input name='Name' type="text" pattern ="^[a-zA-Z]+" required>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td class='formInput'><input name='Description'type="text" required></td>
+                </tr> 
+                <tr>
+                    <th>Normal Side</th>
+                    <td class='formInput'>
+                        <select form='form' name='Normal'>
+                            <option value='Credit'>Credit</option>
+                            <option value='Debit'>Debit</option>
+                        </select>
+                    </td>
+                </tr>  
+                <tr>
+                    <th>Category</th>
+                    <td class='formInput'>
+                    <select form='form' name='Category'>
+                        <option value='Asset'>Asset</option>
+                        <option value='Liability'>Liability</option>
+                        <option value='Revenue'>Revenue</option>
+                        <option value='Expense'>Expense</option>
+                        <option value='Equity'>Equity</option>
+                    </select>
+                    </td>
+                </tr>  
+            <tr>
+                <th>Sub-Category</th>
+                <td class='formInput'><input name='SubCategory' type="text" value='None'required></td>
+                </tr>
+                <tr>
+                    <th>Initial Balance</th>
+                    <td class='formInput'><input name='InitialBalance'type="number"  value=0 required></td>
+                </tr>
+                <tr>
+                <th>Credit</th>
+                <td class='formInput'><input name='Credit' value=0 type="number"></td>
+                </tr>
+                <tr>
+                <th>Debit</th>
+                <td class='formInput'><input name='Debit'value=0 type="number"></td>
+                </tr>
+                <tr>
+                <th>Statement</th>
+                <td class='formInput'>
+                    <select form='form' name='Statement'>
+                        <option value='Income Statement'>Income Statement</option>
+                        <option value='Balance Sheet'>Balance Sheet</option>
+                    </select>
+                </td>
+                </tr>
+                <tr>
+                <th>Comment</th>
+                <td class='formInput'><input name='Comment'type="text"></td>
+                </tr>
+            </table>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script src='/ejsscripts/viewChart.js'></script>
+</body>
+</html>

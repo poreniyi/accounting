@@ -1,0 +1,46 @@
+.overlay {
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: rgb(0,0,0,.5);
+  visibility:hidden ;
+  color: white;
+  text-align:center;
+}
+#overlayLabel{
+  position: fixed;
+  top:5%;
+  right:20%;
+  visibility: visible;
+}
+label {
+  cursor:pointer;
+}
+
+:root{
+--Help: "Hello Welcome to the Mancara Help:\A This is the help menu \A";
+}
+.overlay-trigger:checked+.overlay::after {
+  content:var(--Help);
+  position: fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background-color: rgb(0,0,0,.5);
+  color: white;
+  text-align:center;
+  visibility: visible;
+  white-space:pre-line;
+}
+.overlay-trigger {
+  display: none;
+}
+
+#trigger{
+  color: black;
+  border-color: black;
+  border-style: solid;
+}
