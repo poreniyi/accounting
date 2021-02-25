@@ -26,15 +26,14 @@ router.get('/editAccount/:number', async (req,res) => {
     if(data){
         res.render('charts/editChart', data[0]);
     }else{
-        res.render(`home/404`)
+        res.status(`home/404`)
     }
 })
 router.post('/editAccount/:number',async (req,res) => {
-    console.log(req.body)  
+    let result = await edit.editAccount(req.body, req.user);
+    res.redirect(`../../${req.session.userType.toLowerCase()}/sucess`);
+    req.session.confirmationMessage=`User edited succesfully`;
 
-    let result = await edit.editAccount(req.body, req.user)
-
-    res.send(`You edited the account`);
 })
 router.post('/addAccount', async (req,res) => {
 
