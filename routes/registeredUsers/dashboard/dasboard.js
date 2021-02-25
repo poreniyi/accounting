@@ -10,6 +10,19 @@ router.get('/dashboard',(req,res)=>{
     res.render('dashboard/dashboard.ejs');
 });
 
+router.get('/sucess',(req,res)=>{
+    res.redirect('confirmation');
+});
+
+
+router.get('/confirmation',(req,res)=>{
+    res.status(200).render('dashboard/confirmation.ejs',{
+        data:'a',
+        message:req.session.confirmationMessage
+    });
+});
+
+
 
 
 
