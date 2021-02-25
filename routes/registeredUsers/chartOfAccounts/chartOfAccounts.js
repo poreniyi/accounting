@@ -35,7 +35,7 @@ router.post('/editAccount/:number',async (req,res) => {
         req.session.confirmationMessage=`Account edited succesfully`;
     }
     else{
-        req.session.confirmationMessage=`User edited succesfully`;
+        req.session.confirmationMessage=`Denied: that account has a balance greater than 0 so it can't be deactivated`;
     }
     
     req.session.confirmationData=result;
