@@ -31,7 +31,13 @@ router.get('/editAccount/:number', async (req,res) => {
 })
 router.post('/editAccount/:number',async (req,res) => {
     let result = await edit.editAccount(req.body, req.user);
-    req.session.confirmationMessage=`User edited succesfully`;
+    if(result){
+        req.session.confirmationMessage=`Account edited succesfully`;
+    }
+    else{
+        req.session.confirmationMessage=`User edited succesfully`;
+    }
+    
     req.session.confirmationData=result;
 
     res.redirect(`../../${req.session.userType.toLowerCase()}/sucess`);

@@ -31,9 +31,6 @@ router.get('/add', async (req,res)=>{
 
 router.post('/add', async (req,res)=>{
 
-    console.log(req.body)
-
-    let d = new Date()
     let date = new Date()
     let month=("0" + (date.getMonth() + 1)).slice(-2); 
     let day=("0" + (date.getDate())).slice(-2); 

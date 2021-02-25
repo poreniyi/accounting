@@ -4,7 +4,13 @@ const DB = require("./DBConnection");
 // used when seeing an accounts details and user wants to update something. Such as category or activate the account
 async function editAccount(body, username){
 
-    let query = `CALL Edit_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+    let checkBalance = parseInt(body.Balance,10)
+
+    if(body.Status == '0' && checkBalance != 0){
+        return false;
+    }
+
+    let query = `CALL Edit_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
     let date = new Date()
 
@@ -22,7 +28,7 @@ async function editAccount(body, username){
     }
 
     DB.asyncConnection.query(query, ['admin', date, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
-        initialBalance, debit, credit, balance, body.DOC, username, body.Statement, body.Comment, body.Status], 
+        initialBalance, debit, credit, balance, username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
