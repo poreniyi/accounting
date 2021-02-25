@@ -10,9 +10,7 @@ async function editAccount(body, username){
         return false;
     }
 
-    let query = `CALL Edit_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
-
-    let date = new Date()
+    let query = `CALL Edit_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
     let credit =  Math.abs(body.Credit)
     let debit = Math.abs(body.Debit)
@@ -27,7 +25,7 @@ async function editAccount(body, username){
         balance = initialBalance + (credit - debit);
     }
 
-    DB.asyncConnection.query(query, ['admin', date, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
+    DB.asyncConnection.query(query, ['admin', body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
         initialBalance, debit, credit, balance, username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){

@@ -49,8 +49,6 @@ async function createAccount(body, username){
         balance = initialBalance + (credit - debit);
     }
 
-    let DOC = new Date()
-
     let  query = `
     CREATE TABLE ${body.Name} (
     
@@ -64,7 +62,7 @@ async function createAccount(body, username){
     DEBIT           DOUBLE          DEFAULT 0,
     CREDIT          DOUBLE         DEFAULT 0,
     BALANCE			DOUBLE			NOT NULL,
-    DOC				DATE			NOT NULL,
+    DOC				TIMESTAMP		NOT NULL,
     USERNAME		VARCHAR(40)		NOT NULL,
     STATEMENT		VARCHAR(50)		NOT NULL,
     COMMENT			VARCHAR(500)	DEFAULT '',
@@ -74,10 +72,10 @@ async function createAccount(body, username){
 
      await DB.asyncConnection.query(query)
 
-     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
      await DB.asyncConnection.query(query, [body.Name, body.Description, body.Normal, body.Category, body.SubCategory, 
-        body.InitialBalance, debit, credit, balance, DOC, username, body.Statement, body.Comment, 1], 
+        body.InitialBalance, debit, credit, balance, username, body.Statement, body.Comment, 1], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
