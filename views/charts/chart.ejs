@@ -60,12 +60,13 @@
             <%TextRow.forEach(element=>{%>
                 <tr>
                     <td>
+                        <a href=<%= "./viewLedger/"+element.NUMBER%>>
+                            <img  class='journal'src='/images/journal4.png'>
+                        </a>
                         <% if(userType=='Admin'){%>
                             <%let link=`./editAccount/${element.NUMBER}`%>
-                            <a href="./ledger"><img  class='journal'src='/images/journal4.png'></a>
                             <a href=<%=link%>><%=element.NAME%></a>
                         <%}else{%>
-                            <a href="./ledger"><img  class='journal'src='/images/journal4.png'></a>
                             <%=element.NAME%>
                         <%}%>
                     </td>
