@@ -62,11 +62,11 @@
                     <td>
                         <% if(userType=='Admin'){%>
                             <%let link=`./editAccount/${element.NUMBER}`%>
+                            <a href="./ledger"><img  class='journal'src='/images/journal4.png'></a>
                             <a href=<%=link%>><%=element.NAME%></a>
-                            <a href=<%="./viewLedger/"+element.NUMBER%>></a>
-                        <% }  else { %>
+                        <%}else{%>
+                            <a href="./ledger"><img  class='journal'src='/images/journal4.png'></a>
                             <%=element.NAME%>
-                            <a href=<%="./viewLedger/"+element.NUMBER%>></a>
                         <%}%>
                     </td>
                     <td><%=element.NUMBER%></td> 
