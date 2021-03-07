@@ -4,20 +4,19 @@ const DB = require("./DBConnection");
 async function accountExists(accountName, accountNumber){
 
     let query = `
-                 SELECT count(*) AS itExists FROM information_schema.tables WHERE table_schema = 'heroku_f886e82f73ac5d5'
-                 AND table_name = '${accountName}'
-                 UNION
-                 SELECT count(*) FROM MASTER WHERE NUMBER = ${accountNumber};`
+                 SELECT count(*) AS nameExists FROM information_schema.tables WHERE table_schema = 'heroku_f886e82f73ac5d5'
+                 AND table_name = '${accountName}'`
+
+    let query2 = ` SELECT count(*) AS numberExists FROM MASTER WHERE NUMBER = ${accountNumber};`
 
     let [rows] = await DB.asyncConnection.query(query)
 
-    //console.log([rows][0][0])
-    //console.log([rows][0][1].itExists)
+    let [rows2] = await DB.asyncConnection.query(query2)
 
-    if([rows][0][0].itExists == '1'){
+    if([rows][0][0].nameExists == '1'){
         return 'Account name already exists' 
     }
-    else if([rows][0][1].itExists == '1'){
+    else if([rows2][0][0].numberExists == '1'){
         return 'Account number already exists' 
     }
     else{
