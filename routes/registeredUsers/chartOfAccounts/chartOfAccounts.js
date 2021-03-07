@@ -32,14 +32,10 @@ router.get('/editAccount/:number', async (req,res) => {
 router.post('/editAccount/:number',async (req,res) => {
     let result = await edit.editAccount(req.body, req.user);
     if(result){
-        req.session.confirmationMessage=`Account edited succesfully`;
+        req.session.confirmationMessage=result;
     }
-    else{
-        req.session.confirmationMessage=`Denied: that account has a balance greater than 0 so it can't be deactivated`;
-    }
-
     req.session.Previous=`${req.baseUrl}/viewChart`;
-    req.session.confirmationData=result;
+   // req.session.confirmationData=result;
 
     res.redirect(`${req.baseUrl}/sucess`);
 
@@ -49,7 +45,7 @@ router.post('/addAccount', async (req,res) => {
     let result = await create.createAccount(req.body, req.user);
     if(result){
         req.session.confirmationMessage=result;
-        req.session.confirmationData=true;
+       // req.session.confirmationData=true;
         req.session.Previous=`${req.baseUrl}/viewChart`;
 
         res.redirect(`${req.baseUrl}/sucess`);
