@@ -95,7 +95,6 @@ async function createAccount(body, username){
             } 
     });
 
-    console.log(result)
 
     return 'Account created succesfully'
 
