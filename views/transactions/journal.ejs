@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal</title>
+    <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
 </head>
-<body>
-    
-</body>
+<%- include('../_partial/_header'); -%>
+
+    <body>
+        <table>
+            <tr>
+                <th>Account</th>
+                <th>Debits</th>
+                <th>Credit</th>
+                <th>Description</th>
+                <th>Name</th>
+            </tr>
+            <form action='' METHOD='POST'>
+                <tr>
+                    <td><input name='Account' type='text'></td>
+                    <td><input name='Credits' type='text'></td>
+                    <td><input name='Debits' type='text'></td>
+                    <td><input name='Description' type='text'></td>
+                    <td><input name='Name' type='text'></td>
+                    <td><button>Add Account</button></td>
+                </tr>
+                <tr id='totalRow'>
+                    <td>TOTALS</td>
+                    <td id='totalDebit'></td>
+                    <td id='totalCredit'></td>
+                </tr>
+                <button type='submit' value='submit'>Create Journal Entry</button>
+            </form>
+        </table>
+    </body>
+
 </html>
