@@ -16,8 +16,8 @@ router.get('/sucess',(req,res)=>{
 
 
 router.get('/confirmation',(req,res)=>{
-    let data=req.session.confirmationData;
-    let message=req.session.confirmationMessage;
+    let data=req.session.confirmationData ||'';
+    let message=req.session.confirmationMessage|| '';
     let back=req.session.Previous || `../../${req.session.userType.toLowerCase()}/dashboard`;
     delete req.session.Previous;
     delete req.session.confirmationData;
