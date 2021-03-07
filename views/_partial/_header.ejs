@@ -13,7 +13,8 @@
                     <img src='/images/profile.png'>
                     <li><a href="#">Welcome <%= currentUser %>  ! you are an <%=userType%></a></li>
                     <li><a class="navbar-brand" href="/">Mankara</a></li>
-                    <li><a href="/journal" class="tooltip" id="journalTool">Journal</a></li>
+                    <%let journalPageLink=`/./${userType.toLowerCase()}/journal`%>
+                    <li><a href=<%= journalPageLink%> class="tooltip" id="journalTool">Journal</a></li>
                     <li><a href="/logout" class="tooltip" id="logoutTool">Logout</a></li>
                     <%- include('../_partial/help/baseHelp'); -%>
 
