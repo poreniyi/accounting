@@ -1,27 +1,40 @@
 
 const DB = require("./DBConnection");
 
-async function accountExists(accountName){
+async function accountExists(accountName, accountNumber){
 
-    let query = `SELECT count(*) AS itExists FROM information_schema.tables WHERE table_schema = 'heroku_f886e82f73ac5d5'
-                 AND table_name = '${accountName}';`
+    let query = `
+                 SELECT count(*) AS itExists FROM information_schema.tables WHERE table_schema = 'heroku_f886e82f73ac5d5'
+                 AND table_name = '${accountName}'
+                 UNION
+                 SELECT count(*) FROM MASTER WHERE NUMBER = ${accountNumber};`
 
     let [rows] = await DB.asyncConnection.query(query)
 
+    //console.log([rows][0][0])
+    //console.log([rows][0][1].itExists)
+
     if([rows][0][0].itExists == '1'){
-        return true
+        return 'Account name already exists' 
+    }
+    else if([rows][0][1].itExists == '1'){
+        return 'Account number already exists' 
     }
     else{
-        return false
+        return false;
     }
 
 }
 
 async function createAccount(body, username){
+
     body.Name=body.Name.replace("'","");
     body.Name=body.Name.replace(' ','_');
-    if (await accountExists(body.Name) == true){
-        return false //'Account name already exists'
+
+    let exists = await accountExists(body.Name, body.Number) 
+
+    if (exists != false){
+        return exists
     }
   
     let credit =  Math.abs(body.Credit)
@@ -72,9 +85,9 @@ async function createAccount(body, username){
 
      await DB.asyncConnection.query(query)
 
-     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?)`
+     query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
-     await DB.asyncConnection.query(query, [body.Name, body.Description, body.Normal, body.Category, body.SubCategory, 
+     let [result] = await DB.asyncConnection.query(query, [body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
         body.InitialBalance, debit, credit, balance, username, body.Statement, body.Comment, 1], 
         function (err, result, fields) {
             if(err){
@@ -83,7 +96,9 @@ async function createAccount(body, username){
             } 
     });
 
-    return true
+    console.log(result)
+
+    return 'Account created succesfully'
 
 }
 

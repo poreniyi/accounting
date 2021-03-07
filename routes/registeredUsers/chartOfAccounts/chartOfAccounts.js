@@ -48,14 +48,14 @@ router.post('/addAccount', async (req,res) => {
 
     let result = await create.createAccount(req.body, req.user);
     if(result){
-        req.session.confirmationMessage=`Account created succesfully`;
-        req.session.confirmationData=result;
+        req.session.confirmationMessage=result;
+        req.session.confirmationData=true;
         req.session.Previous=`${req.baseUrl}/viewChart`;
 
         res.redirect(`${req.baseUrl}/sucess`);
     }
     else{
-        res.send("Unsuccesful")
+        res.send(result)
     }
  
 })
