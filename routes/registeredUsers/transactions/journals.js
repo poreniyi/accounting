@@ -14,7 +14,7 @@ router.post('/createJournal', (req, res) => {
 
 let data =
 {
-    "date": 01 / 01 / 2001,
+    "date": "01/01/2001",
     "PR": "PR",
     "Debit": 2000,
     "Credit": 3000,
