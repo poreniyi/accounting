@@ -9,7 +9,9 @@
     <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
 </head>
 <%- include('../_partial/_header'); -%>
+<%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
 
+    <button><a href=<%= addJournalLink%>>Create a journal entry</a></button>
     <body>
         <form id ='form' action='' METHOD='POST'>
             <table id='table'>
@@ -21,27 +23,9 @@
                 <th>Description</th>
                 <th>Name</th>
             </tr>
-                <tr>
-                    <td>1</td>
-                    <td><input required name='Account' type='text'></td>
-                    <td><input required name='Debits' type='number'></td>
-                    <td><input required name='Credits' type='number'></td>
-                    <td><input required name='Description' type='text'></td>
-                    <td><input name='Name' type='text'></td>
-                </tr>
-                <tr id='totalRow'>
-                    <td><b>TOTALS</b></td>
-                    <td></td>
-                    <td id='totalDebit'></td>
-                    <td id='totalCredit'></td>
-                    <td colspan="2" id='balanceMessage'></td>
-                </tr>
-                <button id='submitButton'  type='submit' value='submit'>Create Journal Entry</button>
-            </form>
+               
         </table>
-        <td><button id='addAccount'>Add Account</button></td>
-
-    <script src='/ejsscripts/transactions/journalScript.js'></script>
+>
     </body>
 
 </html>
