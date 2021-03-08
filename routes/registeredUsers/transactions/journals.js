@@ -12,4 +12,9 @@ router.post('/createJournal', (req, res) => {
     res.send(req.body);
 })
 
+router.get('/ledger', (req,res) => {
+
+    res.render('transactions/ledger')
+})
+
 module.exports = router;
