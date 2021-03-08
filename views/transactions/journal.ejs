@@ -11,31 +11,36 @@
 <%- include('../_partial/_header'); -%>
 
     <body>
-        <table>
+        <form id ='form' action='' METHOD='POST'>
+            <table id='table'>
             <tr>
+                <th>#</th>
                 <th>Account</th>
                 <th>Debits</th>
-                <th>Credit</th>
+                <th>Credits</th>
                 <th>Description</th>
                 <th>Name</th>
             </tr>
-            <form action='' METHOD='POST'>
                 <tr>
+                    <td>1</td>
                     <td><input name='Account' type='text'></td>
-                    <td><input name='Credits' type='text'></td>
-                    <td><input name='Debits' type='text'></td>
+                    <td><input name='Debits' type='number'></td>
+                    <td><input name='Credits' type='number'></td>
                     <td><input name='Description' type='text'></td>
                     <td><input name='Name' type='text'></td>
-                    <td><button>Add Account</button></td>
                 </tr>
                 <tr id='totalRow'>
-                    <td>TOTALS</td>
+                    <td><b>TOTALS</b></td>
+                    <td></td>
                     <td id='totalDebit'></td>
                     <td id='totalCredit'></td>
+                    <td colspan="2" id='balanceMessage'></td>
                 </tr>
-                <button type='submit' value='submit'>Create Journal Entry</button>
+                <button id='submitButton'  type='submit' value='submit'>Create Journal Entry</button>
             </form>
         </table>
+        <td><button id='addAccount'>Add Account</button></td>
+
     <script src='/ejsscripts/transactions/journalScript.js'></script>
     </body>
 
