@@ -7,7 +7,14 @@ let balanceMessage = document.getElementById('balanceMessage');
 let form = document.getElementById('form');
 let submitButton=document.getElementById('submitButton');
 let firstRow = htmlTable.rows[1];
+let resetButton=document.getElementById('resetButton');
 
+form.addEventListener('reset',()=>{
+    totalCredit.textContent='';
+    totalDebit.textContent='';
+    balanceMessage.textContent='';
+    balanceMessage.style.backgroundColor='';
+})
 
 firstRow.cells[2].children[0].addEventListener('keyup', () => {
     addTotal('Debits', totalDebit);
