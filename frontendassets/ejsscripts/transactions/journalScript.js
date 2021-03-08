@@ -60,6 +60,7 @@ addAccount.addEventListener('click', (e) => {
     debitInput.min=0;
     accountInput.type = 'text';
     accountInput.name = 'Account';
+    accountInput.required= true;
     credit.appendChild(creditInput);
     debit.appendChild(debitInput);
     account.appendChild(accountInput);
@@ -124,7 +125,7 @@ let makeBalanceMessage = () => {
         \n Please check the credit and debit values`
     } else {
         isBalanced=true;
-        message3 = "\u2713 Can be submitted";
+        message3 = "";
     }
     let isValidJournal=isCorrectLength&&hasValue&&isBalanced? true:false;
     if(isValidJournal){
