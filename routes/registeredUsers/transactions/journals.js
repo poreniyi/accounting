@@ -12,9 +12,19 @@ router.post('/createJournal', (req, res) => {
     res.send(req.body);
 })
 
-router.get('/ledger', (req,res) => {
+let data =
+{
+    "date": 01 / 01 / 2001,
+    "PR": "PR",
+    "Debit": 2000,
+    "Credit": 3000,
+    "Balance": "Total",
+    "Description": "sample text"
 
-    res.render('transactions/ledger')
+}
+
+router.get('/ledger', (req, res) => {
+    res.render('transactions/ledger', data)
 })
 
 module.exports = router;

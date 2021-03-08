@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
+
 <head>
     <link rel='stylesheet' href='/stylesheets/charts/viewChart.css'>
     <meta charset="UTF-8">
@@ -8,20 +9,43 @@
     <title>Chart of Accounts</title>
 </head>
 <%- include('../_partial/_header'); -%>
-<%- include('../_partial/help/viewChartHelp'); -%>
+    <%- include('../_partial/help/viewChartHelp'); -%>
 
-<body>
-    <body>
-            <table id='table'>
-            <tr>
-                <th>|Transaction Date|</th>
-                <th>PR|</th>
-                <th>Debits|</th>
-                <th>Credits|</th>
-                <th>Description|</th>
-            </tr>
-               
-        </table>
+        <body>
 
-    </body>
-</body>
+            <body>
+                <table id='table'>
+                    <tr>
+                        <th>|Transaction Date|</th>
+                        <th>PR|</th>
+                        <th>Debits|</th>
+                        <th>Credits|</th>
+                        <th>Balance|</th>
+                        <th>Description|</th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <%- date %> 
+                        </td>
+                        <td>
+                            <a href= <%- PR %>> Click to go to PR </a>
+                        </td>
+                        <td>
+                            <%- Debit %> 
+                        </td>
+                        <td>
+                            <%- Credit %> 
+                        </td>
+                        <td>
+                            <%- Balance %> 
+                        </td>
+                        <td>
+                            <%- Description %> 
+                        </td>
+                    </tr>
+
+                </table>
+
+            </body>
+        </body>
