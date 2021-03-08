@@ -54,8 +54,10 @@ addAccount.addEventListener('click', (e) => {
     let accountInput = document.createElement('input');
     creditInput.name = 'Credits';
     creditInput.type = 'number';
+    creditInput.min=0;
     debitInput.type = 'number';
     debitInput.name = 'Debits';
+    debitInput.min=0;
     accountInput.type = 'text';
     accountInput.name = 'Account';
     console.log(creditInput.form);
@@ -75,7 +77,6 @@ addAccount.addEventListener('click', (e) => {
         addTotal('Debits', totalDebit);
     })
 })
-tableRows.push(htmlTable.rows[1]);
 
 addTotal = (column, accumulator) => {
     let string = `input[name=${column}]`

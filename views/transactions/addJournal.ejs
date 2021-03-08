@@ -18,15 +18,13 @@
                 <th>Debits</th>
                 <th>Credits</th>
                 <th>Description</th>
-                <th>Name</th>
             </tr>
                 <tr>
                     <td>1</td>
                     <td><input required name='Account' type='text'></td>
-                    <td><input required name='Debits' type='number'></td>
-                    <td><input required name='Credits' type='number'></td>
+                    <td><input required name='Debits' min=0 type='number'></td>
+                    <td><input required name='Credits' min=0 type='number'></td>
                     <td><input required name='Description' type='text'></td>
-                    <td><input name='Name' type='text'></td>
                 </tr>
                 <tr id='totalRow'>
                     <td><b>TOTALS</b></td>
