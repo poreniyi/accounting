@@ -7,10 +7,10 @@ async function editAccount(body, username){
     let checkBalance = parseInt(body.Balance,10)
 
     if(body.Status == '0' && checkBalance != 0){
-        return false;
+        return `Denied: that account has a balance greater than 0 so it can't be deactivated`;
     }
 
-    let query = `CALL Edit_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
+    let query = `CALL Edit_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
     let credit =  Math.abs(body.Credit)
     let debit = Math.abs(body.Debit)
@@ -25,7 +25,7 @@ async function editAccount(body, username){
         balance = initialBalance + (credit - debit);
     }
 
-    DB.asyncConnection.query(query, ['admin', body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
+    let [rows] = await DB.asyncConnection.query(query, [body.OriginalNumber, body.OriginalName, 'admin', body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
         initialBalance, debit, credit, balance, username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){
@@ -33,7 +33,8 @@ async function editAccount(body, username){
                 throw err;
             } 
     });
-    return true
+
+    return [rows][0][0][0].message || [rows][0][2][0].message;
 }
 
 // used to add credits and/or debits, which also changes the balance

@@ -85,11 +85,11 @@
                     <th>Edit Field</th>
                     <tr>
                         <th>Name</th>
-                        <td class='formInput'><input name='Name' type="text"value=<%=NAME %> readonly ></td>
+                        <td class='formInput'><input name='Name' type="text"value=<%=NAME %>></td>
                     </tr>
                     <tr>
                         <th>Number</th>
-                        <td class='formInput'><input name='Number' type="text"value=<%=NUMBER %> readonly ></td>
+                        <td class='formInput'><input name='Number' type="text"value=<%=NUMBER %> ></td>
                     </tr>
                     <tr>
                         <th>Description</th>
@@ -166,6 +166,8 @@
                             </select>
                         </td>
                     </tr>
+                    <td hidden class='formInput'><input name='OriginalName' type="text" value=<%=NAME %>></td>
+                    <td hidden class='formInput'><input name='OriginalNumber' type="text" value=<%=NUMBER %>></td>
                 </table>
                 <button type="submit">Submit</button>
             </form>
