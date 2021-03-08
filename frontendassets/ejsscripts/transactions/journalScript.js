@@ -8,8 +8,6 @@ let form = document.getElementById('form');
 let submitButton=document.getElementById('submitButton');
 let firstRow = htmlTable.rows[1];
 
-console.log(firstRow.cells[2].children[0]);
-console.log(firstRow.cells[3].children[0]);
 
 firstRow.cells[2].children[0].addEventListener('keyup', () => {
     addTotal('Debits', totalDebit);
@@ -87,12 +85,17 @@ let makeBalanceMessage = () => {
     let balance = Number(totalCredit.textContent) - Number(totalDebit.textContent)
     if (balance > 0) {
         submitButton.style.visibility='hidden';
-        balanceMessage.textContent = `Credits are ${balance} higher than Debits`
+        balanceMessage.textContent = `Credits are ${balance} higher than Debits
+        \n Please check the credit and debit values`
+        balanceMessage.style.backgroundColor='red';
     } else if (balance < 0) {
         submitButton.style.visibility='hidden';
-        balanceMessage.textContent = `Credits are ${balance}lower than Debits`
+        balanceMessage.textContent = `Credits are ${balance}lower than Debits
+        \n Please check the credit and debit values`
+        balanceMessage.style.backgroundColor='red';
     } else {
         submitButton.style.visibility='visible';
-        balanceMessage.textContent = `good to go`;
+        balanceMessage.textContent = "\u2713 Can be submitted";
+        balanceMessage.style.backgroundColor='green';
     }
 }
