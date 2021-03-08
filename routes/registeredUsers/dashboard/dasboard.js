@@ -10,6 +10,13 @@ router.get('/dashboard',(req,res)=>{
     res.render('dashboard/dashboard.ejs');
 });
 
+router.get('/notifications', (req,res)=>{
+    if(req.session.userType!="Manager"){
+        redirect('dashboard');
+    }
+    res.render('dashboard/notifications');
+})
+
 router.get('/sucess',(req,res)=>{
     res.redirect('confirmation');
 });
