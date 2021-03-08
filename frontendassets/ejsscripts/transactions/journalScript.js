@@ -10,19 +10,10 @@ let firstRow = htmlTable.rows[1];
 let resetButton = document.getElementById('resetButton');
 let isValidJournal = false;
 form.addEventListener('reset', (e) => {
-    // totalCredit.textContent = '';
-    // totalDebit.textContent = '';
-    // balanceMessage.textContent = '';
-    // balanceMessage.style.backgroundColor = '';
-    e.preventDefault();
-    let val = firstRow.cells[1].children[0].value;
-    let isCorrectName = isValidAccount(val)
-    if (!isCorrectName) {
-        alert('invalid Account Name');
-    } else {
-        console.log(`submittede`);
-    }
-    return val;
+    totalCredit.textContent = '';
+    totalDebit.textContent = '';
+    balanceMessage.textContent = '';
+    balanceMessage.style.backgroundColor = '';
 })
 form.addEventListener('submit', (e) => {
     e.preventDefault();
