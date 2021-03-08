@@ -60,7 +60,6 @@ addAccount.addEventListener('click', (e) => {
     debitInput.min=0;
     accountInput.type = 'text';
     accountInput.name = 'Account';
-    console.log(creditInput.form);
     credit.appendChild(creditInput);
     debit.appendChild(debitInput);
     account.appendChild(accountInput);
@@ -91,19 +90,50 @@ addTotal = (column, accumulator) => {
 
 let makeBalanceMessage = () => {
     let balance = Number(totalCredit.textContent) - Number(totalDebit.textContent)
-    if (balance > 0) {
-        submitButton.style.visibility='hidden';
-        balanceMessage.textContent = `Credits are ${balance} higher than Debits
+    let message1,message3,message2;
+    let isCorrectLength,hasValue,isBalanced;
+    if(htmlTable.rows.length==3){
+        message1 = "Please add another account";
+        isCorrectLength=false;
+    }else {
+        message1 = "";
+        isCorrectLength=true
+    }
+    for(let i=1;i<htmlTable.rows.length-1;i++){   
+     let row=htmlTable.rows[i].cells;
+        let credit=row[3].children[0];
+        let debit=row[2].children[0];
+        let debitValue=Number(debit.value);
+        let creditValue=Number(credit.value);
+        if(!debitValue&&!creditValue){
+            hasValue=false;
+            message2 = "Make sure every account has at least 1 debit or credit";
+            console.log(`credit:${creditValue} debit:${debitValue}`);
+            console.log(`row${i+1} is the problem`);
+        }else{
+            message2='';
+            hasValue=true;
+        }
+    } if (balance > 0) {
+        isBalanced=false;
+        message3 = `Credits are ${balance} higher than Debits
         \n Please check the credit and debit values`
-        balanceMessage.style.backgroundColor='red';
     } else if (balance < 0) {
-        submitButton.style.visibility='hidden';
-        balanceMessage.textContent = `Credits are ${balance}lower than Debits
+        isBalanced=false;
+        message3 = `Credits are ${balance}lower than Debits
         \n Please check the credit and debit values`
-        balanceMessage.style.backgroundColor='red';
     } else {
+        isBalanced=true;
+        message3 = "\u2713 Can be submitted";
+    }
+    let isValidJournal=isCorrectLength&&hasValue&&isBalanced? true:false;
+    if(isValidJournal){
         submitButton.style.visibility='visible';
-        balanceMessage.textContent = "\u2713 Can be submitted";
         balanceMessage.style.backgroundColor='green';
+        balanceMessage.textContent = "\u2713 Can be submitted";
+    }else{
+        submitButton.style.visibility='hidden';
+        balanceMessage.style.backgroundColor='red';
+        balanceMessage.textContent=message1+message2+message3;
     }
 }
