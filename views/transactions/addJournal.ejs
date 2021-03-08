@@ -12,7 +12,7 @@
 
     <body>
         <form id='form' action='' METHOD='POST'>
-            <datalist id='AccountNames'>
+            <datalist id='AccountNamesList'>
                 <!-- Add account names from a query here -->
                 <option value="Happy">
                 <option value="Sad">
@@ -30,8 +30,7 @@
                 </tr>
                 <tr>
                     <td>1</td>
-                    <td><input list='AccountNames' required name='Account' type='text'></td>
-                    <!-- <td><input required name='Account' type='text'></td> -->
+                    <td><input required name='Account' type='text' list='AccountNamesList'></td>
                     <td><input required name='Debits' min=0 type='number'></td>
                     <td><input required name='Credits' min=0 type='number'></td>
                     <td><input required name='Description' type='text'></td>
