@@ -32,10 +32,27 @@ async function getJournalTransactions(){
     
     var previous;
     var current;
-
+    var check;
     for(var i = 0; i < [rows][0].length; i++){
-        data.TextRow.push([rows][0][i])
+        
+        current = [rows][0][i]
+        if(i > 0){
+            if([rows][0][i-1].ID != ''){
+                previous = [rows][0][i-1];
+            }
+           if(current.ID == previous.ID){
+                console.log(current)
+                 current.ID = ''
+                 current.DATE = ''
+                 current.DESCRIPTION = ''
+                 current.USERNAME = ''
+                 current.STATUS = ''
+             }
+        }
+        data.TextRow.push(current)
     }
+
+    //console.log(data)
 
     return data;
 }
