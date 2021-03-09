@@ -1,11 +1,14 @@
 let express = require('express');
 let router = express.Router();
+let getAccountNames=require('../../../database/SearchAccount').getAccountNames;
 
 router.get('/journal', (req, res) => {
     res.render('transactions/journal')
 })
-router.get('/createJournal', (req, res) => {
-    res.render('transactions/addJournal');
+router.get('/createJournal', async(req, res) => {
+    let accountNames=await getAccountNames();
+    console.log(accountNames[0]);
+    res.render('transactions/addJournal',{accountNames});
 })
 router.post('/createJournal', (req, res) => {
     //res.render('');
