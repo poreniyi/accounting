@@ -12,8 +12,6 @@
 
     <body>
         <form id='form' action='' METHOD='POST'>
-                   <%= accountNames[0]%>
-
             <datalist id='AccountNamesList'>
                 <%accountNames.forEach(element=>{ %>
                     <option value=<%=element%>>
@@ -32,7 +30,8 @@
                     <td><input required name='Account' type='text' list='AccountNamesList'></td>
                     <td><input required name='Debits' min=0 type='number'></td>
                     <td><input required name='Credits' min=0 type='number'></td>
-                    <td><input required name='Description' type='text'></td>
+                    <td><textarea cols="50" rows="4" name='Description' form='form'></textarea>
+                    </td>
                 </tr>
                 <tr id='totalRow'>
                     <td><b>TOTALS</b></td>
