@@ -80,7 +80,9 @@ async function getEventLog(table){
 
 async function deleteAccount(table){
 
-    let query = `DROP TABLE ${table}; DELETE FROM MASTER WHERE NAME = '${table}'`
+    let ledger = table + "_ledger"
+
+    let query = `DROP TABLE ${table}; DROP TABLE ${ledger}; DELETE FROM MASTER WHERE NAME = '${table}';`
 
     DB.asyncConnection.query(query)
 
