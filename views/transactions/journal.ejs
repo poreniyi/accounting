@@ -26,6 +26,8 @@
                 <th>Status</th>
             </tr>
             <%TextRow.forEach(element=>{%>
+                <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
+
                 <tr>
                     <td>
                         <%=element.DATE%>
@@ -34,10 +36,10 @@
                         <a href=<%= "./ledger/"+element.ACCOUNT%>>
                     </td>
                     <td>
-                        <%=element.DEBIT%>
+                        <%=formatter.format(element.DEBIT)%>
                     </td>
                     <td>
-                        <%=element.CREDIT%>
+                        <%=formatter.format(element.CREDIT)%>
                     </td>
                     <td>
                         <%=element.DESCRIPTION%>
