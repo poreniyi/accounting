@@ -99,8 +99,9 @@ addTotal = (column, accumulator) => {
 
 let makeBalanceMessage = () => {
     let balance = Number(totalCredit.textContent) - Number(totalDebit.textContent)
-    let message1, message3, message2;
+    let message1, message3, message2,message4;
     let isCorrectLength, hasValue, isBalanced;
+    let namesAreUnique=true;
     if (htmlTable.rows.length == 3) {
         message1 = "Please add another account";
         isCorrectLength = false;
@@ -108,10 +109,20 @@ let makeBalanceMessage = () => {
         message1 = "";
         isCorrectLength = true
     }
+    let AccountNamesList=[];
     for (let i = 1; i < htmlTable.rows.length - 1; i++) {
         let row = htmlTable.rows[i].cells;
         let credit = row[3].children[0];
         let debit = row[2].children[0];
+        let account = row[1].children[0];
+       // let accountValue=account.value ||acc
+       AccountNamesList.push(account.value);
+       if(AccountNamesList.includes(account.value)){
+           namesAreUnique=false;
+           message4="An account name is repeated please check"
+       }else{
+           message4='';
+       }
         let debitValue = Number(debit.value);
         let creditValue = Number(credit.value);
         if (!debitValue && !creditValue) {
@@ -135,7 +146,7 @@ let makeBalanceMessage = () => {
         isBalanced = true;
         message3 = "";
     }
-    isValidJournal = isCorrectLength && hasValue && isBalanced ? true : false;
+    isValidJournal = namesAreUnique&&isCorrectLength && hasValue && isBalanced ? true : false;
     if (isValidJournal) {
         submitButton.style.visibility = 'visible';
         balanceMessage.style.backgroundColor = 'green';
@@ -143,7 +154,7 @@ let makeBalanceMessage = () => {
     } else {
         submitButton.style.visibility = 'hidden';
         balanceMessage.style.backgroundColor = 'red';
-        balanceMessage.textContent = message1 + message2 + message3;
+        balanceMessage.textContent = message1 + message2 + message3+message4;
     }
 }
 
