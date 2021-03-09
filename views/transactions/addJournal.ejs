@@ -25,13 +25,19 @@
                     <th>Credits</th>
                     <th>Description</th>
                 </tr>
-                <tr>
+                <tr class='inputRow'>
                     <td>1</td>
                     <td><input required name='Account' type='text' list='AccountNamesList'></td>
-                    <td><input required name='Debits' min=0 type='number'></td>
-                    <td><input required name='Credits' min=0 type='number'></td>
+                    <td><input required name='Debits' value =0 min=0 type='number'></td>
+                    <td><input required name='Credits' value =0 min=0 type='number'></td>
                     <td><textarea cols="50" rows="4" name='Description' form='form'></textarea>
                     </td>
+                </tr>
+                <tr class='inputRow'>
+                    <td>2</td>
+                    <td><input required name='Account' type='text' list='AccountNamesList'></td>
+                    <td><input required name='Debits' value =0 min=0 type='number'></td>
+                    <td><input required name='Credits' value =0 min=0 type='number'></td>
                 </tr>
                 <tr id='totalRow'>
                     <td><b>TOTALS</b></td>
