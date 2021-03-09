@@ -45,7 +45,7 @@
                         <%=element.DESCRIPTION%>
                     </td>
                     <td>
-                        <%=element.ID%>
+                       <a href=<%=`./viewTransaction/${element.ID}`%>> <%=element.ID%></a>
                     </td>
                     <td>
                         <%=element.USERNAME%>
@@ -53,6 +53,7 @@
                     <td>
                         <%=element.STATUS%>
                     </td>
+                    
                 </tr>
                 <% })%>
         </table>
