@@ -16,6 +16,7 @@
         <form id ='form' action='' METHOD='POST'>
             <table id='table'>
             <tr>
+                <th>Date</th>
                 <th>Account Names</th>
                 <th>Debits</th>
                 <th>Credits</th>
@@ -26,6 +27,9 @@
             </tr>
             <%TextRow.forEach(element=>{%>
                 <tr>
+                    <td>
+                        <%=element.DATE%>
+                    </td>
                     <td>
                         <%=element.NAME%>
                     </td>
