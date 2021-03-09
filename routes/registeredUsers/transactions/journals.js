@@ -7,7 +7,6 @@ let journal = require('../../../database/Journal');
 router.get('/journal', async (req, res) => {
 
     let data = await journal.getJournalTransactions()
-    console.log(data)
     res.render('transactions/journal', data)
 })
 router.get('/createJournal', async(req, res) => {

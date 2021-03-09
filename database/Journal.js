@@ -26,6 +26,24 @@ async function getJournalTransactions(){
 
     let query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY ID ASC`
 
+    var [rows] = await DB.asyncConnection.query(query)
+
+    var data = { TextRow: [] }
+    
+    var previous;
+    var current;
+
+    for(var i = 0; i < [rows][0].length; i++){
+        data.TextRow.push([rows][0][i])
+    }
+
+    return data;
+}
+
+async function getTransactionsByID(id){
+
+    let query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL WHERE ID = ${id};`
+
     let [rows] = await DB.asyncConnection.query(query)
 
     var data= { TextRow: [] }
@@ -34,12 +52,14 @@ async function getJournalTransactions(){
         data.TextRow.push([rows][0][i])
     }
 
-    return data;
+   return data
 }
 
+getTransactionsByID(100000)
 
 module.exports = {
     createTransaction:createTransaction,
     getTransactionID:getTransactionID,
-    getJournalTransactions:getJournalTransactions
+    getJournalTransactions:getJournalTransactions,
+    getTransactionsByID:getTransactionsByID
 }
