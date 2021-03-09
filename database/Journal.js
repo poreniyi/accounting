@@ -24,7 +24,7 @@ async function createTransaction(username, account,  description, debit, credit,
 
 async function getJournalTransactions(){
 
-    let query = `SELECT * FROM JOURNAL`
+    let query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY ID ASC`
 
     let [rows] = await DB.asyncConnection.query(query)
 

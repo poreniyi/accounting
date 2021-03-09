@@ -14,8 +14,6 @@ async function findLedger(name){
         data.TextRow.push([rows][0][i])
     }
 
-    console.log(data)
-
     return data
 
 }

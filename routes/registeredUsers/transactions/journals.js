@@ -4,8 +4,11 @@ let getAccountNames=require('../../../database/SearchAccount').getAccountNames;
 let ledgerSearch = require('../../../database/Ledger');
 let journal = require('../../../database/Journal');
 
-router.get('/journal', (req, res) => {
-    res.render('transactions/journal')
+router.get('/journal', async (req, res) => {
+
+    let data = await journal.getJournalTransactions()
+    console.log(data)
+    res.render('transactions/journal', data)
 })
 router.get('/createJournal', async(req, res) => {
     let accountNames=await getAccountNames();
@@ -22,7 +25,7 @@ router.post('/createJournal', async (req, res) => {
 })
 
 router.get('/ledger/:name',async (req,res)=>{
-    let data = await ledgerSearch.findLedger(req.params.name)
+    let data = await ledgerSearch.findLedger(req.params.Account)
     res.render('transactions/ledger', data);
 })
 
