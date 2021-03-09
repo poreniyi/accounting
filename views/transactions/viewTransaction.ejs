@@ -9,8 +9,47 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-    
     <button id='Reject'>Approve Transaction</button>
     <button id='Reject'>Reject Transaction</button>
+
+    <table id='table'>
+        <tr>
+            <th>#</th>
+            <th>Account</th>
+            <th>Debits</th>
+            <th>Credits</th>
+            <th>Description</th>
+        </tr>
+        <%TextRow.forEach(element=>{%>
+            <tr>
+                <td>
+                    <%=element.DATE%>
+                </td>
+                <td>
+                    <%=element.ID%>
+                </td>
+                <td>
+                    <%=element.USERNAME%>
+                </td>
+                <td>
+                    <%=element.ACCOUNT%>
+                </td>
+                <td>
+                    <%=element.DEBIT%>
+                </td>
+                <td>
+                    <%=element.CREDIT%>
+                </td>
+                <td>
+                    <%=element.DESCRIPTION%>
+                </td>
+                <td>
+                    <%=element.STATUS%>
+                </td>
+                <td>
+                    <%=element.COMMENT%>
+                </td>
+            </tr>
+            <% })%>
 </body>
 </html>

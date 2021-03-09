@@ -23,9 +23,10 @@ router.post('/createJournal', async (req, res) => {
     res.send('Transaction has been sent and is pending approval');
 })
 
-router.get('/viewtransaction/:id',(req,res)=>{
+router.get('/viewtransaction/:id',async (req,res)=>{
     console.log(req.params.id);
-    res.render('transactions/viewTransaction');
+    let data = await journal.getTransactionsByID(req.params.id)
+    res.render('transactions/viewTransaction', data);
 })
 
 router.get('/ledger/:name',async (req,res)=>{
