@@ -7,7 +7,6 @@ router.get('/journal', (req, res) => {
 })
 router.get('/createJournal', async(req, res) => {
     let accountNames=await getAccountNames();
-    console.log(accountNames[0]);
     res.render('transactions/addJournal',{accountNames});
 })
 router.post('/createJournal', (req, res) => {
