@@ -9,6 +9,9 @@ let submitButton = document.getElementById('submitButton');
 let firstRow = htmlTable.rows[1];
 let resetButton = document.getElementById('resetButton');
 let isValidJournal = false;
+let inputRows = [...document.getElementsByClassName('inputRow')];
+let accountNamesAreUnique = true;
+
 form.addEventListener('reset', (e) => {
     totalCredit.textContent = '';
     totalDebit.textContent = '';
@@ -21,8 +24,10 @@ form.addEventListener('submit', (e) => {
     let isCorrectName = isValidAccount(val)
     if (!isCorrectName) {
         alert('invalid Account Name');
-    } else if (!isValidJournal) { 
+    } else if (!isValidJournal) {
         alert('fix errors');
+    } else if (!accountNamesAreUnique) {
+        alert(`There are duplicate Account names`);
     }
     else {
         form.submit();
@@ -30,15 +35,21 @@ form.addEventListener('submit', (e) => {
     return val;
 })
 
-
-
-firstRow.cells[2].children[0].addEventListener('input', () => {
-    addTotal('Debits', totalDebit);
+inputRows.forEach(element => {
+    element.cells[2].children[0].addEventListener('input', () => {
+        addTotal('Debits', totalDebit);
+    })
+    element.cells[3].children[0].addEventListener('input', () => {
+        addTotal('Credits', totalCredit);
+    })
+    element.cells[1].children[0].addEventListener('input', () => {
+        checkUniqueNames();
+    })
+    console.log();
 })
 
-firstRow.cells[3].children[0].addEventListener('input', () => {
-    addTotal('Credits', totalCredit);
-})
+
+
 
 addAccount.addEventListener('click', (e) => {
     e.preventDefault();
@@ -75,6 +86,9 @@ addAccount.addEventListener('click', (e) => {
     accountInput.setAttribute('list', 'AccountNamesList')
     accountInput.list = 'AccountNamesList';
     accountInput.required = true;
+    accountInput.addEventListener('input',()=>{
+        checkUniqueNames();
+    })
     credit.appendChild(creditInput);
     debit.appendChild(debitInput);
     account.appendChild(accountInput);
@@ -99,30 +113,17 @@ addTotal = (column, accumulator) => {
 
 let makeBalanceMessage = () => {
     let balance = Number(totalCredit.textContent) - Number(totalDebit.textContent)
-    let message1, message3, message2,message4;
+    let message3, message2;
     let isCorrectLength, hasValue, isBalanced;
-    let namesAreUnique=true;
-    if (htmlTable.rows.length == 3) {
-        message1 = "Please add another account";
-        isCorrectLength = false;
-    } else {
-        message1 = "";
-        isCorrectLength = true
-    }
-    let AccountNamesList=[];
+    let namesAreUnique = true;
+
+    let AccountNamesList = [];
     for (let i = 1; i < htmlTable.rows.length - 1; i++) {
         let row = htmlTable.rows[i].cells;
         let credit = row[3].children[0];
         let debit = row[2].children[0];
         let account = row[1].children[0];
-       // let accountValue=account.value ||acc
-       AccountNamesList.push(account.value);
-       if(AccountNamesList.includes(account.value)){
-           namesAreUnique=false;
-           message4="An account name is repeated please check"
-       }else{
-           message4='';
-       }
+
         let debitValue = Number(debit.value);
         let creditValue = Number(credit.value);
         if (!debitValue && !creditValue) {
@@ -146,7 +147,7 @@ let makeBalanceMessage = () => {
         isBalanced = true;
         message3 = "";
     }
-    isValidJournal = namesAreUnique&&isCorrectLength && hasValue && isBalanced ? true : false;
+    isValidJournal = hasValue && isBalanced ? true : false;
     if (isValidJournal) {
         submitButton.style.visibility = 'visible';
         balanceMessage.style.backgroundColor = 'green';
@@ -154,10 +155,24 @@ let makeBalanceMessage = () => {
     } else {
         submitButton.style.visibility = 'hidden';
         balanceMessage.style.backgroundColor = 'red';
-        balanceMessage.textContent = message1 + message2 + message3+message4;
+        balanceMessage.textContent = message2 + message3;
     }
 }
-
+let checkUniqueNames = () => {
+    AccountNamesList = [];
+    accountNamesAreUnique = true;
+    let namesList = [...document.querySelectorAll("input[name=Account]")];
+    namesList.forEach(element => {
+        AccountNamesList.push(element.value);
+        if (element.value &&AccountNamesList.includes(element.value)) {
+            console.log(`Names are not unique`);
+            accountNamesAreUnique = false;
+            return;
+        }
+    })
+    console.log(AccountNamesList);
+    console.log(`Account Names are unique?:${accountNamesAreUnique}`);
+}
 let isValidAccount = () => {
     let accountInputs = [...document.querySelectorAll("input[name='Account']")];
     let isValid = true;
