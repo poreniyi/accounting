@@ -14,11 +14,15 @@
 
     <table id='table'>
         <tr>
-            <th>#</th>
-            <th>Account</th>
-            <th>Debits</th>
-            <th>Credits</th>
+            <th>Date</th>
+            <th>Transaction ID</th>
+            <th>Creator</th>
+            <th>Account Affected</th>
+            <th>Debit</th>
+            <th>Credit</th>
             <th>Description</th>
+            <th>Status</th>
+            <th>Comment</th>
         </tr>
         <%TextRow.forEach(element=>{%>
             <tr>
@@ -47,7 +51,7 @@
                     <%=element.STATUS%>
                 </td>
                 <td>
-                    <%=element.COMMENT%>
+                    <input name='Comment' type='text'>
                 </td>
             </tr>
             <% })%>
