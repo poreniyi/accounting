@@ -86,7 +86,7 @@ async function createAccount(body, username){
 
      query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
-     let [result] = await DB.asyncConnection.query(query, [body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
+     await DB.asyncConnection.query(query, [body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
         body.InitialBalance, debit, credit, balance, username, body.Statement, body.Comment, 1], 
         function (err, result, fields) {
             if(err){
