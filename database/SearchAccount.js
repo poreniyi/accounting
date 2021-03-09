@@ -4,9 +4,17 @@ const account = require("./CreateAccount");
 
 async function getAccountNames(){
 
-    let query = `SELECT * FROM MASTER`;
+    let query = `SELECT NAME FROM MASTER`;
 
     let [result] = await DB.asyncConnection.query(query)
+
+    var data = [];
+    
+    for(var i = 0; i < result.length; i++){
+        data.push(result[i].NAME)
+    }
+
+    console.log(data)
 
    return result
 
@@ -71,6 +79,8 @@ async function getEventLog(table){
 
     return data;
 }
+
+getAccountNames()
 
 module.exports= {
     searchByName:searchByName,
