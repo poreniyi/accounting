@@ -27,4 +27,10 @@ router.get('/ledger', (req, res) => {
     res.render('transactions/ledger', data)
 })
 
+// router.get('/ledger/:name',async (req,res)=>{
+    // let data = await search.(ledgerQueryFunction)(req.params.name)
+    // res.render('transactions/ledger', data);
+// })
+//Function to get ledger based on name is still needed for this route
+
 module.exports = router;
