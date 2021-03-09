@@ -21,8 +21,38 @@
                 <th>Debits</th>
                 <th>Credits</th>
                 <th>Description</th>
+                <th>Transaction ID</th>
+                <th>Creator</th>
+                <th>Status</th>
             </tr>
-               
+            <%TextRow.forEach(element=>{%>
+                <tr>
+                    <td>
+                        <%=element.NAME%>
+                    </td>
+                    <td>
+                        <%=element.NUMBER%>
+                    </td>
+                    <td>
+                        <%=element.DEBIT%>
+                    </td>
+                    <td>
+                        <%=element.CREDIT%>
+                    </td>
+                    <td>
+                        <%=element.DESCRIPTION%>
+                    </td>
+                    <td>
+                        <%=element.ID%>
+                    </td>
+                    <td>
+                        <%=element.USERNAME%>
+                    </td>
+                    <td>
+                        <%=element.STATUS%>
+                    </td>
+                </tr>
+                <% })%>
         </table>
 
     </body>
