@@ -37,9 +37,9 @@ async function getJournalTransactions(){
     return data;
 }
 
-getJournalTransactions()
 
 module.exports = {
     createTransaction:createTransaction,
-    getTransactionID:getTransactionID
+    getTransactionID:getTransactionID,
+    getJournalTransactions:getJournalTransactions
 }
