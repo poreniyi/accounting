@@ -25,7 +25,7 @@ router.post('/createJournal', async (req, res) => {
 })
 
 router.get('/ledger/:name',async (req,res)=>{
-    let data = await ledgerSearch.findLedger(req.params.Account)
+    let data = await ledgerSearch.findLedger(req.params.name)
     res.render('transactions/ledger', data);
 })
 
