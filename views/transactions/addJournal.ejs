@@ -12,13 +12,12 @@
 
     <body>
         <form id='form' action='' METHOD='POST'>
+                   <%= accountNames[0]%>
+
             <datalist id='AccountNamesList'>
-                <!-- Add account names from a query here -->
-                <option value="Happy">
-                <option value="Sad">
-                <option value="Excited">
-                <option value="Nervous">
-                <option value="Bordeom">
+                <%accountNames.forEach(element=>{ %>
+                    <option value=<%=element%>>
+                        <%})%>
             </datalist>
             <table id='table'>
                 <tr>
