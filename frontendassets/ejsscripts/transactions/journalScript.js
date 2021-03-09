@@ -163,9 +163,9 @@ let checkUniqueNames = () => {
     accountNamesAreUnique = true;
     let namesList = [...document.querySelectorAll("input[name=Account]")];
     namesList.forEach(element => {
-        AccountNamesList.push(element.value);
-        if (element.value &&AccountNamesList.includes(element.value)) {
-            console.log(`Names are not unique`);
+        if (element.value && !AccountNamesList.includes(element.value)) {
+            AccountNamesList.push(element.value);
+        }else{
             accountNamesAreUnique = false;
             return;
         }
