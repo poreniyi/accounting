@@ -60,7 +60,7 @@
             <%TextRow.forEach(element=>{%>
                 <tr>
                     <td>
-                        <a href= "./ledger/">
+                        <a href=<%= "./ledger/"+element.NAME%>>
                             <img  class='journal'src='/images/journal4.png'>
                         </a>
                         <% if(userType=='Admin'){%>
