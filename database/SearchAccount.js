@@ -14,9 +14,7 @@ async function getAccountNames(){
         data.push(result[i].NAME)
     }
 
-    console.log(data)
-
-   return result
+   return data
 
 }
 
