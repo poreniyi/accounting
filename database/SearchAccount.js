@@ -2,6 +2,16 @@
 const DB = require("./DBConnection");
 const account = require("./CreateAccount");
 
+async function getAccountNames(){
+
+    let query = `SELECT * FROM MASTER`;
+
+    let [result] = await DB.asyncConnection.query(query)
+
+   return result
+
+}
+
 async function searchByName(accountName){
 
     let check = await account.accountExists(accountName)
@@ -62,10 +72,10 @@ async function getEventLog(table){
     return data;
 }
 
-
 module.exports= {
     searchByName:searchByName,
     searchByNumber:searchByNumber,
     getAllAccounts:getAllAccounts,
-    getEventLog:getEventLog
+    getEventLog:getEventLog,
+    getAccountNames:getAccountNames
 }
