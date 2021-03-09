@@ -23,27 +23,28 @@
                         <th>Balance|</th>
                         <th>Description|</th>
                     </tr>
-
-                    <tr>
-                        <td>
-                            <%- date %> 
-                        </td>
-                        <td>
-                            <a href= <%- PR %>> Click to go to PR </a>
-                        </td>
-                        <td>
-                            <%- Debit %> 
-                        </td>
-                        <td>
-                            <%- Credit %> 
-                        </td>
-                        <td>
-                            <%- Balance %> 
-                        </td>
-                        <td>
-                            <%- Description %> 
-                        </td>
-                    </tr>
+                    <%TextRow.forEach(element=>{%>
+                        <tr>
+                            <td>
+                                <%=element.DATE%>
+                            </td>
+                            <td>
+                                <a href=<%=element.ID%>> Click to go to PR </a>
+                            </td>
+                            <td>
+                                <%=element.DEBIT%>
+                            </td>
+                            <td>
+                                <%=element.CREDIT%>
+                            </td>
+                            <td>
+                                <%=element.BALANCE%>
+                            </td>
+                            <td>
+                                <%=element.DESCRIPTION%>
+                            </td>
+                        </tr>
+                        <% })%>
 
                 </table>
 
