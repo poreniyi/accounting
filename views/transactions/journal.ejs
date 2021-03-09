@@ -14,6 +14,16 @@
     <button><a href=<%= addJournalLink%>>Create a journal entry</a></button>
     <body>
         <form id ='form' action='' METHOD='POST'>
+            <label for='search'>Search:</label><input id='search' type='text'>
+            <select id='select'>
+                <option value=1>Account Names</option>
+                <option value=2>Amount</option>
+                <option value=3>Description</option>
+                <option value=0>Submitter</option>
+                <option value=0>Transaction ID</option>
+                <option value=0>Date</option>
+
+            </select>
             <table id='table'>
             <tr>
                 <th>Date</th>
@@ -57,7 +67,7 @@
                 </tr>
                 <% })%>
         </table>
-        <script src='/ejsscripts/viewJournal.js'></script>
+        <script src='/ejsscripts/transactions/viewJournal.js'></script>
 
     </body>
 
