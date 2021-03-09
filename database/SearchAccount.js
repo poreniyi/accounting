@@ -80,12 +80,19 @@ async function getEventLog(table){
     return data;
 }
 
-getAccountNames()
+async function deleteAccount(table){
+
+    let query = `DROP TABLE ${table}; DELETE FROM MASTER WHERE NAME = '${table}'`
+
+    DB.asyncConnection.query(query)
+
+}
 
 module.exports= {
     searchByName:searchByName,
     searchByNumber:searchByNumber,
     getAllAccounts:getAllAccounts,
     getEventLog:getEventLog,
-    getAccountNames:getAccountNames
+    getAccountNames:getAccountNames,
+    deleteAccount:deleteAccount
 }
