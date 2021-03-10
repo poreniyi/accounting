@@ -9,11 +9,8 @@
     <title>Chart of Accounts</title>
 </head>
 <%- include('../_partial/_header'); -%>
-    <%- include('../_partial/help/viewChartHelp'); -%>
-
-        <body>
-
             <body>
+                <h1><%=`ACCOUNT NAME GOES HERE` %></h1>
                 <table id='table'>
                     <tr>
                         <th>|Transaction Date|</th>
@@ -25,28 +22,14 @@
                     </tr>
                     <%TextRow.forEach(element=>{%>
                         <tr>
-                            <td>
-                                <%=element.DATE%>
-                            </td>
-                            <td>
-                                <a href=<%=element.ID%>> Click to go to PR </a>
-                            </td>
-                            <td>
-                                <%=element.DEBIT%>
-                            </td>
-                            <td>
-                                <%=element.CREDIT%>
-                            </td>
-                            <td>
-                                <%=element.BALANCE%>
-                            </td>
-                            <td>
-                                <%=element.DESCRIPTION%>
-                            </td>
+                            <td><%=element.DATE%></td>
+                            <td><a href=<%=element.ID%>> Click to go to PR </a></td>
+                            <td><%=element.DEBIT%></td>
+                            <td><%=element.CREDIT%></td>
+                            <td><%=element.BALANCE%></td>
+                            <td><%=element.DESCRIPTION%></td>
                         </tr>
                         <% })%>
 
                 </table>
-
-            </body>
         </body>
