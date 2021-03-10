@@ -32,7 +32,8 @@
                     <td><a href=<%= "./ledger/"+element.ACCOUNT%>> <%=element.ACCOUNT%> </a></td>
                     <td><%=formatter.format(element.AMOUNT)%> </td>
                     <td> <%=element.DESCRIPTION%> </td>
-                    <td><a href=<%=`./viewTransaction/${element.ID}`%>> <%=element.ID%></a>  </td>
+                    <td> <%if(element.ID){%><a href=<%=`./viewTransaction/${element.ID}`%>><%=element.ID%></a><%}%>
+                    </td>
                     <td><%=element.USERNAME%> </td>
                     <td> <%=element.STATUS%>  </td>    
                 </tr>
