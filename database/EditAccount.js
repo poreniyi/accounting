@@ -18,14 +18,31 @@ async function editAccount(body, username){
 
     let balance;
 
-    if(body.Normal == 'Debit'){
-        balance = initialBalance + (debit - credit);
+    let initial;
+
+    if(body.Balance){
+        initial = checkBalance;
     }
     else{
-        balance = initialBalance + (credit - debit);
+        initial = initialBalance
     }
 
-    let [rows] = await DB.asyncConnection.query(query, [body.OriginalNumber, body.OriginalName, 'admin', body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
+    if(body.Normal == 'Debit'){
+        balance = initial + (debit - credit);
+    }
+    else{
+        balance = initial + (credit - debit);
+    }
+
+    let editedBy;
+    if(body.Username){
+        console.log("you fool" +  body.Username)
+        editedBy = body.Username
+    }
+    else{
+        editedBy = 'admin'
+    }
+    let [rows] = await DB.asyncConnection.query(query, [body.OriginalNumber, body.OriginalName, editedBy, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
         initialBalance, debit, credit, balance, username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){

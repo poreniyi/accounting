@@ -33,15 +33,13 @@ async function getJournalTransactions(){
     var previous;
     var current;
 
-    for(var i = 0; i < [rows][0].length; i++){
-        
+    for(var i = 0; i < [rows][0].length; i++){  
         current = [rows][0][i]
         if(i > 0){
             if([rows][0][i-1].ID != ''){
                 previous = [rows][0][i-1];
             }
            if(current.ID == previous.ID){
-                console.log(current)
                  current.ID = ''
                  current.DATE = ''
                  current.DESCRIPTION = ''
@@ -69,8 +67,6 @@ async function getTransactionsByID(id){
 
    return data
 }
-
-getTransactionsByID(100000)
 
 module.exports = {
     createTransaction:createTransaction,
