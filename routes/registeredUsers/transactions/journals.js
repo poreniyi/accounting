@@ -36,7 +36,6 @@ router.get('/viewtransaction/:id',async (req,res)=>{
      for(let i=0;i<data.TextRow.length;i++){
          amount+=data.TextRow[i].DEBIT;
      }
-     console.log(amount);
     res.render('transactions/viewTransaction', {data,amount});
 })
 
