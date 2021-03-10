@@ -34,7 +34,7 @@ async function editAccount(body, username){
         balance = initial + (credit - debit);
     }
 
-    console.log(body.OriginalNumber + "  " +  body.OriginalName+ "  " +  editedBy+ "  " +  body.Name+ "  " +  body.Number+ "  " +  body.Description+ "  " +  
+    console.log(body.OriginalNumber + "  " +  body.OriginalName+ "  " + "  " +  body.Name+ "  " +  body.Number+ "  " +  body.Description+ "  " +  
     body.Normal+ "  " +  body.Category+ "  " +  body.SubCategory+ "  " + 
         initialBalance+ "  " +  body.Debit+ "  " +  body.Credit+ "  " +  balance+ "  " +  username+ "  " +  body.Statement+ "  " + body.Comment+ "  " +  body.Status)
 
