@@ -28,8 +28,7 @@
             <tr>
                 <th>Date</th>
                 <th>Account Names</th>
-                <th>Debits</th>
-                <th>Credits</th>
+                <th>Amount</th>
                 <th>Description</th>
                 <th>Transaction ID</th>
                 <th>Creator</th>
@@ -46,10 +45,7 @@
                         <a href=<%= "./ledger/"+element.ACCOUNT%>> <%=element.ACCOUNT%> </a>
                     </td>
                     <td>
-                        <%=formatter.format(element.DEBIT)%>
-                    </td>
-                    <td>
-                        <%=formatter.format(element.CREDIT)%>
+                        <%=formatter.format(element.AMOUNT)%>
                     </td>
                     <td>
                         <%=element.DESCRIPTION%>
