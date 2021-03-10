@@ -56,3 +56,38 @@ router.post('/viewTransaction/Reject/:id',(req,res)=>{
 
 
 module.exports = router;
+router.post('/editAccount/:number',async (req,res) => {
+    if (req.session.userType.toLowerCase()=='admin'){
+        next();
+    }else{
+        res.status(403).render(`home/denied`);
+    }
+    req.session.Confirm= result ? message : 'Something went wrong';
+    let result = await edit.editAccount(req.body, req.user);
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/viewChart`,
+    }
+
+    if(result){
+        req.session.confirmationMessage=result;
+    }
+    req.session.Previous=`${req.baseUrl}/viewChart`;
+   // req.session.confirmationData=result;
+
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
+
+})
+router.post('/addAccount', async (req,res) => {
+    if (req.session.userType.toLowerCase()=='admin'){
+        next();
+    }else{
+        res.status(403).render(`home/denied`);
+    }
+    let result = await create.createAccount(req.body, req.user);
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/viewChart`,
+    }
+    req.session.Confirm= result ? message : 'Something went wrong';
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
+
+})

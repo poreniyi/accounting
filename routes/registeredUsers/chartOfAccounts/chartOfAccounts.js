@@ -37,10 +37,8 @@ router.post('/editAccount/:number',async (req,res) => {
     if(result){
         req.session.confirmationMessage=result;
     }
-    req.session.Previous=`${req.baseUrl}/viewChart`;
-   // req.session.confirmationData=result;
-
-    res.redirect(`${req.baseUrl}/sucess`);
+    req.session.Confirm.Previous=`${req.baseUrl}/viewChart`;
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
 
 })
 router.post('/addAccount', async (req,res) => {
@@ -48,16 +46,11 @@ router.post('/addAccount', async (req,res) => {
         res.status(403).render(`home/denied`);
     }
     let result = await create.createAccount(req.body, req.user);
-    if(result){
-        req.session.confirmationMessage=result;
-       // req.session.confirmationData=true;
-        req.session.Previous=`${req.baseUrl}/viewChart`;
-
-        res.redirect(`${req.baseUrl}/sucess`);
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/viewChart`,
     }
-    else{
-        res.send(result)
-    }
+    req.session.Confirm= result ? result : 'Something went wrong';
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
  
 })
 
