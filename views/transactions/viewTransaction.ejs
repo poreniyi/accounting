@@ -41,9 +41,9 @@
         <form id="approveForm"  action=<%='./Approve/'+TextRow[0].ID%> method="POST">
             <button id='Approve'>Approve Transaction</button> 
         </form>
-        <form action=''method="POST"id='RejectForm'>
+        <form id='RejectForm' action=<%='./Reject/'+TextRow[0].ID%> method="POST" >
             <div>
-                <label for='comment'>Comment</label><textarea form='RejectForm' id=Comment cols="50" rows='4'></textarea>
+                <label for='comment'>Comment</label><textarea form='RejectForm' id=Comment cols="50" rows='4' name='comment'></textarea>
                 <button id='Reject'>Reject Transaction</button>
             </div>
         </form>

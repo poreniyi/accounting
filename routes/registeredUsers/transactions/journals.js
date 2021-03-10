@@ -38,5 +38,11 @@ router.post('/viewTransaction/Approve/:id',(req,res)=>{
     res.send("approved");
 })
 
+router.post('/viewTransaction/Reject/:id',(req,res)=>{
+    console.log(req.params.id);
+    console.log(req.body);
+    res.send(req.body);
+})
+
 
 module.exports = router;
