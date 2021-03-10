@@ -12,9 +12,7 @@ router.get('/viewChart', async (req,res) => {
     res.render('charts/chart', data)
 })
 router.get('/addAccount',(req,res)=>{
-    if (req.session.userType.toLowerCase()=='admin'){
-        next();
-    }else{
+    if (!req.session.userType.toLowerCase()=='admin'){
         res.status(403).render(`home/denied`);
     }
     res.render('charts/addChart');
@@ -32,9 +30,7 @@ router.get('/editAccount/:number', async (req,res) => {
     }
 })
 router.post('/editAccount/:number',async (req,res) => {
-    if (req.session.userType.toLowerCase()=='admin'){
-        next();
-    }else{
+    if (!req.session.userType.toLowerCase()=='admin'){
         res.status(403).render(`home/denied`);
     }
     let result = await edit.editAccount(req.body, req.user);
@@ -48,9 +44,7 @@ router.post('/editAccount/:number',async (req,res) => {
 
 })
 router.post('/addAccount', async (req,res) => {
-    if (req.session.userType.toLowerCase()=='admin'){
-        next();
-    }else{
+    if (!req.session.userType.toLowerCase()=='admin'){
         res.status(403).render(`home/denied`);
     }
     let result = await create.createAccount(req.body, req.user);
