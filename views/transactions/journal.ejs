@@ -13,33 +13,47 @@
 
         <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
 
-        <body>
-            <form id='form' action='' METHOD='POST'>
-                <label for='search'>Search:</label><input id='search' type='text'>
-                <select id='select'>
-                    <option value=1>Account Names</option>
-                    <option value=2>Amount</option>
-                    <option value=3>Description</option>
-                    <option value=0>Submitter</option>
-                    <option value=0>Transaction ID</option>
-                    <option value=0>Date</option>
-                </select>
-                <input class='dateRange' type='date'>
-                <input class='dateRange' type='date'>
+            </select>
+            <table id='table'>
+            <tr>
+                <th>Date</th>
+                <th>Account Names</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Transaction ID</th>
+                <th>Creator</th>
+                <th>Status</th>
+            </tr>
+            <%TextRow.forEach(element=>{%>
+                <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
 
-                <table id='table'>
-                    <tr>
-                        <th>Date</th>
-                        <th>Account Names</th>
-                        <th>Debits</th>
-                        <th>Credits</th>
-                        <th>Description</th>
-                        <th>Transaction ID</th>
-                        <th>Creator</th>
-                        <th>Status</th>
-                    </tr>
-                    <%TextRow.forEach(element=>{%>
-                        <% let formatter=new Intl.NumberFormat('en-US',{ style: 'currency' , currency: 'USD' , }); %>
+                <tr>
+                    <td>
+                        <%=element.DATE%>
+                    </td>
+                    <td>
+                        <a href=<%= "./ledger/"+element.ACCOUNT%>> <%=element.ACCOUNT%> </a>
+                    </td>
+                    <td>
+                        <%=formatter.format(element.AMOUNT)%>
+                    </td>
+                    <td>
+                        <%=element.DESCRIPTION%>
+                    </td>
+                    <td>
+                       <a href=<%=`./viewTransaction/${element.ID}`%>> <%=element.ID%></a>
+                    </td>
+                    <td>
+                        <%=element.USERNAME%>
+                    </td>
+                    <td>
+                        <%=element.STATUS%>
+                    </td>
+                    
+                </tr>
+                <% })%>
+        </table>
+        <script src='/ejsscripts/transactions/viewJournal.js'></script>
 
                             <tr>
                                 <td>
