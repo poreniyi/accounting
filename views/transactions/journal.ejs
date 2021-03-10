@@ -40,7 +40,10 @@
 
                 <tr>
                     <td><%=element.DATE%> </td>
-                    <td><a href=<%= "./ledger/"+element.ACCOUNT%>> <%=element.ACCOUNT%> </a></td>
+                    <td><% let accountNames=element.ACCOUNT.split('+')%>
+                        <% accountNames.forEach(name=>{%>
+                           <a href=<%= `./ledger/${name}`%>><%=name%></a> 
+                       <%})%></td>
                     <td><%=formatter.format(element.AMOUNT)%> </td>
                     <td> <%=element.DESCRIPTION%> </td>
                     <td> <%if(element.ID){%><a href=<%=`./viewTransaction/${element.ID}`%>><%=element.ID%></a><%}%>
