@@ -9,19 +9,9 @@
     <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
 </head>
 <%- include('../_partial/_header'); -%>
-<%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
+    <%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
 
-    <button><a href=<%= addJournalLink%>>Create a journal entry</a></button>
-    <body>
-        <form id ='form' action='' METHOD='POST'>
-            <label for='search'>Search:</label><input id='search' type='text'>
-            <select id='select'>
-                <option value=1>Account Names</option>
-                <option value=2>Amount</option>
-                <option value=3>Description</option>
-                <option value=0>Submitter</option>
-                <option value=0>Transaction ID</option>
-                <option value=0>Date</option>
+        <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
 
             </select>
             <table id='table'>
@@ -65,6 +55,37 @@
         </table>
         <script src='/ejsscripts/transactions/viewJournal.js'></script>
 
-    </body>
+                            <tr>
+                                <td>
+                                    <%=element.DATE%>
+                                </td>
+                                <td>
+                                    <a href=<%="./ledger/" +element.ACCOUNT%>> <%=element.ACCOUNT%> </a>
+                                </td>
+                                <td>
+                                    <%=formatter.format(element.DEBIT)%>
+                                </td>
+                                <td>
+                                    <%=formatter.format(element.CREDIT)%>
+                                </td>
+                                <td>
+                                    <%=element.DESCRIPTION%>
+                                </td>
+                                <td>
+                                    <a href=<%=`./viewTransaction/${element.ID}`%>> <%=element.ID%></a>
+                                </td>
+                                <td>
+                                    <%=element.USERNAME%>
+                                </td>
+                                <td>
+                                    <%=element.STATUS%>
+                                </td>
+
+                            </tr>
+                            <% })%>
+                </table>
+                <script src='/ejsscripts/transactions/viewJournal.js'></script>
+
+        </body>
 
 </html>
