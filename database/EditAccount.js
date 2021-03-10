@@ -34,20 +34,12 @@ async function editAccount(body, username){
         balance = initial + (credit - debit);
     }
 
-    let editedBy;
-    if(body.Username){
-        editedBy = body.Username
-    }
-    else{
-        editedBy = 'admin'
-    }
-
     console.log(body.OriginalNumber + "  " +  body.OriginalName+ "  " +  editedBy+ "  " +  body.Name+ "  " +  body.Number+ "  " +  body.Description+ "  " +  
     body.Normal+ "  " +  body.Category+ "  " +  body.SubCategory+ "  " + 
         initialBalance+ "  " +  body.Debit+ "  " +  body.Credit+ "  " +  balance+ "  " +  username+ "  " +  body.Statement+ "  " + body.Comment+ "  " +  body.Status)
 
-    let [rows] = await DB.asyncConnection.query(query, [body.OriginalNumber, body.OriginalName, editedBy, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
-        initialBalance, debit, credit, balance, username, body.Statement, body.Comment, body.Status], 
+    let [rows] = await DB.asyncConnection.query(query, [body.OriginalNumber, body.OriginalName, username, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
+        initialBalance, debit, credit, balance, body.Username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
