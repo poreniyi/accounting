@@ -38,9 +38,21 @@ form.addEventListener('submit', (e) => {
 inputRows.forEach(element => {
     element.cells[2].children[0].addEventListener('input', () => {
         addTotal('Debits', totalDebit);
+        addTotal('Credits', totalCredit);
+        if(element.cells[2].children[0].value>0){
+            element.cells[3].children[0].disabled=true;
+        }else{
+            element.cells[3].children[0].disabled=false;
+        }
     })
     element.cells[3].children[0].addEventListener('input', () => {
         addTotal('Credits', totalCredit);
+        if(element.cells[3].children[0].value>0){
+            element.cells[2].children[0].disabled=true;
+        }else{
+            element.cells[2].children[0].disabled=false;
+        }
+
     })
     element.cells[1].children[0].addEventListener('input', () => {
         checkUniqueNames();
@@ -94,9 +106,19 @@ addAccount.addEventListener('click', (e) => {
     account.appendChild(accountInput);
     credit.addEventListener('input', () => {
         addTotal('Credits', totalCredit);
+        if(creditInput.value>0){
+            debitInput.disabled=true;
+        }else{
+            debitInput.disabled=false;
+        }
     })
     debit.addEventListener('input', () => {
         addTotal('Debits', totalDebit);
+        if(debitInput.value>0){
+            creditInput.disabled=true;
+        }else{
+            creditInput.disabled=false;
+        }
     })
 })
 
