@@ -37,14 +37,18 @@
             </tr>
             <% })%>
     </table>
-    <form id="form" method="POST">
-        <button id='Approve'>Approve Transaction</button>
-        <div>
-            <label for='comment'>Comment</label><textarea id=Comment cols="50" rows='4'></textarea>
-            <button id='Reject'>Reject Transaction</button>
-        </div>
-       
-    </form>
-
+    <%if(TextRow[0].STATUS='Pending'){ %>
+        <form id="approveForm"  action='Approve' method="POST">
+            <button id='Approve'>Approve Transaction</button> 
+        </form>
+        <form action=''method="POST"id='RejectForm'>
+            <div>
+                <label for='comment'>Comment</label><textarea form='RejectForm' id=Comment cols="50" rows='4'></textarea>
+                <button id='Reject'>Reject Transaction</button>
+            </div>
+        </form>
+   <% } %>
+  
+    
 </body>
 </html>
