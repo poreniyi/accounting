@@ -16,7 +16,6 @@ sprint 3
 
 1) add PR back from journal entry to ledger
 2) Make links obvious
-3) remove pipe symbols in ejs's
 4) Change comment to show only on reject
 
 

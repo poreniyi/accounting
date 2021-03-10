@@ -4,11 +4,20 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notifications</title>
-</head>
-<body>
-    <%- include('../_partial/_header'); -%>
- 
-    Notifications with query go here
-</body>
-</html>
+    <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
+    <body>
+        <table>
+            <tr>
+                <th>Transaction ID</th>
+                <th>Created by</th>
+                <th>Status</th>
+            </tr>
+            <%data.TextRow.forEach(element=>{%>
+            <tr>
+                <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
+                <td><%=NAME%></td>
+                <td><%=STATUS%></td>
+            </tr>
+            <% })%>
+        </table>
+    </body>
