@@ -34,7 +34,6 @@ router.get('/ledger/viewtransaction/:id',async (req,res)=>{
 
 router.get('/ledger/:name',async (req,res)=>{
     let data = await ledgerSearch.findLedger(req.params.name)
-    console.log(data);
     res.render('transactions/ledger', {data,Name:req.params.name});
 })
 
@@ -45,7 +44,7 @@ router.post('/viewTransaction/Approve/:id',(req,res)=>{
 
 router.post('/viewTransaction/Reject/:id',(req,res)=>{
     ledgerSearch.addTransactionToLedger(req.params.id, req.body.comment, 'Rejected')
-    res.send(req.body);
+    res.send("Rejected");
 })
 
 
