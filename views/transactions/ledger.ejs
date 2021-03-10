@@ -24,7 +24,7 @@
                     <%data.TextRow.forEach(element=>{%>
                         <tr>
                             <td><%=element.DATE%></td>
-                            <td><a href=<%= "./viewTransaction/"+element.ID%>> <%=element.ID%> </a></td>
+                            <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
                             <td><%=element.DEBIT%></td>
                             <td><%=element.CREDIT%></td>
                             <td><%=element.BALANCE%></td>
