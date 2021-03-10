@@ -28,63 +28,17 @@
                 <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
 
                 <tr>
-                    <td>
-                        <%=element.DATE%>
-                    </td>
-                    <td>
-                        <a href=<%= "./ledger/"+element.ACCOUNT%>> <%=element.ACCOUNT%> </a>
-                    </td>
-                    <td>
-                        <%=formatter.format(element.AMOUNT)%>
-                    </td>
-                    <td>
-                        <%=element.DESCRIPTION%>
-                    </td>
-                    <td>
-                       <a href=<%=`./viewTransaction/${element.ID}`%>> <%=element.ID%></a>
-                    </td>
-                    <td>
-                        <%=element.USERNAME%>
-                    </td>
-                    <td>
-                        <%=element.STATUS%>
-                    </td>
-                    
+                    <td><%=element.DATE%> </td>
+                    <td><a href=<%= "./ledger/"+element.ACCOUNT%>> <%=element.ACCOUNT%> </a></td>
+                    <td><%=formatter.format(element.AMOUNT)%> </td>
+                    <td> <%=element.DESCRIPTION%> </td>
+                    <td><a href=<%=`./viewTransaction/${element.ID}`%>> <%=element.ID%></a>  </td>
+                    <td><%=element.USERNAME%> </td>
+                    <td> <%=element.STATUS%>  </td>    
                 </tr>
                 <% })%>
         </table>
-        <script src='/ejsscripts/transactions/viewJournal.js'></script>
-
-                            <tr>
-                                <td>
-                                    <%=element.DATE%>
-                                </td>
-                                <td>
-                                    <a href=<%="./ledger/" +element.ACCOUNT%>> <%=element.ACCOUNT%> </a>
-                                </td>
-                                <td>
-                                    <%=formatter.format(element.DEBIT)%>
-                                </td>
-                                <td>
-                                    <%=formatter.format(element.CREDIT)%>
-                                </td>
-                                <td>
-                                    <%=element.DESCRIPTION%>
-                                </td>
-                                <td>
-                                    <a href=<%=`./viewTransaction/${element.ID}`%>> <%=element.ID%></a>
-                                </td>
-                                <td>
-                                    <%=element.USERNAME%>
-                                </td>
-                                <td>
-                                    <%=element.STATUS%>
-                                </td>
-
-                            </tr>
-                            <% })%>
-                </table>
-                <script src='/ejsscripts/transactions/viewJournal.js'></script>
+            <script src='/ejsscripts/transactions/viewJournal.js'></script>
 
         </body>
 
