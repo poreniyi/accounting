@@ -21,7 +21,6 @@
             <th>Debit</th>
             <th>Credit</th>
             <th>Description</th>
-            <th>Comment</th>
             <th>Status: <%=TextRow[0].STATUS%></th>
         </tr>
         <%TextRow.forEach(element=>{%>
@@ -33,7 +32,6 @@
                 <td><%=element.DEBIT%></td>
                 <td><%=element.CREDIT%> </td>
                 <td><%=element.DESCRIPTION%></td>
-                <td><input name='Comment' type='text'></td>
             </tr>
             <% })%>
     </table>
