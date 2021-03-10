@@ -33,15 +33,16 @@ router.get('/ledger/:name',async (req,res)=>{
     res.render('transactions/ledger', data);
 })
 
-// router.post('/Approve/:id'),async(req,res)=>{
-//     console.log(req.params.id);
-//     res.send("approved");
-// }
-
-router.get('/Approve/:id'),(req,res)=>{
+router.post('/viewTransaction/Approve/:id',(req,res)=>{
     console.log(req.params.id);
     res.send("approved");
-}
+})
+
+router.post('/viewTransaction/Reject/:id',(req,res)=>{
+    console.log(req.params.id);
+    console.log(req.body);
+    res.send(req.body);
+})
 
 
 module.exports = router;
