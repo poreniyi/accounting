@@ -13,10 +13,11 @@ router.get('/viewChart', async (req,res) => {
 })
 router.get('/addAccount',(req,res)=>{
     
-   /*Sprint2 DBFunction 3
-      returns an array of used order numbers
-    assign this array to res.locals.orderNumbers
-   */
+    if (req.session.userType.toLowerCase()=='admin'){
+        next();
+    }else{
+        res.status(403).render(`home/denied`);
+    }
     res.render('charts/addChart');
 })
 router.get('/editAccount/:number', async (req,res) => {
