@@ -42,7 +42,7 @@
                     <td><%=element.DATE%> </td>
                     <td><% let accountNames=element.ACCOUNT.split('+')%>
                         <% accountNames.forEach(name=>{%>
-                           <a href=<%= `./ledger/${name}`%>><%=name%></a> 
+                           <a href=<%= `./ledger/${name}`%>><%=name%></a> <br>
                        <%})%></td>
                     <td><%=formatter.format(element.AMOUNT)%> </td>
                     <td> <%=element.DESCRIPTION%> </td>
