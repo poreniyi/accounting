@@ -1,6 +1,5 @@
 let express = require('express');
 let router = express.Router();
-router.use('/', require('./chartOfAccounts'));
 
 let isAdmin=(req,res,next)=>{
     if (req.session.userType.toLowerCase()=='admin'){
@@ -9,7 +8,9 @@ let isAdmin=(req,res,next)=>{
         res.status(403).render(`home/denied`);
     }
 }
-router.use(isAdmin);
+
+router.use('/', require('./chartOfAccounts'));
+
 
 
 module.exports= router;

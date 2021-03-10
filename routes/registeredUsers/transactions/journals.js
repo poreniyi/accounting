@@ -5,7 +5,7 @@ let ledgerSearch = require('../../../database/Ledger');
 let journal = require('../../../database/Journal');
 
 router.get('/journal', async (req, res) => {
-
+    console.log(req.user);
     let data = await journal.getJournalTransactions()
     res.render('transactions/journal', data)
 })
