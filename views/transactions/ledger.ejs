@@ -6,14 +6,12 @@
     <link rel='stylesheet' href='/stylesheets/charts/viewChart.css'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chart of Accounts</title>
+    <title>Ledger</title>
+    <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
 </head>
 <%- include('../_partial/_header'); -%>
-    <%- include('../_partial/help/viewChartHelp'); -%>
-
-        <body>
-
-            <body>
+<body>
+                <h1><%=Name %></h1>
                 <table id='table'>
                     <tr>
                         <th>|Transaction Date|</th>
@@ -23,30 +21,15 @@
                         <th>Balance|</th>
                         <th>Description|</th>
                     </tr>
-                    <%TextRow.forEach(element=>{%>
+                    <%data.TextRow.forEach(element=>{%>
                         <tr>
-                            <td>
-                                <%=element.DATE%>
-                            </td>
-                            <td>
-                                <a href=<%=element.ID%>> Click to go to PR </a>
-                            </td>
-                            <td>
-                                <%=element.DEBIT%>
-                            </td>
-                            <td>
-                                <%=element.CREDIT%>
-                            </td>
-                            <td>
-                                <%=element.BALANCE%>
-                            </td>
-                            <td>
-                                <%=element.DESCRIPTION%>
-                            </td>
+                            <td><%=element.DATE%></td>
+                            <td><a href=<%= "./viewTransaction/"+element.ID%>> <%=element.ID%> </a></td>
+                            <td><%=element.DEBIT%></td>
+                            <td><%=element.CREDIT%></td>
+                            <td><%=element.BALANCE%></td>
+                            <td><%=element.DESCRIPTION%></td>
                         </tr>
                         <% })%>
-
                 </table>
-
-            </body>
-        </body>
+</body>

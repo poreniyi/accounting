@@ -27,9 +27,15 @@ router.get('/viewtransaction/:id',async (req,res)=>{
     res.render('transactions/viewTransaction', data);
 })
 
+router.get('/ledger/viewtransaction/:id',async (req,res)=>{
+    let data = await journal.getTransactionsByID(req.params.id)
+    res.render('transactions/viewTransaction', data);
+})
+
 router.get('/ledger/:name',async (req,res)=>{
     let data = await ledgerSearch.findLedger(req.params.name)
-    res.render('transactions/ledger', data);
+    console.log(data);
+    res.render('transactions/ledger', {data,Name:req.params.name});
 })
 
 router.post('/viewTransaction/Approve/:id',(req,res)=>{
