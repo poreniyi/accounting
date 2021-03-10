@@ -5,7 +5,6 @@ let ledgerSearch = require('../../../database/Ledger');
 let journal = require('../../../database/Journal');
 
 router.get('/journal', async (req, res) => {
-    console.log(req.user);
     let data = await journal.getJournalTransactions()
     res.render('transactions/journal', data)
 })
@@ -34,13 +33,12 @@ router.get('/ledger/:name',async (req,res)=>{
 })
 
 router.post('/viewTransaction/Approve/:id',(req,res)=>{
-    console.log(req.params.id);
+    ledgerSearch.addTransactionToLedger(req.params.id, '', 'Approved')
     res.send("approved");
 })
 
 router.post('/viewTransaction/Reject/:id',(req,res)=>{
-    console.log(req.params.id);
-    console.log(req.body);
+    ledgerSearch.addTransactionToLedger(req.params.id, req.body.comment, 'Rejected')
     res.send(req.body);
 })
 
