@@ -10,30 +10,40 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-
-
-    <table id='table'>
+    <table id='infoTable'>
         <tr>
-            <th>Date</th>
-            <th>Transaction ID</th>
-            <th>Creator</th>
+            <th>TransactionID:</th>
+            <td><%=TextRow[0].ID%></td>
+        </tr>
+        <tr>
+            <th>Status:</th>
+            <td><%=TextRow[0].STATUS%></td>
+        </tr>
+        <tr>
+            <th>Description:</th>
+            <td><%=TextRow[0].DESCRIPTION%></td>
+        </tr>
+        <tr>
+            <th>Date Submitted:</th>
+            <td><%=TextRow[0].DATE%></td>
+        </tr>
+        <tr>
+            <th>Submitted By:</th>
+            <td><%=TextRow[0].USERNAME%></td>
+        </tr>
+       
+    </table>
+    <table id='accountTable'>
+        <tr>
             <th>Account Affected</th>
             <th>Debit</th>
             <th>Credit</th>
-            <th>Description</th>
-            <th>Comment</th>
-            <th>Status: <%=TextRow[0].STATUS%></th>
         </tr>
         <%TextRow.forEach(element=>{%>
             <tr>
-                <td><%=element.DATE%></td>
-                <td><%=element.ID%></td>
-                <td> <%=element.USERNAME%></td>
                 <td><%=element.ACCOUNT%></td>
                 <td><%=element.DEBIT%></td>
                 <td><%=element.CREDIT%> </td>
-                <td><%=element.DESCRIPTION%></td>
-                <td><%=element.COMMENT%> </td>
             </tr>
             <% })%>
     </table>
