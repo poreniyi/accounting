@@ -10,7 +10,15 @@
 </head>
 <%- include('../_partial/_header'); -%>
     <%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
-
+    <label for='search'>Search:</label><input id='search' type='text'>
+    <select id='select'>
+        <option value=1>Account Names</option>
+        <option value=2>Amount</option>
+        <option value=3>Description</option>
+        <option value=0>Submitter</option>
+        <option value=0>Transaction ID</option>
+        <input class='dateRange' type='date'>
+        <input class='dateRange' type='date'>
         <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
 
             </select>
