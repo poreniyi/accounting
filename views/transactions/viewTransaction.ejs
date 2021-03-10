@@ -13,25 +13,33 @@
     <table id='infoTable'>
         <tr>
             <th>TransactionID:</th>
-            <td><%=TextRow[0].ID%></td>
+            <td><%=data.TextRow[0].ID%></td>
         </tr>
         <tr>
             <th>Status:</th>
-            <td><%=TextRow[0].STATUS%></td>
+            <td><%=data.TextRow[0].STATUS%></td>
         </tr>
         <tr>
             <th>Description:</th>
-            <td><%=TextRow[0].DESCRIPTION%></td>
+            <td><%=data.TextRow[0].DESCRIPTION%></td>
         </tr>
         <tr>
             <th>Date Submitted:</th>
-            <td><%=TextRow[0].DATE%></td>
+            <td><%=data.TextRow[0].DATE%></td>
         </tr>
         <tr>
             <th>Submitted By:</th>
-            <td><%=TextRow[0].USERNAME%></td>
+            <td><%=data.TextRow[0].USERNAME%></td>
         </tr>
-       
+        <tr>
+            <th>COMMENT:</th>
+            <td><%=data.TextRow[0].COMMENT ||'NO COMMENT'%></td>
+        </tr>
+        <tr>
+            <th>AMOUNT:</th>
+     
+            <td><%=amount%></td>
+        </tr>
     </table>
     <table id='accountTable'>
         <tr>
@@ -39,7 +47,7 @@
             <th>Debit</th>
             <th>Credit</th>
         </tr>
-        <%TextRow.forEach(element=>{%>
+        <%data.TextRow.forEach(element=>{%>
             <tr>
                 <td><%=element.ACCOUNT%></td>
                 <td><%=element.DEBIT%></td>
@@ -47,11 +55,11 @@
             </tr>
             <% })%>
     </table>
-    <%if(TextRow[0].STATUS=='Pending'){ %>
-        <form id="approveForm"  action=<%='./Approve/'+TextRow[0].ID%> method="POST">
+    <%if(data.TextRow[0].STATUS=='Pending'){ %>
+        <form id="approveForm"  action=<%='./Approve/'+data.TextRow[0].ID%> method="POST">
             <button id='Approve'>Approve Transaction</button> 
         </form>
-        <form id='RejectForm' action=<%='./Reject/'+TextRow[0].ID%> method="POST" >
+        <form id='RejectForm' action=<%='./Reject/'+data.TextRow[0].ID%> method="POST" >
             <div>
                 <label for='comment'>Comment</label><textarea form='RejectForm' id=Comment cols="50" rows='4' name='comment'></textarea>
                 <button id='Reject'>Reject Transaction</button>

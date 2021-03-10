@@ -31,13 +31,13 @@ router.post('/createJournal', async (req, res) => {
 })
 
 router.get('/viewtransaction/:id',async (req,res)=>{
-    let data = await journal.getTransactionsByID(req.params.id)
-    res.render('transactions/viewTransaction', data);
-})
-
-router.get('/ledger/viewtransaction/:id',async (req,res)=>{
-    let data = await journal.getTransactionsByID(req.params.id)
-    res.render('transactions/viewTransaction', data);
+    let data = await journal.getTransactionsByID(req.params.id);
+     let amount=0;
+     for(let i=0;i<data.TextRow.length;i++){
+         amount+=data.TextRow[i].DEBIT;
+     }
+     console.log(amount);
+    res.render('transactions/viewTransaction', {data,amount});
 })
 
 router.get('/ledger/:name',async (req,res)=>{
