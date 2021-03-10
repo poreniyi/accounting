@@ -20,9 +20,7 @@ router.get('/addAccount',(req,res)=>{
     res.render('charts/addChart');
 })
 router.get('/editAccount/:number', async (req,res) => {
-    if (req.session.userType.toLowerCase()=='admin'){
-        next();
-    }else{
+    if (!req.session.userType.toLowerCase()=='admin'){
         res.status(403).render(`home/denied`);
     }
     let data = await search.searchByNumber(req.params.number)
