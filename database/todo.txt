@@ -9,3 +9,24 @@ fix status needs to return true or false
 
 sprint 2
 14) each button must have a title attribute <- html
+
+
+sprint 3
+37) stupid housing, ask professor maybe.
+
+1) add PR back from journal entry to ledger
+2) Make links obvious
+3) remove pipe symbols in ejs's
+4) Change comment to show only on reject
+
+
+
+
+sprint 4
+
+2)
+22)
+26)
+28) ask professor
+31) notification
+
