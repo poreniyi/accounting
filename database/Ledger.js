@@ -30,6 +30,8 @@ async function addTransactionToLedger(body, username){
             } 
     });
 
+    query = `UPDATE JOURNAL SET COMMENT = '${body.Comment}', STATUS = '${body.Status}' WHERE ID = '${body.ID}'`
+
     query = `SELECT NAME, NUMBER, DESCRIPTION, NORMALSIDE, CATEGORY, SUBCATEGORY, INITIALBALANCE, DEBIT, CREDIT,
     BALANCE, DOC, USERNAME, STATEMENT, COMMENT, STATUS FROM MASTER WHERE NAME = '${body.Account}'`
 
@@ -59,5 +61,6 @@ async function addTransactionToLedger(body, username){
 }
 
 module.exports = {
-    findLedger:findLedger
+    findLedger:findLedger,
+    addTransactionToLedger:addTransactionToLedger
 }
