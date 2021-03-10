@@ -12,7 +12,6 @@ router.get('/viewChart', async (req,res) => {
     res.render('charts/chart', data)
 })
 router.get('/addAccount',(req,res)=>{
-    
     if (req.session.userType.toLowerCase()=='admin'){
         next();
     }else{
