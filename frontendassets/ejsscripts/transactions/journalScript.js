@@ -40,17 +40,17 @@ inputRows.forEach(element => {
         addTotal('Debits', totalDebit);
         addTotal('Credits', totalCredit);
         if(element.cells[2].children[0].value>0){
-            element.cells[3].children[0].disabled=true;
+            element.cells[3].children[0].readOnly=true;
         }else{
-            element.cells[3].children[0].disabled=false;
+            element.cells[3].children[0].readOnly=false;
         }
     })
     element.cells[3].children[0].addEventListener('input', () => {
         addTotal('Credits', totalCredit);
         if(element.cells[3].children[0].value>0){
-            element.cells[2].children[0].disabled=true;
+            element.cells[2].children[0].readOnly=true;
         }else{
-            element.cells[2].children[0].disabled=false;
+            element.cells[2].children[0].readOnly=false;
         }
 
     })
@@ -107,17 +107,17 @@ addAccount.addEventListener('click', (e) => {
     credit.addEventListener('input', () => {
         addTotal('Credits', totalCredit);
         if(creditInput.value>0){
-            debitInput.disabled=true;
+            debitInput.readOnly=true;
         }else{
-            debitInput.disabled=false;
+            debitInput.readOnly=false;
         }
     })
     debit.addEventListener('input', () => {
         addTotal('Debits', totalDebit);
         if(debitInput.value>0){
-            creditInput.disabled=true;
+            creditInput.readOnly=true;
         }else{
-            creditInput.disabled=false;
+            creditInput.readOnly=false;
         }
     })
 })
