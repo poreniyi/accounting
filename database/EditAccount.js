@@ -36,7 +36,6 @@ async function editAccount(body, username){
 
     let editedBy;
     if(body.Username){
-        console.log("you fool" +  body.Username)
         editedBy = body.Username
     }
     else{
@@ -59,27 +58,6 @@ async function editAccount(body, username){
     return [rows][0][0][0].message || [rows][0][2][0].message;
 }
 
-// used to add credits and/or debits, which also changes the balance
-async function addToAccount(accountName, debit, credit, balance, currentUser){
-
-     let query = `CALL Add_To_Account(?,?,?,?,?,?)`
-
-     let date = new Date()
-
-     DB.asyncConnection.query(query, [accountName, debit, credit, balance, date, currentUser], 
-        function (err, result, fields) {
-            if(err){
-                console.log("Query failed")
-                throw err;
-            } 
-    });
-
-    return true
-
-}
-
-
 module.exports= {
     editAccount,
-    addToAccount
 }

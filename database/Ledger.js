@@ -19,7 +19,15 @@ async function findLedger(name){
 
 async function addTransactionToLedger(id, comment, status){
 
-    let query = `SELECT USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT FROM JOURNAL WHERE ID = '${id}'`
+    let query = `UPDATE JOURNAL SET COMMENT = '${comment}', STATUS = '${status}' WHERE ID = '${id}'`
+
+    DB.asyncConnection.query(query)
+
+    if(status == 'Rejected'){
+        return;
+    }
+
+    query = `SELECT USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT FROM JOURNAL WHERE ID = '${id}'`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -40,10 +48,6 @@ async function addTransactionToLedger(id, comment, status){
                     throw err;
                 } 
         });
-
-        query = `UPDATE JOURNAL SET COMMENT = '${comment}', STATUS = '${status}' WHERE ID = '${id}'`
-
-        DB.asyncConnection.query(query)
 
         query = `SELECT NAME, NUMBER, DESCRIPTION, NORMALSIDE, CATEGORY, SUBCATEGORY, INITIALBALANCE, DEBIT, CREDIT,
         BALANCE, DOC, USERNAME, STATEMENT, COMMENT, STATUS FROM MASTER WHERE NAME = '${accounts[i].ACCOUNT}'`
@@ -69,9 +73,6 @@ async function addTransactionToLedger(id, comment, status){
             Comment:[result][0][0].COMMENT,
             Status: [result][0][0].STATUS
         }
-
-        console.log(data)
-
         editAccount.editAccount(data, accounts[i].USERNAME)
     }
 }
