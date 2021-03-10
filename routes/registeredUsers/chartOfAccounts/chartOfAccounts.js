@@ -30,6 +30,11 @@ router.get('/editAccount/:number', async (req,res) => {
     }
 })
 router.post('/editAccount/:number',async (req,res) => {
+    if (req.session.userType.toLowerCase()=='admin'){
+        next();
+    }else{
+        res.status(403).render(`home/denied`);
+    }
     let result = await edit.editAccount(req.body, req.user);
     if(result){
         req.session.confirmationMessage=result;
