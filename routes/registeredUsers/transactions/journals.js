@@ -24,7 +24,6 @@ router.post('/createJournal', async (req, res) => {
 })
 
 router.get('/viewtransaction/:id',async (req,res)=>{
-    console.log(req.params.id);
     let data = await journal.getTransactionsByID(req.params.id)
     res.render('transactions/viewTransaction', data);
 })
@@ -33,5 +32,16 @@ router.get('/ledger/:name',async (req,res)=>{
     let data = await ledgerSearch.findLedger(req.params.name)
     res.render('transactions/ledger', data);
 })
+
+// router.post('/Approve/:id'),async(req,res)=>{
+//     console.log(req.params.id);
+//     res.send("approved");
+// }
+
+router.get('/Approve/:id'),(req,res)=>{
+    console.log(req.params.id);
+    res.send("approved");
+}
+
 
 module.exports = router;

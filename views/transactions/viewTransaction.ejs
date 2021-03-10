@@ -38,7 +38,7 @@
             <% })%>
     </table>
     <%if(TextRow[0].STATUS='Pending'){ %>
-        <form id="approveForm"  action='Approve' method="POST">
+        <form id="approveForm"  action=<%='./Approve/'+TextRow[0].ID%> method="POST">
             <button id='Approve'>Approve Transaction</button> 
         </form>
         <form action=''method="POST"id='RejectForm'>
