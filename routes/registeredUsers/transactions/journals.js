@@ -5,7 +5,15 @@ let ledgerSearch = require('../../../database/Ledger');
 let journal = require('../../../database/Journal');
 
 router.get('/journal', async (req, res) => {
-    let data = await journal.getJournalTransactions()
+    let data = await journal.getJournalTransactions();
+    let items=data.TextRow;
+    for(let i=0;i<items.length;i++){
+        if(!items[i].DATE){
+           items[i-1].ACCOUNT+=`+${items[i].ACCOUNT}`;
+           items.splice(i,1);
+            i--;
+        }
+    }
     res.render('transactions/journal', data)
 })
 router.get('/createJournal', async(req, res) => {
