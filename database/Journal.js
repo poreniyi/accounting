@@ -47,7 +47,6 @@ async function getJournalTransactions(){
                  current.DESCRIPTION = ''
                  current.USERNAME = ''
                  current.STATUS = ''
-                 current.AMOUNT = ''
              }
         }
         data.TextRow.push(current)
