@@ -11,6 +11,8 @@
 </head>
 <%- include('../_partial/_header'); -%>
 <body>
+    <%   let formatter = new Intl.NumberFormat('en-US',{minimumFractionDigits:2}); %>
+
                 <h1><%=Name %></h1>
                 <table id='table'>
                     <tr>
@@ -25,9 +27,9 @@
                         <tr>
                             <td><%=element.DATE%></td>
                             <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
-                            <td><%=element.DEBIT%></td>
-                            <td><%=element.CREDIT%></td>
-                            <td><%=element.BALANCE%></td>
+                            <td><%=formatter.format(element.DEBIT)%></td>
+                            <td><%=formatter.format(element.CREDIT)%></td>
+                            <td><%=formatter.format(element.BALANCE)%></td>
                             <td><%=element.DESCRIPTION%></td>
                         </tr>
                         <% })%>
