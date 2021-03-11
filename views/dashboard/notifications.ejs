@@ -12,11 +12,11 @@
                 <th>Created by</th>
                 <th>Status</th>
             </tr>
-            <%data.TextRow.forEach(element=>{%>
+            <%TextRow.forEach(element=>{%>
             <tr>
                 <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
-                <td><%=NAME%></td>
-                <td><%=STATUS%></td>
+                <td><%=element.USERNAME%></td>
+                <td><%=element.STATUS%></td>
             </tr>
             <% })%>
         </table>
