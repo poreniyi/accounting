@@ -100,12 +100,8 @@ async function getTransactionsFromLastLogin(date){
         data.TextRow.push(current)
     }
 
-    console.log(data)
-
     return data;
 }
-
-getTransactionsFromLastLogin('03/10/2021')
 
 module.exports = {
     createTransaction:createTransaction,
