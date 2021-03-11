@@ -26,7 +26,6 @@ router.get('/notifications', async (req,res)=>{
             i--;
         }
     }
-    console.log(data);
     res.render('dashboard/notifications', data);
     }
 })
