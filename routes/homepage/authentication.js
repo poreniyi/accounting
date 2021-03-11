@@ -1,6 +1,6 @@
 var express = require("express");
 const passport= require('passport');
-const lastLog = require('../../../database/UserReport');
+const lastLog = require('../../database/UserReport');
 
 var router = express.Router();
 
@@ -63,7 +63,7 @@ router.post('/login', async (req,res,next)=>{
     if(!user){
         res.redirect('/wrongCredentials');
     }
-    req.login(user, () =>{
+    req.login(user, async () =>{
         req.session.lastLogin = await lastLog.getLastLogin(req.user)
         req.session.userType=user[2];
         req.session.status= user[3];
