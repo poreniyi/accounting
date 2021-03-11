@@ -16,7 +16,9 @@
 
     var channel = pusher.subscribe('my-channel');
     channel.bind('my-event', function(data) {
-      alert(JSON.stringify(data));
+
+        console.log(data.message);
+      alert(`A new transaction has been made${data.message}:${data.ID}`);
     });
   </script>
 </head>
