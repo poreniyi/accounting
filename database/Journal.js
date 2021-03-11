@@ -25,7 +25,7 @@ async function createTransaction(username, account,  description, debit, credit,
 async function getJournalTransactions(status){
 
     let query = `
-    SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC`
+    SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC`
 
     var [rows] = await DB.asyncConnection.query(query)
 
@@ -56,7 +56,7 @@ async function getJournalTransactions(status){
 
 async function getTransactionsByID(id){
 
-    let query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL WHERE ID = '${id}' ORDER BY DEBIT DESC;`
+    let query = `SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL WHERE ID = '${id}' ORDER BY DEBIT DESC;`
 
     let [rows] = await DB.asyncConnection.query(query)
 

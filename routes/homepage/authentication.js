@@ -1,5 +1,6 @@
 var express = require("express");
 const passport= require('passport');
+const lastLog = require('../../../database/UserReport');
 
 var router = express.Router();
 
@@ -39,6 +40,7 @@ router.get('/succesfulLogin',(req,res)=>{
 
 router.get("/logout", function (req,res){
     req.logout();
+    req.session.lastLogin = await lastLog.getLastLogin(req.user)
     req.session.destroy();
     res.redirect("/home");
 });

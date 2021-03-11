@@ -15,7 +15,7 @@ async function findLedger(name){
 
     let ledger = name + "_ledger"
 
-    let query = `SELECT DATE_FORMAT(DATECREATED, '%d/%m/%Y') AS DATECREATED, DATE_FORMAT(DATESUBMITTED, '%d/%m/%Y') AS DATESUBMITTED, 
+    let query = `SELECT DATE_FORMAT(DATECREATED, '%m/%d/%Y') AS DATECREATED, DATE_FORMAT(DATESUBMITTED, '%m/%d/%Y') AS DATESUBMITTED, 
                 MADEBY, SUBMITTEDBY, DESCRIPTION, DEBIT, CREDIT, BALANCE, ID FROM ${ledger}`
 
     let [rows] = await DB.asyncConnection.query(query)
