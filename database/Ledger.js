@@ -87,7 +87,7 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
             Comment:[result][0][0].COMMENT,
             Status: [result][0][0].STATUS
         }
-       await  editAccount.editAccount(data, submittedBy)
+       await editAccount.editAccount(data, submittedBy)
     }
 }
 

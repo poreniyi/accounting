@@ -77,7 +77,6 @@ async function getTransactionsFromLastLogin(date){
                   ORDER BY ID ASC;`
 
     let [rows] = await DB.asyncConnection.query(query)
-    console.log(date);
     var data = { TextRow: [] }
     
     var previous;
