@@ -74,10 +74,9 @@ async function getTransactionsFromLastLogin(date){
 
     let query = `SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL 
                 WHERE DATE >= DATE_FORMAT(STR_TO_DATE('${date}', '%m/%d/%Y'), '%Y-%m-%d') AND STATUS = 'Pending'
-                  ORDER BY DEBIT DESC;`
+                  ORDER BY ID ASC;`
 
     let [rows] = await DB.asyncConnection.query(query)
-    console.log(date);
     var data = { TextRow: [] }
     
     var previous;

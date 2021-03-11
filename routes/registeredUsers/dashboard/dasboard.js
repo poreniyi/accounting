@@ -17,7 +17,6 @@ router.get('/notifications', async (req,res)=>{
         redirect('dashboard');
     }
     else
-    console.log(data);
     res.render('dashboard/notifications', data);
 })
 

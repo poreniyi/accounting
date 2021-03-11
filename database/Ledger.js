@@ -54,7 +54,7 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
 
         console.log(submittedBy + "" + accounts[i].ACCOUNT + " " + accounts[i].DESCRIPTION + " " + accounts[i].DEBIT + " " + accounts[i].CREDIT + " " + id)
 
-        DB.asyncConnection.query(query, [submittedBy, accounts[i].ACCOUNT, accounts[i].DESCRIPTION, accounts[i].DEBIT, accounts[i].CREDIT, id], 
+        await DB.asyncConnection.query(query, [submittedBy, accounts[i].ACCOUNT, accounts[i].DESCRIPTION, accounts[i].DEBIT, accounts[i].CREDIT, id], 
             function (err, result, fields) {
                 if(err){
                     console.log("Query failed")
@@ -87,7 +87,7 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
             Comment:[result][0][0].COMMENT,
             Status: [result][0][0].STATUS
         }
-        editAccount.editAccount(data, submittedBy)
+       await editAccount.editAccount(data, submittedBy)
     }
 }
 
