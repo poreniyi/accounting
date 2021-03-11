@@ -17,7 +17,6 @@ router.get('/notifications', async (req,res)=>{
         redirect('dashboard');
     }
     else
-<<<<<<< HEAD
     {
     let items=data.TextRow;
     for(let i=0;i<items.length;i++){
@@ -28,8 +27,6 @@ router.get('/notifications', async (req,res)=>{
         }
     }
     console.log(data);
-=======
->>>>>>> bb634d858712d8e45789aea6aea1ccf6b6e35bab
     res.render('dashboard/notifications', data);
     }
 })
