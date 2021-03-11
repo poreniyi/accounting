@@ -3,9 +3,13 @@ let router = express.Router();
 let getAccountNames=require('../../../database/SearchAccount').getAccountNames;
 let ledgerSearch = require('../../../database/Ledger');
 let journal = require('../../../database/Journal');
+const Pusher = require("pusher");
+let path = require('path');
+require('dotenv').config({path:path.resolve(__dirname,'../../..env')});
 
 router.get('/journal', async (req, res) => {
     let data = await journal.getJournalTransactions();
+    console.log(data);
     let items=data.TextRow;
     for(let i=0;i<items.length;i++){
         if(!items[i].DATE){
@@ -61,11 +65,23 @@ router.post('/viewTransaction/Approve/:id',(req,res)=>{
         data:req.params.id,
         ViewResult:`${req.baseUrl}/viewTransaction/${req.params.id}`,
     }
+
+    const pusher = new Pusher({
+      appId: process.env.pusher_id,
+      key: process.env.pusher_key,
+      secret: process.env.pusher_secret,
+      cluster: process.env.pusher_cluster,
+      useTLS: true
+    });
+    
+    pusher.trigger("my-channel", "my-event", {
+      message: "New transaction"
+    });
     res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
 router.post('/viewTransaction/Reject/:id',async (req,res)=>{
-    ledgerSearch.addTransactionToLedger(req.user, req.params.id, req.body.comment, 'Rejected')
+    ledgerSearch.addTransactionToLedger(req.user, req.params.id, req.body.comment, 'Rejected');
     req.session.Confirm={
         Previous:`${req.baseUrl}/journal`,
         message:"Transaction has been rejected",
@@ -75,5 +91,21 @@ router.post('/viewTransaction/Reject/:id',async (req,res)=>{
     res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
+router.get('/pushTest',(req,res)=>{
+    const Pusher = require("pusher");
+
+const pusher = new Pusher({
+  appId: "1170017",
+  key: "e1fbc504d4bda8da70f1",
+  secret: "4701f3483af56e44b381",
+  cluster: "mt1",
+  useTLS: true
+});
+
+pusher.trigger("my-channel", "my-event", {
+  message: "New transaction"/// transaction id:link to transaction;
+});
+res.render('dashboard/dashboard.ejs');
+})
 
 module.exports = router;
