@@ -15,6 +15,19 @@
 
                 <h1><%=Name %></h1>
                 <h2> Initial Balance: <%=initialBalance %></h2>
+                <label for='search'>Search:</label><input id='search' type='text'>
+                <select id='select'>
+                    <option value=1>Date Created</option>
+                    <option value=2>Date Approved</option>
+                    <option value=3>Created By</option>
+                    <option value=4>Approved By</option> 
+                    <option value=5>Description</option>
+                    <option value=6>Debit</option>
+                    <option value=7>Credit</option>
+                    <option value=8>Balance After</option>
+                    
+                    <input class='dateRange' type='date'>
+                    <input class='dateRange' type='date'>
                 <table id='table'>
                     <tr>
                         <th>Date Created</th>
@@ -42,5 +55,5 @@
                         <% })%>
                 </table>
 
-                <script src='/ejsscripts/'></script>
+                <script src='/ejsscripts/transactions/ledgerScript.js'></script>
 </body>
