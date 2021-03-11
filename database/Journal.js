@@ -69,9 +69,44 @@ async function getTransactionsByID(id){
    return data
 }
 
+
+async function getTransactionsFromLastLogin(date){
+
+    let query = `SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL 
+                WHERE DATE > DATE_FORMAT(STR_TO_DATE(${date}, '%m/%d/%Y'), '%Y-%m-%d') AND STATUS = 'Pending'
+                  ORDER BY DEBIT DESC;`
+
+    let [rows] = await DB.asyncConnection.query(query)
+
+    var data = { TextRow: [] }
+    
+    var previous;
+    var current;
+
+    for(var i = 0; i < [rows][0].length; i++){  
+        current = [rows][0][i]
+        if(i > 0){
+            if([rows][0][i-1].ID != ''){
+                previous = [rows][0][i-1];
+            }
+           if(current.ID == previous.ID){
+                 current.ID = ''
+                 current.DATE = ''
+                 current.DESCRIPTION = ''
+                 current.USERNAME = ''
+                 current.STATUS = ''
+             }
+        }
+        data.TextRow.push(current)
+    }
+
+    return data;
+}
+
 module.exports = {
     createTransaction:createTransaction,
     getTransactionID:getTransactionID,
     getJournalTransactions:getJournalTransactions,
-    getTransactionsByID:getTransactionsByID
+    getTransactionsByID:getTransactionsByID,
+    getTransactionsFromLastLogin:getTransactionsFromLastLogin
 }
