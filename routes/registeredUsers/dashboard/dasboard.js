@@ -1,5 +1,6 @@
 let express = require('express');
 let router = express.Router();
+let transactions = require('../../../database/Journal');
  
 
 router.get('/home',(req,res)=>{
@@ -10,12 +11,12 @@ router.get('/dashboard',(req,res)=>{
     res.render('dashboard/dashboard.ejs');
 });
 
-router.get('/notifications', (req,res)=>{
+router.get('/notifications', async (req,res)=>{
+    let data = await transactions.getTransactionsFromLastLogin(req.session.lastLogin)
     if(req.session.userType!="Manager"){
         redirect('dashboard');
     }
-
-    res.render('dashboard/notifications');
+    res.render('dashboard/notifications', data);
 })
 
 router.get('/confirmRedirect',(req,res)=>{
