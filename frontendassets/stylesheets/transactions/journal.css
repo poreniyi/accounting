@@ -8,3 +8,14 @@ table, th, td {
   textarea{
     resize: none;
   }
+ 
+  .transactions{
+    visibility: collapse;
+  }
+
+  .boxed{
+    border:1px solid black;
+  }
+  .currentPage{
+    background-color: aqua;
+  }

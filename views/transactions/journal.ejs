@@ -25,8 +25,13 @@
         <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
 
             </select>
+            <div id='pageButtons'>
+                <button id='previousButton'>Previous</button>            
+                <button id='nextButton'>Next</button>            
+            </div>
             <table id='table'>
             <tr>
+                <th>#</th>
                 <th>Date</th>
                 <th>Account Names</th>
                 <th>Amount</th>
@@ -35,10 +40,12 @@
                 <th>Creator</th>
                 <th>Status</th>
             </tr>
+            <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
+            <% let counter=1%>
             <%TextRow.forEach(element=>{%>
-                <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
 
-                <tr>
+                <tr class='transactions'>
+                    <td><%=counter%></td>
                     <td><%=element.DATE%> </td>
                     <td>
                         <% let accountNames=element.ACCOUNT.split('+')%>
@@ -53,10 +60,10 @@
                     <td><%=element.USERNAME%> </td>
                     <td> <%=element.STATUS%>  </td>    
                 </tr>
-                <% })%>
+                <% counter++})%>
         </table>
-            <script src='/ejsscripts/transactions/viewJournal.js'></script>
-
+ 
+        <script src='/ejsscripts/transactions/viewJournal.js'></script>
         </body>
 
 </html>
