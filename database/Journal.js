@@ -73,8 +73,8 @@ async function getTransactionsByID(id){
 async function getTransactionsFromLastLogin(date){
 
     let query = `SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL 
-                WHERE DATE > DATE_FORMAT(STR_TO_DATE(${date}, '%m/%d/%Y'), '%Y-%m-%d') AND STATUS = 'Pending'
-                  ORDER BY DEBIT DESC;`
+                WHERE DATE >= DATE_FORMAT(STR_TO_DATE('${date}', '%m/%d/%Y'), '%Y-%m-%d') AND STATUS = 'Pending'
+                  ORDER BY ID ASC;`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -100,8 +100,12 @@ async function getTransactionsFromLastLogin(date){
         data.TextRow.push(current)
     }
 
+    console.log(data)
+
     return data;
 }
+
+getTransactionsFromLastLogin('03/10/2021')
 
 module.exports = {
     createTransaction:createTransaction,
