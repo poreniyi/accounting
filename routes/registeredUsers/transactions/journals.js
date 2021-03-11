@@ -35,7 +35,7 @@ router.post('/createJournal', async (req, res) => {
         Previous:`${req.baseUrl}/journal`,
         message:"Transaction has been sent and is pending approval",
         data: ID,
-        ViewResult:`${req.baseUrl}/journal`,
+        ViewResult:`${req.baseUrl}/viewTransaction/${ID}`,
     }
     const pusher = new Pusher({
         appId: process.env.pusher_id,
