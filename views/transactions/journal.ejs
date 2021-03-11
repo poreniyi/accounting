@@ -40,9 +40,10 @@
 
                 <tr>
                     <td><%=element.DATE%> </td>
-                    <td><% let accountNames=element.ACCOUNT.split('+')%>
+                    <td>
+                        <% let accountNames=element.ACCOUNT.split('+')%>
                         <% accountNames.forEach(name=>{%>
-                           <a href=<%= `./ledger/${name}`%>><%=name%></a> <br>
+                            <pre><a href=<%= `./ledger/${name}`%>><%=name%></a><br></pre>
                        <%})%></td>
                     <td><%=formatter.format(element.AMOUNT)%> </td>
                     <td> <%=element.DESCRIPTION%> </td>

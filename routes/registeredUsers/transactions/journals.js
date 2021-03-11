@@ -11,8 +11,11 @@ router.get('/journal', async (req, res) => {
     let data = await journal.getJournalTransactions();
     let items=data.TextRow;
     for(let i=0;i<items.length;i++){
+        if(items[i].CREDIT>0){
+            items[i].ACCOUNT=`\t${items[i].ACCOUNT}`
+        }
         if(!items[i].DATE){
-           items[i-1].ACCOUNT+=`+${items[i].ACCOUNT}`;
+            items[i-1].ACCOUNT+=`+${items[i].ACCOUNT}`
            items.splice(i,1);
             i--;
         }
