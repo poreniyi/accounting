@@ -22,12 +22,12 @@ router.get('/createJournal', async(req, res) => {
 })
 router.post('/createJournal', async (req, res) => {
 
-    // let ID = await journal.getTransactionID();
+    let ID = await journal.getTransactionID();
 
-    // for(var i = 0; i < req.body.Account.length; i++){
-    //         journal.createTransaction(req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID)
-    // }
-     ID='';
+    for(var i = 0; i < req.body.Account.length; i++){
+            journal.createTransaction(req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID)
+    }
+
     req.session.Confirm={
         Previous:`${req.baseUrl}/journal`,
         message:"Transaction has been sent and is pending approval",
@@ -35,7 +35,6 @@ router.post('/createJournal', async (req, res) => {
         ViewResult:`${req.baseUrl}/journal`,
     }
     res.redirect(`${req.baseUrl}/confirmRedirect`);
-    //res.send('Transaction has been sent and is pending approval');
 })
 
 router.get('/viewtransaction/:id',async (req,res)=>{
