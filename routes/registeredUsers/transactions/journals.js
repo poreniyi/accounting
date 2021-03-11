@@ -37,6 +37,19 @@ router.post('/createJournal', async (req, res) => {
         data: ID,
         ViewResult:`${req.baseUrl}/journal`,
     }
+    const pusher = new Pusher({
+        appId: process.env.pusher_id,
+        key: process.env.pusher_key,
+        secret: process.env.pusher_secret,
+        cluster: process.env.pusher_cluster,
+        useTLS: true
+      });
+      
+      pusher.trigger("my-channel", "my-event", {
+        message: "New transaction",/// transaction id:link to transaction;
+        ID: ID,
+      });
+    
     res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
@@ -64,18 +77,6 @@ router.post('/viewTransaction/Approve/:id',(req,res)=>{
         data:req.params.id,
         ViewResult:`${req.baseUrl}/viewTransaction/${req.params.id}`,
     }
-
-    const pusher = new Pusher({
-      appId: process.env.pusher_id,
-      key: process.env.pusher_key,
-      secret: process.env.pusher_secret,
-      cluster: process.env.pusher_cluster,
-      useTLS: true
-    });
-    
-    pusher.trigger("my-channel", "my-event", {
-      message: "New transaction"
-    });
     res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
