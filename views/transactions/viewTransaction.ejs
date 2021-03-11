@@ -51,7 +51,7 @@
         </tr>
         <%data.TextRow.forEach(element=>{%>
             <tr>
-                <td><%=element.ACCOUNT%></td>
+                <td><a href=<%=`/./${userType}/ledger/${element.ACCOUNT}`%>><%=element.ACCOUNT%></a></td>
                 <td><%=formatter.format(element.DEBIT)%></td>
                 <td><%=formatter.format(element.CREDIT)%> </td>
             </tr>
