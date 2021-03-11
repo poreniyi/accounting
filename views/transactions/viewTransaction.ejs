@@ -45,12 +45,14 @@
     </table>
     <table id='accountTable'>
         <tr>
+            <th>Normal</th>
             <th>Account Affected</th>
             <th>Debit</th>
             <th>Credit</th>
         </tr>
         <%data.TextRow.forEach(element=>{%>
             <tr>
+                <td><%=element.NORMALSIDE%></td>
                 <td><a href=<%=`/./${userType}/ledger/${element.ACCOUNT}`%>><%=element.ACCOUNT%></a></td>
                 <td><%=formatter.format(element.DEBIT)%></td>
                 <td><%=formatter.format(element.CREDIT)%> </td>
