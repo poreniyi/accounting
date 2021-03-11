@@ -29,8 +29,7 @@
             <% if(currentUser != null) { %>
                 <ul id="user-navbar">
                     <img src='/images/profile.png'>
-                    <li><a href="#">Welcome <%= currentUser %>  ! you are an <%=userType%></a></li>
-                    <li><a class="navbar-brand" href="/">Mankara</a></li>
+                    <li><a href="#">Welcome <%= currentUser %>! (<%=userType%>)</a></li>
                     <%let notificationPageLink=`/./${userType.toLowerCase()}/notifications`%>
                     <%if(userType=='Manager'){ %>
                         <li><a href=<%=notificationPageLink%>>Notifications</a></li>
