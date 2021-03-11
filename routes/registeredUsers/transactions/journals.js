@@ -9,7 +9,6 @@ require('dotenv').config({path:path.resolve(__dirname,'../../..env')});
 
 router.get('/journal', async (req, res) => {
     let data = await journal.getJournalTransactions();
-    console.log(data);
     let items=data.TextRow;
     for(let i=0;i<items.length;i++){
         if(!items[i].DATE){
