@@ -8,12 +8,14 @@
     <body>
         <table>
             <tr>
+                <th>Account Name</th>
                 <th>Transaction ID</th>
                 <th>Created by</th>
                 <th>Status</th>
             </tr>
             <%TextRow.forEach(element=>{%>
             <tr>
+                <td><%=element.ACCOUNT%></td>
                 <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
                 <td><%=element.USERNAME%></td>
                 <td><%=element.STATUS%></td>
