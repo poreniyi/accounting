@@ -17,23 +17,20 @@ router.get('/notifications', (req,res)=>{
     res.render('dashboard/notifications');
 })
 
-router.get('/sucess',(req,res)=>{
+router.get('/confirmRedirect',(req,res)=>{
     res.redirect('confirmation');
 });
 
 
 router.get('/confirmation',(req,res)=>{
-    let data=req.session.confirmationData ||'';
-    let message=req.session.confirmationMessage|| '';
-    let back=req.session.Previous || `../../${req.session.userType.toLowerCase()}/dashboard`;
-    delete req.session.Previous;
-    delete req.session.confirmationData;
-    delete req.session.confirmationMessage;
-    res.status(200).render('dashboard/confirmation.ejs',{
-        data:data,
-        message:message,
-        back:back,
-    });
+    console.log(req.session.Confirm);
+    req.session.Confirm=req.session.Confirm || {}
+    req.session.Confirm.Previous=  req.session.Confirm.Previous ||  `../../${req.session.userType.toLowerCase()}/dashboard`;
+    req.session.Confirm.message=  req.session.Confirm.message ||  ``;
+    req.session.Confirm.data=  req.session.Confirm.data ||  ``;
+    let data=req.session.Confirm;
+    delete req.session.Confirm;
+    res.status(200).render('dashboard/confirmation.ejs',{data});
 });
 
 
