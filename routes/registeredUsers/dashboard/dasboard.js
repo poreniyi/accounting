@@ -16,6 +16,8 @@ router.get('/notifications', async (req,res)=>{
     if(req.session.userType!="Manager"){
         redirect('dashboard');
     }
+    else
+    console.log(data);
     res.render('dashboard/notifications', data);
 })
 
