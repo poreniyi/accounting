@@ -15,7 +15,10 @@
             </tr>
             <%TextRow.forEach(element=>{%>
             <tr>
-                <td><%=element.ACCOUNT%></td>
+                <td><% let accountNames=element.ACCOUNT.split('+')%>
+                    <% accountNames.forEach(name=>{%>
+                        <a href=<%= `./ledger/${name}`%>><%=name%></a> <br>
+                    <%})%></td>
                 <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
                 <td><%=element.USERNAME%></td>
                 <td><%=element.STATUS%></td>
