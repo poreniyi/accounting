@@ -16,21 +16,27 @@
                 <h1><%=Name %></h1>
                 <table id='table'>
                     <tr>
-                        <th>Transaction Date</th>
-                        <th>PR</th>
+                        <th>Date Created</th>
+                        <th>Date Submitted</th>
+                        <th>Made By</th>
+                        <th>Submitted By</th>
+                        <th>Description</th>
                         <th>Debits</th>
                         <th>Credits</th>
                         <th>Balance</th>
-                        <th>Description</th>
+                        <th>PR</th>
                     </tr>
                     <%data.TextRow.forEach(element=>{%>
                         <tr>
-                            <td><%=element.DATE%></td>
-                            <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
+                            <td><%=element.DATECREATED%></td>
+                            <td><%=element.DATESUBMITTED%></td>
+                            <td><%=element.MADEBY%></td>
+                            <td><%=element.SUBMITTEDBY%></td>
+                            <td><%=element.DESCRIPTION%></td>
                             <td><%=formatter.format(element.DEBIT)%></td>
                             <td><%=formatter.format(element.CREDIT)%></td>
                             <td><%=formatter.format(element.BALANCE)%></td>
-                            <td><%=element.DESCRIPTION%></td>
+                            <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
                         </tr>
                         <% })%>
                 </table>
