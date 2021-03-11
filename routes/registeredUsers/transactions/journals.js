@@ -27,7 +27,14 @@ router.post('/createJournal', async (req, res) => {
     for(var i = 0; i < req.body.Account.length; i++){
             journal.createTransaction(req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID)
     }
-    res.send('Transaction has been sent and is pending approval');
+
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/journal`,
+        message:"Transaction has been sent and is pending approval",
+        data: ID,
+        ViewResult:`${req.baseUrl}/journal`,
+    }
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
 router.get('/viewtransaction/:id',async (req,res)=>{
@@ -47,12 +54,25 @@ router.get('/ledger/:name',async (req,res)=>{
 
 router.post('/viewTransaction/Approve/:id',(req,res)=>{
     ledgerSearch.addTransactionToLedger(req.user, req.params.id, '', 'Approved')
-    res.send("approved");
+
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/journal`,
+        message:"Transaction has been approved",
+        data:req.params.id,
+        ViewResult:`${req.baseUrl}/viewTransaction/${req.params.id}`,
+    }
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
-router.post('/viewTransaction/Reject/:id',(req,res)=>{
+router.post('/viewTransaction/Reject/:id',async (req,res)=>{
     ledgerSearch.addTransactionToLedger(req.user, req.params.id, req.body.comment, 'Rejected')
-    res.send("Rejected");
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/journal`,
+        message:"Transaction has been rejected",
+        data:req.params.id,
+        ViewResult:`${req.baseUrl}/viewTransaction/${req.params.id}`,
+    }
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
 
