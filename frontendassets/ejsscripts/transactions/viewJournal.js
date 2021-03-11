@@ -40,8 +40,10 @@ search.addEventListener('keyup', () => {
         if (td) {
             textValue = td.textContent;
             if (textValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].classList.toggle('transactions', false);
                 tr[i].style.display = '';
             } else {
+                tr[i].classList.toggle('transactions', true);
                 tr[i].style.display = 'none';
             }
         }
