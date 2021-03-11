@@ -25,13 +25,7 @@ async function createTransaction(username, account,  description, debit, credit,
 async function getJournalTransactions(status){
 
     let query = `
-    SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC`
-
-    if(status){
-        query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL 
-                 WHERE STATUS = '${status}' ORDER BY ID ASC`
-
-    }
+    SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC`
 
     var [rows] = await DB.asyncConnection.query(query)
 
@@ -49,8 +43,7 @@ async function getJournalTransactions(status){
            if(current.ID == previous.ID){
                  current.ID = ''
                  current.DATE = ''
-                 current.DESCRIPTION = 'Credit'
-                 current.DESCRIPTION = 'Debit'
+                 current.DESCRIPTION = ''
                  current.USERNAME = ''
                  current.STATUS = ''
              }
