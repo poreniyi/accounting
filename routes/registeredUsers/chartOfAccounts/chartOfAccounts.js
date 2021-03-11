@@ -56,7 +56,8 @@ router.post('/addAccount', async (req,res) => {
 
 router.get('/eventLog/:name',async (req,res)=>{
      let data = await search.getEventLog(req.params.name)
-     res.render('charts/eventLog', data);
+     let Name = data.TextRow[0].NAME
+     res.render('charts/eventLog', {data, name:req.params.name});
  })
 
 module.exports = router;
