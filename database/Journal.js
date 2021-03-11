@@ -28,7 +28,7 @@ async function getJournalTransactions(status){
     SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC`
 
     if(status){
-        query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL 
+        query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL 
                  WHERE STATUS = '${status}' ORDER BY ID ASC`
 
     }
@@ -49,7 +49,8 @@ async function getJournalTransactions(status){
            if(current.ID == previous.ID){
                  current.ID = ''
                  current.DATE = ''
-                 current.DESCRIPTION = ''
+                 current.DESCRIPTION = 'Credit'
+                 current.DESCRIPTION = 'Debit'
                  current.USERNAME = ''
                  current.STATUS = ''
              }
