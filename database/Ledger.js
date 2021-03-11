@@ -52,10 +52,13 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
 
         query = `CALL ADD_TRANSACTION_TO_LEDGER(?,?,?,?,?,?)`
 
+        console.log(submittedBy + "" + accounts[i].ACCOUNT + " " + accounts[i].DESCRIPTION + " " + accounts[i].DEBIT + " " + accounts[i].CREDIT + " " + id)
+
         DB.asyncConnection.query(query, [submittedBy, accounts[i].ACCOUNT, accounts[i].DESCRIPTION, accounts[i].DEBIT, accounts[i].CREDIT, id], 
             function (err, result, fields) {
                 if(err){
                     console.log("Query failed")
+                    console.log(err)
                     throw err;
                 } 
         });
