@@ -38,9 +38,9 @@ router.get('/succesfulLogin',(req,res)=>{
     }
 })
 
-router.get("/logout", function (req,res){
+router.get("/logout", async function (req,res) {
     req.logout();
-    req.session.lastLogin = await lastLog.getLastLogin(req.user)
+    lastLog.addLastLogin()
     req.session.destroy();
     res.redirect("/home");
 });
@@ -55,7 +55,7 @@ router.get('/wrongCredentials', async (req,res)=>{
     res.locals.message='Wrong username or password';
     res.render('home/login');
 })
-router.post('/login',(req,res,next)=>{
+router.post('/login', async (req,res,next)=>{
    passport.authenticate('local',(err,user) => {
     if(err){
         return next (err)
@@ -64,6 +64,7 @@ router.post('/login',(req,res,next)=>{
         res.redirect('/wrongCredentials');
     }
     req.login(user, () =>{
+        req.session.lastLogin = await lastLog.getLastLogin(req.user)
         req.session.userType=user[2];
         req.session.status= user[3];
         res.redirect('/succesfulLogin');

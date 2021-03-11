@@ -28,8 +28,16 @@ async function getLastLogin(username){
 
 }
 
+async function addLastLogin(username){
+
+    let query = `UPDATE USER SET LAST_LOGIN = current_date() WHERE USERNAME = '${username}'`
+      
+    DB.asyncConnection.query(query)
+}
+
 module.exports = { 
     getReport:getReport, 
-    getLastLogin:getLastLogin 
+    getLastLogin:getLastLogin,
+    addLastLogin:addLastLogin
 };
 
