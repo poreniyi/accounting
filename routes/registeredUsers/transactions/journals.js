@@ -53,12 +53,25 @@ router.get('/ledger/:name',async (req,res)=>{
 
 router.post('/viewTransaction/Approve/:id',(req,res)=>{
     ledgerSearch.addTransactionToLedger(req.params.id, '', 'Approved')
-    res.send("approved");
+
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/journal`,
+        message:"Transaction has been approved",
+        data:req.params.id,
+        ViewResult:`${req.baseUrl}/viewTransaction/${req.params.id}`,
+    }
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
-router.post('/viewTransaction/Reject/:id',(req,res)=>{
+router.post('/viewTransaction/Reject/:id',async (req,res)=>{
     ledgerSearch.addTransactionToLedger(req.params.id, req.body.comment, 'Rejected')
-    res.send("Rejected");
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/journal`,
+        message:"Transaction has been rejected",
+        data:req.params.id,
+        ViewResult:`${req.baseUrl}/viewTransaction/${req.params.id}`,
+    }
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
 })
 
 

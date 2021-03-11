@@ -28,6 +28,8 @@ router.get('/confirmation',(req,res)=>{
     req.session.Confirm.Previous=  req.session.Confirm.Previous ||  `../../${req.session.userType.toLowerCase()}/dashboard`;
     req.session.Confirm.message=  req.session.Confirm.message ||  ``;
     req.session.Confirm.data=  req.session.Confirm.data ||  ``;
+    req.session.Confirm.ViewResult=  req.session.Confirm.ViewResult ||  ``;
+
     let data=req.session.Confirm;
     delete req.session.Confirm;
     res.status(200).render('dashboard/confirmation.ejs',{data});
