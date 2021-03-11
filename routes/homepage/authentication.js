@@ -39,8 +39,8 @@ router.get('/succesfulLogin',(req,res)=>{
 })
 
 router.get("/logout", async function (req,res) {
+    lastLog.addLastLogin(req.user);
     req.logout();
-    lastLog.addLastLogin()
     req.session.destroy();
     res.redirect("/home");
 });
@@ -64,7 +64,7 @@ router.post('/login', async (req,res,next)=>{
         res.redirect('/wrongCredentials');
     }
     req.login(user, async () =>{
-        req.session.lastLogin = await lastLog.getLastLogin(req.user)
+        req.session.lastLogin = await lastLog.getLastLogin(user[0]);
         req.session.userType=user[2];
         req.session.status= user[3];
         res.redirect('/succesfulLogin');

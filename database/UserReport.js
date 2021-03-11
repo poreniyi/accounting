@@ -23,14 +23,14 @@ async function getLastLogin(username){
     let query = `SELECT DATE_FORMAT(LAST_LOGIN, '%m/%d/%Y') AS LAST_LOGIN FROM USER WHERE USERNAME = '${username}'`
       
     let [rows] = await DB.asyncConnection.query(query)
-    
+
     return [rows][0][0].LAST_LOGIN
 
 }
 
 async function addLastLogin(username){
 
-    let query = `UPDATE USER SET LAST_LOGIN = current_date() WHERE USERNAME = '${username}'`
+    let query = `SET time_zone = 'US/Eastern'; UPDATE USER SET LAST_LOGIN = current_date() WHERE USERNAME = '${username}'`
       
     DB.asyncConnection.query(query)
 }
