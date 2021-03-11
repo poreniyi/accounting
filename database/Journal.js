@@ -27,7 +27,7 @@ async function getJournalTransactions(status){
     let query = `
                 SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, 
                 (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC,
-                STATUS = 'Approved' DESC, STATUS =  'Rejected'
+                STATUS = 'Approved' DESC, STATUS =  'Rejected', ID, DEBIT DESC, CREDIT DESC
                 `
 
     var [rows] = await DB.asyncConnection.query(query)
@@ -61,7 +61,7 @@ async function getTransactionsByID(id){
 
     let query = `SELECT DATE_FORMAT(JOURNAL.DATE, '%m/%d/%Y') AS DATE, JOURNAL.USERNAME, JOURNAL.ACCOUNT, JOURNAL.DESCRIPTION, JOURNAL.DEBIT, JOURNAL.CREDIT, 
 	JOURNAL.COMMENT, JOURNAL.STATUS, JOURNAL.ID, MASTER.NORMALSIDE FROM JOURNAL 
-    JOIN MASTER ON JOURNAL.ACCOUNT = MASTER.NAME WHERE ID = '${id}' ORDER BY DEBIT DESC;;`
+    JOIN MASTER ON JOURNAL.ACCOUNT = MASTER.NAME WHERE ID = '${id}' ORDER BY DEBIT DESC, CREDIT DESC;`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -79,7 +79,7 @@ async function getTransactionsFromLastLogin(date){
 
     let query = `SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, COMMENT, STATUS, ID FROM JOURNAL 
                 WHERE DATE >= DATE_FORMAT(STR_TO_DATE('${date}', '%m/%d/%Y'), '%Y-%m-%d') AND STATUS = 'Pending'
-                  ORDER BY ID ASC;`
+                  ORDER BY ID ASC, DEBIT DESC, CREDIT DESC;`
 
     let [rows] = await DB.asyncConnection.query(query)
     var data = { TextRow: [] }
