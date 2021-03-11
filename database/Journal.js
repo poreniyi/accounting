@@ -24,14 +24,14 @@ async function createTransaction(username, account,  description, debit, credit,
 
 async function getJournalTransactions(status){
 
-    let query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY ID ASC`
+    let query = `
+    SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC`
 
     if(status){
         query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL 
                  WHERE STATUS = '${status}' ORDER BY ID ASC`
 
     }
-    // add subquery to fetch NORMALSIDE from each account from master
 
     var [rows] = await DB.asyncConnection.query(query)
 

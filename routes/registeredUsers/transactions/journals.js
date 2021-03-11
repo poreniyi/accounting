@@ -41,16 +41,17 @@ router.get('/viewtransaction/:id',async (req,res)=>{
 
 router.get('/ledger/:name',async (req,res)=>{
     let data = await ledgerSearch.findLedger(req.params.name)
-    res.render('transactions/ledger', {data,Name:req.params.name});
+    let initialBalance = await ledgerSearch.findLedgerInitialBalance(req.params.name)
+    res.render('transactions/ledger', {data,Name:req.params.name, initialBalance});
 })
 
 router.post('/viewTransaction/Approve/:id',(req,res)=>{
-    ledgerSearch.addTransactionToLedger(req.params.id, '', 'Approved')
+    ledgerSearch.addTransactionToLedger(req.user, req.params.id, '', 'Approved')
     res.send("approved");
 })
 
 router.post('/viewTransaction/Reject/:id',(req,res)=>{
-    ledgerSearch.addTransactionToLedger(req.params.id, req.body.comment, 'Rejected')
+    ledgerSearch.addTransactionToLedger(req.user, req.params.id, req.body.comment, 'Rejected')
     res.send("Rejected");
 })
 

@@ -1,11 +1,22 @@
 const DB = require("./DBConnection");
 const editAccount = require("./EditAccount")
 
+async function findLedgerInitialBalance(name){
+
+    let query = `SELECT INITIALBALANCE FROM MASTER WHERE NAME = '${name}'`
+
+    let [rows] = await DB.asyncConnection.query(query)
+
+    return [rows][0][0].INITIALBALANCE
+
+}
+
 async function findLedger(name){
 
     let ledger = name + "_ledger"
 
-    let query = `SELECT DATE_FORMAT(DATE, '%d/%m/%Y') AS DATE, USERNAME, DESCRIPTION, DEBIT, CREDIT, BALANCE, ID FROM ${ledger}`
+    let query = `SELECT DATE_FORMAT(DATECREATED, '%d/%m/%Y') AS DATECREATED, DATE_FORMAT(DATESUBMITTED, '%d/%m/%Y') AS DATESUBMITTED, 
+                MADEBY, SUBMITTEDBY, DESCRIPTION, DEBIT, CREDIT, BALANCE, ID FROM ${ledger}`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -17,7 +28,7 @@ async function findLedger(name){
     return data
 }
 
-async function addTransactionToLedger(id, comment, status){
+async function addTransactionToLedger(submittedBy, id, comment, status){
 
     let query = `UPDATE JOURNAL SET COMMENT = '${comment}', STATUS = '${status}' WHERE ID = '${id}'`
 
@@ -27,7 +38,7 @@ async function addTransactionToLedger(id, comment, status){
         return;
     }
 
-    query = `SELECT USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT FROM JOURNAL WHERE ID = '${id}'`
+    query = `SELECT USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, DATE FROM JOURNAL WHERE ID = '${id}'`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -41,7 +52,7 @@ async function addTransactionToLedger(id, comment, status){
 
         query = `CALL ADD_TRANSACTION_TO_LEDGER(?,?,?,?,?,?)`
 
-        DB.asyncConnection.query(query, [accounts[i].USERNAME, accounts[i].ACCOUNT, accounts[i].DESCRIPTION, accounts[i].DEBIT, accounts[i].CREDIT, id], 
+        DB.asyncConnection.query(query, [submittedBy, accounts[i].ACCOUNT, accounts[i].DESCRIPTION, accounts[i].DEBIT, accounts[i].CREDIT, id], 
             function (err, result, fields) {
                 if(err){
                     console.log("Query failed")
@@ -73,11 +84,12 @@ async function addTransactionToLedger(id, comment, status){
             Comment:[result][0][0].COMMENT,
             Status: [result][0][0].STATUS
         }
-        editAccount.editAccount(data, accounts[i].USERNAME)
+        editAccount.editAccount(data, submittedBy)
     }
 }
 
 module.exports = {
     findLedger:findLedger,
-    addTransactionToLedger:addTransactionToLedger
+    addTransactionToLedger:addTransactionToLedger,
+    findLedgerInitialBalance:findLedgerInitialBalance
 }
