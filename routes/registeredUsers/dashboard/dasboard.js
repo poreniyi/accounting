@@ -17,8 +17,18 @@ router.get('/notifications', async (req,res)=>{
         redirect('dashboard');
     }
     else
+    {
+    let items=data.TextRow;
+    for(let i=0;i<items.length;i++){
+        if(!items[i].DATE){
+           items[i-1].ACCOUNT+=`+${items[i].ACCOUNT}`;
+           items.splice(i,1);
+            i--;
+        }
+    }
     console.log(data);
     res.render('dashboard/notifications', data);
+    }
 })
 
 router.get('/confirmRedirect',(req,res)=>{
