@@ -34,10 +34,10 @@ router.post('/editAccount/:number',async (req,res) => {
         res.status(403).render(`home/denied`);
     }
     let result = await edit.editAccount(req.body, req.user);
-    if(result){
-        req.session.confirmationMessage=result;
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/viewChart`,
     }
-    req.session.Confirm.Previous=`${req.baseUrl}/viewChart`;
+    req.session.Confirm.message= result ? result : 'Something went wrong';
     res.redirect(`${req.baseUrl}/confirmRedirect`);
 
 })
@@ -49,7 +49,7 @@ router.post('/addAccount', async (req,res) => {
     req.session.Confirm={
         Previous:`${req.baseUrl}/viewChart`,
     }
-    req.session.Confirm= result ? result : 'Something went wrong';
+    req.session.Confirm.message= result ? `Account added` : 'Something went wrong';
     res.redirect(`${req.baseUrl}/confirmRedirect`);
  
 })
