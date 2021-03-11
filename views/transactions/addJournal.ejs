@@ -11,6 +11,8 @@
 <%- include('../_partial/_header'); -%>
 
     <body>
+        <button id='addAccount'>Add Account</button>
+
         <form id='form' action='' METHOD='POST'>
             <datalist id='AccountNamesList'>
                 <%accountNames.forEach(element=>{ %>
@@ -46,12 +48,13 @@
                     <td id='totalCredit'></td>
                     <td colspan="2" id='balanceMessage'></td>
                 </tr>
-                <button id='submitButton' type='submit' value='submit'>Create Journal Entry</button>
+                
         </form>
-        <button id='resetButton' type='reset'>Reset</button>
         </table>
-        <td><button id='addAccount'>Add Account</button></td>
-
+        <div>
+            <button id='submitButton' type='submit' value='submit'>Create Journal Entry</button>
+            <button id='resetButton' type='reset'>Reset</button>
+        </div>
         <script src='/ejsscripts/transactions/journalScript.js'></script>
     </body>
 
