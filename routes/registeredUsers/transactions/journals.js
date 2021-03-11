@@ -94,10 +94,10 @@ router.get('/pushTest',(req,res)=>{
     const Pusher = require("pusher");
 
 const pusher = new Pusher({
-  appId: "1170017",
-  key: "e1fbc504d4bda8da70f1",
-  secret: "4701f3483af56e44b381",
-  cluster: "mt1",
+  appId: process.env.pusher_id,
+  key: process.env.pusher_key,
+  secret: process.env.pusher_secret,
+  cluster: process.env.pusher_cluster,
   useTLS: true
 });
 
