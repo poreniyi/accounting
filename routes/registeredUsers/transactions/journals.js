@@ -22,12 +22,20 @@ router.get('/createJournal', async(req, res) => {
 })
 router.post('/createJournal', async (req, res) => {
 
-    let ID = await journal.getTransactionID();
+    // let ID = await journal.getTransactionID();
 
-    for(var i = 0; i < req.body.Account.length; i++){
-            journal.createTransaction(req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID)
+    // for(var i = 0; i < req.body.Account.length; i++){
+    //         journal.createTransaction(req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID)
+    // }
+     ID='';
+    req.session.Confirm={
+        Previous:`${req.baseUrl}/journal`,
+        message:"Transaction has been sent and is pending approval",
+        data: ID,
+        ViewResult:`${req.baseUrl}/journal`,
     }
-    res.send('Transaction has been sent and is pending approval');
+    res.redirect(`${req.baseUrl}/confirmRedirect`);
+    //res.send('Transaction has been sent and is pending approval');
 })
 
 router.get('/viewtransaction/:id',async (req,res)=>{
@@ -56,38 +64,3 @@ router.post('/viewTransaction/Reject/:id',(req,res)=>{
 
 
 module.exports = router;
-router.post('/editAccount/:number',async (req,res) => {
-    if (req.session.userType.toLowerCase()=='admin'){
-        next();
-    }else{
-        res.status(403).render(`home/denied`);
-    }
-    req.session.Confirm= result ? message : 'Something went wrong';
-    let result = await edit.editAccount(req.body, req.user);
-    req.session.Confirm={
-        Previous:`${req.baseUrl}/viewChart`,
-    }
-
-    if(result){
-        req.session.confirmationMessage=result;
-    }
-    req.session.Previous=`${req.baseUrl}/viewChart`;
-   // req.session.confirmationData=result;
-
-    res.redirect(`${req.baseUrl}/confirmRedirect`);
-
-})
-router.post('/addAccount', async (req,res) => {
-    if (req.session.userType.toLowerCase()=='admin'){
-        next();
-    }else{
-        res.status(403).render(`home/denied`);
-    }
-    let result = await create.createAccount(req.body, req.user);
-    req.session.Confirm={
-        Previous:`${req.baseUrl}/viewChart`,
-    }
-    req.session.Confirm= result ? message : 'Something went wrong';
-    res.redirect(`${req.baseUrl}/confirmRedirect`);
-
-})
