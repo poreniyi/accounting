@@ -2,9 +2,13 @@ let express = require('express');
 let router = express.Router();
  
 let isAdmin=(req,res,next)=>{
-    if (req.session.userType.toLowerCase()=='admin'){
+    if(req.session.userType == undefined){
+        res.status(403).render(`home/denied`);
+    }
+    else if (req.session.userType.toLowerCase()=='admin'){
         next();
-    }else{
+    }
+    else{
         res.status(403).render(`home/denied`);
     }
 }
