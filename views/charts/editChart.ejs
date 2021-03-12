@@ -120,23 +120,23 @@
                         <th>SubCategory</th>
                         <td class='formInput'><input name='SubCategory' type="text"value=<%=SUBCATEGORY %>></td>
                     </tr>
-                    <tr>
+                    <tr hidden>
                         <th>InitialBalance</th>
                         <td class='formInput'><input name='InitialBalance'type="number"value=<%=INITIALBALANCE %>></td>
                     </tr>
-                    <tr>
+                    <tr hidden>
                         <th>Debit</th>
                         <td class='formInput'><input name='Debit' type="number" value=<%=DEBIT %>></td>
                     </tr>
-                    <tr>
+                    <tr hidden>
                         <th>Credit</th>
                         <td class='formInput'><input name='Credit' type="number"value=<%=CREDIT %>></td>
                     </tr>
-                    <tr>
+                    <tr hidden>
                         <th>Balance</th>
                         <td class='formInput'><input name='Balance' type="text"value=<%=BALANCE %> readonly ></td>
                     </tr>
-                    <tr>
+                    <tr hidden>
                         <th>Doc</th>
                         <td class='formInput'><input type="datetime" name='DOC' type="text" value=<%=`${DOC.getMonth()+1}/${DOC.getDate()}/${DOC.getFullYear()}` %> readonly></td>
                     </tr>
