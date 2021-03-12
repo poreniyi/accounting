@@ -38,6 +38,8 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
         return;
     }
 
+    console.log('not rejected')
+
     query = `SELECT USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, DATE FROM JOURNAL WHERE ID = '${id}'`
 
     let [rows] = await DB.asyncConnection.query(query)
@@ -85,7 +87,7 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
             Comment:[result][0][0].COMMENT,
             Status: [result][0][0].STATUS
         }
-       await editAccount.editAccount(data, submittedBy)
+       await editAccount.editAccount(data, submittedBy, true)
     }
 }
 

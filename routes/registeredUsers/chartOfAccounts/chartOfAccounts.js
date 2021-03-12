@@ -34,6 +34,7 @@ router.post('/editAccount/:number',async (req,res) => {
         res.status(403).render(`home/denied`);
     }
     let result = await edit.editAccount(req.body, req.user);
+    console.log(result)
     req.session.Confirm={
         Previous:`${req.baseUrl}/viewChart`,
         ViewResult:`${req.baseUrl}/editAccount/${req.params.number}`,

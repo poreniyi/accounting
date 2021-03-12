@@ -2,9 +2,11 @@
 const DB = require("./DBConnection");
 
 // used when seeing an accounts details and user wants to update something. Such as category or activate the account
-async function editAccount(body, username){
+async function editAccount(body, username, madeByTransaction){
 
     let checkBalance = parseInt(body.Balance,10)
+
+    console.log(checkBalance)
 
     if(body.Status == '0' && checkBalance != 0){
         return `Denied: that account has a balance greater than 0 so it can't be deactivated`;
@@ -20,20 +22,32 @@ async function editAccount(body, username){
 
     let initial;
 
-    if(body.Balance){
-        initial = checkBalance;
+    if(madeByTransaction){
+
+        if(body.Balance){
+            initial = checkBalance;
+            console.log('EEEEEEE')
+        }
+        else{
+            initial = initialBalance
+            console.log('RRRRRRRRRRR')
+        }
+
+        console.log(initial)
+        console.log(body.Normal)
+        if(body.Normal == 'Debit'){
+            balance = initial + (debit - credit);
+            console.log('OOOOOOO')
+        }
+        else{
+            balance = initial + (credit - debit);
+            console.log('PPPPPPP')
+        }
     }
     else{
-        initial = initialBalance
+        balance = body.Balance
     }
-
-    if(body.Normal == 'Debit'){
-        balance = initial + (debit - credit);
-    }
-    else{
-        balance = initial + (credit - debit);
-    }
-
+    console.log(balance)
     console.log(debit)
     console.log(credit)
     console.log(balance)
