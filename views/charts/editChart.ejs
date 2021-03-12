@@ -95,13 +95,10 @@
                         <th>Description</th>
                         <td class='formInput'><input name='Description'type="text" value=<%=DESCRIPTION %>></td>
                     </tr> 
-                    <tr>
+                    <tr hidden>
                         <th>Normal Side</th>
                         <td class='formInput'>
-                            <input type="radio" required id="Credit" name="Normal" value="Credit">
-                            <label for="Credit">Credit</label><br>
-                            <input type="radio" id="Debit" name="Normal" value="Debit">
-                            <label for="Debit">Debit</label><br>
+                            <input name="Normal"  type='text' value=<%=NORMALSIDE%>>
                         </td>
                     </tr> 
                     <tr>
