@@ -34,7 +34,6 @@ router.post('/editAccount/:number',async (req,res) => {
         res.status(403).render(`home/denied`);
     }
     let result = await edit.editAccount(req.body, req.user);
-    console.log(result)
     req.session.Confirm={
         Previous:`${req.baseUrl}/viewChart`,
         ViewResult:`${req.baseUrl}/editAccount/${req.params.number}`,
@@ -58,7 +57,6 @@ router.post('/addAccount', async (req,res) => {
 
 router.get('/eventLog/:name',async (req,res)=>{
      let data = await search.getEventLog(req.params.name)
-     let Name = data.TextRow[0].NAME
      res.render('charts/eventLog', {data, name:req.params.name});
  })
 

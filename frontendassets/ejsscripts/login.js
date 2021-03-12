@@ -22,8 +22,6 @@ let data={
 //     }
 // })
 
-console.log(createNewUser);
-console.log(password);
 
 createNewUser.addEventListener('click',()=>{
     window.location.href="/newUser";

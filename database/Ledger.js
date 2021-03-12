@@ -16,7 +16,8 @@ async function findLedger(name){
     let ledger = name + "_ledger"
 
     let query = `SELECT DATE_FORMAT(DATECREATED, '%m/%d/%Y') AS DATECREATED, DATE_FORMAT(DATESUBMITTED, '%m/%d/%Y') AS DATESUBMITTED, 
-                MADEBY, SUBMITTEDBY, DESCRIPTION, DEBIT, CREDIT, BALANCE, ID FROM ${ledger}`
+                MADEBY, SUBMITTEDBY, ${ledger}.DESCRIPTION, ${ledger}.DEBIT, ${ledger}.CREDIT, ${ledger}.BALANCE, ID, MASTER.NORMALSIDE FROM ${ledger} 
+                JOIN MASTER ON MASTER.NAME = '${name}'`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -37,8 +38,6 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
     if(status == 'Rejected'){
         return;
     }
-
-    console.log('not rejected')
 
     query = `SELECT USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, DATE FROM JOURNAL WHERE ID = '${id}'`
 
