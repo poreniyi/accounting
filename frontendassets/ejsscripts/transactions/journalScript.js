@@ -25,11 +25,11 @@ form.addEventListener('submit', (e) => {
     let val = firstRow.cells[1].children[0].value;
     let isCorrectName = isValidAccount(val)
     if (!isCorrectName) {
-        alert('invalid Account Name');
+        alert('Invalid account name');
     } else if (!isValidJournal) {
-        alert('fix errors');
+        alert('There are errors in your transaction. Please review it before submitting again');
     } else if (!accountNamesAreUnique) {
-        alert(`There are duplicate Account names`);
+        alert(`There are duplicate account names`);
     }
     else {
         form.submit();

@@ -36,7 +36,6 @@ router.get('/confirmRedirect',(req,res)=>{
 
 
 router.get('/confirmation',(req,res)=>{
-    console.log(req.session.Confirm);
     req.session.Confirm=req.session.Confirm || {}
     req.session.Confirm.Previous=  req.session.Confirm.Previous ||  `../../${req.session.userType.toLowerCase()}/dashboard`;
     req.session.Confirm.message=  req.session.Confirm.message ||  ``;
