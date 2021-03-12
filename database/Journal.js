@@ -24,12 +24,23 @@ async function createTransaction(username, account,  description, debit, credit,
 
 async function getJournalTransactions(status){
 
-    let query = `
-                SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, 
-                (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC,
-                STATUS = 'Approved' DESC, STATUS =  'Rejected', ID, DEBIT DESC, CREDIT DESC
-                `
+    let query;
 
+    if(status){
+        query = `
+            SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, 
+            (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL WHERE STATUS = '${status}'
+            ORDER BY ID, DEBIT DESC, CREDIT DESC;
+            `
+    }
+    else{
+        query = `
+        SELECT DATE_FORMAT(DATE, '%m/%d/%Y') AS DATE, USERNAME, ACCOUNT, DESCRIPTION, DEBIT, CREDIT, 
+        (DEBIT+CREDIT) AS AMOUNT, COMMENT, STATUS, ID FROM JOURNAL ORDER BY STATUS = 'Pending' DESC,
+        STATUS = 'Approved' DESC, STATUS =  'Rejected', ID, DEBIT DESC, CREDIT DESC
+        `
+    }
+                
     var [rows] = await DB.asyncConnection.query(query)
 
     var data = { TextRow: [] }

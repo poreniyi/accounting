@@ -34,6 +34,10 @@ async function editAccount(body, username){
         balance = initial + (credit - debit);
     }
 
+    console.log(debit)
+    console.log(credit)
+    console.log(balance)
+
     let [rows] = await DB.asyncConnection.query(query, [body.OriginalNumber, body.OriginalName, username, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
         initialBalance, debit, credit, balance, body.Username, body.Statement, body.Comment, body.Status], 
         function (err, result, fields) {
