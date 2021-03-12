@@ -4,6 +4,9 @@ const DB = require("./DBConnection");
 // used when seeing an accounts details and user wants to update something. Such as category or activate the account
 async function editAccount(body, username, madeByTransaction){
 
+    console.log(madeByTransaction)
+    console.log(body)
+
     let checkBalance = parseInt(body.Balance,10)
 
     console.log(checkBalance)
