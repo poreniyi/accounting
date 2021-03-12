@@ -20,6 +20,8 @@ form.addEventListener('reset', (e) => {
 })
 form.addEventListener('submit', (e) => {
     e.preventDefault();
+    makeBalanceMessage();
+
     let val = firstRow.cells[1].children[0].value;
     let isCorrectName = isValidAccount(val)
     if (!isCorrectName) {
@@ -120,6 +122,7 @@ addAccount.addEventListener('click', (e) => {
             creditInput.readOnly=false;
         }
     })
+    makeBalanceMessage();
 })
 
 addTotal = (column, accumulator) => {
