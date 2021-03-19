@@ -8,7 +8,7 @@ let isManager=(req,res,next)=>{
         res.status(403).render(`home/denied`);
     }
 }
-//router.use(isManager);
+router.use(isManager);
 
 
 router.use("/", require("../registeredUsers"));
