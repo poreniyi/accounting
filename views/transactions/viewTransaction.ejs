@@ -59,7 +59,7 @@
             </tr>
             <% })%>
     </table>
-    <%if(data.TextRow[0].STATUS=='Pending'){ %>
+    <%if(data.TextRow[0].STATUS=='Pending' && userType.toLowerCase() == 'manager' ){ %>
         <form id="approveForm"  action=<%='./Approve/'+data.TextRow[0].ID%> method="POST">
             <button id='Approve'>Approve Transaction</button> 
         </form>
