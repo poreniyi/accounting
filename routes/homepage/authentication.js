@@ -29,13 +29,7 @@ router.get("/login",function (req,res){
 });
 
 router.get('/succesfulLogin',(req,res)=>{
-    if(req.session.userType.toLowerCase()=='admin'){
-        res.redirect('/admin/home');
-    }else if(req.session.userType.toLowerCase()=='accountant'){
-        res.redirect('/accountant/home');
-    }else{//manager
-        res.redirect('/manager/home');
-    }
+    res.redirect(`${req.session.userType.toLowerCase()}/home`)
 })
 
 router.get("/logout", async function (req,res) {
