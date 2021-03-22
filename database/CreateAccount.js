@@ -39,19 +39,7 @@ async function createAccount(body, username){
     let credit =  Math.abs(body.Credit)
     let debit = Math.abs(body.Debit)
     let initialBalance = parseInt(body.InitialBalance,10)
-/*
-    let JSONCredit = {
-        "Credits": [credit]
-    }
 
-    let CreditString = JSON.stringify(JSONCredit)
-
-    let JSONDebit = {
-        "Debits": [debit]
-    }
-
-    let DebitString = JSON.stringify(JSONDebit)
-*/
     let balance;
 
     if(body.Normal == 'Debit'){
@@ -59,6 +47,15 @@ async function createAccount(body, username){
     }
     else{
         balance = initialBalance + (credit - debit);
+    }
+
+    let statement;
+
+    if(body.Category == 'Asset' || body.Category == 'Liability' || body.Category == 'Equity'){
+        statement = 'Balance Sheet'
+    }
+    else{
+        statement = 'Income Statement'
     }
 
     let  query = `
@@ -87,7 +84,7 @@ async function createAccount(body, username){
      query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
      await DB.asyncConnection.query(query, [body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
-        body.InitialBalance, debit, credit, balance, username, body.Statement, body.Comment, 1], 
+        body.InitialBalance, debit, credit, balance, username, statement, body.Comment, 1], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
