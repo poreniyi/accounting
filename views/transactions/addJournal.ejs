@@ -5,55 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal</title>
+    <title>Create Journal</title>
     <link rel='stylesheet' href='/stylesheets/transactions/createJournal.css'>
 </head>
 <%- include('../_partial/_header'); -%>
 
     <body>
-        <button id='addAccount'>Add Account</button>
-
-        <form id='form' action='' METHOD='POST'>
-            <datalist id='AccountNamesList'>
-                <%accountNames.forEach(element=>{ %>
-                    <option value=<%=element%>>
-                        <%})%>
-            </datalist>
-            <table id='table'>
-                <tr>
-                    <th>#</th>
-                    <th>Account</th>
-                    <th>Debits</th>
-                    <th>Credits</th>
-                    <th>Description</th>
-                </tr>
-                <tr class='inputRow'>
-                    <td>1</td>
-                    <td><input required name='Account' type='text' list='AccountNamesList'></td>
-                    <td><input required name='Debits' value =0 min=0 type='number'></td>
-                    <td><input required name='Credits' value =0 min=0 type='number'></td>
-                    <td><textarea  required cols="50" rows="4" name='Description' form='form'></textarea>
-                    </td>
-                </tr>
-                <tr class='inputRow'>
-                    <td>2</td>
-                    <td><input required name='Account' type='text' list='AccountNamesList'></td>
-                    <td><input required name='Debits' value =0 min=0 type='number'></td>
-                    <td><input required name='Credits' value =0 min=0 type='number'></td>
-                </tr>
-                <tr id='totalRow'>
-                    <td><b>TOTALS</b></td>
-                    <td></td>
-                    <td id='totalDebit'></td>
-                    <td id='totalCredit'></td>
-                    <td colspan="2" id='balanceMessage'></td>
-                </tr>
-                
-        </form>
-        </table>
-        <div>
-            <button id='submitButton' type='submit' value='submit'>Create Journal Entry</button>
-            <button id='resetButton' type='reset'>Reset</button>
+        <h1>New Journal</h1>
+        <div class="container">
+            <form id='form' action='' METHOD='POST'>
+                <datalist id='AccountNamesList'>
+                    <%accountNames.forEach(element=>{ %>
+                        <option value=<%=element%>>
+                            <%})%>
+                </datalist>
+                <table id='table'>
+                    <tr>
+                        <th>#</th>
+                        <th>Account</th>
+                        <th>Debits</th>
+                        <th>Credits</th>
+                        <th>Description</th>
+                    </tr>
+                    <tr class='inputRow'>
+                        <td>1</td>
+                        <td><input required name='Account' type='text' list='AccountNamesList'></td>
+                        <td><input required name='Debits' value =0 min=0 type='number'></td>
+                        <td><input required name='Credits' value =0 min=0 type='number'></td>
+                        <td><textarea  required cols="50" rows="4" name='Description' form='form'></textarea>
+                        </td>
+                    </tr>
+                    <tr class='inputRow'>
+                        <td>2</td>
+                        <td><input required name='Account' type='text' list='AccountNamesList'></td>
+                        <td><input required name='Debits' value =0 min=0 type='number'></td>
+                        <td><input required name='Credits' value =0 min=0 type='number'></td>
+                    </tr>
+                    <tr id='totalRow'>
+                        <td><b>TOTALS</b></td>
+                        <td></td>
+                        <td id='totalDebit'></td>
+                        <td id='totalCredit'></td>
+                        <td colspan="2" id='balanceMessage'></td>
+                    </tr>
+                </table>
+            </form>
+            <button id='addAccount'>Add Account</button>
+            <div>
+                <button id='submitButton' type='submit' value='submit'>Create Journal Entry</button>
+                <button id='resetButton' type='reset'>Reset</button>
+            </div>
         </div>
         <script src='/ejsscripts/transactions/journalScript.js'></script>
     </body>

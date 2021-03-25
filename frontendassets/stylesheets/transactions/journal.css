@@ -33,18 +33,13 @@ td a {
   font-weight: 500;
 }
 
-th:nth-child(1), td:nth-child(1) {
-  padding-left: 8px;
-}
-
-th:nth-child(16), td:nth-child(16) {
-  padding-right: 8px;
-}
-
 tr:nth-child(even) {
   background-color: #e4f0ef;
 }
 
+.search {
+  margin-bottom: .5em;
+}
 .searchBar, #pageButtons {
   margin: 0 0 .5em 2.5%;
 }
@@ -62,4 +57,9 @@ textarea{
 }
 .currentPage{
     background-color: aqua;
+}
+
+#previousButton, #nextButton {
+  margin-left: 5px;
+  margin-right: 5px;
 }

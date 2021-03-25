@@ -1,11 +1,44 @@
+h1, h2 {
+  margin-left: 2.5%;
+}
+
+#addAccount, #submitButton {
+  margin-left: 13%;
+}
+
+table {
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: none;
+}
+
 table, th, td {
-    border: 1px solid black;
     border-collapse: collapse;
     white-space: pre-wrap;
-  }
-  td{
-    
-  }
-  textarea{
-    resize: none;
-  }
+}
+
+th, td {
+  border: 1px solid black;
+}
+
+th {
+  border-bottom: 5px solid #1B998B;
+  text-align: center;
+}
+
+textarea{
+  resize: none;
+}
+
+input, textarea {
+  border: none;
+}
+
+#addAccount, #submitButton {
+  margin-bottom: .5em;
+}
+
+#balanceMessage {
+  border: none;
+}
