@@ -83,6 +83,11 @@ async function createAccount(body, username){
 
      query = `CALL Create_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
+     console.log(body.Name+ " -  " + body.Number+ " -  " +  body.Description+ " -  " +  body.Normal+ " -  " +  body.Category+ " -  " + 
+      body.SubCategory + " -  " + 
+        body.InitialBalance + " -  " + debit+ " -  " +  credit+ " -  " +  balance + " -  " + 
+        username+ " -  " +  statement+ " -  " +  body.Comment)
+
      await DB.asyncConnection.query(query, [body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
         body.InitialBalance, debit, credit, balance, username, statement, body.Comment, 1], 
         function (err, result, fields) {
