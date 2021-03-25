@@ -1,17 +1,65 @@
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-  textarea{
-    resize: none;
-  }
-  .transactions{
-    visibility: collapse;
-  }
+h1, h2 {
+  margin-left: 2.5%;
+}
 
-  .boxed{
+pre {
+  font: inherit;
+}
+
+table {
+  margin: auto;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  font-size: 11pt;
+}
+
+th {
+  border-bottom: 5px solid #1B998B;
+  text-align: center;
+}
+
+th, td {
+  padding-left: 8px;
+  padding-right: 8px;
+  vertical-align: middle;
+}
+
+td a {
+  color: rgb(33, 33, 219);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+th:nth-child(1), td:nth-child(1) {
+  padding-left: 8px;
+}
+
+th:nth-child(16), td:nth-child(16) {
+  padding-right: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #e4f0ef;
+}
+
+.searchBar, #pageButtons {
+  margin: 0 0 .5em 2.5%;
+}
+
+textarea{
+    resize: none;
+}
+
+.transactions{
+    visibility: collapse;
+}
+
+.boxed{
     border:1px solid black;
-  }
-  .currentPage{
+}
+.currentPage{
     background-color: aqua;
-  }
+}

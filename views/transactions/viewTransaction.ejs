@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
+    <link rel='stylesheet' href='/stylesheets/transactions/transactionSheet.css'>
     <title>View Transaction</title>
 </head>
 <%- include('../_partial/_header'); -%>
 
 <body>
-    <%   let formatter = new Intl.NumberFormat('en-US',{minimumFractionDigits:2}); %>
+    <h1>View Transaction</h1>
+    <div class="container">
+        <%   let formatter = new Intl.NumberFormat('en-US',{minimumFractionDigits:2}); %>
 
     <table id='infoTable'>
         <tr>
@@ -71,6 +73,6 @@
         </form>
    <% } %>
   
-    
+    </div>
 </body>
 </html>

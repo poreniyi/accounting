@@ -9,27 +9,30 @@
     <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
 </head>
 <%- include('../_partial/_header'); -%>
-    <%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
-    <label for='search'>Search:</label><input id='search' type='text'>
-    <select id='select'>
-        <option value=1>Date</option>
-        <option value=2>Account Names</option>
-        <option value=3>Amount</option>
-        <option value=4>Description</option>
-        <option value=5>Submitter</option>
-        <option value=6>Transaction ID</option>
-        <option value=7>Status</option>
+<body>
+    <h1>View Journal</h1>
+    <div class="container">
+        <%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
+        <label class ="searchBar" for='search'>Search:</label><input id='search' type='text'>
+        <select id='select'>
+            <option value=1>Date</option>
+            <option value=2>Account Names</option>
+            <option value=3>Amount</option>
+            <option value=4>Description</option>
+            <option value=5>Submitter</option>
+            <option value=6>Transaction ID</option>
+            <option value=7>Status</option>
 
-        <input class='dateRange' type='date'>
-        <input class='dateRange' type='date'>
-        <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
+            <input class='dateRange' type='date'>
+            <input class='dateRange' type='date'>
+            <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
+        </select>
 
-            </select>
-            <div id='pageButtons'>
-                <button id='previousButton'>Previous</button>            
-                <button id='nextButton'>Next</button>            
-            </div>
-            <table id='table'>
+        <div id='pageButtons'>
+            <button id='previousButton'>Previous</button>            
+            <button id='nextButton'>Next</button>            
+        </div>
+        <table id='table'>
             <tr>
                 <th>#</th>
                 <th>Date</th>
@@ -52,7 +55,7 @@
                         <% accountNames.forEach(name=>{%>
                             <%let link=`./ledger/${name.trim()}`%>
                             <pre><a href=<%=link%>><%=name%></a><br></pre>
-                       <%})%></td>
+                    <%})%></td>
                     <td><%=formatter.format(element.AMOUNT)%> </td>
                     <td> <%=element.DESCRIPTION%> </td>
                     <td> <%if(element.ID){%><a href=<%=`./viewTransaction/${element.ID}`%>><%=element.ID%></a><%}%>
@@ -60,10 +63,11 @@
                     <td><%=element.USERNAME%> </td>
                     <td> <%=element.STATUS%>  </td>    
                 </tr>
-                <% counter++})%>
+            <% counter++})%>
         </table>
+    </div>
  
-        <script src='/ejsscripts/transactions/viewJournal.js'></script>
-        </body>
+    <script src='/ejsscripts/transactions/viewJournal.js'></script>
+</body>
 
 </html>

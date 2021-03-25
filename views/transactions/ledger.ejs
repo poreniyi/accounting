@@ -3,7 +3,6 @@
 <html lang="en">
 
 <head>
-    <link rel='stylesheet' href='/stylesheets/charts/viewChart.css'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ledger</title>
@@ -13,48 +12,50 @@
 <body>
     <%   let formatter = new Intl.NumberFormat('en-US',{minimumFractionDigits:2}); %>
 
-                <h1><%=Name %></h1>
-                <h2> Initial Balance: <%=initialBalance %></h2>
-                <h2> Normal Side: <%=Normal %></h2>
-                <label for='search'>Search:</label><input id='search' type='text'>
-                <select id='select'>
-                    <option value=1>Date Created</option>
-                    <option value=2>Date Approved</option>
-                    <option value=3>Created By</option>
-                    <option value=4>Approved By</option> 
-                    <option value=5>Description</option>
-                    <option value=6>Debit</option>
-                    <option value=7>Credit</option>
-                    <option value=8>Balance After</option>
-                    
-                    <input class='dateRange' type='date'>
-                    <input class='dateRange' type='date'>
-                <table id='table'>
+        <h1><%=Name %></h1>
+        <h2>Initial Balance: <%=initialBalance %></h2>
+        <h2>Normal Side: <%=Normal %></h2>
+        <div class = "container">
+            <label class="searchBar" for='search'>Search:</label><input id='search' type='text'>
+            <select id='select'>
+                <option value=1>Date Created</option>
+                <option value=2>Date Approved</option>
+                <option value=3>Created By</option>
+                <option value=4>Approved By</option> 
+                <option value=5>Description</option>
+                <option value=6>Debit</option>
+                <option value=7>Credit</option>
+                <option value=8>Balance After</option>
+                
+                <input class='dateRange' type='date'>
+                <input class='dateRange' type='date'>
+            </select>
+            <table id='table'>
+                <tr>
+                    <th>Date Created</th>
+                    <th>Date Submitted</th>
+                    <th>Made By</th>
+                    <th>Approved By</th>
+                    <th>Description</th>
+                    <th>Debits</th>
+                    <th>Credits</th>
+                    <th>Balance After</th>
+                    <th>PR</th>
+                </tr>
+                <%data.TextRow.forEach(element=>{%>
                     <tr>
-                        <th>Date Created</th>
-                        <th>Date Submitted</th>
-                        <th>Made By</th>
-                        <th>Approved By</th>
-                        <th>Description</th>
-                        <th>Debits</th>
-                        <th>Credits</th>
-                        <th>Balance After</th>
-                        <th>PR</th>
+                        <td><%=element.DATECREATED%></td>
+                        <td><%=element.DATESUBMITTED%></td>
+                        <td><%=element.MADEBY%></td>
+                        <td><%=element.SUBMITTEDBY%></td>
+                        <td><%=element.DESCRIPTION%></td>
+                        <td><%=formatter.format(element.DEBIT)%></td>
+                        <td><%=formatter.format(element.CREDIT)%></td>
+                        <td><%=formatter.format(element.BALANCE)%></td>
+                        <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
                     </tr>
-                    <%data.TextRow.forEach(element=>{%>
-                        <tr>
-                            <td><%=element.DATECREATED%></td>
-                            <td><%=element.DATESUBMITTED%></td>
-                            <td><%=element.MADEBY%></td>
-                            <td><%=element.SUBMITTEDBY%></td>
-                            <td><%=element.DESCRIPTION%></td>
-                            <td><%=formatter.format(element.DEBIT)%></td>
-                            <td><%=formatter.format(element.CREDIT)%></td>
-                            <td><%=formatter.format(element.BALANCE)%></td>
-                            <td><a href=<%= `/./${userType}/viewTransaction/${element.ID}`%>> <%=element.ID%> </a></td>
-                        </tr>
-                        <% })%>
-                </table>
-
-                <script src='/ejsscripts/transactions/ledgerScript.js'></script>
+                <% })%>
+            </table>
+        </div>
+        <script src='/ejsscripts/transactions/ledgerScript.js'></script>
 </body>
