@@ -31,7 +31,7 @@ router.get('/createJournal', async (req, res) => {
     res.render('transactions/addJournal', { accountNames });
 })
 router.post('/createJournal', async (req, res) => {
-    if (req.session.userType.toLowerCase() == 'admin'){
+    if (req.session.userType.toLowerCase() == 'admin') {
         res.status(403).render(`home/denied`);
         return;
     }
@@ -75,15 +75,19 @@ router.get('/viewtransaction/:id', async (req, res) => {
 router.get('/ledger/:name', async (req, res) => {
     let data = await ledgerSearch.findLedger(req.params.name)
     let initialBalance = await ledgerSearch.findLedgerInitialBalance(req.params.name)
-    res.render('transactions/ledger', { data, Name: req.params.name, initialBalance, Normal: data.TextRow[0].NORMALSIDE });
+    try {
+        res.render('transactions/ledger', { data, Name: req.params.name, initialBalance, Normal: data.TextRow[0].NORMALSIDE });
+    } catch (error) {
+        res.render(`transactions/emptyLedger`);
+    }
 })
 
 router.post('/viewTransaction/Approve/:id', (req, res) => {
-    if (req.session.userType.toLowerCase()=='admin'){
+    if (req.session.userType.toLowerCase() == 'admin') {
         res.status(403).render(`home/denied`);
         return;
     }
-    if (req.session.userType.toLowerCase()=='accountant'){
+    if (req.session.userType.toLowerCase() == 'accountant') {
         res.status(403).render(`home/denied`);
         return;
     }
@@ -99,11 +103,11 @@ router.post('/viewTransaction/Approve/:id', (req, res) => {
 })
 
 router.post('/viewTransaction/Reject/:id', async (req, res) => {
-    if (req.session.userType.toLowerCase()=='admin'){
+    if (req.session.userType.toLowerCase() == 'admin') {
         res.status(403).render(`home/denied`);
         return;
     }
-    if (req.session.userType.toLowerCase()=='accountant'){
+    if (req.session.userType.toLowerCase() == 'accountant') {
         res.status(403).render(`home/denied`);
         return;
     }
