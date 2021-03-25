@@ -85,7 +85,6 @@ addAccount.addEventListener('click', (e) => {
         let counter = 1;
         close.parentElement.remove();
     })
-    newRow.insertCell();
     let creditInput = document.createElement('input');
     let debitInput = document.createElement('input');
     let accountInput = document.createElement('input');
