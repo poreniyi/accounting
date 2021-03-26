@@ -1,0 +1,72 @@
+h1, h2 {
+    margin-left: 2.5%;
+}
+
+.container {
+    display: flex;
+}
+
+#RejectForm {
+    margin-top: .5em;
+    margin-left: 25%;
+}
+
+#approveForm {
+    margin-top: 2.5em;
+    margin-left: 30%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+td a {
+    color: rgb(33, 33, 219);
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+th, td {
+    vertical-align: middle;
+}
+
+#infoTable {
+    margin-left: auto;
+    margin-right: 2em;
+}
+
+#accountTable {
+    margin-right: auto;
+    margin-left: 2em;
+}
+  
+th, td {
+    padding-left: 8px;
+    padding-right: 8px;
+    vertical-align: middle;
+  }
+  
+tr:nth-child(even) {
+    background-color: #e4f0ef;
+}
+  
+.searchBar, #pageButtons {
+    margin: 0 0 .5em 2.5%;
+}
+  
+textarea {
+      resize: none;
+}
+  
+.transactions{
+      visibility: collapse;
+}
+  
+.boxed{
+      border:1px solid black;
+}
+
+.currentPage{
+      background-color: aqua;
+}
