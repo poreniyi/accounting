@@ -16,3 +16,4 @@ sprint 4
 28) ask professor
 31) notification
 
+ask if the trial balance for a debit can show negative balance
