@@ -36,7 +36,9 @@ async function generateBalanceSheet(){
 
     let [rows] = await DB.asyncConnection.query(query)
 
-    var data = { TextRow: [] }
+    var asset = { TextRow: [] }
+    var liability = { TextRow: [] }
+    var equity = { TextRow: [] }
 
     let current
 
@@ -46,11 +48,26 @@ async function generateBalanceSheet(){
         if(current.BALANCE < 0){
             current.BALANCE = "(" + current.BALANCE * -1 + ")"
         }
-        data.TextRow.push(current)
+        if(current.CATEGORY = 'Asset'){
+            asset.TextRow.push(current)
+        }
+        else if(current.CATEGORY = 'Liability'){
+            liability.TextRow.push(current)
+        }else{
+            equity.TextRow.push(current)
+        }
     }
 
+    let data = {
+        asset: asset,
+        liability: liability,
+        equity:equity
+    }
+    
     return data;
 }
+
+generateBalanceSheet()
 
 module.exports= {
     generateTrialBalance,
