@@ -9,15 +9,13 @@
 </head>
 <%- include('../_partial/_header'); -%>
 <%- include('../_partial/help/viewChartHelp'); -%>
-
 <body>
-    <h1>Chart of Accounts</h1>
+<table id=table>
+    <th class="tooltip" id='Account Title'> Account Title</th>
+    <th class="tooltip" id='Debit'> Debit</th>
+    <th class="tooltip" id='Credit'> Credit</th>
+</table>
     <div class="container">
-        <select id='searchSelect'>
-            <option value=0>Account Title</option>
-            <option value=1>Debit</option>
-            <option value=2>Credit</option>
-        </select>
     <script src='/ejsscripts/viewChart.js'></script>
     <%- include('../_partial/_footer'); -%>
             
