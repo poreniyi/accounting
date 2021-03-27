@@ -2,9 +2,16 @@
 const DB = require("./DBConnection");
 const account = require("./CreateAccount");
 
-async function getAccountNames(){
+async function getAccountNames(status){
 
-    let query = `SELECT NAME FROM MASTER`;
+    let query;
+
+    if (status){
+        query = `SELECT NAME FROM MASTER WHERE STATUS = 1`;
+    }
+    else{
+        query = `SELECT NAME FROM MASTER`;
+    }
 
     let [result] = await DB.asyncConnection.query(query)
 

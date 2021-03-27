@@ -20,11 +20,11 @@ async function getReport(){
 
 async function getLastLogin(username){
 
-    let query = `SELECT DATE_FORMAT(LAST_LOGIN, '%m/%d/%Y') AS LAST_LOGIN FROM USER WHERE USERNAME = '${username}'`
+    let query = `SELECT DATE_FORMAT(LAST_LOGIN, '%m/%d/%Y') AS LASTLOGIN FROM USER WHERE USERNAME = '${username}'`
       
     let [rows] = await DB.asyncConnection.query(query)
 
-    return [rows][0][0].LAST_LOGIN
+    return [rows][0][0].LASTLOGIN
 
 }
 

@@ -27,7 +27,7 @@ router.get('/createJournal', async (req, res) => {
         res.status(403).render(`home/denied`);
         return;
     }
-    let accountNames = await getAccountNames();
+    let accountNames = await getAccountNames('active accounts');
     res.render('transactions/addJournal', { accountNames });
 })
 router.post('/createJournal', async (req, res) => {
