@@ -5,7 +5,7 @@
     <link rel='stylesheet' href='/stylesheets/charts/viewChart.css'>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chart of Accounts</title>
+    <title>Trial Balance</title>
 </head>
 <%- include('../_partial/_header'); -%>
 <%- include('../_partial/help/viewChartHelp'); -%>
@@ -14,9 +14,13 @@
     <th class="tooltip" id='Account Title'> Account Title</th>
     <th class="tooltip" id='Debit'> Debit</th>
     <th class="tooltip" id='Credit'> Credit</th>
+    <tr>
+        <td>Total</td>
+        <td></td>
+        <td></td>
+    </tr>
 </table>
-    <div class="container">
-    <script src='/ejsscripts/viewChart.js'></script>
+  
     <%- include('../_partial/_footer'); -%>
             
 </body>
