@@ -19,6 +19,7 @@ router.get('/balanceSheet', async (req, res) => {
             value = currentValue.BALANCE.replace(/\W+/g,'');
             console.log(`new value is ${value}`)
             value=Number(value);
+            value=-value;
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
@@ -28,6 +29,7 @@ router.get('/balanceSheet', async (req, res) => {
     totals.assetTotal = data.asset.TextRow.reduce(reducer, 0);
     totals.liabilityTotal = data.liability.TextRow.reduce(reducer, 0);
     totals.equityTotal = data.equity.TextRow.reduce(reducer, 0);
+    console.log(`ASset is:${totals.assetTotal}\nEQuity+Liablity:${totals.liabilityTotal+totals.equityTotal}`)
     res.render('statementViews/balanceSheet', {data,totals});
 })
 router.get('/retainedEarnings', (req, res) => {
