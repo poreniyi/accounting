@@ -5,6 +5,17 @@ h1, h2 {
 .container {
     display: flex;
 }
+
+#RejectForm {
+    margin-top: .5em;
+    margin-left: 25%;
+}
+
+#approveForm {
+    margin-top: 2.5em;
+    margin-left: 30%;
+}
+
 table, th, td {
     border: 1px solid black;
     border-collapse: collapse;
