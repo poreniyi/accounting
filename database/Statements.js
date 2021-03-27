@@ -45,13 +45,15 @@ async function generateBalanceSheet(){
     for(var i = 0; i < [rows][0].length; i++){
         
         current = [rows][0][i]
+
         if(current.BALANCE < 0){
             current.BALANCE = "(" + current.BALANCE * -1 + ")"
         }
-        if(current.CATEGORY = 'Asset'){
+
+        if(current.CATEGORY == 'Asset'){
             asset.TextRow.push(current)
         }
-        else if(current.CATEGORY = 'Liability'){
+        else if(current.CATEGORY == 'Liability'){
             liability.TextRow.push(current)
         }else{
             equity.TextRow.push(current)
@@ -63,7 +65,7 @@ async function generateBalanceSheet(){
         liability: liability,
         equity:equity
     }
-    
+
     return data;
 }
 
