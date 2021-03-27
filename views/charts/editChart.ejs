@@ -104,16 +104,62 @@
                     <tr>
                         <th>Category</th>
                         <td class='formInput'>
-                            <input type="radio" required id="Asset" name="Category" value="Asset">
-                            <label for="Asset">Asset</label>
-                            <input type="radio" required id="Liability" name="Category" value="Liability">
-                            <label for="Liability">Liability</label>
-                            <input type="radio" required id="Revenue" name="Category" value="Revenue">
-                            <label for="Revenue">Revenue</label>
-                            <input type="radio" required id="Expense" name="Category" value="Expense">
-                            <label for="Expense">Expense</label>
-                            <input type="radio" required id="Equity" name="Category" value="Equity">
-                            <label for="Equity">Equity</label>
+                            <% if(CATEGORY =='Asset'){%>
+                                <input type="radio" required id="Asset" name="Category" value="Asset" checked>
+                                <label for="Asset">Asset</label>
+                                <input type="radio" required id="Liability" name="Category" value="Liability">
+                                <label for="Liability">Liability</label>
+                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                <label for="Revenue">Revenue</label>
+                                <input type="radio" required id="Expense" name="Category" value="Expense">
+                                <label for="Expense">Expense</label>
+                                <input type="radio" required id="Equity" name="Category" value="Equity">
+                                <label for="Equity">Equity</label>
+                            <%} else if(CATEGORY == 'Liability'){%>
+                                <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                <label for="Asset">Asset</label>
+                                <input type="radio" required id="Liability" name="Category" value="Liability" checked>
+                                <label for="Liability">Liability</label>
+                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                <label for="Revenue">Revenue</label>
+                                <input type="radio" required id="Expense" name="Category" value="Expense">
+                                <label for="Expense">Expense</label>
+                                <input type="radio" required id="Equity" name="Category" value="Equity">
+                                <label for="Equity">Equity</label>
+                            <%} else if(CATEGORY == 'Revenue'){%>
+                                <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                <label for="Asset">Asset</label>
+                                <input type="radio" required id="Liability" name="Category" value="Liability">
+                                <label for="Liability">Liability</label>
+                                <input type="radio" required id="Revenue" name="Category" value="Revenue" checked>
+                                <label for="Revenue">Revenue</label>
+                                <input type="radio" required id="Expense" name="Category" value="Expense">
+                                <label for="Expense">Expense</label>
+                                <input type="radio" required id="Equity" name="Category" value="Equity">
+                                <label for="Equity">Equity</label>
+                            <%} else if(CATEGORY == 'Expense'){%>
+                                <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                <label for="Asset">Asset</label>
+                                <input type="radio" required id="Liability" name="Category" value="Liability">
+                                <label for="Liability">Liability</label>
+                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                <label for="Revenue">Revenue</label>
+                                <input type="radio" required id="Expense" name="Category" value="Expense" checked>
+                                <label for="Expense">Expense</label>
+                                <input type="radio" required id="Equity" name="Category" value="Equity">
+                                <label for="Equity">Equity</label>
+                            <%}else{%>
+                                <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                <label for="Asset">Asset</label>
+                                <input type="radio" required id="Liability" name="Category" value="Liability">
+                                <label for="Liability">Liability</label>
+                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                <label for="Revenue">Revenue</label>
+                                <input type="radio" required id="Expense" name="Category" value="Expense">
+                                <label for="Expense">Expense</label>
+                                <input type="radio" required id="Equity" name="Category" value="Equity" checked>
+                                <label for="Equity">Equity</label>
+                            <%}%>
                         </td>
                     </tr>  
                     <tr>
