@@ -11,7 +11,7 @@ router.use(isLoggedIn);
 router.use("/", require("./dashboard/dasboard"));
 router.use("/",require('./chartOfAccounts'));
 router.use("/",require('./transactions'));
-router.use("/",require('./statementSheets'));
+router.use("/",require('./finanicalReports'));
 
 
 
