@@ -143,15 +143,14 @@
                     <tr>
                         <th>Statement</th>
                         <td class='formInput'>
-                            <input type="radio" required id="Income" name="Statement" value='Income Statement'>
-                            <label for="Income">Income Statement</label>
-                            <input type="radio" required id="BalanceSheet" name="Statement" value='Balance Sheet'>
-                            <label for="BalanceSheet">Balance Sheet</label>
+                            <input type="text" name="Statement" value='<%=STATEMENT%>' hidden > <%=STATEMENT %>
                         </td>
                     </tr>
                     <tr>
                         <th>Creator</th>
-                        <td class='formInput'><input name='Username' value=<%=USERNAME %> readonly ></td>
+                        <td class='formInput'>
+                            <input type="text" name='Username' value='<%=USERNAME %>' hidden> <%=USERNAME %>
+                        </td>
                     </tr>
                     <tr>
                         <th>Comment</th>
@@ -160,7 +159,12 @@
                     <tr>
                         <th>Status</th>
                         <td class='formInput'>
-                            <select form='form' name='Status'>
+                            <select form='form' name='Status' id = "status">
+                                <% if(STATUS =='0'){%>
+                                    <option value="0" selected hidden>Current Status: <%=STATUS%></option>
+                                <%}else{%>
+                                    <option value="1" selected hidden>Current Status: <%=STATUS%></option>
+                                <%}%>
                                 <option value='1'>Active</option>
                                 <option value='0'>Deactivated</option>
                             </select>
