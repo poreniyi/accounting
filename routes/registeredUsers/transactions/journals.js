@@ -75,7 +75,11 @@ router.get('/viewtransaction/:id', async (req, res) => {
 router.get('/ledger/:name', async (req, res) => {
     let data = await ledgerSearch.findLedger(req.params.name)
     let initialBalance = await ledgerSearch.findLedgerInitialBalance(req.params.name)
-    res.render('transactions/ledger', { data, Name: req.params.name, initialBalance, Normal: data.TextRow[0].NORMALSIDE });
+    try {
+        res.render('transactions/ledger', { data, Name: req.params.name, initialBalance, Normal: data.TextRow[0].NORMALSIDE });
+    } catch (error) {
+        res.render(`transactions/emptyLedger`);
+    }
 })
 
 router.post('/viewTransaction/Approve/:id', (req, res) => {
