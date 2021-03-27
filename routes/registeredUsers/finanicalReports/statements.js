@@ -23,12 +23,13 @@ router.get('/balanceSheet', async (req, res) => {
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
-    let totals = {}
 
     let data = await statements.generateBalanceSheet()
-    totals.assetTotal = data.asset.TextRow.reduce(reducer, 0);
-    totals.liabilityTotal = data.liability.TextRow.reduce(reducer, 0);
-    totals.equityTotal = data.equity.TextRow.reduce(reducer, 0);
+    let totals = {
+        asset:data.asset.TextRow.reduce(reducer, 0),
+        liability:data.liability.TextRow.reduce(reducer, 0),
+        equity:data.equity.TextRow.reduce(reducer, 0)
+    }
     console.log(`ASset is:${totals.assetTotal}\nEQuity+Liablity:${totals.liabilityTotal+totals.equityTotal}`)
     res.render('statementViews/balanceSheet', {data,totals});
 })
