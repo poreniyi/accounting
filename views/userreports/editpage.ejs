@@ -27,10 +27,10 @@
                                 <input readonly type="text" name="username" value="<%=USERNAME%>">
                             </td>
                             <td>
-                                <input type="text" name="firstname" id="inputFirstName" value="<%=FIRSTNAME%>">
+                                <input type="text" name="firstname" id="inputFirstName" value='<%=FIRSTNAME.replace(/ /g, " ")%>'>
                             </td>
                             <td>
-                                <input type="text" name="lastname" id="inputLastName" value="<%=LASTNAME%>">
+                                <input type="text" name="lastname" id="inputLastName" value='<%=LASTNAME.replace(/ /g, " ")%>'>
                             </td>
                             <td>
                                 <input type="text" name="email" id="inputEmail" value="<%=EMAIL%>"  >
