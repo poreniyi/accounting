@@ -15,6 +15,17 @@
        <td><b>CURRENT ASSETS  </b></td>
        <td><b> CURRENT LIABILITES </b></td>
    </tr>
+   <% data.asset.TextRow.forEach(element=>{%>
+    <tr>
+        <td><%=`${element.NAME}|${element.BALANCE}`%></td>
+    </tr>
+ <%})%>
+ <% data.liability.TextRow.forEach(element=>{%>
+    <tr>
+        <td></td>
+        <td><%=`${element.NAME}|${element.BALANCE}`%></td>
+    </tr>
+ <%})%>
    <tr>
     <td><b>NON-CURRENT ASSETS </b></td>
     <td><b>Long-term Liabilites</b></td>
@@ -23,14 +34,27 @@
     <td><b></b></td>
     <td><b>STOCKHOLDERS EQUITY</b></td>
    </tr>
+   <tr>
+    <% data.equity.TextRow.forEach(element=>{%>
+        <tr>
+            <td></td>
+            <td><%=`${element.NAME}|${element.BALANCE}`%></td>
+        </tr>
+     <%})%>
+   </tr>
    <tr>      
     <td><b></b></td>
     <td><b>Total stockholders equity</b></td>
    </tr>
+   <tr><td><%=totals.equityTotal%></td></tr>
    <tr>
        <td>Total Assets</td>
        <td>Total Liabilites &Total stockholders equity</td>
     </tr>
+    <tr>
+        <td><%=totals.equityTotal+=totals.liabilityTotal%></td>
+    </tr>
+
 </table>
 </body>
 </html>
