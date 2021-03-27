@@ -15,6 +15,18 @@
     <th class="tooltip" id='Debit'> Debit</th>
     <th class="tooltip" id='Credit'> Credit</th>
     <tr>
+        <%TextRow.forEach(element=>{%>
+          <tr>
+            <td><%=element.NAME%></td>
+            <%if(element.COLUMN=='Debit'){%>
+                <td><%=element.BALANCE%></td>
+                <td></td>
+            <%}else{%>
+                <td></td>
+                <td><%=element.BALANCE%></td>
+            <%}%>
+          </tr>
+        <%})%>
         <td>Total</td>
         <td></td>
         <td></td>
