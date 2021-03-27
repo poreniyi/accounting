@@ -10,6 +10,13 @@ async function editAccount(body, username, madeByTransaction){
         return `Denied: that account has a balance greater than 0 so it can't be deactivated`;
     }
 
+    if(body.Category == 'Expense' || body.Category == 'Revenue'){
+        statement = 'Income Statement'
+    }
+    else{
+        statement = 'Balance Sheet'
+    }
+
     let query = `CALL Edit_Account(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)`
 
     let credit =  Math.abs(body.Credit)
@@ -41,7 +48,7 @@ async function editAccount(body, username, madeByTransaction){
     }
 
     let [rows] = await DB.asyncConnection.query(query, [body.OriginalNumber, body.OriginalName, username, body.Name, body.Number, body.Description, body.Normal, body.Category, body.SubCategory, 
-        initialBalance, debit, credit, balance, body.Username, body.Statement, body.Comment, body.Status], 
+        initialBalance, debit, credit, balance, body.Username, statement, body.Comment, body.Status], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
