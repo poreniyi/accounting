@@ -206,13 +206,13 @@
                         <th>Status</th>
                         <td class='formInput'>
                             <select form='form' name='Status' id = "status">
-                                <% if(STATUS =='0'){%>
-                                    <option value="0" selected hidden>Current Status: <%=STATUS%></option>
-                                <%}else{%>
-                                    <option value="1" selected hidden>Current Status: <%=STATUS%></option>
+                                <% if(STATUS =='Active'){%>
+                                    <option value='1' selected>Current: Active</option>
+                                    <option value='0'>Deactivated</option>
+                                    <%}else{%>
+                                    <option value='0' selected> Current: Deactivated</option>
+                                    <option value='1'>Active</option>
                                 <%}%>
-                                <option value='1'>Active</option>
-                                <option value='0'>Deactivated</option>
                             </select>
                         </td>
                     </tr>
