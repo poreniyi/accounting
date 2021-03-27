@@ -10,7 +10,7 @@ router.get('/trialBalance', async (req,res)=>{
   let data = await statements.generateTrialBalance()
   res.render('statementViews/trialBalance', data);
 })
-router.get('/balanceSheet', await (req, res) => {
+router.get('/balanceSheet', async (req, res) => {
   let data = await statements.generateBalanceSheet()
     res.render('statementViews/balanceSheet',data);
 })
