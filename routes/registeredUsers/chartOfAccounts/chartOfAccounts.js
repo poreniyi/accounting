@@ -36,7 +36,7 @@ router.post('/editAccount/:number',async (req,res) => {
     let result = await edit.editAccount(req.body, req.user);
     req.session.Confirm={
         Previous:`${req.baseUrl}/viewChart`,
-        ViewResult:`${req.baseUrl}/editAccount/${req.params.number}`,
+        ViewResult:`${req.baseUrl}/editAccount/${req.body.Number}`,
     }
     req.session.Confirm.message= result ? result : 'Something went wrong';
     res.redirect(`${req.baseUrl}/confirmRedirect`);
