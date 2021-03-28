@@ -35,9 +35,27 @@ async function addLastLogin(username){
     DB.asyncConnection.query(query)
 }
 
+async function getUser(username){
+
+    let query = `SELECT USERNAME, FIRSTNAME, LASTNAME, EMAIL, DATE_FORMAT(DOB, '%m/%d/%Y') AS DOB, DATE_FORMAT(PED, '%m/%d/%Y') AS PED, USERTYPE, 
+                IF(APPROVED = 1,'Active', 'Inactive') AS APPROVED FROM USER WHERE USERNAME = '${username}'`
+      
+    let [rows] = await DB.asyncConnection.query(query)
+
+    var data = []
+    
+    for(var i = 0; i < [rows][0].length; i++){
+        data.push([rows][0][i])
+    }
+
+    return data;
+
+}
+
 module.exports = { 
     getReport:getReport, 
     getLastLogin:getLastLogin,
-    addLastLogin:addLastLogin
+    addLastLogin:addLastLogin,
+    getUser,
 };
 

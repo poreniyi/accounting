@@ -69,9 +69,44 @@ async function generateBalanceSheet(){
     return data;
 }
 
-generateBalanceSheet()
+async function generateIncomeStatement(){
+
+    let query = `SELECT NAME, CATEGORY, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER WHERE BALANCE != 0 AND 
+                (CATEGORY = 'Revenue' OR CATEGORY = 'Expense') ORDER BY CATEGORY DESC;`
+
+    let [rows] = await DB.asyncConnection.query(query)
+
+    var revenue = { TextRow: [] }
+    var expense = { TextRow: [] }
+
+    let current
+
+    for(var i = 0; i < [rows][0].length; i++){
+        
+        current = [rows][0][i]
+
+        if(current.BALANCE < 0){
+            current.BALANCE = "(" + current.BALANCE * -1 + ")"
+        }
+
+        if(current.CATEGORY == 'Revenue'){
+            revenue.TextRow.push(current)
+        }
+        else{
+            expense.TextRow.push(current)
+        }
+    }
+
+    let data = {
+        revenue: revenue,
+        expense: expense,
+    }
+
+    return data;
+}
 
 module.exports= {
     generateTrialBalance,
     generateBalanceSheet,
+    generateIncomeStatement
 }
