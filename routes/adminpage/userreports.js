@@ -18,8 +18,7 @@ router.get('editUser',()=>{
 
 router.get('/edit', async (req,res)=>{
     let data = await report.getUser(req.query.USERNAME)
-    console.log(data)
-    res.render('userreports/editpage', data.TextRow);
+    res.render('userreports/editpage', data);
 })
 
 router.post('/edit', (req, res)=>{
