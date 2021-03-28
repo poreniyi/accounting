@@ -11,8 +11,8 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-<div>-------------------------------------------------------------------</div>
-<table>
+<div id='tableContainer'>-------------------------------------------------------------------
+<table id='assets'>
     <tr><th colspan="2">Current Assets</th></tr>
     <% data.asset.TextRow.forEach(element=>{%>
         <tr>
@@ -25,7 +25,7 @@
     <tr><td><u><%=totals.asset%></u></td></tr>
 </table>
 
-<table>
+<table id='equityLiability'>
     <tr><th colspan="2">Current Liabilites</th></tr>
     <% data.liability.TextRow.forEach(element=>{%>
         <tr>
@@ -35,7 +35,7 @@
      <%})%>
     <tr><th >Non-Current Liabilites</th></tr>
     <td>Total Liabilites</td>
-    <tr><td><%=totals.liability%></td></tr>
+    <tr><td><u><%=totals.liability%></u></td></tr>
     <tr><th colspan="2">StockHolders Equity</th></tr>
     <% data.equity.TextRow.forEach(element=>{%>
         <tr>
@@ -49,5 +49,6 @@
     <td>Total liabalities &Equity</td>
     <tr><td><u><%=`${totals.equity+totals.liability}`%></u></td></tr>
 </table>
+</div>
 </body>
 </html>
