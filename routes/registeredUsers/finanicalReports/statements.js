@@ -14,12 +14,9 @@ router.get('/trialBalance', async (req, res) => {
 router.get('/balanceSheet', async (req, res) => {
     const reducer = (accumulator, currentValue) => {
         let value;
-        console.log(typeof currentValue.BALANCE =='string')
         if (typeof currentValue.BALANCE == 'string') {
             value = currentValue.BALANCE.replace(/\W+/g,'');
-            console.log(`new value is ${value}`)
-            value=Number(value);
-            value=-value;
+            value=-Number(value);
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
@@ -30,7 +27,6 @@ router.get('/balanceSheet', async (req, res) => {
         liability:data.liability.TextRow.reduce(reducer, 0),
         equity:data.equity.TextRow.reduce(reducer, 0)
     }
-    console.log(`ASset is:${totals.assetTotal}\nEQuity+Liablity:${totals.liabilityTotal+totals.equityTotal}`)
     res.render('statementViews/balanceSheet', {data,totals});
 })
 router.get('/retainedEarnings', (req, res) => {
