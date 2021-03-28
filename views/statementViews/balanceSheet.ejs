@@ -11,7 +11,7 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-<div id='tableContainer'>-------------------------------------------------------------------
+<div id='accountForm'>
 <table id='assets'>
     <tr><th colspan="2">Current Assets</th></tr>
     <% data.asset.TextRow.forEach(element=>{%>
@@ -49,6 +49,39 @@
     <td>Total liabalities &Equity</td>
     <tr><td><u><%=`${totals.equity+totals.liability}`%></u></td></tr>
 </table>
+</div>
+<div id='reportForm'>
+    <table>
+        <tr><th>Assets</th></tr>
+        <tr><td>Current Assets</td></tr>
+        <% data.asset.TextRow.forEach(element=>{%>
+            <tr>
+                <td><%=`${element.NAME}`%></td>
+                <td><%=`${element.BALANCE}`%></td>
+            </tr>
+         <%})%>
+        <tr><td>Total Assets</td></tr>
+        <tr><td><u><%=totals.asset%></u></td></tr>
+        <tr><th>Liabilites</th></tr>
+        <% data.liability.TextRow.forEach(element=>{%>
+            <tr>
+                <td><%=`${element.NAME}`%></td>
+                <td><%=`${element.BALANCE}`%></td>
+            </tr>
+         <%})%>
+         <td>Total Liabilites</td>
+         <tr><td><u><%=totals.liability%></u></td></tr>
+        <tr><th>StockHolders Equity</th></tr>
+        <% data.equity.TextRow.forEach(element=>{%>
+            <tr>
+                <td><%=`${element.NAME}`%></td>
+                <td><%=`${element.BALANCE}`%></td>
+            </tr>
+         <%})%> 
+         <tr><td><u><%=totals.equity%></u></td></tr>
+         <td>Total liabalities &Equity</td>
+         <tr><td><u><%=`${totals.equity+totals.liability}`%></u></td></tr>
+    </table>
 </div>
 </body>
 </html>
