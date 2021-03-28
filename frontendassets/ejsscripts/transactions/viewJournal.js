@@ -51,13 +51,12 @@ search.addEventListener('keyup', () => {
         }
     }
 })
-
-let pagination = () => {
-    let tableRows = [...document.getElementsByClassName('transactions')];
-    let shown = tableRows.slice(0, 10);
+let initialTable= [...document.getElementsByClassName('transactions')];
+let pagination = (rows) => {
+    let shown = rows.slice(0, 10);
     let pageSize = 10;
-    console.log(`There are:${tableRows.length} transactions`);
-    let totalPages = Math.ceil(tableRows.length / 10);
+    console.log(`There are:${rows.length} transactions`);
+    let totalPages = Math.ceil(rows.length / 10);
     let pageButtons = document.getElementById('pageButtons');
     let next = document.getElementById('nextButton');
     let previous = document.getElementById('previousButton');
@@ -98,9 +97,9 @@ let pagination = () => {
         shown[i].classList.toggle('transactions', false);
     }
 }//
-pagination();
+pagination(initialTable);
 
-let switchPage = (direction, pagesize, currentPage) => {
+let switchPage = (direction, pagesize, currentPage,table) => {
     let slice = 0;
     if (direction == 'forward') {
         slice = pagesize * (currentPage + 1) + 1;
