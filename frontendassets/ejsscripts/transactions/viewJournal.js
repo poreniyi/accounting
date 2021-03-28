@@ -18,11 +18,13 @@ dateRanges.forEach(element => {
         let date1 = new Date(dateRanges[0].value);
         let date2 = new Date(dateRanges[1].value);
         for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName('td')[0];
+            td = tr[i].getElementsByTagName('td')[1];
             if (td) {
                 let selectedDate = new Date(td.textContent);
-                if (date1.getTime() < selectedDate.getTime() < date2.getTime()) {
-                    tr[i].style.display = '';
+                if (date1.getTime() < selectedDate.getTime() && selectedDate.getTime()< date2.getTime()) {
+                    console.log(td);
+                    tr[i].style.display = 'table-row';
+                    console.log(tr[i].style.display)
                 } else {
                     tr[i].style.display = 'none';
                 }
