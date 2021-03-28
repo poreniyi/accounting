@@ -105,8 +105,32 @@ async function generateIncomeStatement(){
     return data;
 }
 
+async function generateRetainedEarnings(){
+
+    let data = await generateIncomeStatement()
+
+    let totalRevenue = 0;
+    let totalExpense = 0;
+
+    console.log(data.expense.TextRow.length)
+
+    for(var i = 0; i < data.expense.TextRow.length;i++){
+        console.log(data.expense.TextRow[i])
+        totalExpense = totalExpense + data.expense.TextRow[i]
+    }
+
+    for(var i = 0; i < data.revenue.TextRow.length;i++){
+        console.log(data.revenue.TextRow[i])
+        totalRevenue = totalRevenue + data.revenue.TextRow[i]
+    }
+
+    return totalRevenue - totalExpense
+ 
+}
+
 module.exports= {
     generateTrialBalance,
     generateBalanceSheet,
-    generateIncomeStatement
+    generateIncomeStatement,
+    generateRetainedEarnings
 }
