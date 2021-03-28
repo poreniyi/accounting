@@ -1,0 +1,14 @@
+table, th, td {
+    border-collapse: collapse;
+    padding: 5px;
+
+  }
+  #tableContainer{
+  }
+
+  #equityLiability{
+    float: left;
+  }
+  #assets{
+    float: left;
+  }
