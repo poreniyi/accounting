@@ -3,12 +3,12 @@ table, th, td {
     padding: 5px;
 
   }
-  #tableContainer{
-  }
-
   #equityLiability{
     float: left;
   }
   #assets{
     float: left;
+  }
+  .doubleUnderline{
+    border-bottom: 1px solid #000;  
   }
