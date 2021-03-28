@@ -19,3 +19,4 @@ sprint 4
 Ask if the trial balance for a debit can show negative balance.
 Ask about adjustment accout, should expense and revenue be reflected in balance sheet.
 Ask about can money be taken from the balance sheet account to the income statement accounts and vice versa
+Ask about divedends
