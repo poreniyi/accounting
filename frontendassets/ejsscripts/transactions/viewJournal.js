@@ -82,7 +82,7 @@ let pagination = (rows) => {
     previous.disabled = false;
     pages[currentPage].classList.toggle('currentPage', true);
 
-    if(!nextEventListenerExits){
+    if (!nextEventListenerExits) {
         next.addEventListener('click', () => {
             let possiblePage = currentPage + 2;
             previous.disabled = false;
@@ -91,11 +91,11 @@ let pagination = (rows) => {
                 next.disabled = true;
                 return;
             }
-         
+
             switchPage('forward', pageSize, currentPage, rows)
             currentPage += 1
             highlightNewNumber(pages, currentPage);
-            if(possiblePage==totalPages){
+            if (possiblePage == totalPages) {
                 next.disabled = true;
                 return;
             }
@@ -109,18 +109,28 @@ let pagination = (rows) => {
             console.log(`New possiblePage page is ${possiblePage} totalPages is ${totalPages}`)
             switchPage('back', pageSize, currentPage, rows);
             currentPage -= 1;
+            if(currentPage == 0){
+                previous.disabled=true;
+            }
             highlightNewNumber(pages, currentPage);
         })
-        nextEventListenerExists=true;
-    }else{
+        nextEventListenerExists = true;
+    } else {
         console.log(`event lstner exists`)
     }
     for (let i = 0; i < shown.length; i++) {
         shown[i].classList.toggle('transactions', false);
     }
+    for (let i = 0; i < rows.length; i++) {
+        if (i < 10) {
+            rows[i].classList.toggle('transactions', false);
+        } else {
+            rows[i].classList.toggle('transactions', true);
+        }
+    }
 }//
-let nextEventListenerExits=false;
-let addPageEventListeners=()=>{
+let nextEventListenerExits = false;
+let addPageEventListeners = () => {
     console.log(`New possiblePage page is ${possiblePage} totalPages is ${totalPages}`)
 
 }
