@@ -123,7 +123,7 @@ addAccount.addEventListener('click', (e) => {
     })
     makeBalanceMessage();
 })
-
+let formatter = new Intl.NumberFormat('en-US',{ style: 'decimal'});
 addTotal = (column, accumulator) => {
     let string = `input[name=${column}]`
     let values = [...document.querySelectorAll(string)];
@@ -131,7 +131,7 @@ addTotal = (column, accumulator) => {
     values.forEach(element => {
         grandTotal += Number(element.value);
     })
-    accumulator.textContent = grandTotal;
+    accumulator.textContent = formatter.format(grandTotal);
     makeBalanceMessage();
 }
 
