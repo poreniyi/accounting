@@ -14,6 +14,7 @@
         <h1>New Journal</h1>
         <div class="container">
             <form id='form' action='' METHOD='POST'>
+                <input  name='Date' type='date'>
                 <datalist id='AccountNamesList'>
                     <%accountNames.forEach(element=>{ %>
                         <option value=<%=element%>>
