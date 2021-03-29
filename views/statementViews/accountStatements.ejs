@@ -10,6 +10,48 @@
 
 <body>
     <div>
+        <form id='form'>
+            <input id='trialBalance' type='radio' name='Statement' value="Trial Balance">
+            <label for='trialBalance'>Trial Balance</label>
+            <input id='trialBalance' type='radio' name='Statement' value="Trial Balance">
+            <label for='trialBalance'>Trial Balance</label>
+            <input id='trialBalance' type='radio' name='Statement' value="Trial Balance">
+            <label for='trialBalance'>Trial Balance</label>
+            <input id='trialBalance' type='radio' name='Statement' value="Trial Balance">
+            <label for='trialBalance'>Trial Balance</label>
+            <div id=dates>
+                <select>
+                    <option>Yearly</option>
+                    <option>Weekly</option>
+                    <option>Quarterly</option>
+                    <option>Manual</option>
+                </select>
+                <%let date=new Date();%>
+                <div id='periods'>
+                    <select id='years'>
+                        <%for(let i=2016;i<=date.getFullYear();i++){%>
+                            <option><%=i%></option>
+                        <%}%>
+                    </select>
+                    <select id='quarters'>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                    <select id='weeks'>
+                        <%for(let i=1;i<53;i++){%>
+                            <option><%=i%></option>
+                        <%}%>
+                    </select>
+                    <div id='manual'>
+                        <input id='startDate' type='date'>
+                        <input id='endDate' type='date'>
+                    </div>
+                </div>
+             
+            </div>
+        </form>
         <ul>
             <li><a href="./statements/trialBalance" class="tooltip" id="chartTool">Trial Balance</a></li>
             <li><a href="./statements/balanceSheet" class="tooltip" id="chartTool">Balance Sheet</a></li>
