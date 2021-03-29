@@ -1,19 +1,32 @@
 const DB = require("./DBConnection");
 
-async function generateTrialBalance(){
+async function generateTrialBalance(from, to){
 
-    let query = `SELECT NAME, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER WHERE BALANCE != 0 ORDER BY CATEGORY DESC`
+    let query = `SELECT NAME, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER WHERE DOC <= '${to}' AND BALANCE != 0 ORDER BY CATEGORY DESC`
 
     let [rows] = await DB.asyncConnection.query(query)
 
     var data = { TextRow: [] }
-
     let current
 
     for(var i = 0; i < [rows][0].length; i++){
 
-        current = [rows][0][i]
-        if(current.BALANCE < 0){
+        current = current = [rows][0][i]
+
+        query = `SELECT BALANCE FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
+
+        let [rows2] = await DB.asyncConnection.query(query)
+
+        if(![rows2][0][0]){ // nothing found in date range so find latest balance before that
+                query = `SELECT BALANCE FROM ${current.NAME}_LEDGER WHERE DATESUBMITTED <= '${from} 23:59:59' ORDER BY DATESUBMITTED DESC LIMIT 1;`
+                rows2.splice(0, rows2.length)
+                [rows2] = await DB.asyncConnection.query(query)
+        }
+
+        if(![rows2][0][0]){ // if it's still null, there are no records for the account, so balance is 0
+            current.BALANCE = 0
+        }
+        else if(current.BALANCE < 0){
             if(current.COLUMN == 'Debit'){
                 current.COLUMN = 'Credit'
                 current.BALANCE = current.BALANCE * -1
@@ -24,6 +37,10 @@ async function generateTrialBalance(){
             }
         }
         data.TextRow.push(current)
+    }
+
+    if(!data.TextRow[0]){
+        return "No results within the selected date range."
     }
 
     return data;
@@ -127,6 +144,7 @@ async function generateRetainedEarnings(){
     return totalRevenue - totalExpense
  
 }
+
 
 module.exports= {
     generateTrialBalance,

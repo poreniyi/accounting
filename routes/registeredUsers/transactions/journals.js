@@ -37,8 +37,15 @@ router.post('/createJournal', async (req, res) => {
     }
     let ID = await journal.getTransactionID();
 
+    let d = new Date()
+    let date;
+
+    if(req.body.Date){
+        date = req.body.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+    }
+
     for (var i = 0; i < req.body.Account.length; i++) {
-        journal.createTransaction(req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID)
+        journal.createTransaction(req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID, date)
     }
 
     req.session.Confirm = {

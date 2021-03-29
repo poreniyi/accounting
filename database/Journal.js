@@ -9,11 +9,11 @@ async function getTransactionID(){
     return rows[0][0].ID
 }
 
-async function createTransaction(username, account,  description, debit, credit, ID){
+async function createTransaction(username, account,  description, debit, credit, ID, date){
 
-    let query = `CALL CREATE_TRANSACTION(?,?,?,?,?,?)`
+    let query = `CALL CREATE_TRANSACTION(?,?,?,?,?,?,?)`
 
-    DB.asyncConnection.query(query, [username, account, description, debit, credit, ID], 
+    DB.asyncConnection.query(query, [username, account, description, debit, credit, ID, date], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
