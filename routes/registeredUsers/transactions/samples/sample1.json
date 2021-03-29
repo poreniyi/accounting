@@ -1,0 +1,19 @@
+{
+  "transaction": [
+    {
+      "user": "aacb022021",
+      "Description": "sd",
+      "Name": "AccountsReceivable",
+      "Debits": "0",
+      "Credits": "01"
+    },
+    {
+      "user": "aacb022021",
+      "Description": "sd",
+      "Name": "MerchandiseInventory",
+      "Debits": "1",
+      "Credits": "0"
+    }
+  ],
+  "date": "2021-03-29T02:14:07.794Z"
+}

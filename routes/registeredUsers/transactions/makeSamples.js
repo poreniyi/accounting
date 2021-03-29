@@ -1,6 +1,7 @@
 let router = require('express').Router()
 let getAccountNames = require('../../../database/SearchAccount').getAccountNames;
 let fs = require('fs').promises
+let path=require('path');
 
 router.get('/createSampleJournal', async (req, res) => {
     if (req.session.userType.toLowerCase() == 'admin') {
@@ -19,8 +20,8 @@ router.post('/createSampleJournal', async (req, res) => {
     let data = [];
     let transaction={}
     let Account;
-    let oldData=await fs.readFile('./sample1.json')
-    oldData= JSON.parse(oldData);
+   // let oldData=await fs.readFile(path.join(__dirname,'samples','sample1.json'))
+    //oldData= JSON.parse(oldData);
     for (var i = 0; i < req.body.Account.length; i++) {
         Account = {
             user: req.user,
@@ -31,9 +32,13 @@ router.post('/createSampleJournal', async (req, res) => {
         }
         data.push(Account);
     }
-    transaction.transaction=data;
+    transaction={
+        transactions:data,
+        date:req.body.Date||new Date()
+    }
     console.log(transaction)
-    
+    let writeData=JSON.stringify(transaction,null,2)
+    fs.writeFile(path.join(__dirname,'samples','sample1.json'),writeData)
     //req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID
       res.redirect(`${req.baseUrl}/createSampleJournal`);
 })
