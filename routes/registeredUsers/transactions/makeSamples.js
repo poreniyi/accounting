@@ -44,7 +44,7 @@ router.post('/createSampleJournal', async (req, res) => {
 router.get('/json',async(req,res)=>{
     let oldData=await fs.readFile(path.join(__dirname,'samples','sample1.json'))
     oldData= JSON.parse(oldData);
-    console.log(oldData.transactions[0].Accounts[1])
+    console.log(oldData.transactions.length)
     res.send(oldData);
 })
 module.exports = router;

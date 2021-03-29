@@ -1,6 +1,5 @@
 {
   "transactions": [
-    {},
     {
       "Accounts": [
         {
@@ -174,6 +173,170 @@
           "Debits": "0",
           "Credits": "2000",
           "Date": "2016-04-30"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "bought photography equipment and invested cash",
+          "Name": "Cash",
+          "Debits": "57500",
+          "Credits": "0",
+          "Date": "2016-08-01"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "bought photography equipment and invested cash",
+          "Name": "Equipment",
+          "Debits": "32500",
+          "Credits": "",
+          "Date": "2016-08-01"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "bought photography equipment and invested cash",
+          "Name": "MarySmithCapital",
+          "Debits": "",
+          "Credits": "90000",
+          "Date": "2016-08-01"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Purchased 2 year insurance policy",
+          "Name": "PrepaidInsurance",
+          "Debits": "3000",
+          "Credits": "",
+          "Date": "2016-08-04"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Purchased 2 year insurance policy",
+          "Name": "Cash",
+          "Debits": "",
+          "Credits": "3000",
+          "Date": "2016-08-04"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Services are performed and clients are billed for 10,000.",
+          "Name": "AccountsReceivable",
+          "Debits": "10000",
+          "Credits": "0",
+          "Date": "2016-08-07"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Services are performed and clients are billed for 10,000.",
+          "Name": "UnearnedRevenues",
+          "Debits": "0",
+          "Credits": "10000",
+          "Date": "2016-08-07"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": " Purchased office supplies for Rs. 1,400. Cash paid  400 and remaining outstanding.",
+          "Name": "Supplies",
+          "Debits": "1400",
+          "Credits": "0",
+          "Date": "2016-08-13"
+        },
+        {
+          "user": "aacb022021",
+          "Description": " Purchased office supplies for Rs. 1,400. Cash paid  400 and remaining outstanding.",
+          "Name": "Cash",
+          "Debits": "0",
+          "Credits": "400",
+          "Date": "2016-08-13"
+        },
+        {
+          "user": "aacb022021",
+          "Description": " Purchased office supplies for Rs. 1,400. Cash paid  400 and remaining outstanding.",
+          "Name": "AccountsPayable",
+          "Debits": "",
+          "Credits": "1000",
+          "Date": "2016-08-13"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Received 2,000 cash in photography fees earned previously.",
+          "Name": "Cash",
+          "Debits": "2000",
+          "Credits": "0",
+          "Date": "2016-08-20"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Received 2,000 cash in photography fees earned previously.",
+          "Name": "AccountsReceivable",
+          "Debits": "0",
+          "Credits": "2000",
+          "Date": "2016-08-20"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "The client immediately pays 15,000 for services to be performed at a later date.",
+          "Name": "Cash",
+          "Debits": "15000",
+          "Credits": "0",
+          "Date": "2016-08-24"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "The client immediately pays 15,000 for services to be performed at a later date.",
+          "Name": "UnearnedRevenues",
+          "Debits": "0",
+          "Credits": "15000",
+          "Date": "2016-08-24"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "The business acquires photography equipment. The purchase price is  100,000, pays 25,000 cash and signs a note for the balance.",
+          "Name": "Equipment",
+          "Debits": "100000",
+          "Credits": "0",
+          "Date": "2016-08-29"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "The business acquires photography equipment. The purchase price is  100,000, pays 25,000 cash and signs a note for the balance.",
+          "Name": "Cash",
+          "Debits": "0",
+          "Credits": "25000",
+          "Date": "2016-08-29"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "The business acquires photography equipment. The purchase price is  100,000, pays 25,000 cash and signs a note for the balance.",
+          "Name": "NotesPayable",
+          "Debits": "",
+          "Credits": "75000",
+          "Date": "2016-08-29"
         }
       ]
     }
