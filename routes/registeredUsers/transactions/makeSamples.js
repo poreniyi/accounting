@@ -1,22 +1,36 @@
-let router=require('express').Router()
+let router = require('express').Router()
 let getAccountNames = require('../../../database/SearchAccount').getAccountNames;
+let fs = require('fs').promises
 
-
-router.get('/createJournal', async (req, res) => {
+router.get('/createSampleJournal', async (req, res) => {
     if (req.session.userType.toLowerCase() == 'admin') {
         res.status(403).render(`home/denied`);
         return;
     }
     let accountNames = await getAccountNames('active accounts');
-    res.render('transactions/addJournal', { accountNames });
+    res.render('transactions/addSampleJournal', { accountNames });
 })
-router.post('/createJournal', async (req, res) => {
+router.post('/createSampleJournal', async (req, res) => {
     if (req.session.userType.toLowerCase() == 'admin') {
         res.status(403).render(`home/denied`);
         return;
     }
-//req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID
-    res.redirect(`${req.baseUrl}/confirmRedirect`);
+    let data = [];
+    let Account;
+    for (var i = 0; i < req.body.Account.length; i++) {
+        Account = {
+            user: req.user,
+            Description: req.body.Description,
+            Name: req.body.Account[i],
+            Debits: req.body.Debits[i],
+            Credits: req.body.Credits[i],
+        }
+        data.push[Account];
+    }
+
+    
+    //req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID
+      res.redirect(`${req.baseUrl}/createSampleJournal`);
 })
 
-module.exports=router;
+module.exports = router;
