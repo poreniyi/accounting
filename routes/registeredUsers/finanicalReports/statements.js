@@ -6,6 +6,10 @@ router.get('/', (req, res) => {
     res.render('statementViews/accountStatements');
 })
 
+router.post('/',(req,res)=>{
+    console.log(req.body);
+    res.redirect('back')
+})
 router.get('/trialBalance', async (req, res) => {
     let data = await statements.generateTrialBalance('2019-01-01', '2021-10-01')
     console.log(data);
