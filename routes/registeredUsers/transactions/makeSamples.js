@@ -16,9 +16,8 @@ router.post('/createSampleJournal', async (req, res) => {
         res.status(403).render(`home/denied`);
         return;
     }
-    let date=req.body.date||new Date();
+    let date=req.body.Date||new Date();
     let data = [];
-    let transaction={}
     let Account;
     let oldData=await fs.readFile(path.join(__dirname,'samples','sample1.json'))
     oldData= JSON.parse(oldData);
@@ -34,12 +33,18 @@ router.post('/createSampleJournal', async (req, res) => {
         }
         data.push(Account);
     }
-   oldData.transactions.push(data);
-    console.log(transaction)
+    let obj={Accounts:data}
+   oldData.transactions.push(obj);
     let writeData=JSON.stringify(oldData,null,2)
     fs.writeFile(path.join(__dirname,'samples','sample1.json'),writeData)
     //req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID
       res.redirect(`${req.baseUrl}/createSampleJournal`);
 })
 
+router.get('/json',async(req,res)=>{
+    let oldData=await fs.readFile(path.join(__dirname,'samples','sample1.json'))
+    oldData= JSON.parse(oldData);
+    console.log(oldData.transactions[0].Accounts[1])
+    res.send(oldData);
+})
 module.exports = router;

@@ -1,40 +1,181 @@
 {
   "transactions": [
-    [
-      {
-        "user": "aacb022021",
-        "Description": "232",
-        "Name": "AccountsReceivable",
-        "Debits": "10",
-        "Credits": "0",
-        "Date": "2021-03-29T02:21:23.914Z"
-      },
-      {
-        "user": "aacb022021",
-        "Description": "232",
-        "Name": "MarySmithDrawing",
-        "Debits": "0",
-        "Credits": "10",
-        "Date": "2021-03-29T02:21:23.914Z"
-      }
-    ],
-    [
-      {
-        "user": "aacb022021",
-        "Description": "adad",
-        "Name": "AccumulatedDepreciationBuildings",
-        "Debits": "050",
-        "Credits": "0",
-        "Date": "2021-03-29T02:25:22.602Z"
-      },
-      {
-        "user": "aacb022021",
-        "Description": "adad",
-        "Name": "MarySmithDrawing",
-        "Debits": "0",
-        "Credits": "050",
-        "Date": "2021-03-29T02:25:22.602Z"
-      }
-    ]
+    {},
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "purchase furniture for cash",
+          "Name": "Equipment",
+          "Debits": "7000",
+          "Credits": "0",
+          "Date": "2016-04-02"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "purchase furniture for cash",
+          "Name": "Cash",
+          "Debits": "0",
+          "Credits": "7000",
+          "Date": "2016-04-02"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Started business with cash",
+          "Name": "Cash",
+          "Debits": "100000",
+          "Credits": "0",
+          "Date": "2016-04-01"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Started business with cash",
+          "Name": "MarySmithCapital",
+          "Debits": "0",
+          "Credits": "100000",
+          "Date": "2016-04-01"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "purchase goods for cash 2,00 and credit  for 1,000",
+          "Name": "MerchandiseInventory",
+          "Debits": "3000",
+          "Credits": "0",
+          "Date": "2016-04-08"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "purchase goods for cash 2,00 and credit  for 1,000",
+          "Name": "Cash",
+          "Debits": "0",
+          "Credits": "2000",
+          "Date": "2016-04-08"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "purchase goods for cash 2,00 and credit  for 1,000",
+          "Name": "AccountsPayable",
+          "Debits": "",
+          "Credits": "1000",
+          "Date": "2016-04-08"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Sold goods for cash and credit",
+          "Name": "Cash",
+          "Debits": "5000",
+          "Credits": "0",
+          "Date": "2016-04-14"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Sold goods for cash and credit",
+          "Name": "AccountsReceivable",
+          "Debits": "12000",
+          "Credits": "",
+          "Date": "2016-04-14"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Sold goods for cash and credit",
+          "Name": "ServiceRevenues",
+          "Debits": "",
+          "Credits": "17000",
+          "Date": "2016-04-14"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Owner withdrew 2,000 for personal use.",
+          "Name": "MarySmithDrawing",
+          "Debits": "2000",
+          "Credits": "0",
+          "Date": "2016-04-18"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Owner withdrew 2,000 for personal use.",
+          "Name": "Cash",
+          "Debits": "0",
+          "Credits": "2000",
+          "Date": "2016-04-18"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Paid Retail Store 500.",
+          "Name": "AccountsPayable",
+          "Debits": "500",
+          "Credits": "0",
+          "Date": "2016-04-22"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Paid Retail Store 500.",
+          "Name": "Cash",
+          "Debits": "0",
+          "Credits": "500",
+          "Date": "2016-04-22"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Receive cash from credit customer",
+          "Name": "Cash",
+          "Debits": "10000",
+          "Credits": "0",
+          "Date": "2016-04-26"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Receive cash from credit customer",
+          "Name": "AccountsReceivable",
+          "Debits": "0",
+          "Credits": "10000",
+          "Date": "2016-04-26"
+        }
+      ]
+    },
+    {
+      "Accounts": [
+        {
+          "user": "aacb022021",
+          "Description": "Paid salaries",
+          "Name": "SalariesExpense",
+          "Debits": "2000",
+          "Credits": "0",
+          "Date": "2016-04-30"
+        },
+        {
+          "user": "aacb022021",
+          "Description": "Paid salaries",
+          "Name": "Cash",
+          "Debits": "0",
+          "Credits": "2000",
+          "Date": "2016-04-30"
+        }
+      ]
+    }
   ]
 }
