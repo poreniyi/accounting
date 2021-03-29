@@ -136,7 +136,12 @@ addTotal = (column, accumulator) => {
 }
 
 let makeBalanceMessage = () => {
-    let balance = Number(totalCredit.textContent) - Number(totalDebit.textContent)
+    let creditTotalNumber=totalCredit.textContent.replace(',','')
+    let debitTotalNumber=totalDebit.textContent.replace(',','')
+    let balance = Number(creditTotalNumber) - Number(debitTotalNumber)
+    console.log(`${totalCredit.textContent}-${totalDebit.textContent}`)
+    console.log(`${creditTotalNumber}-${debitTotalNumber}`)
+    console.log(`The balance is ${balance}`)
     let message3, message2;
     let isCorrectLength, hasValue, isBalanced;
     let namesAreUnique = true;
