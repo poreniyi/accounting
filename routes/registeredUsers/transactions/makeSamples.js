@@ -15,8 +15,12 @@ router.post('/createSampleJournal', async (req, res) => {
         res.status(403).render(`home/denied`);
         return;
     }
+    console.log(req.body);
     let data = [];
+    let transaction={}
     let Account;
+    let oldData=await fs.readFile('./sample1.json')
+    oldData= JSON.parse(oldData);
     for (var i = 0; i < req.body.Account.length; i++) {
         Account = {
             user: req.user,
@@ -25,9 +29,10 @@ router.post('/createSampleJournal', async (req, res) => {
             Debits: req.body.Debits[i],
             Credits: req.body.Credits[i],
         }
-        data.push[Account];
+        data.push(Account);
     }
-
+    transaction.transaction=data;
+    console.log(transaction)
     
     //req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID
       res.redirect(`${req.baseUrl}/createSampleJournal`);
