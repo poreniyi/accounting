@@ -1,19 +1,40 @@
 {
-  "transaction": [
-    {
-      "user": "aacb022021",
-      "Description": "sd",
-      "Name": "AccountsReceivable",
-      "Debits": "0",
-      "Credits": "01"
-    },
-    {
-      "user": "aacb022021",
-      "Description": "sd",
-      "Name": "MerchandiseInventory",
-      "Debits": "1",
-      "Credits": "0"
-    }
-  ],
-  "date": "2021-03-29T02:14:07.794Z"
+  "transactions": [
+    [
+      {
+        "user": "aacb022021",
+        "Description": "232",
+        "Name": "AccountsReceivable",
+        "Debits": "10",
+        "Credits": "0",
+        "Date": "2021-03-29T02:21:23.914Z"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "232",
+        "Name": "MarySmithDrawing",
+        "Debits": "0",
+        "Credits": "10",
+        "Date": "2021-03-29T02:21:23.914Z"
+      }
+    ],
+    [
+      {
+        "user": "aacb022021",
+        "Description": "adad",
+        "Name": "AccumulatedDepreciationBuildings",
+        "Debits": "050",
+        "Credits": "0",
+        "Date": "2021-03-29T02:25:22.602Z"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "adad",
+        "Name": "MarySmithDrawing",
+        "Debits": "0",
+        "Credits": "050",
+        "Date": "2021-03-29T02:25:22.602Z"
+      }
+    ]
+  ]
 }
