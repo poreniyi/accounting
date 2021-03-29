@@ -1,4 +1,5 @@
 let router=require('express').Router()
+let getAccountNames = require('../../../database/SearchAccount').getAccountNames;
 
 
 router.get('/createJournal', async (req, res) => {
