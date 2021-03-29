@@ -54,8 +54,8 @@
                         <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
                         <% val=date.toISOString()%>
                         <%val=val.split('T')[0]%>
-                        <input name='startDate' id='startDate'  value="2016-01-01" max='<%=val%>'  min="2016-01-01" type='date'>
-                        <input name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2016-01-01" type='date'>
+                        <input  disabled name='startDate' id='startDate'  value="2016-01-01" max='<%=val%>'  min="2016-01-01" type='date'>
+                        <input  disabled name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2016-01-01" type='date'>
                     </div>
                 </div>
              
