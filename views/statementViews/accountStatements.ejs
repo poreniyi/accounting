@@ -51,8 +51,11 @@
                         <%}%>
                     </select>
                     <div id='manual'>
-                        <input id='startDate' type='date'>
-                        <input id='endDate' type='date'>
+                        <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
+                        <% val=date.toISOString()%>
+                        <%=val=val.split('T')[0]%>
+                        <input id='startDate'  value='<%=val%>' max='<%=val%>'  min="2016-01-01" type='date'>
+                        <input id='endDate'  value='<%=val%>'  max='<%=val%>' min="2016-01-01" type='date'>
                     </div>
                 </div>
              
