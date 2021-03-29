@@ -10,8 +10,8 @@
 
 <body>
     <div>
-        <form id='form'>
-            <input id='trialBalance' type='radio' name='Statement' value="Trial Balance">
+        <form id='form' action='' method="POST">
+            <input  required id='trialBalance' type='radio' name='Statement' value="Trial Balance">
             <label for='trialBalance'>Trial Balance</label>
             <input id='balanceSheet' type='radio' name='Statement' value="Balance Sheet">
             <label for='balanceSheet'>Balance Sheet</label>
@@ -53,13 +53,14 @@
                     <div id='manual'>
                         <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
                         <% val=date.toISOString()%>
-                        <%=val=val.split('T')[0]%>
-                        <input id='startDate'  value="2016-01-01" max='<%=val%>'  min="2016-01-01" type='date'>
-                        <input id='endDate'  value='<%=val%>'  max='<%=val%>' min="2016-01-01" type='date'>
+                        <%val=val.split('T')[0]%>
+                        <input name='startDate' id='startDate'  value="2016-01-01" max='<%=val%>'  min="2016-01-01" type='date'>
+                        <input name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2016-01-01" type='date'>
                     </div>
                 </div>
              
             </div>
+            <button type='submit'>Submit</button>
         </form>
         <ul>
             <li><a href="./statements/trialBalance" class="tooltip" id="chartTool">Trial Balance</a></li>
@@ -68,5 +69,6 @@
             <li><a href="./statements/IncomeStatement" class="tooltip" id="chartTool">Income Statement</a></li>
         </ul>
     </div>
+    <script src='ejsscripts/'></script>
 </body>
 </html>
