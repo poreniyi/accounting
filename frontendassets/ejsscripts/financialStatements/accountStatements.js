@@ -14,7 +14,7 @@ periodSelect.addEventListener('change', () => {
         dateIsManual = true
     } else dateIsManual = false
     switch (currentVal) {
-        case "Maunal":
+        case "Manual":
             dateIsManual = true
             makeManualDate();
             break;
@@ -23,6 +23,7 @@ periodSelect.addEventListener('change', () => {
             break;
         case "Quarterly":
         case "Monthly":
+            makeMonthDate();
         case "Weekly":
     }
 })
@@ -35,7 +36,7 @@ form.addEventListener('submit', (e) => {
 })
 
 let makeYearDate = () => {
-    console.log(periods)
+    document.getElementById('years').style.display = ''
     document.getElementById('quarters').style.display = 'none'
     document.getElementById('months').style.display = 'none'
     document.getElementById('weeks').style.display = 'none'
@@ -44,7 +45,8 @@ let makeYearDate = () => {
     let yearSelect = document.getElementById('years');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
     startDate.value = `${yearValue}-01-01`
-    endDate.value = `${yearValue}-12-31`; yearSelect.addEventListener('change', () => {
+    endDate.value = `${yearValue}-12-31`; 
+    yearSelect.addEventListener('change', () => {
         yearValue = yearSelect.options[yearSelect.selectedIndex].value
         startDate.value = `${yearValue}-01-01`
         endDate.value = `${yearValue}-12-31`;
@@ -57,6 +59,14 @@ let makeQuarterDate = () => {
 
 }
 let makeMonthDate = () => {
+    document.getElementById('quarters').style.display = 'none'
+    document.getElementById('weeks').style.display = 'none'
+    document.getElementById('years').style.display = ''
+    document.getElementById('months').style.display = ''
+    let monthSelect=document.getElementById('months');
+    let yearSelect=document.getElementById('years');
+    let yearValue = yearSelect.options[yearSelect.selectedIndex].value
+    let monthValue = monthSelect.options[monthSelect.selectedIndex].value
 
 }
 
