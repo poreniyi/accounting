@@ -29,32 +29,39 @@
                 </select>
                 <%let date=new Date();%>
                 <div id='periods'>
-                    <label for='years'> Year</label>
-                    <select id='years'>
-                        <%for(let i=2016;i<=date.getFullYear();i++){%>
-                            <option><%=i%></option>
-                        <%}%>
-                    </select>
-                    <label for='quarters'> Quarter</label>
-                    <select id='quarters'>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                    <label for='months'> Month</label>
-                    <select id='months'>
-                        <% let val2=''%>
-                        <% const formatter = new Intl.DateTimeFormat('us', { month: 'long' });%>
-                        <% let month=''%>
-                        <%for(let i=1;i<=12;i++){%>
-                            <%if(i<10){%>
-                                <%val2=`0${i}`%>
-                           <% }else val2=i%>
-                           <%month=formatter.format(new Date('200',i-1))%>
-                           <option value=<%-val2%>><%=month%></option>
-                        <%}%>
-                    </select>
+                    <div id='years'>
+                        <label for='yearsSelect'> Year</label>
+                        <select id='yearsSelect'>
+                            <%for(let i=2016;i<=date.getFullYear();i++){%>
+                                <option><%=i%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div id='quarters'>
+                        <label for='quartersSelect'> Quarter</label>
+                        <select id='quartersSelect'>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div id='months'>
+                        <label for='monthsSelect'>Month</label>
+                        <select id='monthsSelect'>
+                            <% let val2=''%>
+                            <% const formatter = new Intl.DateTimeFormat('us', { month: 'long' });%>
+                            <% let month=''%>
+                            <%for(let i=1;i<=12;i++){%>
+                                <%if(i<10){%>
+                                    <%val2=`0${i}`%>
+                               <% }else val2=i%>
+                               <%month=formatter.format(new Date('200',i-1))%>
+                               <option value=<%-val2%>><%=month%></option>
+                            <%}%>
+                        </select>
+                    </div>
+
                     <select id='weeks'>
                         <%for(let i=1;i<53;i++){%>
                             <option value=<%-i%>><%=i%></option>

@@ -1,4 +1,3 @@
-let form = document.getElementById('form');
 let periodSelect = document.getElementById('periodSelect')
 let startDate = document.getElementById('startDate')
 let endDate = document.getElementById('endDate')
@@ -20,8 +19,9 @@ periodSelect.addEventListener('change', () => {
             break;
         case "Monthly":
             makeMonthDate();
-            break
+            break;
         case "Weekly":
+        break;
     }
 })
 
@@ -35,7 +35,7 @@ let makeYearDate = () => {
     document.getElementById('weeks').style.display = 'none'
     startDate.disabled = true
     endDate.disabled = true
-    let yearSelect = document.getElementById('years');
+    let yearSelect = document.getElementById('yearsSelect');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
     startDate.value = `${yearValue}-01-01`
     endDate.value = `${yearValue}-12-31`;
@@ -43,9 +43,7 @@ let makeYearDate = () => {
         yearValue = yearSelect.options[yearSelect.selectedIndex].value
         startDate.value = `${yearValue}-01-01`
         endDate.value = `${yearValue}-12-31`;
-
     })
-
 }
 const formatter = new Intl.DateTimeFormat('us', { month: '2-digit' })
 let makeQuarterDate = () => {
@@ -53,8 +51,8 @@ let makeQuarterDate = () => {
     document.getElementById('quarters').style.display = ''
     document.getElementById('months').style.display = 'none'
     document.getElementById('weeks').style.display = 'none'
-    let yearSelect = document.getElementById('years');
-    let quartersSelect = document.getElementById('quarters');
+    let yearSelect = document.getElementById('yearsSelect');
+    let quartersSelect = document.getElementById('quartersSelect');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
     let quartersValue = quartersSelect.options[quartersSelect.selectedIndex].value
     let quarterEndMonth=Number(quartersValue)*3;
@@ -99,8 +97,8 @@ let makeMonthDate = () => {
     document.getElementById('weeks').style.display = 'none'
     document.getElementById('years').style.display = ''
     document.getElementById('months').style.display = ''
-    let monthSelect = document.getElementById('months');
-    let yearSelect = document.getElementById('years');
+    let monthSelect = document.getElementById('monthsSelect');
+    let yearSelect = document.getElementById('yearsSelect');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
     let monthValue = monthSelect.options[monthSelect.selectedIndex].value
     startDate.value = `${yearValue}-${monthValue}-01`
@@ -130,5 +128,4 @@ let makeManualDate = () => {
     document.getElementById('weeks').style.display = 'none'
     startDate.disabled = false
     endDate.disabled = false
-    console.log('am I being run')
 }
