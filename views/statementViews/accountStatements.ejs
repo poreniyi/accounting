@@ -42,11 +42,14 @@
                     </select>
                     <select id='months'>
                         <% let val2=''%>
+                        <% const formatter = new Intl.DateTimeFormat('us', { month: 'long' });%>
+                        <% let month=''%>
                         <%for(let i=1;i<=12;i++){%>
                             <%if(i<10){%>
                                 <%val2=`0${i}`%>
                            <% }else val2=i%>
-                            <option><%=val2%></option>
+                           <%month=formatter.format(new Date('200',i-1))%>
+                           <option value=<%-val2%>><%=month%></option>
                         <%}%>
                     </select>
                     <select id='weeks'>
