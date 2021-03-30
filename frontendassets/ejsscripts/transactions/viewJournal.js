@@ -14,24 +14,7 @@ select.addEventListener('change', () => {
     search.placeholder = placeholder;
 })
 
-dateRanges.forEach(element => {
-    element.addEventListener('change', () => {
-        let date1 = new Date(dateRanges[0].value);
-        let date2 = new Date(dateRanges[1].value);
-        for (let i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName('td')[1];
-            if (td) {
-                let selectedDate = new Date(td.textContent);
-                if (date1.getTime() < selectedDate.getTime() && selectedDate.getTime() < date2.getTime()) {
-                    tr[i].style.display = 'table-row';
-                    console.log(tr[i].style.display)
-                } else {
-                    tr[i].style.display = 'none';
-                }
-            }
-        }
-    })
-})
+
 
 search.addEventListener('keyup', () => {
     let filter = search.value.toUpperCase();
@@ -160,3 +143,25 @@ let highlightNewNumber = (array, newCurrentPage) => {
     }
 }
 pagination(initialTable);
+dateRanges.forEach(element => {
+    element.addEventListener('change', () => {
+        let date1 = new Date(dateRanges[0].value);
+        let date2 = new Date(dateRanges[1].value);
+        let inRangeRows=[]
+        for (let i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName('td')[1];
+            console.log(td);
+            if (td) {
+                let selectedDate = new Date(td.textContent);
+                if (date1.getTime() <= selectedDate.getTime() && selectedDate.getTime() <= date2.getTime()) {
+                    tr[i].style.display = '';
+                    inRangeRows.push(tr[i]);
+                    console.log(tr[i].style.display)
+                } else {
+                    tr[i].style.display = 'none';
+                }
+            }
+        }
+        pagination(inRangeRows)
+    })
+})
