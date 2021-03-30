@@ -14,7 +14,8 @@ router.post('/',(req,res)=>{
     res.redirect(`${req.originalUrl}/${req.body.Statement}`)
 })
 router.get('/trialBalance', async (req, res) => {
-   let data=await statements.generateBalanceSheet(req.session.statement.start,req.session.statement.end)
+   let data=await statements.generateTrialBalance(req.session.statement.start,req.session.statement.end)
+   res.locals.statements=req.session.statement
   //let data = await statements.generateTrialBalance('2019-01-01', '2021-3-16')
   console.log(`String from req:${req.session.statement.start} ${req.session.statement.end}`)
   console.log(' String in Route:2019-01-01', '2021-03-16')
