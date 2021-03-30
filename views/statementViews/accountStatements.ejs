@@ -41,13 +41,13 @@
                         <option>4</option>
                     </select>
                     <select id='months'>
-                        <%for(let i=0;i<=11;i++){%>
+                        <%for(let i=1;i<=12;i++){%>
                             <option><%=i%></option>
                         <%}%>
                     </select>
                     <select id='weeks'>
                         <%for(let i=1;i<53;i++){%>
-                            <option><%=i%></option>
+                            <option value=<%-i%>><%=i%></option>
                         <%}%>
                     </select>
                     <div id='manual'>
