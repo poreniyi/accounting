@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
 })
 
 router.post('/',(req,res)=>{
-    console.log(req.body);
-    res.redirect('back')
+    req.session.StatementRequestData=req.body;
+    res.redirect(`${req.originalUrl}/${req.body.Statement}`)
 })
 router.get('/trialBalance', async (req, res) => {
     let data = await statements.generateTrialBalance('2019-01-01', '2021-10-01')
