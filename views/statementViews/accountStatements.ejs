@@ -10,17 +10,17 @@
 
 <body>
     <div>
-        <form id='form'>
-            <input id='trialBalance' type='radio' name='Statement' value="Trial Balance">
+        <form id='form' action='' method="POST">
+            <input  required id='trialBalance' type='radio' name='Statement' value="TrialBalance">
             <label for='trialBalance'>Trial Balance</label>
-            <input id='balanceSheet' type='radio' name='Statement' value="Balance Sheet">
+            <input id='balanceSheet' type='radio' name='Statement' value="BalanceSheet">
             <label for='balanceSheet'>Balance Sheet</label>
-            <input id='IncomeStatement' type='radio' name='Statement' value="Income Statement">
+            <input id='IncomeStatement' type='radio' name='Statement' value="IncomeStatement">
             <label for='IncomeStatement'>Income Statement</label>
-            <input id='retainedEarnings' type='radio' name='Statement' value="Retained Earnings">
+            <input id='retainedEarnings' type='radio' name='Statement' value="RetainedEarnings">
             <label for='retainedEarnings'>Retained Earnings</label>
             <div id=dates>
-                <select>
+                <select id='periodSelect'>
                     <option>Yearly</option>
                     <option>Quarterly</option>
                     <option>Monthly</option>
@@ -29,37 +29,55 @@
                 </select>
                 <%let date=new Date();%>
                 <div id='periods'>
-                    <select id='years'>
-                        <%for(let i=2016;i<=date.getFullYear();i++){%>
-                            <option><%=i%></option>
-                        <%}%>
-                    </select>
-                    <select id='quarters'>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                    </select>
-                    <select id='months'>
-                        <%for(let i=0;i<=11;i++){%>
-                            <option><%=i%></option>
-                        <%}%>
-                    </select>
+                    <div id='years'>
+                        <label for='yearsSelect'> Year</label>
+                        <select id='yearsSelect'>
+                            <%for(let i=2016;i<=date.getFullYear();i++){%>
+                                <option><%=i%></option>
+                            <%}%>
+                        </select>
+                    </div>
+                    <div id='quarters'>
+                        <label for='quartersSelect'> Quarter</label>
+                        <select id='quartersSelect'>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                        </select>
+                    </div>
+                    <div id='months'>
+                        <label for='monthsSelect'>Month</label>
+                        <select id='monthsSelect'>
+                            <% let val2=''%>
+                            <% const formatter = new Intl.DateTimeFormat('us', { month: 'long' });%>
+                            <% let month=''%>
+                            <%for(let i=1;i<=12;i++){%>
+                                <%if(i<10){%>
+                                    <%val2=`0${i}`%>
+                               <% }else val2=i%>
+                               <%month=formatter.format(new Date('200',i-1))%>
+                               <option value=<%-val2%>><%=month%></option>
+                            <%}%>
+                        </select>
+                    </div>
+
                     <select id='weeks'>
                         <%for(let i=1;i<53;i++){%>
-                            <option><%=i%></option>
+                            <option value=<%-i%>><%=i%></option>
                         <%}%>
                     </select>
                     <div id='manual'>
                         <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
                         <% val=date.toISOString()%>
-                        <%=val=val.split('T')[0]%>
-                        <input id='startDate'  value="2016-01-01" max='<%=val%>'  min="2016-01-01" type='date'>
-                        <input id='endDate'  value='<%=val%>'  max='<%=val%>' min="2016-01-01" type='date'>
+                        <%val=val.split('T')[0]%>
+                        <input  readonly name='startDate' id='startDate'  value="2016-01-01" max='<%=val%>'  min="2016-01-01" type='date'>
+                        <input  readonly name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2016-01-01" type='date'>
                     </div>
                 </div>
              
             </div>
+            <button type='submit'>Submit</button>
         </form>
         <ul>
             <li><a href="./statements/trialBalance" class="tooltip" id="chartTool">Trial Balance</a></li>
@@ -68,5 +86,6 @@
             <li><a href="./statements/IncomeStatement" class="tooltip" id="chartTool">Income Statement</a></li>
         </ul>
     </div>
+    <script src='/ejsscripts/financialStatements/accountStatements.js'></script>
 </body>
 </html>

@@ -6,10 +6,17 @@ router.get('/', (req, res) => {
     res.render('statementViews/accountStatements');
 })
 
+router.post('/',(req,res)=>{
+    req.session.statement={
+        start:req.body.startDate,
+        end:req.body.endDate,
+    }
+    res.redirect(`${req.originalUrl}/${req.body.Statement}`)
+})
 router.get('/trialBalance', async (req, res) => {
-    let data = await statements.generateTrialBalance('2019-01-01', '2021-03-14')
-    //console.log(data);
-
+   let data=await statements.generateTrialBalance(req.session.statement.start,req.session.statement.end)
+  //let data = await statements.generateTrialBalance('2019-01-01', '2021-3-16')
+  console.log(data)
     try {
         res.render('statementViews/trialBalance', data);
     } catch (error) {
@@ -26,7 +33,7 @@ router.get('/balanceSheet', async (req, res) => {
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
-
+    //let data =await statements.generateBalanceSheet(re)
     let data = await statements.generateBalanceSheet()
     let totals = {
         asset:data.asset.TextRow.reduce(reducer, 0),

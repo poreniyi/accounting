@@ -9,7 +9,7 @@ async function generateTrialBalance(from, to){
     var data = { TextRow: [] }
     let current
 
-    console.log([rows])
+   // console.log([rows])
 
     for(var i = 0; i < [rows][0].length; i++){
 
@@ -19,20 +19,28 @@ async function generateTrialBalance(from, to){
 
         let [rows2] = await DB.asyncConnection.query(query)
 
-        console.log([rows2])
+        //console.log([rows2])
 
         if(![rows2][0][0]){ // nothing found in date range so find latest balance before that
                 query = `SELECT BALANCE FROM ${current.NAME}_LEDGER WHERE DATESUBMITTED <= '${from} 23:59:59' ORDER BY DATESUBMITTED DESC LIMIT 1;`
-                rows2.splice(0, rows2.length)
-                [rows2] = await DB.asyncConnection.query(query)
+                console.log(query)
+                let [rows3] = await DB.asyncConnection.query(query)
+                console.log("HERE")
+                 console.log([rows3])
+                if(![rows3][0][0]){ // if it's still null, there are no records for the account, so balance is 0
+                     current.BALANCE = 0
+                }
+                else{ // put balance found in date range
+                    current.BALANCE = [rows3][0][0].BALANCE
+                }
         }
-
-        if(![rows2][0][0]){ // if it's still null, there are no records for the account, so balance is 0
-            current.BALANCE = 0
-        }
-        else{ // put balance found in date range
+        else{
             current.BALANCE = [rows2][0][0].BALANCE
         }
+        
+       
+
+        
 
         if(current.BALANCE < 0){
             if(current.COLUMN == 'Debit'){
