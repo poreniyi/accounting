@@ -131,4 +131,4 @@ let disableDates = () => {
     startDate.readOnly = true;
     endDate.readOnly = true;
 }
-makeMonthDate()
+makeYearDate()
