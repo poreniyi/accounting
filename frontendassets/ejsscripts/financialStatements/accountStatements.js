@@ -21,22 +21,18 @@ periodSelect.addEventListener('change', () => {
             makeMonthDate();
             break;
         case "Weekly":
-        break;
+            break;
     }
 })
-
-
-
 
 let makeYearDate = () => {
     document.getElementById('years').style.display = ''
     document.getElementById('quarters').style.display = 'none'
     document.getElementById('months').style.display = 'none'
     document.getElementById('weeks').style.display = 'none'
-    startDate.disabled = true
-    endDate.disabled = true
     let yearSelect = document.getElementById('yearsSelect');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
+    disableDates();
     startDate.value = `${yearValue}-01-01`
     endDate.value = `${yearValue}-12-31`;
     yearSelect.addEventListener('change', () => {
@@ -53,41 +49,42 @@ let makeQuarterDate = () => {
     document.getElementById('weeks').style.display = 'none'
     let yearSelect = document.getElementById('yearsSelect');
     let quartersSelect = document.getElementById('quartersSelect');
+    disableDates()
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
     let quartersValue = quartersSelect.options[quartersSelect.selectedIndex].value
-    let quarterEndMonth=Number(quartersValue)*3;
-    quarterEndMonth=('0'+quarterEndMonth).slice(-2)
-    let quarterStartMonth=quarterEndMonth-2;
-    quarterStartMonth=('0'+quarterStartMonth).slice(-2)
+    let quarterEndMonth = Number(quartersValue) * 3;
+    quarterEndMonth = ('0' + quarterEndMonth).slice(-2)
+    let quarterStartMonth = quarterEndMonth - 2;
+    quarterStartMonth = ('0' + quarterStartMonth).slice(-2)
     let endDayDate = new Date(yearValue, quarterEndMonth, 0);
     let endDay = endDayDate.getDate();
-    let startLastDayDate=new Date(yearValue, quarterStartMonth, 0);
-    let startLastDay= startLastDayDate.getDate();
+    let startLastDayDate = new Date(yearValue, quarterStartMonth, 0);
+    let startLastDay = startLastDayDate.getDate();
     startDate.value = `${yearValue}-${quarterStartMonth}-${startLastDay}`
     endDate.value = `${yearValue}-${quarterEndMonth}-${endDay}`
     yearSelect.addEventListener('change', () => {
         yearValue = yearSelect.options[yearSelect.selectedIndex].value
-        let quarterEndMonth=Number(quartersValue)*3;
-        quarterEndMonth=('0'+quarterEndMonth).slice(-2)
-        let quarterStartMonth=quarterEndMonth-2;
-        quarterStartMonth=('0'+quarterStartMonth).slice(-2)
+        let quarterEndMonth = Number(quartersValue) * 3;
+        quarterEndMonth = ('0' + quarterEndMonth).slice(-2)
+        let quarterStartMonth = quarterEndMonth - 2;
+        quarterStartMonth = ('0' + quarterStartMonth).slice(-2)
         let endDayDate = new Date(yearValue, quarterEndMonth, 0);
         let endDay = endDayDate.getDate();
-        let startLastDayDate=new Date(yearValue, quarterStartMonth, 0);
-        let startLastDay= startLastDayDate.getDate();
+        let startLastDayDate = new Date(yearValue, quarterStartMonth, 0);
+        let startLastDay = startLastDayDate.getDate();
         startDate.value = `${yearValue}-${quarterStartMonth}-${startLastDay}`
         endDate.value = `${yearValue}-${quarterEndMonth}-${endDay}`
     })
     quartersSelect.addEventListener('change', () => {
         quartersValue = quartersSelect.options[quartersSelect.selectedIndex].value
-        let quarterEndMonth=Number(quartersValue)*3;
-        quarterEndMonth=('0'+quarterEndMonth).slice(-2)
-        let quarterStartMonth=quarterEndMonth-2;
-        quarterStartMonth=('0'+quarterStartMonth).slice(-2)
+        let quarterEndMonth = Number(quartersValue) * 3;
+        quarterEndMonth = ('0' + quarterEndMonth).slice(-2)
+        let quarterStartMonth = quarterEndMonth - 2;
+        quarterStartMonth = ('0' + quarterStartMonth).slice(-2)
         let endDayDate = new Date(yearValue, quarterEndMonth, 0);
         let endDay = endDayDate.getDate();
-        let startLastDayDate=new Date(yearValue, quarterStartMonth, 0);
-        let startLastDay= startLastDayDate.getDate();
+        let startLastDayDate = new Date(yearValue, quarterStartMonth, 0);
+        let startLastDay = startLastDayDate.getDate();
         startDate.value = `${yearValue}-${quarterStartMonth}-${startLastDay}`
         endDate.value = `${yearValue}-${quarterEndMonth}-${endDay}`
     })
@@ -97,6 +94,7 @@ let makeMonthDate = () => {
     document.getElementById('weeks').style.display = 'none'
     document.getElementById('years').style.display = ''
     document.getElementById('months').style.display = ''
+    disableDates();
     let monthSelect = document.getElementById('monthsSelect');
     let yearSelect = document.getElementById('yearsSelect');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
@@ -126,7 +124,11 @@ let makeManualDate = () => {
     document.getElementById('quarters').style.display = 'none'
     document.getElementById('months').style.display = 'none'
     document.getElementById('weeks').style.display = 'none'
-    startDate.disabled = false
-    endDate.disabled = false
+    startDate.readOnly = false
+    endDate.readOnly = false
+}
+let disableDates = () => {
+    startDate.readOnly = true;
+    endDate.readOnly = true;
 }
 makeMonthDate()
