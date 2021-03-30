@@ -67,7 +67,24 @@ let makeMonthDate = () => {
     let yearSelect=document.getElementById('years');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
     let monthValue = monthSelect.options[monthSelect.selectedIndex].value
-
+    startDate.value=`${yearValue}-${monthValue}-01`
+    let lastDayDate=new Date(yearValue,monthValue,0);
+    let lastDay=lastDayDate.getDate();
+    endDate.value=`${yearValue}-${monthValue}-${lastDay}`
+    yearSelect.addEventListener('change',()=>{
+        yearValue = yearSelect.options[yearSelect.selectedIndex].value
+        lastDayDate=new Date(yearValue,monthValue,0);
+        lastDay=lastDayDate.getDate();
+        startDate.value=`${yearValue}-${monthValue}-01`
+        endDate.value=`${yearValue}-${monthValue}-${lastDay}`
+    })
+    monthSelect.addEventListener('change',()=>{
+        monthValue = monthSelect.options[monthSelect.selectedIndex].value
+        lastDayDate=new Date(yearValue,monthValue,0);
+        lastDay=lastDayDate.getDate();
+        startDate.value=`${yearValue}-${monthValue}-01`
+        endDate.value=`${yearValue}-${monthValue}-${lastDay}`
+    })
 }
 
 let makeManualDate=()=>{
