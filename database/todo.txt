@@ -21,3 +21,4 @@ Ask about adjustment accout, should expense and revenue be reflected in balance 
 Ask about can money be taken from the balance sheet account to the income statement accounts and vice versa
 Ask about divedends
 Ask about showing accounts with 0 balance in them in income statement, balance sheet, retained earnings
+Ask if transactions affected by date range filter should show 0 if the period selected doesn't have any transactions made.
