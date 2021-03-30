@@ -129,3 +129,4 @@ let makeManualDate = () => {
     startDate.disabled = false
     endDate.disabled = false
 }
+makeMonthDate()
