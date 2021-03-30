@@ -7,13 +7,19 @@ router.get('/', (req, res) => {
 })
 
 router.post('/',(req,res)=>{
-    req.session.StatementRequestData=req.body;
+    req.session.statement={
+        start:req.body.startDate,
+        end:req.body.endDate,
+    }
     res.redirect(`${req.originalUrl}/${req.body.Statement}`)
 })
 router.get('/trialBalance', async (req, res) => {
-    let data = await statements.generateTrialBalance('2019-01-01', '2021-10-01')
-    console.log(data);
-
+   let data=await statements.generateBalanceSheet(req.session.statement.start,req.session.statement.end)
+  //let data = await statements.generateTrialBalance('2019-01-01', '2021-3-16')
+  console.log(`String from req:${req.session.statement.start} ${req.session.statement.end}`)
+  console.log(' String in Route:2019-01-01', '2021-03-16')
+  console.log(req.session.statement.start=='2019-01-01')
+  console.log(req.session.statement.end=='2021-3-16')
     try {
         res.render('statementViews/trialBalance', data);
     } catch (error) {
@@ -30,7 +36,7 @@ router.get('/balanceSheet', async (req, res) => {
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
-
+    //let data =await statements.generateBalanceSheet(re)
     let data = await statements.generateBalanceSheet()
     let totals = {
         asset:data.asset.TextRow.reduce(reducer, 0),
