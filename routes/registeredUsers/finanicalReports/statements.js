@@ -7,8 +7,8 @@ router.get('/', (req, res) => {
 })
 
 router.get('/trialBalance', async (req, res) => {
-    let data = await statements.generateTrialBalance('2019-01-01', '2021-10-01')
-    console.log(data);
+    let data = await statements.generateTrialBalance('2019-01-01', '2021-03-14')
+    //console.log(data);
 
     try {
         res.render('statementViews/trialBalance', data);
