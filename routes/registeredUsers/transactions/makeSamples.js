@@ -2,7 +2,7 @@ let router = require('express').Router()
 let getAccountNames = require('../../../database/SearchAccount').getAccountNames;
 let fs = require('fs').promises
 let path = require('path');
-let jounral = require('../../../database/Journal')
+let journal = require('../../../database/Journal')
 
 router.get('/createSampleJournal', async (req, res) => {
     if (req.session.userType.toLowerCase() == 'admin') {
@@ -46,23 +46,26 @@ router.get('/json', async (req, res) => {
 })
 
 router.get('/addTransactions', async (req, res) => {
+    let counter=0;
     for (let i = 1; i < 3; i++) {
         const collection = req.app.locals.db.collection(`Sample${i}`)
-        let data = await collection.find({}).project({ _id: 0 }).toArray();
-        //let ID = await journal.getTransactionID();
-
-        //console.log(data[0].Accounts);
-        data[0].Accounts.forEach(element => {
-            let d = new Date()
-            let date;
-            date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();  
-            // journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
-            //     element.Credits, ID, date)
-            console.log(element.user, element.Name, element.Description, element.Debits,
-                element.Credits, date)
-        });
+        let data = await collection.find({}).toArray();
+            
+        for (let j = 0; j < data.length; j++) {
+         //   let ID = await journal.getTransactionID();
+         counter++;
+         console.log(data[j]._id)
+         for (let k = 0; k < data[j].Accounts.length; k++) {
+                let element = data[j].Accounts[k];
+                // let d = new Date()
+                // let date;
+                // date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                // journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
+                //     element.Credits, ID, date)
+            }
+        }
     }
-    res.redirect('/')
+    res.send(`There are:${counter}`)
 })
 
 // router.get('/jsonUpload', async (req, res) => {
