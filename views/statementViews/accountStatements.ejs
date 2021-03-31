@@ -24,7 +24,6 @@
                     <option>Yearly</option>
                     <option>Quarterly</option>
                     <option>Monthly</option>
-                    <option>Weekly</option>
                     <option>Manual</option>
                 </select>
                 <%let date=new Date();%>
@@ -61,11 +60,6 @@
                             <%}%>
                         </select>
                     </div>
-
-                    <select id='weeks'>
-                        <%for(let i=1;i<53;i++){%>
-                            <option value=<%-i%>><%=i%></option>
-                        <%}%>
                     </select>
                     <div id='manual'>
                         <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
