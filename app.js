@@ -12,7 +12,7 @@ const MongoClient=require('mongodb').MongoClient;
 var app = express();
 
 //database connection goes here
-MongoCLient.connect(process.env.mongo_uri,{useNewUrlParser:true,useUnifiedTopology:true}).then(client=>{
+MongoClient.connect(process.env.mongo_uri,{useNewUrlParser:true,useUnifiedTopology:true}).then(client=>{
     const db=client.db('Transactions');
     app.locals.db=db;
 });
