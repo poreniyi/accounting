@@ -30,7 +30,7 @@ router.post('/createSampleJournal', async (req, res) => {
         }
         data.push(Account);
     }
-    const collection =req.app.locals.db.collection('Sample2');
+    const collection =req.app.locals.db.collection('Sample3');
     let obj = { Accounts: data }
     collection.insertOne(obj)
     //req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID
