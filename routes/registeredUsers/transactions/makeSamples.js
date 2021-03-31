@@ -46,22 +46,21 @@ router.get('/json', async (req, res) => {
 })
 
 router.get('/addTransactions', async (req, res) => {
-    let counter=0;
+    return // only remove this line if there are no journal entries present; 
+    let counter = 0;
     for (let i = 1; i < 3; i++) {
         const collection = req.app.locals.db.collection(`Sample${i}`)
         let data = await collection.find({}).toArray();
-            
         for (let j = 0; j < data.length; j++) {
-         //   let ID = await journal.getTransactionID();
-         counter++;
-         console.log(data[j]._id)
-         for (let k = 0; k < data[j].Accounts.length; k++) {
+            let ID = await journal.getTransactionID();
+            counter++;
+            for (let k = 0; k < data[j].Accounts.length; k++) {
                 let element = data[j].Accounts[k];
-                // let d = new Date()
-                // let date;
-                // date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-                // journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
-                //     element.Credits, ID, date)
+                let d = new Date()
+                let date;
+                date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+                journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
+                    element.Credits, ID, date)
             }
         }
     }
