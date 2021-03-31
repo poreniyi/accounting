@@ -44,6 +44,10 @@ router.get('/json', async (req, res) => {
     res.send(data);
 })
 
+router.get('/addTransactions',(req,res)=>{
+    
+})
+
 // router.get('/jsonUpload', async (req, res) => {
 //     let oldData = await fs.readFile(path.join(__dirname, 'samples', 'sample1.json'))
 //     oldData = JSON.parse(oldData);
