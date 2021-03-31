@@ -12,3 +12,6 @@ table, th, td {
   .doubleUnderline{
     border-bottom: 1px solid #000;  
   }
+  .hiddenForm{
+    display: none;
+  }
