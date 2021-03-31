@@ -2,6 +2,7 @@ let router = require('express').Router()
 let getAccountNames = require('../../../database/SearchAccount').getAccountNames;
 let fs = require('fs').promises
 let path = require('path');
+let jounral = require('../../../database/Journal')
 
 router.get('/createSampleJournal', async (req, res) => {
     if (req.session.userType.toLowerCase() == 'admin') {
@@ -30,7 +31,7 @@ router.post('/createSampleJournal', async (req, res) => {
         }
         data.push(Account);
     }
-    const collection =req.app.locals.db.collection('Sample3');
+    const collection = req.app.locals.db.collection('Sample3');
     let obj = { Accounts: data }
     collection.insertOne(obj)
     //req.user, req.body.Account[i], req.body.Description, req.body.Debits[i], req.body.Credits[i], ID
@@ -40,12 +41,28 @@ router.post('/createSampleJournal', async (req, res) => {
 router.get('/json', async (req, res) => {
     // let oldData=await fs.readFile(path.join(__dirname,'samples','sample1.json'))
     const collection = req.app.locals.db.collection('Sample1');
-    let data =await collection.find({}).project({_id:0}).toArray();
+    let data = await collection.find({}).project({ _id: 0 }).toArray();
     res.send(data);
 })
 
-router.get('/addTransactions',(req,res)=>{
-    
+router.get('/addTransactions', async (req, res) => {
+    for (let i = 1; i < 3; i++) {
+        const collection = req.app.locals.db.collection(`Sample${i}`)
+        let data = await collection.find({}).project({ _id: 0 }).toArray();
+        //let ID = await journal.getTransactionID();
+
+        //console.log(data[0].Accounts);
+        data[0].Accounts.forEach(element => {
+            let d = new Date()
+            let date;
+            date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();  
+            // journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
+            //     element.Credits, ID, date)
+            console.log(element.user, element.Name, element.Description, element.Debits,
+                element.Credits, date)
+        });
+    }
+    res.redirect('/')
 })
 
 // router.get('/jsonUpload', async (req, res) => {
