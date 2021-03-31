@@ -11,7 +11,9 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-<div id='accountForm'>
+    <div id=formType>Account Form</div>
+    <button id='formToggle'>Show Report Form</button>
+<div  id='accountForm'>
 <table id='assets'>
     <tr><th colspan="2">Current Assets</th></tr>
     <% data.asset.TextRow.forEach(element=>{%>
@@ -61,7 +63,7 @@
     </tr>
 </table>
 </div>
-<div id='reportForm'>
+<div class='hiddenForm' id='reportForm'>
     <table>
         <tr><th>Assets</th></tr>
         <tr><td>Current Assets</td></tr>
@@ -105,5 +107,6 @@
         </tr>
     </table>
 </div>
+<script src='/ejsscripts/financialStatements/balanceSheet.js'></script>
 </body>
 </html>

@@ -20,8 +20,6 @@ periodSelect.addEventListener('change', () => {
         case "Monthly":
             makeMonthDate();
             break;
-        case "Weekly":
-            break;
     }
 })
 
@@ -29,7 +27,6 @@ let makeYearDate = () => {
     document.getElementById('years').style.display = ''
     document.getElementById('quarters').style.display = 'none'
     document.getElementById('months').style.display = 'none'
-    document.getElementById('weeks').style.display = 'none'
     let yearSelect = document.getElementById('yearsSelect');
     let yearValue = yearSelect.options[yearSelect.selectedIndex].value
     disableDates();
@@ -46,7 +43,6 @@ let makeQuarterDate = () => {
     document.getElementById('years').style.display = ''
     document.getElementById('quarters').style.display = ''
     document.getElementById('months').style.display = 'none'
-    document.getElementById('weeks').style.display = 'none'
     let yearSelect = document.getElementById('yearsSelect');
     let quartersSelect = document.getElementById('quartersSelect');
     disableDates()
@@ -91,7 +87,6 @@ let makeQuarterDate = () => {
 }
 let makeMonthDate = () => {
     document.getElementById('quarters').style.display = 'none'
-    document.getElementById('weeks').style.display = 'none'
     document.getElementById('years').style.display = ''
     document.getElementById('months').style.display = ''
     disableDates();
@@ -123,7 +118,6 @@ let makeManualDate = () => {
     document.getElementById('years').style.display = 'none'
     document.getElementById('quarters').style.display = 'none'
     document.getElementById('months').style.display = 'none'
-    document.getElementById('weeks').style.display = 'none'
     startDate.readOnly = false
     endDate.readOnly = false
 }
