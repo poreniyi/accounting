@@ -5,11 +5,17 @@ require('dotenv').config();
 let passport= require('passport');
 require('./passport/passportConfig')(passport);
 let session = require("express-session");
+const MongoClient=require('mongodb').MongoClient;
+
 
 
 var app = express();
 
 //database connection goes here
+MongoCLient.connect(process.env.mongo_uri,{useNewUrlParser:true,useUnifiedTopology:true}).then(client=>{
+    const db=client.db('Transactions');
+    app.locals.db=db;
+});
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
