@@ -11,10 +11,7 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-    <dive>
-        <h1 id=formType>Account Form</h1>
-        <button id='formToggle'>Show Report Form</button>
-</div>
+
 <div  id='accountForm'>
 <table id='assets'>
     <tr><th colspan="2">Current Assets</th></tr>
@@ -108,6 +105,10 @@
             <td><u class='doubleUnderline'><%=`${totals.equity+totals.liability}`%></u></td>
         </tr>
     </table>
+</div>
+<div>
+    <h1 id=formType>Account Form</h1>
+    <button id='formToggle'>Show Report Form</button>
 </div>
 <script src='/ejsscripts/financialStatements/balanceSheet.js'></script>
 </body>
