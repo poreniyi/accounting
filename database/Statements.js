@@ -1,71 +1,50 @@
 const DB = require("./DBConnection");
 
-async function generateTrialBalance(from, to){
+async function generateTrialBalance(){
 
-    let query = `SELECT NAME, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER WHERE DOC <= '${to}' AND BALANCE != 0 ORDER BY CATEGORY DESC`
+    let query = `SELECT NAME, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER ORDER BY CATEGORY DESC`
 
     let [rows] = await DB.asyncConnection.query(query)
 
     var data = { TextRow: [] }
     let current
 
-   // console.log([rows])
-
     for(var i = 0; i < [rows][0].length; i++){
 
         current = current = [rows][0][i]
 
-        query = `SELECT BALANCE FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
-
-        let [rows2] = await DB.asyncConnection.query(query)
-
-        //console.log([rows2])
-
-        if(![rows2][0][0]){ // nothing found in date range so find latest balance before that
-                query = `SELECT BALANCE FROM ${current.NAME}_LEDGER WHERE DATESUBMITTED <= '${from} 23:59:59' ORDER BY DATESUBMITTED DESC LIMIT 1;`
-                console.log(query)
-                let [rows3] = await DB.asyncConnection.query(query)
-                console.log("HERE")
-                 console.log([rows3])
-                if(![rows3][0][0]){ // if it's still null, there are no records for the account, so balance is 0
-                     current.BALANCE = 0
-                }
-                else{ // put balance found in date range
-                    current.BALANCE = [rows3][0][0].BALANCE
-                }
-        }
-        else{
-            current.BALANCE = [rows2][0][0].BALANCE
-        }
-        
-       
-
-        
-
         if(current.BALANCE < 0){
-            if(current.COLUMN == 'Debit'){
-                current.COLUMN = 'Credit'
-                current.BALANCE = current.BALANCE * -1
-            }
-            else{
-                current.COLUMN = 'Debit'
-                current.BALANCE = current.BALANCE * -1
-            }
-        }
+            current.BALANCE = "(" + current.BALANCE * -1 + ")"
+         }
         data.TextRow.push(current)
-    }
-
-    if(!data.TextRow[0]){
-        return "No results within the selected date range."
     }
 
     return data;
 }
 
-async function generateBalanceSheet(){
+async function generateBalanceSheet(month, quarter, year){
 
-    let query = `SELECT NAME, CATEGORY, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER WHERE BALANCE != 0 AND 
-                (CATEGORY = 'ASSET' OR CATEGORY = 'Liability' OR CATEGORY = 'Equity') ORDER BY CATEGORY DESC;`
+    let from
+    let to
+
+    if(month && year){
+        from = `${year}-${month}-01`
+        to = `${month == '12' ? year+1 : year}-${month == '12' ? 1 : month+1}-01`
+    }
+    else if(quarter && year){
+        from = `${year}-${quarter}-01`
+        to = `${quarter == 4 ? year=1 : year}-${quarter == 4 ? 1 : quarter+4}-01`
+    }
+    else if(year){
+        from = `${year}-01-01`
+        to = `${year+1}-01-01`
+    }
+    else{
+        return "No date specified."
+    }
+
+    let query = `SELECT NAME, CATEGORY, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER WHERE
+    (CATEGORY = 'ASSET' OR CATEGORY = 'Liability' OR CATEGORY = 'Equity') ORDER BY CATEGORY DESC;`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -76,8 +55,12 @@ async function generateBalanceSheet(){
     let current
 
     for(var i = 0; i < [rows][0].length; i++){
-        
-        current = [rows][0][i]
+
+        current = current = [rows][0][i]
+
+        query = `SELECT DEBIT, CREDIT FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
+
+        let [rows2] = await DB.asyncConnection.query(query)
 
         if(current.BALANCE < 0){
             current.BALANCE = "(" + current.BALANCE * -1 + ")"
@@ -91,12 +74,13 @@ async function generateBalanceSheet(){
         }else{
             equity.TextRow.push(current)
         }
+
     }
 
     let data = {
         asset: asset,
         liability: liability,
-        equity:equity
+        equity: equity
     }
 
     return data;
