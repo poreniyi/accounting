@@ -22,26 +22,8 @@ async function generateTrialBalance(){
     return data;
 }
 
-async function generateBalanceSheet(month, quarter, year){
+async function generateBalanceSheet(end){
 
-    let from
-    let to
-
-    if(month && year){
-        from = `${year}-${month}-01`
-        to = `${month == '12' ? year+1 : year}-${month == '12' ? 1 : month+1}-01`
-    }
-    else if(quarter && year){
-        from = `${year}-${quarter}-01`
-        to = `${quarter == 4 ? year+1 : year}-${quarter == 4 ? 1 : quarter+2}-01`
-    }
-    else if(year){
-        from = `${year}-01-01`
-        to = `${year+1}-01-01`
-    }
-    else{
-        return "No date specified."
-    }
 
     let query = `SELECT NAME, CATEGORY, BALANCE, NORMALSIDE AS 'COLUMN' FROM MASTER WHERE
     (CATEGORY = 'ASSET' OR CATEGORY = 'Liability' OR CATEGORY = 'Equity') ORDER BY CATEGORY DESC;`
@@ -53,38 +35,24 @@ async function generateBalanceSheet(month, quarter, year){
     var equity = { TextRow: [] }
 
     let current
-    let current2
-    let balance
 
     for(var i = 0; i < [rows][0].length; i++){
 
         current = [rows][0][i]
-        balance = 0
 
-        query = `SELECT DEBIT, CREDIT FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED < '${to} 00:00:00') ORDER BY DATESUBMITTED ASC;`
+        query = `SELECT BALANCE FROM ${current.NAME}_LEDGER WHERE DATESUBMITTED < '${end} 00:00:00' ORDER BY DATESUBMITTED DESC LIMIT 1;`
 
         let [rows2] = await DB.asyncConnection.query(query)
 
-        if([rows2][0].length > 0){
-            
-            for(var j = 0; j < [rows2][0].length; j++){
-                current2 = [rows2][0][j]
-                if(current2){
-                    if(current.COLUMN == 'Debit'){
-                        balance = balance + current2.DEBIT
-                        balance = balance - current2.CREDIT
-                    }
-                    else{
-                        balance = balance - current2.DEBIT
-                        balance = balance + current2.CREDIT
-                    } 
-                }
+        if(rows2.length > 0){
+            if([rows2][0][0].BALANCE < 0){
+                current.BALANCE = "(" + [rows2][0][0].BALANCE * -1 + ")"
+            }else{
+                current.BALANCE = [rows2][0][0].BALANCE
             }
-            current.BALANCE = balance
         }
-
-        if(current.BALANCE < 0){
-            current.BALANCE = "(" + current.BALANCE * -1 + ")"
+        else{
+            current.BALANCE = 0
         }
 
         if(current.CATEGORY == 'Asset'){
@@ -106,7 +74,6 @@ async function generateBalanceSheet(month, quarter, year){
 
     return data;
 }
-
 
 async function generateIncomeStatement(){
 

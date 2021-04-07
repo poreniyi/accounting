@@ -32,7 +32,10 @@ router.get('/balanceSheet', async (req, res) => {
         return accumulator += value;
     }
     //let data =await statements.generateBalanceSheet(re)
-    let data = await statements.generateBalanceSheet()
+   // console.log(req.session.statement)
+    let data = await statements.generateBalanceSheet(req.session.statement.end)
+   // console.log(data.asset)
+   // console.log(data.equity)
     let totals = {
         asset:data.asset.TextRow.reduce(reducer, 0),
         liability:data.liability.TextRow.reduce(reducer, 0),
