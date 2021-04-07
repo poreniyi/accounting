@@ -33,7 +33,7 @@ async function generateBalanceSheet(month, quarter, year){
     }
     else if(quarter && year){
         from = `${year}-${quarter}-01`
-        to = `${quarter == 4 ? year=1 : year}-${quarter == 4 ? 1 : quarter+4}-01`
+        to = `${quarter == 4 ? year+1 : year}-${quarter == 4 ? 1 : quarter+2}-01`
     }
     else if(year){
         from = `${year}-01-01`
@@ -53,14 +53,35 @@ async function generateBalanceSheet(month, quarter, year){
     var equity = { TextRow: [] }
 
     let current
+    let current2
+    let balance
 
     for(var i = 0; i < [rows][0].length; i++){
 
-        current = current = [rows][0][i]
+        current = [rows][0][i]
+        balance = 0
 
-        query = `SELECT DEBIT, CREDIT FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
+        query = `SELECT DEBIT, CREDIT FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED < '${to} 00:00:00') ORDER BY DATESUBMITTED ASC;`
 
         let [rows2] = await DB.asyncConnection.query(query)
+
+        if([rows2][0].length > 0){
+            
+            for(var j = 0; j < [rows2][0].length; j++){
+                current2 = [rows2][0][j]
+                if(current2){
+                    if(current.COLUMN == 'Debit'){
+                        balance = balance + current2.DEBIT
+                        balance = balance - current2.CREDIT
+                    }
+                    else{
+                        balance = balance - current2.DEBIT
+                        balance = balance + current2.CREDIT
+                    } 
+                }
+            }
+            current.BALANCE = balance
+        }
 
         if(current.BALANCE < 0){
             current.BALANCE = "(" + current.BALANCE * -1 + ")"
@@ -85,6 +106,7 @@ async function generateBalanceSheet(month, quarter, year){
 
     return data;
 }
+
 
 async function generateIncomeStatement(){
 
