@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel='stylesheet' href='/stylesheets/statements/balanceSheet.css'>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Income Statement</title>
+    <title>Balance Sheet</title>
 </head>
 <%- include('../_partial/_header'); -%>
 
 <body>
 
+<div  id='accountForm'>
+<table id='revenue'>
+    <tr><th colspan="2">Revenue</th></tr>
+    <% data.revenue.TextRow.forEach(element=>{%>
+        <tr>
+            <td><%=`${element.NAME}`%></td>
+            <td><%=`${element.BALANCE}`%></td>
+        </tr>
+     <%})%>
+    <tr><td>Total Revenue</td><td><u class='doubleUnderline'><%=totals.revenue%></u></td></tr>
+
+</table>
+
+<table id='expense'>
+    <tr><th colspan="2">Expense</th></tr>
+    <% data.expense.TextRow.forEach(element=>{%>
+        <tr>
+            <td><%=`${element.NAME}`%></td>
+            <td><%=`${element.BALANCE}`%></td>
+        </tr>
+     <%})%>
+     <tr><td>Total Expense</td><td><u><%=totals.expense%></u></td></tr>
+    
+    <td>Net Income </td>
+        <td><u class='doubleUnderline'><%=`${totals.revenue+totals.expense}`%></u></td>
+    </tr>
+</table>
+</div>
+<script src='/ejsscripts/financialStatements/balanceSheet.js'></script>
 </body>
 </html>

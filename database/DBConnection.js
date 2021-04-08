@@ -5,7 +5,8 @@ var db_config = {
     user     : 'b8d03e7734ddc4',
     password : 'ebec160b',
     database : 'heroku_f886e82f73ac5d5',
-    multipleStatements: true
+    multipleStatements: true,
+    timezone : '-04:00'
 };
 
 var asyncConnection = mysql_npm.createPool(db_config);

@@ -31,11 +31,7 @@ router.get('/balanceSheet', async (req, res) => {
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
-    //let data =await statements.generateBalanceSheet(re)
-   // console.log(req.session.statement)
     let data = await statements.generateBalanceSheet(req.session.statement.end)
-   // console.log(data.asset)
-   // console.log(data.equity)
     let totals = {
         asset:data.asset.TextRow.reduce(reducer, 0),
         liability:data.liability.TextRow.reduce(reducer, 0),
@@ -46,8 +42,21 @@ router.get('/balanceSheet', async (req, res) => {
 router.get('/retainedEarnings', (req, res) => {
     res.render('statementViews/retainedEarnings');
 })
-router.get('/IncomeStatement', (req, res) => {
-    res.render('statementViews/incomeStatement');
+router.get('/IncomeStatement', async (req, res) => {
+    const reducer = (accumulator, currentValue) => {
+        let value;
+        if (typeof currentValue.BALANCE == 'string') {
+            value = currentValue.BALANCE.replace(/\W+/g,'');
+            value=-Number(value);
+        }else value=currentValue.BALANCE
+        return accumulator += value;
+    }
+    let data = await statements.generateIncomeStatement(4,undefined, 2021)
+    let totals = {
+        revenue:data.revenue.TextRow.reduce(reducer, 0),
+        expense:data.expense.TextRow.reduce(reducer, 0),
+    }
+    res.render('statementViews/incomeStatement', {data,totals});
 })
 
 module.exports = router;

@@ -16,26 +16,32 @@
     <th class="tooltip" id='Debit'> Debit</th>
     <th class="tooltip" id='Credit'> Credit</th>
     <tr>
-        <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
         <%let creditTotal=0%>
         <%let debitTotal=0%>
+        <%let amount=0%>
         <%TextRow.forEach(element=>{%>
+            <%if(element.BALANCE.toString().includes('(')){
+                amount = Number(element.BALANCE.toString().replace(/[()]/g, "")) * -1
+            }
+            else{
+                amount = element.BALANCE
+            }%>
           <tr>
             <td><%=element.NAME%></td>
             <%if(element.COLUMN=='Debit'){%>
-                <td><%=formatter.format(element.BALANCE)%></td>
+                <td><%=element.BALANCE%></td>
                 <td></td>
-                <%debitTotal+=element.BALANCE%>
+                <%debitTotal += amount%>
             <%}else{%>
                 <td></td>
-                <td><%=formatter.format(element.BALANCE)%></td>
-                <%creditTotal+=element.BALANCE%>
+                <td><%=element.BALANCE%></td>
+                <%creditTotal += amount%>
             <%}%>
           </tr>
         <%})%>
         <td>Total</td>
-        <td><%=formatter.format(debitTotal)%></td>
-        <td><%=formatter.format(creditTotal)%></td>
+        <td><%=debitTotal%></td>
+        <td><%=creditTotal%></td>
     </tr>
 </table>
   
