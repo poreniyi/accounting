@@ -3,6 +3,7 @@ let getAccountNames = require('../../../database/SearchAccount').getAccountNames
 let fs = require('fs').promises
 let path = require('path');
 let journal = require('../../../database/Journal')
+let ledgerSearch = require('../../../database/Ledger');
 
 router.get('/createSampleJournal', async (req, res) => {
     if (req.session.userType.toLowerCase() == 'admin') {
@@ -59,8 +60,9 @@ router.get('/addTransactions', async (req, res) => {
                 let d = new Date()
                 let date;
                 date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-                journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
+                await journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
                     element.Credits, ID, date)
+                    ledgerSearch.addTransactionToLedger('aacb022021', ID, '', 'Approved')    
             }
         }
     }
