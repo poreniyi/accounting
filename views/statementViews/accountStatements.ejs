@@ -11,8 +11,26 @@
 <body>
     <div>
         <form id='form' action='' method="POST">
-            <input required id='balanceSheet' type='radio' name='Statement' value="BalanceSheet">
+            <input required id='balanceSheet' type='radio' name='Statement' value="BalanceSheet" onclick="javascript:statementCheck();">
             <label for='balanceSheet'>Balance Sheet</label>
+            <input id='trialBalance' type='radio' name='Statement' value="TrialBalance" onclick="javascript:statementCheck();">
+            <label for='trialBalance'>Trial Balance</label>
+            <input id='IncomeStatement' type='radio' name='Statement' value="IncomeStatement" onclick="javascript:statementCheck();">
+            <label for='IncomeStatement'>Income Statement</label>
+            <input id='retainedEarnings' type='radio' name='Statement' value="RetainedEarnings" onclick="javascript:statementCheck();">
+            <label for='retainedEarnings'>Retained Earnings</label>
+            <script>
+                function statementCheck()
+                {
+                    if(document.getElementById('balanceSheet').checked || document.getElementById('retainedEarnings').checked || document.getElementById('IncomeStatement').checked )
+                    {
+                        document.getElementById('datepicker').style.visibility = 'visible';
+                    }
+                    else
+                        document.getElementById('datepicker').style.visibility = 'hidden';
+                }
+            </script>
+            <div id="datepicker" style="visibility: hidden">
             <div id=dates>
                 <select id='periodSelect'>
                     <option>Yearly</option>
@@ -65,15 +83,7 @@
                 </div>
              
             </div>
-            <button type='submit'>Submit</button>
-        </form>
-        <form id='form' action='' method="POST">
-            <input  required id='trialBalance' type='radio' name='Statement' value="TrialBalance">
-            <label for='trialBalance'>Trial Balance</label>
-            <input id='IncomeStatement' type='radio' name='Statement' value="IncomeStatement">
-            <label for='IncomeStatement'>Income Statement</label>
-            <input id='retainedEarnings' type='radio' name='Statement' value="RetainedEarnings">
-            <label for='retainedEarnings'>Retained Earnings</label>
+            </div>
             <button type='submit'>Submit</button>
         </form>
     </div>
