@@ -11,14 +11,8 @@
 <body>
     <div>
         <form id='form' action='' method="POST">
-            <input  required id='trialBalance' type='radio' name='Statement' value="TrialBalance">
-            <label for='trialBalance'>Trial Balance</label>
-            <input id='balanceSheet' type='radio' name='Statement' value="BalanceSheet">
+            <input required id='balanceSheet' type='radio' name='Statement' value="BalanceSheet">
             <label for='balanceSheet'>Balance Sheet</label>
-            <input id='IncomeStatement' type='radio' name='Statement' value="IncomeStatement">
-            <label for='IncomeStatement'>Income Statement</label>
-            <input id='retainedEarnings' type='radio' name='Statement' value="RetainedEarnings">
-            <label for='retainedEarnings'>Retained Earnings</label>
             <div id=dates>
                 <select id='periodSelect'>
                     <option>Yearly</option>
@@ -73,12 +67,15 @@
             </div>
             <button type='submit'>Submit</button>
         </form>
-        <ul>
-            <li><a href="./statements/trialBalance" class="tooltip" id="chartTool">Trial Balance</a></li>
-            <li><a href="./statements/balanceSheet" class="tooltip" id="chartTool">Balance Sheet</a></li>
-            <li><a href="./statements/retainedEarnings" class="tooltip" id="chartTool">Retained Earnings</a></li>
-            <li><a href="./statements/IncomeStatement" class="tooltip" id="chartTool">Income Statement</a></li>
-        </ul>
+        <form id='form' action='' method="POST">
+            <input  required id='trialBalance' type='radio' name='Statement' value="TrialBalance">
+            <label for='trialBalance'>Trial Balance</label>
+            <input id='IncomeStatement' type='radio' name='Statement' value="IncomeStatement">
+            <label for='IncomeStatement'>Income Statement</label>
+            <input id='retainedEarnings' type='radio' name='Statement' value="RetainedEarnings">
+            <label for='retainedEarnings'>Retained Earnings</label>
+            <button type='submit'>Submit</button>
+        </form>
     </div>
     <script src='/ejsscripts/financialStatements/accountStatements.js'></script>
 </body>
