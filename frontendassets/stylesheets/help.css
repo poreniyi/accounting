@@ -10,6 +10,7 @@
   text-align:center;
 }
 #overlayLabel{
+  position: absolute;
   top:2em;
   right:9em;
   visibility: visible;
@@ -39,6 +40,6 @@ label {
 }
 
 #trigger{
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
 
 }
