@@ -29,6 +29,10 @@ async function editAccount(body, username, madeByTransaction){
 
     if(madeByTransaction){
 
+        if(body.OriginalName == 'RetainedEarnings'){
+            balance = credit - debit
+        }
+
         if(body.Balance){
             initial = checkBalance;
         }

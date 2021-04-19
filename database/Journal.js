@@ -20,6 +20,7 @@ async function createTransaction(username, account,  description, debit, credit,
                 throw err;
             } 
     });
+
 }
 
 async function getJournalTransactions(status){
@@ -65,6 +66,7 @@ async function getJournalTransactions(status){
         data.TextRow.push(current)
     }
 
+
     return data;
 }
 
@@ -81,6 +83,7 @@ async function getTransactionsByID(id){
     for(var i = 0; i < [rows][0].length; i++){
         data.TextRow.push([rows][0][i])
     }
+
 
    return data
 }
@@ -114,6 +117,7 @@ async function getTransactionsFromLastLogin(date){
         }
         data.TextRow.push(current)
     }
+
 
     return data;
 }

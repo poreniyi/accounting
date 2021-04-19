@@ -31,7 +31,9 @@ router.get('/balanceSheet', async (req, res) => {
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
-    let data = await statements.generateBalanceSheet(req.session.statement.end)
+    console.log(req.session.statement)
+    let data = await statements.generateBalanceSheet(req.session.statement.start, req.session.statement.end, null, null, null)
+
     let totals = {
         asset:data.asset.TextRow.reduce(reducer, 0),
         liability:data.liability.TextRow.reduce(reducer, 0),
@@ -51,7 +53,7 @@ router.get('/IncomeStatement', async (req, res) => {
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
-    let data = await statements.generateIncomeStatement(4,undefined, 2021)
+    let data = await statements.generateIncomeStatement()
     let totals = {
         revenue:data.revenue.TextRow.reduce(reducer, 0),
         expense:data.expense.TextRow.reduce(reducer, 0),
