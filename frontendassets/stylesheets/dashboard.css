@@ -26,6 +26,12 @@
 h1 {
     padding: 0 21.44px;
 }
+
+.newFeatures
+{
+    padding: 0 21.44px;
+}
+
 .adminlist a:hover {
     background-color: #bdb8aa;
 }

@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title> Login</title>
   <link rel="stylesheet" href="stylesheets/login.css">
-  <link rel='icon' href='images/logo.png' sizes='any'>  
+  <link rel='icon' href='images/cubelogo/MANCARA-inline.png' sizes='any'>  
 </head>
 <body>
   <%- include('../_partial/_header'); -%>
   <div class="loginscreen">
-    <img src='images/logo.png' style='width:20%; '>
-    <h2>Mankara</h2> 
+    <div class="logo">
+      <img src='images/cubelogo/MANCARA-inline.png' style='width:100%; '>
+    </div>
     <div id='message'>
       <% if(locals.message) {%>
         <h1><%=message%></h1>

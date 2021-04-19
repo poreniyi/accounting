@@ -11,8 +11,8 @@
 }
 #overlayLabel{
   position: fixed;
-  top:5%;
-  right:20%;
+  top:2em;
+  right:9em;
   visibility: visible;
 }
 label {
@@ -20,7 +20,7 @@ label {
 }
 
 :root{
---Help: "Hello Welcome to the Mancara Help:\A This is the help menu \A";
+--Help: "Hello Welcome to the Mancara Help:\A Check your dashboard and the pages you can access \A";
 }
 .overlay-trigger:checked+.overlay::after {
   content:var(--Help);
@@ -40,7 +40,6 @@ label {
 }
 
 #trigger{
-  color: black;
-  border-color: black;
-  border-style: solid;
+  color: rgb(0, 0, 0);
+
 }

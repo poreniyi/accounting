@@ -37,6 +37,7 @@
                     <%let journalPageLink=`/./${userType.toLowerCase()}/journal`%>
                     <li><a href=<%= journalPageLink%> class="tooltip" id="journalTool">Journal</a></li>
                     <li><a href="/logout" class="tooltip" id="logoutTool">Logout</a></li>
+                    <li><a href="/<%=userType%>/dashboard">Home</a></li>
                     <%- include('../_partial/help/baseHelp'); -%>
 
                 </ul>
@@ -52,8 +53,8 @@
     </nav>
     <%if(userType){ %>
         <% let dashboard=`/./${userType.toLowerCase()}/dashboard`%>
-        <a href=<%=dashboard%>><img src='/images/Logo2.png'></a>
+        <a href=<%=dashboard%>><img src='/images/cubelogo/cube1.png'></a>
     <% }else{%>
-        <img src='/images/Logo2.png'>
+        <img src='/images/cubelogo/cube1.png'>
     <%}%>
 </header>
