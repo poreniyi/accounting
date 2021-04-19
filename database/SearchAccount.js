@@ -37,6 +37,7 @@ async function searchByName(accountName){
 
      let [result] = await DB.asyncConnection.query(query)
 
+
     return result[0]
 }
 
@@ -45,6 +46,7 @@ async function searchByNumber(accountNumber){
      let query = `CALL Search_By_Number(${accountNumber})`
 
      let [result] = await DB.asyncConnection.query(query)
+
 
     return result[0]
 
@@ -64,6 +66,7 @@ async function getAllAccounts(){
         data.TextRow.push([rows][0][i])
     }
 
+
    return data
 
 }
@@ -81,6 +84,7 @@ async function getEventLog(table){
     for(var i = 0; i < [rows][0].length; i++){
         data.TextRow.push([rows][0][i])
     }
+
 
     return data;
 }

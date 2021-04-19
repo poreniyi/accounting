@@ -47,7 +47,6 @@ router.get('/json', async (req, res) => {
 })
 
 router.get('/addTransactions', async (req, res) => {
-    return // only remove this line if there are no journal entries present; 
     let counter = 0;
     for (let i = 1; i < 3; i++) {
         const collection = req.app.locals.db.collection(`Sample${i}`)
