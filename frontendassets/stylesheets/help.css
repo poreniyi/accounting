@@ -10,7 +10,6 @@
   text-align:center;
 }
 #overlayLabel{
-  position: fixed;
   top:2em;
   right:9em;
   visibility: visible;
