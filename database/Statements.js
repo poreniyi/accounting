@@ -314,7 +314,7 @@ async function getPreviousRE(){
     }
 }
 
-getPreviousRE()
+// getPreviousRE()
 
 
 module.exports= {
