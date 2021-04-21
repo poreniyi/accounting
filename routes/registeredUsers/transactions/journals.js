@@ -16,6 +16,7 @@ router.get('/journal', async (req, res) => {
         }
         if (!items[i].DATE) {
             items[i - 1].ACCOUNT += `+${items[i].ACCOUNT}`
+            items[i - 1].AMOUNT += items[i].AMOUNT
             items.splice(i, 1);
             i--;
         }
