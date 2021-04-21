@@ -112,11 +112,17 @@ async function generateBalanceSheet(start, end, month, quarter, year){
         }
 
         if(current.CATEGORY == 'Asset'){
+            current.NORMALSIDE=='CREDIT'? current.NORMALSIDE :-current.NORMALSIDE
             asset.TextRow.push(current)
         }
         else if(current.CATEGORY == 'Liability'){
+            current.NORMALSIDE=='CREDIT'? current.NORMALSIDE :-current.NORMALSIDE
             liability.TextRow.push(current)
         }else{
+            current.COLUMN=='Credit'? current.BALANCE :"(" + current.BALANCE * -1 + ")"
+            if(current.COLUMN=='Credit'){
+                console.log(current.BALANCE,'blblbblbl')
+            }
             if(current.NAME == 'RetainedEarnings'){
                 current.BALANCE = await generateRetainedEarnings(from, to)
                 console.log(current.BALANCE)
