@@ -42,8 +42,11 @@ router.post('/createSampleJournal', async (req, res) => {
 router.get('/json', async (req, res) => {
     // let oldData=await fs.readFile(path.join(__dirname,'samples','sample1.json'))
     const collection = req.app.locals.db.collection('Sample1');
+    const collection2 = req.app.locals.db.collection('Sample2');
     let data = await collection.find({}).project({ _id: 0 }).toArray();
-    res.send(data);
+    let data2= await collection2.find({}).project({_id:0}).toArray();
+    jsonData=data.concat(data2)
+    res.send(jsonData);
 })
 
 router.get('/addTransactions', async (req, res) => {
@@ -61,8 +64,8 @@ router.get('/addTransactions', async (req, res) => {
                 date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
                 await journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
                     element.Credits, ID, date)
-                    ledgerSearch.addTransactionToLedger('aacb022021', ID, '', 'Approved')    
             }
+           await ledgerSearch.addTransactionToLedger('aacb022021', ID, '', 'Approved')    
         }
     }
     res.send(`There are:${counter}`)
