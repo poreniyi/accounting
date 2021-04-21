@@ -64,11 +64,16 @@ router.get('/addTransactions', async (req, res) => {
                 date = element.Date + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
                 await journal.createTransaction(element.user, element.Name, element.Description, element.Debits,
                     element.Credits, ID, date)
+                await new Promise(resolve => setTimeout(resolve, 1000));
             }
-           await ledgerSearch.addTransactionToLedger('aacb022021', ID, '', 'Approved')    
-        }
+           await ledgerSearch.addTransactionToLedger('aacb022021', ID, '', 'Approved')   
+           if(counter == 7){
+            res.send(`There are:${counter}`)
+            return;
+            }
+        } 
     }
-    res.send(`There are:${counter}`)
+    
 })
 
 // router.get('/jsonUpload', async (req, res) => {

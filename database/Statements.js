@@ -206,11 +206,7 @@ async function generateRetainedEarnings(from, to){
 
     let [rows2] = await DB.asyncConnection.query(query)
 
-    if(![rows2][0][0]){
-        query = 'SELECT'
-    }
-
-    return [rows2][0][0].BALANCE
+    return [rows2][0][0] != null ? [rows2][0][0].BALANCE : 0
 }
 
 async function getPreviousRE(){
@@ -309,8 +305,7 @@ async function getPreviousRE(){
         let to = year+"-"+month+"-"+day
 
         await journal.createTransaction(current.USERNAME, 'RetainedEarnings', 'Closing account', total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id, current.DATE)
-        await ledger.addOLDERTransactionToLedger(from , to, current.USERNAME, "Auto Added", total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id,  'Approved')
-
+        await ledger.addOLDERTransactionToLedger(from , to, current.USERNAME, "Auto Added", total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id, '', 'Approved')
     }
 }
 
