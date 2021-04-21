@@ -31,7 +31,6 @@ router.get('/balanceSheet', async (req, res) => {
         }else value=currentValue.BALANCE
         return accumulator += value;
     }
-    console.log(req.session.statement)
     let data = await statements.generateBalanceSheet(req.session.statement.start, req.session.statement.end, null, null, null)
 
     let totals = {

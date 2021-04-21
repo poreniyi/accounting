@@ -33,7 +33,7 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
 
     let query = `UPDATE JOURNAL SET COMMENT = '${comment}', STATUS = '${status}' WHERE ID = '${id}'`
 
-    DB.asyncConnection.query(query)
+    await DB.asyncConnection.query(query)
 
     if(status == 'Rejected'){
         return;
@@ -50,6 +50,9 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
     }
 
     for(var i = 0; i < accounts.length; i++){
+
+        console.log()
+        console.log(accounts[i])
 
         query = `CALL ADD_TRANSACTION_TO_LEDGER(?,?,?,?,?,?)`
 

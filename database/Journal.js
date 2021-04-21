@@ -13,7 +13,7 @@ async function createTransaction(username, account,  description, debit, credit,
 
     let query = `CALL CREATE_TRANSACTION(?,?,?,?,?,?,?)`
 
-    DB.asyncConnection.query(query, [username, account, description, debit, credit, ID, date], 
+    await DB.asyncConnection.query(query, [username, account, description, debit, credit, ID, date], 
         function (err, result, fields) {
             if(err){
                 console.log("Query failed")
@@ -65,8 +65,6 @@ async function getJournalTransactions(status){
         }
         data.TextRow.push(current)
     }
-
-
     return data;
 }
 
