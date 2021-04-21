@@ -1,0 +1,1086 @@
+[
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "purchase furniture for cash",
+        "Name": "Equipment",
+        "Debits": "7000",
+        "Credits": "0",
+        "Date": "2016-04-02"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "purchase furniture for cash",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "7000",
+        "Date": "2016-04-02"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Started business with cash",
+        "Name": "Cash",
+        "Debits": "100000",
+        "Credits": "0",
+        "Date": "2016-04-01"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Started business with cash",
+        "Name": "MarySmithCapital",
+        "Debits": "0",
+        "Credits": "100000",
+        "Date": "2016-04-01"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "purchase goods for cash 2,00 and credit  for 1,000",
+        "Name": "MerchandiseInventory",
+        "Debits": "3000",
+        "Credits": "0",
+        "Date": "2016-04-08"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "purchase goods for cash 2,00 and credit  for 1,000",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "2000",
+        "Date": "2016-04-08"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "purchase goods for cash 2,00 and credit  for 1,000",
+        "Name": "AccountsPayable",
+        "Debits": "",
+        "Credits": "1000",
+        "Date": "2016-04-08"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Sold goods for cash and credit",
+        "Name": "Cash",
+        "Debits": "5000",
+        "Credits": "0",
+        "Date": "2016-04-14"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Sold goods for cash and credit",
+        "Name": "AccountsReceivable",
+        "Debits": "12000",
+        "Credits": "",
+        "Date": "2016-04-14"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Sold goods for cash and credit",
+        "Name": "ServiceRevenues",
+        "Debits": "",
+        "Credits": "17000",
+        "Date": "2016-04-14"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Owner withdrew 2,000 for personal use.",
+        "Name": "MarySmithDrawing",
+        "Debits": "2000",
+        "Credits": "0",
+        "Date": "2016-04-18"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Owner withdrew 2,000 for personal use.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "2000",
+        "Date": "2016-04-18"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Paid Retail Store 500.",
+        "Name": "AccountsPayable",
+        "Debits": "500",
+        "Credits": "0",
+        "Date": "2016-04-22"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Paid Retail Store 500.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "500",
+        "Date": "2016-04-22"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Receive cash from credit customer",
+        "Name": "Cash",
+        "Debits": "10000",
+        "Credits": "0",
+        "Date": "2016-04-26"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Receive cash from credit customer",
+        "Name": "AccountsReceivable",
+        "Debits": "0",
+        "Credits": "10000",
+        "Date": "2016-04-26"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Paid salaries",
+        "Name": "SalariesExpense",
+        "Debits": "2000",
+        "Credits": "0",
+        "Date": "2016-04-30"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Paid salaries",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "2000",
+        "Date": "2016-04-30"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "bought photography equipment and invested cash",
+        "Name": "Cash",
+        "Debits": "57500",
+        "Credits": "0",
+        "Date": "2016-08-01"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "bought photography equipment and invested cash",
+        "Name": "Equipment",
+        "Debits": "32500",
+        "Credits": "",
+        "Date": "2016-08-01"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "bought photography equipment and invested cash",
+        "Name": "MarySmithCapital",
+        "Debits": "",
+        "Credits": "90000",
+        "Date": "2016-08-01"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Purchased 2 year insurance policy",
+        "Name": "PrepaidInsurance",
+        "Debits": "3000",
+        "Credits": "",
+        "Date": "2016-08-04"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Purchased 2 year insurance policy",
+        "Name": "Cash",
+        "Debits": "",
+        "Credits": "3000",
+        "Date": "2016-08-04"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Services are performed and clients are billed for 10,000.",
+        "Name": "AccountsReceivable",
+        "Debits": "10000",
+        "Credits": "0",
+        "Date": "2016-08-07"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Services are performed and clients are billed for 10,000.",
+        "Name": "UnearnedRevenues",
+        "Debits": "0",
+        "Credits": "10000",
+        "Date": "2016-08-07"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": " Purchased office supplies for Rs. 1,400. Cash paid  400 and remaining outstanding.",
+        "Name": "Supplies",
+        "Debits": "1400",
+        "Credits": "0",
+        "Date": "2016-08-13"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Purchased office supplies for Rs. 1,400. Cash paid  400 and remaining outstanding.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "400",
+        "Date": "2016-08-13"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Purchased office supplies for Rs. 1,400. Cash paid  400 and remaining outstanding.",
+        "Name": "AccountsPayable",
+        "Debits": "",
+        "Credits": "1000",
+        "Date": "2016-08-13"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Received 2,000 cash in photography fees earned previously.",
+        "Name": "Cash",
+        "Debits": "2000",
+        "Credits": "0",
+        "Date": "2016-08-20"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Received 2,000 cash in photography fees earned previously.",
+        "Name": "AccountsReceivable",
+        "Debits": "0",
+        "Credits": "2000",
+        "Date": "2016-08-20"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "The client immediately pays 15,000 for services to be performed at a later date.",
+        "Name": "Cash",
+        "Debits": "15000",
+        "Credits": "0",
+        "Date": "2016-08-24"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "The client immediately pays 15,000 for services to be performed at a later date.",
+        "Name": "UnearnedRevenues",
+        "Debits": "0",
+        "Credits": "15000",
+        "Date": "2016-08-24"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "The business acquires photography equipment. The purchase price is  100,000, pays 25,000 cash and signs a note for the balance.",
+        "Name": "Equipment",
+        "Debits": "100000",
+        "Credits": "0",
+        "Date": "2016-08-29"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "The business acquires photography equipment. The purchase price is  100,000, pays 25,000 cash and signs a note for the balance.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "25000",
+        "Date": "2016-08-29"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "The business acquires photography equipment. The purchase price is  100,000, pays 25,000 cash and signs a note for the balance.",
+        "Name": "NotesPayable",
+        "Debits": "",
+        "Credits": "75000",
+        "Date": "2016-08-29"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Owner gave 10,000 worth of land and 15,000 of cash",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "15000",
+        "Date": "2017-03-01"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Owner gave 10,000 worth of land and 15,000 of cash",
+        "Name": "Land",
+        "Debits": "0",
+        "Credits": "10000",
+        "Date": "2017-03-01"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Owner gave 10,000 worth of land and 15,000 of cash",
+        "Name": "MarySmithCapital",
+        "Debits": "25000",
+        "Credits": "",
+        "Date": "2017-03-01"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": " Bought goods from Bilal and Friends 1,000 and by cash from XYZ Co. 2,000.",
+        "Name": "MerchandiseInventory",
+        "Debits": "3000",
+        "Credits": "0",
+        "Date": "2017-03-08"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Bought goods from Bilal and Friends 1,000 and by cash from XYZ Co. 2,000.",
+        "Name": "AccountsPayable",
+        "Debits": "0",
+        "Credits": "1000",
+        "Date": "2017-03-08"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Bought goods from Bilal and Friends 1,000 and by cash from XYZ Co. 2,000.",
+        "Name": "Cash",
+        "Debits": "",
+        "Credits": "2000",
+        "Date": "2017-03-08"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Sold goods to Rehman sons 1,500 and sale by cash 5,000.",
+        "Name": "AccountsReceivable",
+        "Debits": "1500",
+        "Credits": "0",
+        "Date": "2017-03-13"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Sold goods to Rehman sons 1,500 and sale by cash 5,000.",
+        "Name": "Cash",
+        "Debits": "5000",
+        "Credits": "0",
+        "Date": "2017-03-13"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Sold goods to Rehman sons 1,500 and sale by cash 5,000.",
+        "Name": "ServiceRevenues",
+        "Debits": "",
+        "Credits": "6500",
+        "Date": "2017-03-13"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": " Gave away charity of cash 50 and merchandising worth 30.",
+        "Name": "AdvertisingExpense",
+        "Debits": "80",
+        "Credits": "0",
+        "Date": "2017-03-17"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Gave away charity of cash 50 and merchandising worth 30.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "50",
+        "Date": "2017-03-17"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Gave away charity of cash 50 and merchandising worth 30.",
+        "Name": "MerchandiseInventory",
+        "Debits": "",
+        "Credits": "30",
+        "Date": "2017-03-17"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Paid Bilal and Friends cash ",
+        "Name": "AccountsPayable",
+        "Debits": "1000",
+        "Credits": "0",
+        "Date": "2017-03-21"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Paid Bilal and Friends cash ",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "1000",
+        "Date": "2017-03-21"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Received cash from Rehman & Sons",
+        "Name": "Cash",
+        "Debits": "1500",
+        "Credits": "0",
+        "Date": "2017-03-28"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Received cash from Rehman & Sons",
+        "Name": "AccountsReceivable",
+        "Debits": "0",
+        "Credits": "1500",
+        "Date": "2017-03-28"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Loan taken from Habib Bank Ltd. of  25,000",
+        "Name": "Cash",
+        "Debits": "25000",
+        "Credits": "0",
+        "Date": "2016-08-03"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Loan taken from Habib Bank Ltd. of  25,000",
+        "Name": "NotesPayable",
+        "Debits": "0",
+        "Credits": "25000",
+        "Date": "2016-08-03"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Paid rent for the month of August Rs. 4,400 and accrued rent expenses was Rs. 600.",
+        "Name": "RentExpense",
+        "Debits": "05000",
+        "Credits": "0",
+        "Date": "2016-08-06"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Paid rent for the month of August Rs. 4,400 and accrued rent expenses was Rs. 600.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "4400",
+        "Date": "2016-08-06"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Paid rent for the month of August Rs. 4,400 and accrued rent expenses was Rs. 600.",
+        "Name": "NotesPayable",
+        "Debits": "",
+        "Credits": "600",
+        "Date": "2016-08-06"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "At request of Kiwi Insurance, Inc, made repairs on boat of Jon Seaways. Sent bill for Rs. 5,620 for services rendered to Kiwi Insurance Inc. (credit Repair Service Revenue).",
+        "Name": "AccountsReceivable",
+        "Debits": "5620",
+        "Credits": "0",
+        "Date": "2016-08-12"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "At request of Kiwi Insurance, Inc, made repairs on boat of Jon Seaways. Sent bill for Rs. 5,620 for services rendered to Kiwi Insurance Inc. (credit Repair Service Revenue).",
+        "Name": "ServiceRevenues",
+        "Debits": "0",
+        "Credits": "5620",
+        "Date": "2016-08-12"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Made repairs to boat of Dennis Copper and collected in full the charge of  2,830",
+        "Name": "Cash",
+        "Debits": "02830",
+        "Credits": "0",
+        "Date": "2016-08-18"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Made repairs to boat of Dennis Copper and collected in full the charge of  2,830",
+        "Name": "ServiceRevenues",
+        "Debits": "0",
+        "Credits": "02830",
+        "Date": "2016-08-18"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Placed Advertisement in The Dawn of 165, payment to be made within 30 days.\r\n\r\n",
+        "Name": "AdvertisingExpense",
+        "Debits": "0165",
+        "Credits": "0",
+        "Date": "2016-08-20"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Placed Advertisement in The Dawn of 165, payment to be made within 30 days.\r\n\r\n",
+        "Name": "AccountsPayable",
+        "Debits": "0",
+        "Credits": "0165",
+        "Date": "2016-08-20"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Received a check for 5,620 from Kiwi Insurance Inc representing collection of the receivable of August 12.",
+        "Name": "Cash",
+        "Debits": "5620",
+        "Credits": "0",
+        "Date": "2016-08-25"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Received a check for 5,620 from Kiwi Insurance Inc representing collection of the receivable of August 12.",
+        "Name": "AccountsReceivable",
+        "Debits": "0",
+        "Credits": "5620",
+        "Date": "2016-08-25"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Sent check to The Dawn in payment of the liability incurred on August 20.",
+        "Name": "AccountsPayable",
+        "Debits": "165",
+        "Credits": "0",
+        "Date": "2016-08-30"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Sent check to The Dawn in payment of the liability incurred on August 20.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "165",
+        "Date": "2016-08-30"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Purchased from Kareem goods of list price of 6,000 s",
+        "Name": "MerchandiseInventory",
+        "Debits": "6000",
+        "Credits": "0",
+        "Date": "2017-01-02"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Purchased from Kareem goods of list price of 6,000 s",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "6000",
+        "Date": "2017-01-02"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": " Sold goods to Din Muhammad  800 and cash sales of 200.",
+        "Name": "AccountsReceivable",
+        "Debits": "800",
+        "Credits": "0",
+        "Date": "2017-01-04"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Sold goods to Din Muhammad  800 and cash sales of 200.",
+        "Name": "Cash",
+        "Debits": "200",
+        "Credits": "0",
+        "Date": "2017-01-04"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Sold goods to Din Muhammad  800 and cash sales of 200.",
+        "Name": "ServiceRevenues",
+        "Debits": "",
+        "Credits": "1000",
+        "Date": "2017-01-04"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": " Distributed goods worth  200 as free samples and goods taken away by the proprietor for personal use 100.",
+        "Name": "AdvertisingExpense",
+        "Debits": "200",
+        "Credits": "0",
+        "Date": "2017-01-10"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Distributed goods worth  200 as free samples and goods taken away by the proprietor for personal use 100.",
+        "Name": "MarySmithDrawing",
+        "Debits": "100",
+        "Credits": "",
+        "Date": "2017-01-10"
+      },
+      {
+        "user": "aacb022021",
+        "Description": " Distributed goods worth  200 as free samples and goods taken away by the proprietor for personal use 100.",
+        "Name": "MerchandiseInventory",
+        "Debits": "",
+        "Credits": "300",
+        "Date": "2017-01-10"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "aacb022021",
+        "Description": "Received Commission of sales 500.\r\n\r\n",
+        "Name": "Cash",
+        "Debits": "520",
+        "Credits": "0",
+        "Date": "2017-01-12"
+      },
+      {
+        "user": "aacb022021",
+        "Description": "Received Commission of sales 500.\r\n\r\n",
+        "Name": "ServiceRevenues",
+        "Debits": "0",
+        "Credits": "520",
+        "Date": "2017-01-12"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Mary buys brand new computers worth 50,000 and  also puts 20,500 into business",
+        "Name": "Cash",
+        "Debits": "20500",
+        "Credits": "0",
+        "Date": "2011-01-02"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Mary buys brand new computers worth 50,000 and  also puts 20,500 into business",
+        "Name": "Equipment",
+        "Debits": "50000",
+        "Credits": "0",
+        "Date": "2011-01-02"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Mary buys brand new computers worth 50,000 and  also puts 20,500 into business",
+        "Name": "MarySmithCapital",
+        "Debits": "",
+        "Credits": "70500",
+        "Date": "2011-01-02"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Office supplies purchased on account",
+        "Name": "Supplies",
+        "Debits": "4000",
+        "Credits": "0",
+        "Date": "2011-01-04"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Office supplies purchased on account",
+        "Name": "AccountsPayable",
+        "Debits": "0",
+        "Credits": "4000",
+        "Date": "2011-01-04"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "loan obtained",
+        "Name": "Cash",
+        "Debits": "20000",
+        "Credits": "0",
+        "Date": "2011-04-10"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "loan obtained",
+        "Name": "NotesPayable",
+        "Debits": "0",
+        "Credits": "20000",
+        "Date": "2011-04-10"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "paid utility bills",
+        "Name": "UtilitiesExpense",
+        "Debits": "02750",
+        "Credits": "0",
+        "Date": "2011-01-12"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "paid utility bills",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "02750",
+        "Date": "2011-01-12"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Paid 3,000 in Accounts Payable from the purchase of office supplies on Jan. 4.",
+        "Name": "AccountsPayable",
+        "Debits": "03000",
+        "Credits": "0",
+        "Date": "2011-01-15"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Paid 3,000 in Accounts Payable from the purchase of office supplies on Jan. 4.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "03000",
+        "Date": "2011-01-15"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "services completed in January were billed to clients Annies’ Flowers  18,300.",
+        "Name": "AccountsReceivable",
+        "Debits": "18300",
+        "Credits": "0",
+        "Date": "2011-01-24"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "services completed in January were billed to clients Annies’ Flowers  18,300.",
+        "Name": "ServiceRevenues",
+        "Debits": "0",
+        "Credits": "18300",
+        "Date": "2011-01-24"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Creative Advertising received Rs. 5,500 from Annies’ Flowers, a client, as payment on account.",
+        "Name": "Cash",
+        "Debits": "5500",
+        "Credits": "0",
+        "Date": "2011-01-27"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Creative Advertising received Rs. 5,500 from Annies’ Flowers, a client, as payment on account.",
+        "Name": "AccountsReceivable",
+        "Debits": "0",
+        "Credits": "5500",
+        "Date": "2011-01-27"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Mary Smith withdrew 6,000 for personal use",
+        "Name": "MarySmithDrawing",
+        "Debits": "3000",
+        "Credits": "0",
+        "Date": "2011-01-30"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Mary Smith withdrew 6,000 for personal use",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "3000",
+        "Date": "2011-01-30"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "  Purchased inventory on credit terms of 1/10 net 30. FOB shipping point, for  3,000. Freight charges on the purchase were 150.",
+        "Name": "MerchandiseInventory",
+        "Debits": "03150",
+        "Credits": "0",
+        "Date": "2011-10-02"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "  Purchased inventory on credit terms of 1/10 net 30. FOB shipping point, for  3,000. Freight charges on the purchase were 150.",
+        "Name": "AccountsPayable",
+        "Debits": "0",
+        "Credits": "03150",
+        "Date": "2011-10-02"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Sold garden supplies",
+        "Name": "AccountsReceivable",
+        "Debits": "4000",
+        "Credits": "0",
+        "Date": "2011-10-09"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Sold garden supplies",
+        "Name": "ServiceRevenues",
+        "Debits": "0",
+        "Credits": "4000",
+        "Date": "2011-10-09"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Paid the amount owed on account for the Oct. 2 inventory purchase.",
+        "Name": "AccountsPayable",
+        "Debits": "3150",
+        "Credits": "0",
+        "Date": "2011-10-10"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Paid the amount owed on account for the Oct. 2 inventory purchase.",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "3150",
+        "Date": "2011-10-10"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Received payment on account for the Oct. 9 sale ",
+        "Name": "Cash",
+        "Debits": "03500",
+        "Credits": "0",
+        "Date": "2011-10-25"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Received payment on account for the Oct. 9 sale ",
+        "Name": "AccountsReceivable",
+        "Debits": "0",
+        "Credits": "3500",
+        "Date": "2011-10-25"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Paid telephone bill",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "425",
+        "Date": "2013-07-02"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Paid telephone bill",
+        "Name": "TelephoneExpense",
+        "Debits": "425",
+        "Credits": "0",
+        "Date": "2013-07-02"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Mary invests  25,000",
+        "Name": "Cash",
+        "Debits": "25000",
+        "Credits": "0",
+        "Date": "2015-08-02"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Mary invests  25,000",
+        "Name": "MarySmithCapital",
+        "Debits": "0",
+        "Credits": "25000",
+        "Date": "2015-08-02"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Made a sale",
+        "Name": "Cash",
+        "Debits": "2400",
+        "Credits": "0",
+        "Date": "2019-05-02"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Made a sale",
+        "Name": "ServiceRevenues",
+        "Debits": "0",
+        "Credits": "2400",
+        "Date": "2019-05-02"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Mary Smith invests cash",
+        "Name": "Cash",
+        "Debits": "10000",
+        "Credits": "0",
+        "Date": "2015-01-05"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Mary Smith invests cash",
+        "Name": "MarySmithCapital",
+        "Debits": "0",
+        "Credits": "10000",
+        "Date": "2015-01-05"
+      }
+    ]
+  },
+  {
+    "Accounts": [
+      {
+        "user": "kdiab022021",
+        "Description": "Mary smith makes a personal withdrawl",
+        "Name": "Cash",
+        "Debits": "0",
+        "Credits": "700",
+        "Date": "2018-02-02"
+      },
+      {
+        "user": "kdiab022021",
+        "Description": "Mary smith makes a personal withdrawl",
+        "Name": "MarySmithCapital",
+        "Debits": "700",
+        "Credits": "",
+        "Date": "2018-02-02"
+      }
+    ]
+  }
+]
