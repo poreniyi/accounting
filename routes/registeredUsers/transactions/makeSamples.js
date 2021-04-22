@@ -4,6 +4,7 @@ let fs = require('fs').promises
 let path = require('path');
 let journal = require('../../../database/Journal')
 let ledgerSearch = require('../../../database/Ledger');
+let RE = require('../../../database/Statements');
 
 router.get('/createSampleJournal', async (req, res) => {
     if (req.session.userType.toLowerCase() == 'admin') {
@@ -67,13 +68,13 @@ router.get('/addTransactions', async (req, res) => {
                 await new Promise(resolve => setTimeout(resolve, 1000));
             }
            await ledgerSearch.addTransactionToLedger('aacb022021', ID, '', 'Approved')   
-           if(counter == 7){
-            res.send(`There are:${counter}`)
-            return;
-            }
+          // if(counter == 13){
+           
+           // return;}
         } 
     }
-    
+    res.send(`There are:${counter}`)
+    RE.getPreviousRE()
 })
 
 // router.get('/jsonUpload', async (req, res) => {

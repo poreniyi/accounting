@@ -24,8 +24,8 @@ async function generateTrialBalance(){
         current = [rows][0][i]
         balance = 0
 
-        query = `SELECT DEBIT, CREDIT FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED < '${to} 00:00:00') ORDER BY DATESUBMITTED ASC;`
-
+        query = `SELECT DEBIT, CREDIT FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >=  DATE_FORMAT(STR_TO_DATE('${from}', '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s') AND DATESUBMITTED < DATE_FORMAT(STR_TO_DATE('${to}', '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s')) ORDER BY DATESUBMITTED ASC;
+        `
         let [rows2] = await DB.asyncConnection.query(query)
 
         if([rows2][0].length > 0){
@@ -121,7 +121,22 @@ async function generateBalanceSheet(start, end, month, quarter, year){
         }else{
             current.BALANCE = (current.COLUMN=='Credit'? current.BALANCE : "(" + current.BALANCE * -1 + ")")
             if(current.NAME == 'RetainedEarnings'){
-                current.BALANCE = await generateRetainedEarnings(from, to)
+
+                query = `SELECT BALANCE FROM RETAINEDEARNINGS_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
+                
+                let [rows3] = await DB.asyncConnection.query(query)
+
+                if([rows3][0][0]){
+                    if([rows3][0][0].DEBIT == 0){
+                        current.BALANCE = [rows3][0][0].BALANCE
+                    }
+                    else{
+                        current.BALANCE = [rows3][0][0].BALANCE
+                    }
+                }
+                else{
+                   current.BALANCE = 0
+                }
             }
             equity.TextRow.push(current)
         }
@@ -202,22 +217,36 @@ async function generateIncomeStatement(){
     return data;
 }
 
-async function generateRetainedEarnings(from, to){
+async function generateRetainedEarnings(){
 
-    let query = `SELECT BALANCE FROM RETAINEDEARNINGS_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
+    let d = new Date()
+    let year = d.getFullYear()
+    let month = d.getMonth()
+    let day = new Date(year, month, 0).toString().substring(8,10);
+
+    let from = year+"-"+month+"-01"
+
+    let to = year+"-"+month+"-"+day
+
+    let query = `SELECT DEBIT, CREDIT FROM RETAINEDEARNINGS_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
 
     let [rows2] = await DB.asyncConnection.query(query)
 
-    return [rows2][0][0] != null ? [rows2][0][0].BALANCE : 0
+    if([rows2][0][0]){
+        if([rows2][0][0].DEBIT == 0){
+            return [rows2][0][0].CREDIT
+        }
+        else{
+            return [rows2][0][0].DEBIT * -1
+        }
+    }
+    return 0
 }
+
 
 async function getPreviousRE(){
 
-    let query = `
-    SELECT MASTER.NAME, MASTER.NORMALSIDE AS 'COLUMN', MASTER.CATEGORY,JOURNAL.DEBIT, JOURNAL.CREDIT, JOURNAL.DATE, JOURNAL.ID, JOURNAL.USERNAME FROM MASTER  
-    JOIN JOURNAL ON JOURNAL.ACCOUNT = MASTER.NAME AND 
-    (MASTER.CATEGORY = 'REVENUE' OR MASTER.CATEGORY = 'EXPENSE') GROUP BY DATE ASC;
-    `
+    let query = `CALL GETRE()`
 
     let [rows] = await DB.asyncConnection.query(query)
 
@@ -232,45 +261,58 @@ async function getPreviousRE(){
     let date1
     let date2
 
-    for(; i < [rows][0].length; i++){
-        current = [rows][0][i];
+    
+    for(; i < [rows][0][0].length; i++){
+        
+        current = [rows][0][0][i];
         expense = 0
         revenue = 0
         total = 0
         skip = 0
-        let debit = 0
-        let credit = 0
+
+        let year = current.DATE.getFullYear()
+
+        let month = current.DATE.getMonth()+1
+        let day = new Date(year, month, 0).toString().substring(8,10);
+
+        let from = year+"-"+month+"-01"
+
+        let to = year+"-"+month+"-"+day
+
         date1 = current.DATE.getFullYear() + "-" + Number(current.DATE.getMonth()+1)
 
          if(current.CATEGORY == 'Expense'){
-                    if(current.COLUMN == 'Debit'){
-                        expense += current.DEBIT
-                        expense -= current.CREDIT
-                    }
-                    else{
-                        expense -= current.DEBIT
-                        expense += current.CREDIT
-                    }
-                    
+                 if(current.COLUMN == 'Debit'){
+                    expense += current.DEBIT
+                    expense -= current.CREDIT
                 }
                 else{
-                    if(current.COLUMN == 'Debit'){
-                        revenue += current.DEBIT
-                        revenue -= current.CREDIT
-                    }
-                    else{
-                        revenue -= current.DEBIT
-                         revenue+= current.CREDIT
-                    }
+                    expense -= current.DEBIT
+                    expense += current.CREDIT
+                } 
+        }
+         else{
+                if(current.COLUMN == 'Debit'){
+                    revenue += current.DEBIT
+                    revenue -= current.CREDIT
                 }
-                let id = await journal.getTransactionID()
-                await journal.createTransaction(current.USERNAME, current.NAME, 'Closing account', current.DEBIT == 0 ? current.CREDIT : 0, current.CREDIT == 0 ? current.DEBIT : 0, id, current.DATE)
-        for(var j = i+1; j < [rows][0].length; j++){
-            current2 = [rows][0][j]
+                else{
+                    revenue -= current.DEBIT
+                    revenue+= current.CREDIT
+                }
+            }
+
+        let id = await journal.getTransactionID()
+        await journal.createTransaction(current.USERNAME, current.NAME, 'Closing account', current.DEBIT == 0 ? current.CREDIT : 0, current.CREDIT == 0 ? current.DEBIT : 0, id, current.DATE)
+        await ledger.addOLDERTransactionToLedger(current.NAME, from , to, current.USERNAME, "Closing account", current.DEBIT == 0 ? current.CREDIT : 0, current.CREDIT == 0 ? current.DEBIT : 0, id, 'OLDER', 'Approved')
+
+        for(var j = i+1; j < [rows][0][0].length; j++){
+            current2 = [rows][0][0][j]
             date2 = current2.DATE.getFullYear() + "-" + Number(current2.DATE.getMonth()+1)
             if(date1 == date2){
                 if(current2.CATEGORY == 'Expense'){
-                    if(current.COLUMN == 'Debit'){
+                    if(current2.COLUMN == 'Debit'){
+
                         expense += current2.DEBIT
                         expense -= current2.CREDIT
                     }
@@ -278,7 +320,6 @@ async function getPreviousRE(){
                         expense -= current2.DEBIT
                         expense += current2.CREDIT
                     }
-                    
                 }
                 else{
                     if(current2.COLUMN == 'Debit'){
@@ -292,31 +333,76 @@ async function getPreviousRE(){
                 }
                 skip++
                 await journal.createTransaction(current2.USERNAME, current2.NAME, 'Closing account', current2.DEBIT == 0 ? current2.CREDIT : 0, current2.CREDIT == 0 ? current2.DEBIT : 0, id, current2.DATE)
+               await ledger.addOLDERTransactionToLedger(current2.NAME, from , to, current2.USERNAME, "Closing account", current2.DEBIT == 0 ? current2.CREDIT : 0, current2.CREDIT == 0 ? current2.DEBIT : 0, id, 'OLDER', 'Approved')
             } 
         }
         i += skip
         total = revenue - expense
 
-        let year = current.DATE.getFullYear()
+        await journal.createTransaction(current.USERNAME, 'RetainedEarnings', 'Closing account', total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id, current.DATE)
+        await ledger.addOLDERTransactionToLedger('RetainedEarnings', from , to, current.USERNAME, "Auto Added", total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id, 'OLDER', 'Approved')
+    }
+}
 
-        let month = current.DATE.getMonth()+1
+async function close(){
+
+    let query = `CALL GETRE()`
+
+    let [rows] = await DB.asyncConnection.query(query)
+
+    let current
+
+    let expense = 0
+    let revenue = 0
+    let total = 0
+
+    let id = await journal.getTransactionID()
+    
+    for(var i =0; i < [rows][0][0].length; i++){
+        
+        current = [rows][0][0][i];
+
+        let d = Date()
+        let year = d.getFullYear()
+        let month = d.getMonth()+1
         let day = new Date(year, month, 0).toString().substring(8,10);
 
         let from = year+"-"+month+"-01"
 
         let to = year+"-"+month+"-"+day
 
-        await journal.createTransaction(current.USERNAME, 'RetainedEarnings', 'Closing account', total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id, current.DATE)
-        await ledger.addOLDERTransactionToLedger(from , to, current.USERNAME, "Auto Added", total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id, '', 'Approved')
+         if(current.CATEGORY == 'Expense'){
+                 if(current.COLUMN == 'Debit'){
+                    expense += current.DEBIT
+                    expense -= current.CREDIT
+                }
+                else{
+                    expense -= current.DEBIT
+                    expense += current.CREDIT
+                } 
+        }
+         else{
+                if(current.COLUMN == 'Debit'){
+                    revenue += current.DEBIT
+                    revenue -= current.CREDIT
+                }
+                else{
+                    revenue -= current.DEBIT
+                    revenue+= current.CREDIT
+                }
+            }
+
+        total = revenue - expense
+        await journal.createTransaction(current.USERNAME, 'RetainedEarnings', 'Closing account', current.DEBIT == 0 ? current.CREDIT : 0, current.CREDIT == 0 ? current.DEBIT : 0, id, current.DATE)
     }
+    
+    await ledger.addTransactionToLedger(current.USERNAME, id, '', 'Approved')
 }
-
-// getPreviousRE()
-
 
 module.exports= {
     generateTrialBalance,
     generateBalanceSheet,
     generateIncomeStatement,
-    generateRetainedEarnings
+    generateRetainedEarnings,
+    getPreviousRE
 }

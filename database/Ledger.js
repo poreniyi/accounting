@@ -51,9 +51,6 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
 
     for(var i = 0; i < accounts.length; i++){
 
-        console.log()
-        console.log(accounts[i])
-
         query = `CALL ADD_TRANSACTION_TO_LEDGER(?,?,?,?,?,?)`
 
         await DB.asyncConnection.query(query, [submittedBy, accounts[i].ACCOUNT, accounts[i].DESCRIPTION, accounts[i].DEBIT, accounts[i].CREDIT, id], 
@@ -94,7 +91,7 @@ async function addTransactionToLedger(submittedBy, id, comment, status){
 }
 
 
-async function addOLDERTransactionToLedger(from, to, submittedBy, description, debit, credit, id, comment, status){
+async function addOLDERTransactionToLedger(account, from, to, submittedBy, description, debit, credit, id, comment, status){
 
     let query = `UPDATE JOURNAL SET COMMENT = '${comment}', STATUS = '${status}' WHERE ID = '${id}'`
 
@@ -107,9 +104,9 @@ async function addOLDERTransactionToLedger(from, to, submittedBy, description, d
 
         query = `CALL OLDER_TRANSACTIONS(?,?,?,?,?,?,?,?)`
 
-        console.log(from + " " + to+ " " + submittedBy+ " " + 'RetainedEarnings'+ " " + description + " " +debit+ " " + credit+ " " + id)
+ //       console.log(from + " " + to+ " " + submittedBy+ " " + 'RetainedEarnings'+ " " + description + " " +debit+ " " + credit+ " " + id)
 
-        await DB.asyncConnection.query(query, [from, to, submittedBy, 'RetainedEarnings', description, debit, credit, id], 
+        await DB.asyncConnection.query(query, [from, to, submittedBy, account , description, debit, credit, id], 
             function (err, result, fields) {
                 if(err){
                     console.log("Query failed")
@@ -119,7 +116,7 @@ async function addOLDERTransactionToLedger(from, to, submittedBy, description, d
             }) 
 
         query = `SELECT NAME, NUMBER, DESCRIPTION, NORMALSIDE, CATEGORY, SUBCATEGORY, INITIALBALANCE, DEBIT, CREDIT,
-        BALANCE, DOC, USERNAME, STATEMENT, COMMENT, STATUS FROM MASTER WHERE NAME = 'RetainedEarnings'`
+        BALANCE, DOC, USERNAME, STATEMENT, COMMENT, STATUS FROM MASTER WHERE NAME = '${account}'`
 
         let [result] = await DB.asyncConnection.query(query)
 

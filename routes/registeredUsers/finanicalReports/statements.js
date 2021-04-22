@@ -41,7 +41,7 @@ router.get('/balanceSheet', async (req, res) => {
     res.render('statementViews/balanceSheet', {data,totals});
 })
 router.get('/retainedEarnings', async (req, res) => {
-    let RETAINEDEARNINGS = await statements.generateRetainedEarnings(req.session.statement.start, req.session.statement.end)
+    let RETAINEDEARNINGS = await statements.generateRetainedEarnings()
     console.log(RETAINEDEARNINGS)
     res.render('statementViews/retainedEarnings', {RETAINEDEARNINGS});
 })
