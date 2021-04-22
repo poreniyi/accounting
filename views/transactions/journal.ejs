@@ -8,64 +8,80 @@
     <title>Journal</title>
     <link rel='stylesheet' href='/stylesheets/transactions/journal.css'>
 </head>
-<%- include('../_partial/_header'); -%>
 <body>
-    <h1>View Journal</h1>
-    <div class="container">
-        <%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
-        <div class="search">
-            <label class ="searchBar" for='search'>Search:</label><input id='search' type='text'>
-            <select id='select'>
-                <option value=2>Account Names</option>
-                <option value=1>Date</option>
-                <option value=3>Amount</option>
-                <option value=4>Description</option>
-                <option value=6>Submitter</option>
-                <option value=5>Transaction ID</option>
-                <option value=7>Status</option>
-            </select>
-            <input class='dateRange' type='date'>
+    <%- include('../_partial/_header'); -%>
+    <div class="buffer">
+        <div class="whitespace">
+
+        </div>
+        <div class="container">
+            <%let addJournalLink=`/./${userType.toLowerCase()}/createJournal`%>
+            <div class="heading">
+                <h1>View Journal</h1>
+            </div>
+            <div class="search">
+                <label class ="searchBar" for='search'>Search:</label><input id='search' type='text'>
+                <select id='select'>
+                    <option value=2>Account Names</option>
+                    <option value=1>Date</option>
+                    <option value=3>Amount</option>
+                    <option value=4>Description</option>
+                    <option value=6>Submitter</option>
+                    <option value=5>Transaction ID</option>
+                    <option value=7>Status</option>
+                </select>
                 <input class='dateRange' type='date'>
-                <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
+                    <input class='dateRange' type='date'>
+                    <button><a href=<%=addJournalLink%>>Create a journal entry</a></button>
+            </div>
+    
+            <div id='pageButtons'>
+                <button id='previousButton'>Previous</button>            
+                <button id='nextButton'>Next</button>            
+            </div>
+            <div class="tableFixHead">
+                <table id='table'>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Account Names</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Transaction ID</th>
+                            <th>Creator</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
+                    <% let counter=1%>
+                    <%TextRow.forEach(element=>{%>
+                    <tbody>
+                        <tr class='transactions'>
+                            <td><%=counter%></td>
+                            <td><%=element.DATE%> </td>
+                            <td>
+                                <% let accountNames=element.ACCOUNT.split('+')%>
+                                <% accountNames.forEach(name=>{%>
+                                    <%let link=`./ledger/${name.trim()}`%>
+                                    <pre><a href=<%=link%>><%=name%></a><br></pre>
+                                <%})%>
+                            </td>
+                            <td><%=formatter.format(element.AMOUNT/2)%> </td>
+                            <td> <%=element.DESCRIPTION%> </td>
+                            <td> <%if(element.ID){%><a href=<%=`./viewTransaction/${element.ID}`%>><%=element.ID%></a><%}%>
+                            </td>
+                            <td><%=element.USERNAME%> </td>
+                            <td> <%=element.STATUS%>  </td>
+                            <% counter++})%>  
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <div class="whitespace">
 
-        <div id='pageButtons'>
-            <button id='previousButton'>Previous</button>            
-            <button id='nextButton'>Next</button>            
         </div>
-        <table id='table'>
-            <tr>
-                <th>#</th>
-                <th>Date</th>
-                <th>Account Names</th>
-                <th>Amount</th>
-                <th>Description</th>
-                <th>Transaction ID</th>
-                <th>Creator</th>
-                <th>Status</th>
-            </tr>
-            <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
-            <% let counter=1%>
-            <%TextRow.forEach(element=>{%>
-
-                <tr class='transactions'>
-                    <td><%=counter%></td>
-                    <td><%=element.DATE%> </td>
-                    <td>
-                        <% let accountNames=element.ACCOUNT.split('+')%>
-                        <% accountNames.forEach(name=>{%>
-                            <%let link=`./ledger/${name.trim()}`%>
-                            <pre><a href=<%=link%>><%=name%></a><br></pre>
-                    <%})%></td>
-                    <td><%=formatter.format(element.AMOUNT/2)%> </td>
-                    <td> <%=element.DESCRIPTION%> </td>
-                    <td> <%if(element.ID){%><a href=<%=`./viewTransaction/${element.ID}`%>><%=element.ID%></a><%}%>
-                    </td>
-                    <td><%=element.USERNAME%> </td>
-                    <td> <%=element.STATUS%>  </td>    
-                </tr>
-            <% counter++})%>
-        </table>
     </div>
  
     <script src='/ejsscripts/transactions/viewJournal.js'></script>

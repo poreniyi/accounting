@@ -1,13 +1,20 @@
-h1, h2 {
-  margin-left: 2.5%;
+.buffer {
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  border-collapse: collapse;
 }
 
-#addAccount, #submitButton {
-  margin-left: 19%;
+.container {
+  margin-top: 20vh;
+}
+
+.sheet {
+  align-self: center;
+  display: inline-block;
 }
 
 table {
-  margin: auto;
+  text-align: center;
   margin-top: 1em;
   margin-bottom: 1em;
   border: none;

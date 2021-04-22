@@ -1,8 +1,14 @@
-h1, h2 {
-    margin-left: 2.5%;
+.buffer {
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+    border-collapse: collapse;
 }
 
 .container {
+    margin-top: 20vh;
+}
+
+.charts {
     display: flex;
 }
 

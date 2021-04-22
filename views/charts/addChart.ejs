@@ -8,69 +8,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add an Account</title>
 </head>
-<%- include('../_partial/_header'); -%>
 
 <body>
-    <h1>Add New Account</h1>
-    <div class="container">
-        <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action='./addAccount'>
-            <table id='table'>
-                <tr>
-                    <th>Name</th>
-                    <td class='formInput'>
-                        <input name='Name' type="text" pattern ="^[a-zA-Z]+" required>
-                    </td>
-                </tr>
-                <tr>
-                    <th>Number</th>
-                    <td class='formInput'><input name='Number' type="number" pattern ="^[0-9]+" min="10000" max="60000" minlength="5" maxlength="5" required></td>
-                </tr> 
-                <tr>
-                    <th>Description</th>
-                    <td class='formInput'><input name='Description'type="text" required></td>
-                </tr> 
-                <tr>
-                    <th>Normal Side</th>
-                    <td class='formInput'>
-                        <select form='form' name='Normal'>
-                            <option value='Credit'>Credit</option>
-                            <option value='Debit'>Debit</option>
-                        </select>
-                    </td>
-                </tr>  
-                <tr>
-                    <th>Category</th>
-                    <td class='formInput'>
-                    <select form='form' name='Category'>
-                        <option value='Asset'>Asset</option>
-                        <option value='Liability'>Liability</option>
-                        <option value='Revenue'>Revenue</option>
-                        <option value='Expense'>Expense</option>
-                        <option value='Equity'>Equity</option>
-                    </select>
-                    </td>
-                </tr>  
-            <tr>
-                <th>Sub-Category</th>
-                <td class='formInput'><input name='SubCategory' type="text" value='None'required></td>
-                </tr>
-                <tr>
-                    <th>Initial Balance</th>
-                    <td class='formInput'><input name='InitialBalance'type="number"  value=0 required></td>
-                </tr>
-                <tr>
-                    <th>Comment</th>
-                    <td class='formInput'><input name='Comment'type="text"></td>
+    <%- include('../_partial/_header'); -%>
+    <div class="buffer">
+        <div class="whitespace">
+
+        </div>
+        <div class="container">
+            <div class="heading">
+                <h1>Add New Account</h1>
+            </div>
+            <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action='./addAccount'>
+                <table id='table'>
+                    <tr>
+                        <th>Name</th>
+                        <td class='formInput'>
+                            <input name='Name' type="text" pattern ="^[a-zA-Z]+" required>
+                        </td>
                     </tr>
+                    <tr>
+                        <th>Number</th>
+                        <td class='formInput'><input name='Number' type="number" pattern ="^[0-9]+" min="10000" max="60000" minlength="5" maxlength="5" required></td>
+                    </tr> 
+                    <tr>
+                        <th>Description</th>
+                        <td class='formInput'><input name='Description'type="text" required></td>
+                    </tr> 
+                    <tr>
+                        <th>Normal Side</th>
+                        <td class='formInput'>
+                            <select form='form' name='Normal'>
+                                <option value='Credit'>Credit</option>
+                                <option value='Debit'>Debit</option>
+                            </select>
+                        </td>
+                    </tr>  
+                    <tr>
+                        <th>Category</th>
+                        <td class='formInput'>
+                        <select form='form' name='Category'>
+                            <option value='Asset'>Asset</option>
+                            <option value='Liability'>Liability</option>
+                            <option value='Revenue'>Revenue</option>
+                            <option value='Expense'>Expense</option>
+                            <option value='Equity'>Equity</option>
+                        </select>
+                        </td>
+                    </tr>  
                 <tr>
-                <td class='formInput'><input hidden name='Credit' value=0 type="number"></td>
-                </tr>
-                <tr>
-                <td class='formInput'><input hidden name='Debit'value=0 type="number"></td>
-                </tr>
-            </table>
-            <button type="submit">Submit</button>
-        </form>
+                    <th>Sub-Category</th>
+                    <td class='formInput'><input name='SubCategory' type="text" value='None'required></td>
+                    </tr>
+                    <tr>
+                        <th>Initial Balance</th>
+                        <td class='formInput'><input name='InitialBalance'type="number"  value=0 required></td>
+                    </tr>
+                    <tr>
+                        <th>Comment</th>
+                        <td class='formInput'><input name='Comment'type="text"></td>
+                        </tr>
+                    <tr>
+                    <td class='formInput'><input hidden name='Credit' value=0 type="number"></td>
+                    </tr>
+                    <tr>
+                    <td class='formInput'><input hidden name='Debit'value=0 type="number"></td>
+                    </tr>
+                </table>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="whitespace">
+    
+        </div>
     </div>
     <script src='/ejsscripts/viewChart.js'></script>
 </body>

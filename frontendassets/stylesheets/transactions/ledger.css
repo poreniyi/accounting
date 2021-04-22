@@ -1,0 +1,87 @@
+.buffer {
+    display: grid;
+    grid-template-columns: 5% 90% 5%;
+    border-collapse: collapse;
+  }
+  .container {
+    margin-top: 20vh;
+  }
+  
+  pre {
+    font: inherit;
+  }
+  
+  .tableFixHead {
+    overflow-y: auto;
+    height: 300px;
+  }
+  
+  table {
+    margin: auto;
+    width: 100%;
+  }
+  
+  table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    font-size: 11pt;
+  }
+  
+  th {
+    border-bottom: 5px solid #1B998B;
+    text-align: center;
+  }
+  
+  th, td {
+    padding-left: .5em;
+    padding-right: .5em;
+    vertical-align: middle;
+  }
+  
+  td a {
+    color: rgb(33, 33, 219);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  
+  button a {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  
+  tbody:nth-child(even) {
+    background-color: #c0e4e1;
+  }
+  
+  #search, #select, .dateRange {
+    margin-left: .25em;
+  }
+  #pageButtons {
+    margin: 0 0 .5em 0;
+  }
+  
+  textarea{
+      resize: none;
+  }
+  
+  .transactions{
+      visibility: collapse;
+  }
+  
+  .boxed{
+      border:1px solid black;
+  }
+  .currentPage{
+    color: white;
+    background-color: #1B998B;
+  }
+  
+  span {
+    font: inherit;
+    padding-left: 3px;
+    padding-right: 3px;
+  }
+  
+  .boxed {
+    border: none;
+  }

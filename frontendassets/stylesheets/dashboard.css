@@ -1,13 +1,17 @@
 .sidenav {
     display: grid;
-    grid-template-columns: 15% 85%;
+    grid-template-columns: 30% 70%;
     border-collapse: collapse;
     height: 100vh;
 }
 
+.navcolumn, .main {
+    margin-top: 18vh;
+}
 .navcolumn {
-      background-color: #FFFAEC;
-      border-right: solid #126359 5px;
+    height: 100vh;
+    background-color: #FFFAEC;
+    border-right: solid #126359 5px;
 }
 
 .navcolumn li {
@@ -21,7 +25,8 @@
     display: block;
 }
 .adminlist {
-    padding-inline-start: 10px;
+    padding: 0;
+    margin: 10% 5%;
 }
 h1 {
     padding: 0 21.44px;
@@ -62,4 +67,10 @@ a#userTool:hover::after {
 
 a#chartTool:hover::after {
     content: "View Chart of Accounts";
+}
+
+@media only screen and (min-width: 650px)  {
+    .sidenav {
+        grid-template-columns: 15% 85%;
+    }
 }

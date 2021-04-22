@@ -1,19 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel='stylesheet' href='/stylesheets/statements/balanceSheet.css'>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Retained Earnings</title>
 </head>
-<%- include('../_partial/_header'); -%>
 <body>
-    <h1>Retained Earnings Statement</h1>
-    <table>
-        <td>Beginning Period: 04/01/2021</td>
-        <td>Closing Period: 04/30/2021</td>
-        <td>Retained Earnings: <%=RETAINEDEARNINGS%></td>
-        <td>Dividends: 0</td>
-    </table>
+    <%- include('../_partial/_header'); -%>
+    <div class="buffer">
+
+    </div>
+    <div class="whitespace">
+
+    </div>
+    <div class="container">
+        <div class="heading">
+            <h1>Retained Earnings Statement</h1>
+        </div>
+        <table>
+            <td>Beginning Period: 04/01/2021</td>
+            <td>Closing Period: 04/30/2021</td>
+            <td>Retained Earnings: <%=RETAINEDEARNINGS%></td>
+            <td>Dividends: 0</td>
+        </table>
+    </div>
+    <div class="whitespace">
+
+    </div>
 </body>
 </html>

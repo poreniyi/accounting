@@ -7,50 +7,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trial Balance</title>
 </head>
-<%- include('../_partial/_header'); -%>
-<%- include('../_partial/help/viewChartHelp'); -%>
 <body>
-    <h1>Trial Balance</h1>
-<table id=table>
-    <th class="tooltip" id='Account Title'> Account Title</th>
-    <th class="tooltip" id='Debit'> Debit</th>
-    <th class="tooltip" id='Credit'> Credit</th>
-    <tr>
- <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
-        <%let creditTotal=0%>
-        <%let debitTotal=0%>
-        <%let amount=0%>
-	<%let formattedNum=0%>
-        <%TextRow.forEach(element=>{%>
-            <%
-		if(element.BALANCE.toString().includes('(')){
-                amount = Number(element.BALANCE.toString().replace(/[()]/g, "")) * -1
-			    formattedNum = "(" + formatter.format(amount * -1) + ")"
-            }
-            else{
-                amount = element.BALANCE
-				  formattedNum = formatter.format(amount)
-            }%>
-          <tr>
-            <td><%=element.NAME%></td>
-            <%if(element.COLUMN=='Debit'){%>
-                <td><%=formattedNum%></td>
-                <td></td>
-                <%debitTotal += amount%>
-            <%}else{%>
-                <td></td>
-                <td><%=formattedNum%></td>
-                <%creditTotal += amount%>
-            <%}%>
-          </tr>
-        <%})%>
-        <td>Total</td>
-        <td><%=debitTotal%></td>
-        <td><%=creditTotal%></td>
-    </tr>
-</table>
-  
-    <%- include('../_partial/_footer'); -%>
-            
+    <%- include('../_partial/_header'); -%>
+    <%- include('../_partial/help/viewChartHelp'); -%>
+    <div class="buffer">
+        <div class="whitespace">
+
+        </div>
+        <div class="container">
+            <div class="heading">
+                <h1>Trial Balance</h1>
+            </div>
+            <div class="tableFixHead">
+                <table id=table>
+                    <thead>
+                        <tr>
+                            <th class="tooltip" id='Account Title'> Account Title</th>
+                            <th class="tooltip" id='Debit'> Debit</th>
+                            <th class="tooltip" id='Credit'> Credit</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <%   let formatter = new Intl.NumberFormat('en-US',{ style: 'currency',  currency: 'USD',   }); %>
+                                    <%let creditTotal=0%>
+                                    <%let debitTotal=0%>
+                                    <%let amount=0%>
+                                <%let formattedNum=0%>
+                                    <%TextRow.forEach(element=>{%>
+                                        <%
+                                if(element.BALANCE.toString().includes('(')){
+                                        amount = Number(element.BALANCE.toString().replace(/[()]/g, "")) * -1
+                                        formattedNum = "(" + formatter.format(amount * -1) + ")"
+                                    }
+                                    else{
+                                        amount = element.BALANCE
+                                        formattedNum = formatter.format(amount)
+                                    }%>
+                                <tr>
+                                    <td><%=element.NAME%></td>
+                                    <%if(element.COLUMN=='Debit'){%>
+                                        <td><%=formattedNum%></td>
+                                        <td></td>
+                                        <%debitTotal += amount%>
+                                    <%}else{%>
+                                        <td></td>
+                                        <td><%=formattedNum%></td>
+                                        <%creditTotal += amount%>
+                                    <%}%>
+                                </tr>
+                            <%})%>
+                            <td>Total</td>
+                            <td><%=debitTotal%></td>
+                            <td><%=creditTotal%></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="whitespace">
+
+        </div>
+    </div>
 </body>
 </html>

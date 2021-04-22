@@ -1,17 +1,27 @@
-table, th, td {
-    border-collapse: collapse;
-    padding: 5px;
+.buffer {
+  display: grid;
+  grid-template-columns: 5% 90% 5%;
+  border-collapse: collapse;
+}
 
-  }
-  #equityLiability{
-    float: left;
-  }
-  #assets{
-    float: left;
-  }
-  .doubleUnderline{
-    border-bottom: 1px solid #000;  
-  }
-  .hiddenForm{
-    display: none;
-  }
+.container {
+  margin-top: 20vh;
+}
+
+table, th, td {
+  border-collapse: collapse;
+  padding: 5px;
+
+}
+#equityLiability{
+  float: left;
+}
+#assets{
+  float: left;
+}
+.doubleUnderline{
+  border-bottom: 1px solid #000;  
+}
+.hiddenForm{
+  display: none;
+}

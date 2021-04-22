@@ -1,9 +1,20 @@
-h1 {
-  margin-left: 2.5%;
+.buffer {
+  display: grid;
+  grid-template-columns: 2.5% 95% 2.5%;
+  border-collapse: collapse;
+}
+.container {
+  margin-top: 20vh;
+}
+
+.tableFixHead {
+  overflow: auto;
+  height: 400px;
 }
 
 table {
-  margin: 0 2.5%;
+  margin: auto;
+  width: 100%;
 }
 
 table, th, td {
@@ -27,14 +38,6 @@ td a {
   color: rgb(33, 33, 219);
   text-decoration: underline;
   font-weight: 500;
-}
-
-tr:nth-child(even) {
-  background-color: #e4f0ef;
-}
-
-#searchSelect, #adminCommands {
-  margin: 0 0 .5em 2.5%;
 }
 
 .searchMatchedText{

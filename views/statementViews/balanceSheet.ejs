@@ -8,85 +8,94 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Balance Sheet</title>
 </head>
-<%- include('../_partial/_header'); -%>
 
 <body>
+    <%- include('../_partial/_header'); -%>
+    <div class="buffer">
+        <div class="whitespace">
 
-<div  id='accountForm'>
-<table id='assets'>
-    <tr><th colspan="2">Current Assets</th></tr>
-    <% data.asset.TextRow.forEach(element=>{%>
-        <tr>
-            <td><%=`${element.NAME}`%></td>
-            <td><%=`${element.BALANCE}`%></td>
-        </tr>
-     <%})%>
-    <tr><th>Non-CurrentAsset</th></tr>
-    <tr><td>Total Assets</td> <td><u class='doubleUnderline'><%=totals.asset%></u></td></tr>
-</table>
-
-<table id='equityLiability'>
-    <tr><th colspan="2">Current Liabilites</th></tr>
-    <% data.liability.TextRow.forEach(element=>{%>
-        <tr>
-            <td><%=`${element.NAME}`%></td>
-            <td><%=`${element.BALANCE}`%></td>
-        </tr>
-     <%})%>
-    <tr><th >Non-Current Liabilites</th></tr>
-    <tr><td>Total Liabilites</td><td><u><%=totals.liability%></u></td></tr>
-
-    <tr><th colspan="2">StockHolders Equity</th></tr>
-    <% data.equity.TextRow.forEach(element=>{%>
-        <tr>
-            <td><%=`${element.NAME}`%></td>
-            <td><%=`${element.BALANCE}`%></td>
-        </tr>
-     <%})%> 
-    <tr><td>Total Equity</td><td><u><%=totals.equity%></u></td></tr>
-
-    <tr><td>Total liabilities & Equity</td> <td><u class='doubleUnderline'><%=`${totals.equity+totals.liability}`%></u></td></tr>
-
-</table>
-</div>
-<div class='hiddenForm' id='reportForm'>
-    <table>
-        <tr><th>Assets</th></tr>
-        <tr><td>Current Assets</td></tr>
-        <% data.asset.TextRow.forEach(element=>{%>
-            <tr>
-                <td><%=`${element.NAME}`%></td>
-                <td><%=`${element.BALANCE}`%></td>
-            </tr>
-         <%})%>
-        <tr><td>Total Assets</td><td><u class='doubleUnderline'><%=totals.asset%></u></td></tr>
-
-        <tr><th>Liabilites</th></tr>
-        <% data.liability.TextRow.forEach(element=>{%>
-            <tr>
-                <td><%=`${element.NAME}`%></td>
-                <td><%=`${element.BALANCE}`%></td>
-            </tr>
-         <%})%>
-         <tr><td>Total Liabilites</td><td><u><%=totals.liability%></u></td></tr>
-
-        <tr><th>StockHolders Equity</th></tr>
-        <% data.equity.TextRow.forEach(element=>{%>
-            <tr>
-                <td><%=`${element.NAME}`%></td>
-                <td><%=`${element.BALANCE}`%></td>
-            </tr>
-         <%})%> 
-         <tr><td>Total Equity</td><td><u><%=totals.equity%></u></td></tr>
-            <tr> </tr>
-        <tr><td>Total liabilities & Equity</td><td><u class='doubleUnderline'><%=`${totals.equity+totals.liability}`%></u></td></td></tr>
-         
-    </table>
-</div>
-<div>
-    <h1 id=formType>Account Form</h1>
-    <button id='formToggle'>Show Report Form</button>
-</div>
+        </div>
+        <div class="container">
+            <div  id='accountForm'>
+                <table id='assets'>
+                    <tr><th colspan="2">Current Assets</th></tr>
+                    <% data.asset.TextRow.forEach(element=>{%>
+                        <tr>
+                            <td><%=`${element.NAME}`%></td>
+                            <td><%=`${element.BALANCE}`%></td>
+                        </tr>
+                     <%})%>
+                    <tr><th>Non-CurrentAsset</th></tr>
+                    <tr><td>Total Assets</td> <td><u class='doubleUnderline'><%=totals.asset%></u></td></tr>
+                </table>
+                
+                <table id='equityLiability'>
+                    <tr><th colspan="2">Current Liabilites</th></tr>
+                    <% data.liability.TextRow.forEach(element=>{%>
+                        <tr>
+                            <td><%=`${element.NAME}`%></td>
+                            <td><%=`${element.BALANCE}`%></td>
+                        </tr>
+                     <%})%>
+                    <tr><th >Non-Current Liabilites</th></tr>
+                    <tr><td>Total Liabilites</td><td><u><%=totals.liability%></u></td></tr>
+                
+                    <tr><th colspan="2">StockHolders Equity</th></tr>
+                    <% data.equity.TextRow.forEach(element=>{%>
+                        <tr>
+                            <td><%=`${element.NAME}`%></td>
+                            <td><%=`${element.BALANCE}`%></td>
+                        </tr>
+                     <%})%> 
+                    <tr><td>Total Equity</td><td><u><%=totals.equity%></u></td></tr>
+                
+                    <tr><td>Total liabilities & Equity</td> <td><u class='doubleUnderline'><%=`${totals.equity+totals.liability}`%></u></td></tr>
+                
+                </table>
+                </div>
+                <div class='hiddenForm' id='reportForm'>
+                    <table>
+                        <tr><th>Assets</th></tr>
+                        <tr><td>Current Assets</td></tr>
+                        <% data.asset.TextRow.forEach(element=>{%>
+                            <tr>
+                                <td><%=`${element.NAME}`%></td>
+                                <td><%=`${element.BALANCE}`%></td>
+                            </tr>
+                         <%})%>
+                        <tr><td>Total Assets</td><td><u class='doubleUnderline'><%=totals.asset%></u></td></tr>
+                
+                        <tr><th>Liabilites</th></tr>
+                        <% data.liability.TextRow.forEach(element=>{%>
+                            <tr>
+                                <td><%=`${element.NAME}`%></td>
+                                <td><%=`${element.BALANCE}`%></td>
+                            </tr>
+                         <%})%>
+                         <tr><td>Total Liabilites</td><td><u><%=totals.liability%></u></td></tr>
+                
+                        <tr><th>StockHolders Equity</th></tr>
+                        <% data.equity.TextRow.forEach(element=>{%>
+                            <tr>
+                                <td><%=`${element.NAME}`%></td>
+                                <td><%=`${element.BALANCE}`%></td>
+                            </tr>
+                         <%})%> 
+                         <tr><td>Total Equity</td><td><u><%=totals.equity%></u></td></tr>
+                            <tr> </tr>
+                        <tr><td>Total liabilities & Equity</td><td><u class='doubleUnderline'><%=`${totals.equity+totals.liability}`%></u></td></td></tr>
+                         
+                    </table>
+                </div>
+                <div>
+                    <h1 id=formType>Account Form</h1>
+                    <button id='formToggle'>Show Report Form</button>
+                </div>
+        </div>
+        <div class="whitespace">
+            
+        </div>
+    </div>
 <script src='/ejsscripts/financialStatements/balanceSheet.js'></script>
 </body>
 </html>
