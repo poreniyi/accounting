@@ -43,7 +43,6 @@ router.get('/balanceSheet', async (req, res) => {
 })
 router.get('/retainedEarnings', async (req, res) => {
     let RETAINEDEARNINGS = await statements.generateRetainedEarnings()
-    console.log(RETAINEDEARNINGS)
     res.render('statementViews/retainedEarnings', { RETAINEDEARNINGS });
 })
 router.get('/IncomeStatement', async (req, res) => {
@@ -55,12 +54,13 @@ router.get('/IncomeStatement', async (req, res) => {
         } else value = currentValue.BALANCE
         return accumulator += value;
     }
+    let RETAINEDEARNINGS = await statements.generateRetainedEarnings()
     let data = await statements.generateIncomeStatement()
     let totals = {
         revenue: data.revenue.TextRow.reduce(reducer, 0),
         expense: data.expense.TextRow.reduce(reducer, 0),
     }
-    res.render('statementViews/incomeStatement', { data, totals });
+    res.render('statementViews/incomeStatement', { data, totals, RETAINEDEARNINGS});
 })
 router.get('/closeAccounts', async (req, res) => {
     res.render('statementViews/closeAccounts')
