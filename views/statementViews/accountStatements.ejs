@@ -26,7 +26,7 @@
                 <script>
                     function statementCheck()
                     {
-                        if(document.getElementById('nothing').checked)
+                        if(document.getElementById('balanceSheet').checked)
                         {
                             document.getElementById('datepicker').style.visibility = 'visible';
                         }
@@ -81,8 +81,8 @@
                             <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
                             <% val=date.toISOString()%>
                             <%val=val.split('T')[0]%>
-                            <input  readonly name='startDate' id='startDate'  value="2021-01-01" max='<%=val%>'  min="2021-01-01" type='date'>
-                            <input  readonly name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2021-12-31" type='date'>
+                            <input  readonly name='startDate' id='startDate'  value="2010-01-01" max='<%=val%>'  min="2010-01-01" type='date'>
+                            <input  readonly name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2010-12-31" type='date'>
                         </div>
                     </div>
                  
