@@ -8,13 +8,23 @@
   <link rel='icon' href='images/logo.png' sizes='any'>  
 </head>
 <body>
-  <div class="loginscreen">
-    <%- include('../_partial/_header'); -%>
-    <% if(true){ %>
-      <h1>Your account has been submitted and is being reviewed by an admin</h1>
-    <% } else{ %>  
-      <h1>The email you are trying to use already exists.</h1>
-    <% } %>
+  <%- include('../_partial/_header'); -%>
+  <div class="buffer">
+    <div class="whitespace">
+
+    </div>
+    <div class="container">
+      <div class="loginscreen">
+        <% if(true){ %>
+          <h1>Your account has been submitted and is being reviewed by an admin</h1>
+        <% } else{ %>  
+          <h1>The email you are trying to use already exists.</h1>
+        <% } %>
+      </div>
+    </div>
+    <div class="whitespace">
+
+    </div>
   </div>
 </body>
 </html>

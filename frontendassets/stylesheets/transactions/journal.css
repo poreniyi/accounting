@@ -50,10 +50,6 @@ button a {
   text-decoration: inherit;
 }
 
-tbody:nth-child(even) {
-  background-color: #c0e4e1;
-}
-
 #search, #select, .dateRange {
   margin-left: .25em;
 }
@@ -85,4 +81,25 @@ span {
 
 .boxed {
   border: none;
+}
+
+@media only screen and (min-height: 812px)  {
+
+  .container {
+      margin-top: 15vh;
+  }    
+}
+
+@media only screen and (min-height: 1024px)  {
+
+  .container {
+      margin-top: 13vh;
+  }    
+}
+
+@media only screen and (min-height: 1366px)  {
+
+  .container {
+      margin-top: 10vh;
+  }    
 }

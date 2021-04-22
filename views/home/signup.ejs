@@ -3,40 +3,50 @@
   <head>
     <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>NewUser</title>
+        <title>New User</title>
         <link rel="stylesheet" href="stylesheets/signup.css">
         <link rel='icon' href='images/logo.png' sizes='any'> 
   </head>
   <body>
     <%- include('../_partial/_header'); -%>
-    <div class="sucontainer">
-      <img src='images/logo.png' style='width:20%;'>
-      <h2>Mankara</h2>
+    <div class="buffer">
+      <div class="whitespace">
+
+      </div>
       <div class="container">
-        <form action='./newUser/create' method='POST' id='newUserForm'>
-          <span>User Type</span>
-          <select name='userType' id='userType' form='newUserForm'>        
-            <option value='Accountant'>Accountant</option>
-            <option value='Manager'>Manager</option>
-            <option value='Admin'>Admin</option>
-        </select>
-          <br>
-          <span>First Name</span><input name='first' id='first' type="text" required><br>
-          <span>Last Name</span><input name='last' id='last'  type="text"required><br>
-          <span>Date of Birth</span><input id="DOB" name='DOB' type="date"required><br>
-          <span>Email Address</span><input  name='email' id='email' type="email" required><br>
-          Choose a security Question
-          <select name='securityQuestion' id='securityQuestion' form='newUserForm'>        
-            <option value='What was the house number and street name you lived in as a child?'>What was the house number and street name you lived in as a child?</option>
-            <option value='What primary school did you attend?'>What primary school did you attend?</option>
-            <option value='What were the last four digits of your childhood telephone number?'>What were the last four digits of your childhood telephone number?</option>
-          </select><br>
-          <span>Security Question Answer:</span><input id='answer' name='answer'type='text' required ><br>
-          <span>Password</span>
-          <input id='pass' name='pass' type="password" required>
-          <button id='submitButton'>Submit</button>
-        </form>
-        <div  id='regexChecker'></div>
+          <div class="heading">
+            <img src='images/cubelogo/MANCARA-inline.png' style='width: 50%;'>
+          </div>
+          <div class="sucontainer">
+            <form action='./newUser/create' method='POST' id='newUserForm'>
+              <span>User Type</span>
+              <select name='userType' id='userType' form='newUserForm'>        
+                <option value='Accountant'>Accountant</option>
+                <option value='Manager'>Manager</option>
+                <option value='Admin'>Admin</option>
+            </select>
+              <br>
+              <span>First Name</span><input name='first' id='first' type="text" required><br>
+              <span>Last Name</span><input name='last' id='last'  type="text"required><br>
+              <span>Date of Birth</span><input id="DOB" name='DOB' type="date"required><br>
+              <span>Email Address</span><input  name='email' id='email' type="email" required><br>
+              Choose a security Question
+              <select name='securityQuestion' id='securityQuestion' form='newUserForm'>        
+                <option value='What was the house number and street name you lived in as a child?'>What was the house number and street name you lived in as a child?</option>
+                <option value='What primary school did you attend?'>What primary school did you attend?</option>
+                <option value='What were the last four digits of your childhood telephone number?'>What were the last four digits of your childhood telephone number?</option>
+              </select><br>
+              <span>Security Question Answer:</span><input id='answer' name='answer'type='text' required ><br>
+              <span>Password</span>
+              <input id='pass' name='pass' type="password" required>
+              <button id='submitButton'>Submit</button>
+            </form>
+            <div  id='regexChecker'></div>
+          </div>
+        </div>
+      </div>
+      <div class="whitespace">
+
       </div>
     </div>
   </body>

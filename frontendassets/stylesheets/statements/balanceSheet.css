@@ -25,3 +25,28 @@ table, th, td {
 .hiddenForm{
   display: none;
 }
+
+#reportForm table {
+  margin: auto;
+}
+
+@media only screen and (min-height: 812px)  {
+
+    .container {
+        margin-top: 13vh;
+    }    
+  }
+  
+  @media only screen and (min-height: 1024px)  {
+  
+    .container {
+        margin-top: 10vh;
+    }    
+  }
+  
+  @media only screen and (min-height: 1366px)  {
+  
+    .container {
+        margin-top: 8vh;
+    }    
+  }

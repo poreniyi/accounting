@@ -6,7 +6,7 @@
 }
 
 .navcolumn, .main {
-    margin-top: 18vh;
+    margin-top: 15vh;
 }
 .navcolumn {
     height: 100vh;
@@ -73,4 +73,39 @@ a#chartTool:hover::after {
     .sidenav {
         grid-template-columns: 15% 85%;
     }
+}
+
+@media only screen and (min-width: 1024) {
+    .navcolumn, .main {
+        margin-top: 18vh;
+    } 
+}
+
+@media only screen and (max-height: 650px)  {
+
+    .navcolumn, .main {
+        margin-top: 20vh;
+    }    
+}
+
+@media only screen and (min-height: 650px)  {
+
+    .navcolumn, .main {
+        margin-top: 18vh;
+    }    
+}
+
+
+@media only screen and (min-height: 1024px)  {
+
+    .navcolumn, .main {
+        margin-top: 13vh;
+    }    
+}
+
+@media only screen and (min-height: 1366px)  {
+
+    .navcolumn, .main {
+        margin-top: 10vh;
+    }    
 }

@@ -9,25 +9,34 @@
 </head>
 <body>
   <%- include('../_partial/_header'); -%>
-  <div class="loginscreen">
-    <div class="logo">
-      <img src='images/cubelogo/MANCARA-inline.png' style='width:100%; '>
-    </div>
-    <div id='message'>
-      <% if(locals.message) {%>
-        <h1><%=message%></h1>
-        <%}%>
+  <div class="buffer">
+    <div class="whitespace">
+
     </div>
     <div class="container">
-      <form  id='form' method="POST" action='/login'>
-        <span>Username: </span>
-        <input id='username'  name='username' type='text'>
-        <br>
-        <span>Password: </span><input name='password' id='password' type="password">
-        <button type='submit' value='Login'>Login</button><br>
-      </form>
-      <li><a href="/forgotPassowrd">Forgot Password</a></li>
-      <li><a href="/signup">Create New User</a></li>
+      <div class="logo">
+        <img src='images/cubelogo/MANCARA-inline.png' style='width:50%; '>
+      </div>
+      <div id='message'>
+        <% if(locals.message) {%>
+          <h1><%=message%></h1>
+          <%}%>
+      </div>
+      <div class="login">
+        <form  id='form' method="POST" action='/login'>
+          <span>Username: </span>
+          <input id='username'  name='username' type='text'>
+          <br>
+          <span>Password: </span><input name='password' id='password' type="password">
+          <button type='submit' value='Login'>Login</button><br>
+        </form>
+        <li><a href="/forgotPassowrd">Forgot Password</a></li>
+        <li><a href="/signup">Create New User</a></li>
+      </div>
+      </div>
+    </div>
+    <div class="whitespace">
+
     </div>
   </div>
 </body>

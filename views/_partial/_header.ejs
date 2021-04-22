@@ -28,30 +28,39 @@
         <div class="navbar-nav navbar-right">
             <% if(currentUser != null) { %>
                 <ul id="user-navbar">
-                    <img src='/images/profile.png'>
-                    <li><a href="#">Welcome <%= currentUser %>! (<%=userType%>)</a></li>
-                    <a href="#" class="hide-desktop">
-                        <img src='/images/hamburger.png' alt="toggle menu" class="menu" id="menu">
-                    </a>
-                    <ul class="show-desktop hide-mobile" id="nav">
-                        <li><a href="/<%=userType%>/dashboard">Home</a></li>
-                        <%let notificationPageLink=`/./${userType.toLowerCase()}/notifications`%>
-                        <%if(userType=='Manager'){ %>
-                            <li><a href=<%=notificationPageLink%>>Notifications</a></li>
-                            <% }%>
-                        <%let journalPageLink=`/./${userType.toLowerCase()}/journal`%>
-                        <li><a href=<%= journalPageLink%> class="tooltip" id="journalTool">Journal</a></li>
-                        <li><a href="/logout" class="tooltip" id="logoutTool">Logout</a></li>
-                    </ul>
+                    <div class="nav-options">
+                        <li><img src='/images/profile.png'></li>
+                        <li><a href="#">Welcome <%= currentUser %>! (<%=userType%>)</a></li>
+                        <li><a href="#" class="hide-desktop">
+                            <img src='/images/hamburger.png' alt="toggle menu" class="menu" id="menu">
+                        </a></li>
+                        <ul class="show-desktop hide-mobile" id="nav">
+                            <li><a href="/<%=userType%>/dashboard">Home</a></li>
+                            <%let notificationPageLink=`/./${userType.toLowerCase()}/notifications`%>
+                            <%if(userType=='Manager'){ %>
+                                <li><a href=<%=notificationPageLink%>>Notifications</a></li>
+                                <% }%>
+                            <%let journalPageLink=`/./${userType.toLowerCase()}/journal`%>
+                            <li><a href=<%= journalPageLink%> class="tooltip" id="journalTool">Journal</a></li>
+                            <li><a href="/logout" class="tooltip" id="logoutTool">Logout</a></li>
+                        </ul>
+                    </div>
                     <%- include('../_partial/help/baseHelp'); -%>
 
                 </ul>
             <%}else{%>
                 <ul id="default-navbar">
-                    <li><a class="navbar-brand" href="/">Mankara</a></li>
-                    <li><a href="/forgotPassowrd">Forgot Password</a></li>
-                    <li><a href="/signup">Signup</a></li>
-                    <li><a href="/login">Log In</a></li>
+                    <div class="nav-options">
+                        <li><a class="navbar-brand" href="/">Mankara</a></li>
+                        <li><a href="#" class="hide-desktop">
+                            <img src='/images/hamburger.png' alt="toggle menu" class="menu" id="menu">
+                        </a></li>
+                        <ul class="show-desktop hide-mobile" id="nav">
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="/forgotPassowrd">Forgot Password</a></li>
+                            <li><a href="/signup">Signup</a></li>
+                        </ul>
+                    </div>
                 </ul>
             <% } %>
         </div>

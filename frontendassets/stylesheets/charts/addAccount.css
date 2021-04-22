@@ -38,3 +38,24 @@ th, td {
   margin: auto 2.5em;
   border-bottom: 5px solid #1B998B;
 }
+
+@media only screen and (min-height: 812px)  {
+
+  .container {
+      margin-top: 15vh;
+  }    
+}
+
+@media only screen and (min-height: 1024px)  {
+
+  .container {
+      margin-top: 13vh;
+  }    
+}
+
+@media only screen and (min-height: 1366px)  {
+
+  .container {
+      margin-top: 10vh;
+  }    
+}
