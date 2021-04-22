@@ -37,13 +37,14 @@
                 <div id="datepicker" style="visibility: hidden">
                 <div id=dates>
                     <select id='periodSelect'>
-                        <option>Yearly</option>
-                        <option>Quarterly</option>
-                        <option>Monthly</option>
+                    <div id="datepicker" style="visibility: hidden">
+                        <option selected></option>
                         <option>Manual</option>
+                    </div>
                     </select>
                     <%let date=new Date();%>
                     <div id='periods'>
+                        <div id="datepicker" style="visibility: hidden">
                         <div id='years'>
                             <label for='yearsSelect'> Year</label>
                             <select id='yearsSelect'>
@@ -77,6 +78,7 @@
                             </select>
                         </div>
                         </select>
+                    </div>
                         <div id='manual'>
                             <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
                             <% val=date.toISOString()%>
