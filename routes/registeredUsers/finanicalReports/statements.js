@@ -40,8 +40,10 @@ router.get('/balanceSheet', async (req, res) => {
     }
     res.render('statementViews/balanceSheet', {data,totals});
 })
-router.get('/retainedEarnings', (req, res) => {
-    res.render('statementViews/retainedEarnings');
+router.get('/retainedEarnings', async (req, res) => {
+    let RETAINEDEARNINGS = await statements.generateRetainedEarnings(req.session.statement.start, req.session.statement.end)
+    console.log(RETAINEDEARNINGS)
+    res.render('statementViews/retainedEarnings', {RETAINEDEARNINGS});
 })
 router.get('/IncomeStatement', async (req, res) => {
     const reducer = (accumulator, currentValue) => {
