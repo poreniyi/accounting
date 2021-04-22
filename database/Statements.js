@@ -56,26 +56,21 @@ async function generateTrialBalance(){
     return data;
 }
 
-async function generateBalanceSheet(start, end, month, quarter, year){
+async function generateBalanceSheet(start, end){
 
     let from
     let to
 
-    if(start && end){
-        from = start;
-        to = end;
-    }
-    else if(month && year){
-        from = `${year}-${month}-01`
-        to = `${month == '12' ? year+1 : year}-${month == '12' ? 1 : month+1}-01`
-    }
-    else if(quarter && year){
-        from = `${year}-${quarter}-01`
-        to = `${quarter == 4 ? year+1 : year}-${quarter == 4 ? 1 : quarter+2}-01`
-    }
-    else if(year){
-        from = `${year}-01-01`
-        to = `${year+1}-01-01`
+    if(start && end){ 
+        let d = new Date(end)
+        let year = d.getFullYear()
+        let month = d.getMonth()+1
+        
+        let day = d.getDate()+1
+    
+        from = start
+        to = year + "-" + month + "-" + day
+
     }
     else{
         return "No date specified."
@@ -91,32 +86,48 @@ async function generateBalanceSheet(start, end, month, quarter, year){
     var equity = { TextRow: [] }
 
     let current
+    let balance
 
     for(var i = 0; i < [rows][0].length; i++){
 
         current = [rows][0][i]
+         balance = 0
 
-        query = `SELECT BALANCE FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY ID DESC LIMIT 1;`
+         query = `SELECT DEBIT, CREDIT FROM ${current.NAME}_LEDGER WHERE (DATESUBMITTED >=  DATE_FORMAT(STR_TO_DATE('${from}', '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s') AND DATESUBMITTED <= DATE_FORMAT(STR_TO_DATE('${to}', '%Y-%m-%d %H:%i:%s'), '%Y-%m-%d %H:%i:%s')) ORDER BY DATESUBMITTED ASC;`
+        // console.log(query)
+         let [rows2] = await DB.asyncConnection.query(query)
 
-        let [rows2] = await DB.asyncConnection.query(query)
+         if([rows2][0].length > 0){
+             for(var j = 0; j < [rows2][0].length; j++){
+                 current2 = [rows2][0][j]
+                 if(current2){
+                     if(current.COLUMN == 'Debit'){
+                         balance = balance + current2.DEBIT
+                         balance = balance - current2.CREDIT
+                     }
+                     else{
+                         balance = balance - current2.DEBIT
+                         balance = balance + current2.CREDIT
+                     } 
+                 }
+             }
+         }
+
+         current.BALANCE = balance
 
         if(rows2.length > 0){
-            if([rows2][0][0].BALANCE < 0){
-                current.BALANCE = "(" + [rows2][0][0].BALANCE * -1 + ")"
-            }else{
-                current.BALANCE = [rows2][0][0].BALANCE
-            }
+            if(current.BALANCE < 0)
+                current.BALANCE = "(" + current.BALANCE * -1 + ")"
         }
         else{
             current.BALANCE = 0
         }
-
         if(current.CATEGORY == 'Asset'){
-            current.COLUMN=='CREDIT'? current.COLUMN :-current.COLUMN
+           // current.BALANCE = (current.COLUMN=='CREDIT'? current.COLUMN : current.COLUMN * -1)
             asset.TextRow.push(current)
         }
         else if(current.CATEGORY == 'Liability'){
-            current.COLUMN=='CREDIT'? current.COLUMN :-current.COLUMN
+           // current.balanace = current.COLUMN=='CREDIT'? current.COLUMN :-current.COLUMN
             liability.TextRow.push(current)
         }else{
             current.BALANCE = (current.COLUMN=='Credit'? current.BALANCE : "(" + current.BALANCE * -1 + ")")
@@ -147,6 +158,11 @@ async function generateBalanceSheet(start, end, month, quarter, year){
         liability: liability,
         equity: equity
     }
+    //console.log(data.asset)
+
+    //console.log(data.liability)
+
+    //console.log(data.equity)
 
     return data;
 }
@@ -221,7 +237,7 @@ async function generateRetainedEarnings(){
 
     let d = new Date()
     let year = d.getFullYear()
-    let month = d.getMonth()
+    let month = d.getMonth()+1
     let day = new Date(year, month, 0).toString().substring(8,10);
 
     let from = year+"-"+month+"-01"
@@ -229,7 +245,7 @@ async function generateRetainedEarnings(){
     let to = year+"-"+month+"-"+day
 
     let query = `SELECT DEBIT, CREDIT FROM RETAINEDEARNINGS_LEDGER WHERE (DATESUBMITTED >= '${from} 00:00:00' AND DATESUBMITTED <= '${to} 23:59:59') ORDER BY DATESUBMITTED DESC LIMIT 1;`
-
+    
     let [rows2] = await DB.asyncConnection.query(query)
 
     if([rows2][0][0]){
@@ -346,9 +362,25 @@ async function getPreviousRE(){
 
 async function close(){
 
-    let query = `CALL GETRE()`
+    let d = new Date()
+    let year = d.getFullYear()
+    let month = d.getMonth()+1
+    let day = new Date(year, month, 0).toString().substring(8,10);
 
-    let [rows] = await DB.asyncConnection.query(query)
+    let from = year+"-"+month+"-01"
+
+    let to = year+"-"+month+"-"+day
+
+    let query = `CALL close(?,?)`
+
+    let [rows] = await DB.asyncConnection.query(query, [from, to], 
+        function (err, result, fields) {
+            if(err){
+                console.log("Query failed")
+                console.log(err)
+                throw err;
+            } 
+    });
 
     let current
 
@@ -361,15 +393,6 @@ async function close(){
     for(var i =0; i < [rows][0][0].length; i++){
         
         current = [rows][0][0][i];
-
-        let d = Date()
-        let year = d.getFullYear()
-        let month = d.getMonth()+1
-        let day = new Date(year, month, 0).toString().substring(8,10);
-
-        let from = year+"-"+month+"-01"
-
-        let to = year+"-"+month+"-"+day
 
          if(current.CATEGORY == 'Expense'){
                  if(current.COLUMN == 'Debit'){
@@ -393,9 +416,9 @@ async function close(){
             }
 
         total = revenue - expense
-        await journal.createTransaction(current.USERNAME, 'RetainedEarnings', 'Closing account', current.DEBIT == 0 ? current.CREDIT : 0, current.CREDIT == 0 ? current.DEBIT : 0, id, current.DATE)
+        await journal.createTransaction(current.USERNAME, current.NAME, 'Closing account', current.DEBIT == 0 ? current.CREDIT : 0, current.CREDIT == 0 ? current.DEBIT : 0, id, current.DATE)
     }
-    
+    await journal.createTransaction(current.USERNAME, 'RetainedEarnings', 'Closing account', total < 0 ? total*-1 : 0, total >= 0 ? total : 0, id, current.DATE)
     await ledger.addTransactionToLedger(current.USERNAME, id, '', 'Approved')
 }
 
@@ -404,5 +427,6 @@ module.exports= {
     generateBalanceSheet,
     generateIncomeStatement,
     generateRetainedEarnings,
-    getPreviousRE
+    getPreviousRE,
+    close
 }

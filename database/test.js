@@ -32,7 +32,7 @@ async function emptyThings(){
 
 }
 
-//emptyThings()
+emptyThings()
 
 async function changeDates(){
 

@@ -31,7 +31,8 @@ router.get('/balanceSheet', async (req, res) => {
         } else value = currentValue.BALANCE
         return accumulator += value;
     }
-    let data = await statements.generateBalanceSheet(req.session.statement.start, req.session.statement.end, null, null, null)
+
+    let data = await statements.generateBalanceSheet(req.session.statement.start, req.session.statement.end)
 
     let totals = {
         asset: data.asset.TextRow.reduce(reducer, 0),
@@ -66,6 +67,7 @@ router.get('/closeAccounts', async (req, res) => {
 })
 
 router.post('/closeAccounts', async (req, res) => {
+    statements.close()
     res.send('closed')
 })
 
