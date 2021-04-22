@@ -11,8 +11,6 @@ body {
     grid-template-columns: 5% 90% 5%;
     border-collapse: collapse;
   }
-
-
   
   .container {
     margin-top: 15vh;

@@ -11,37 +11,51 @@
 
 <body>
     <%- include('../_partial/_header'); -%>
-    <h1>User Report</h1>
-    <div class="tablecontainer">
+    <div class="buffer">
+        <div class="whitespace">
+
+        </div>
         <div class="container">
-            <table id='table'>
-                <th id='userNameHeader'>Username.</th>
-                <th id='firstNameHeader'>First Name.</th>
-                <th id='lastNameHeader'>Last Name.</th>
-                <th id='typeHeader'>User Type.</th>
-                <th id='statusHeader'>Status.</th>
-                <%TextRow.forEach(element=>{ %>
-                    <% let
-                        link=`./edit?USERNAME=${element.USERNAME}`;%>
-                        <tr>
-                            <td><a href=<%=link%>>
-                                <%= element.USERNAME %>
-                            </td>
-                            <td>
-                                <%= element.FIRSTNAME %>
-                            </td>
-                            <td>
-                                <%= element.LASTNAME %>
-                            </td>
-                            <td>
-                                <%= element.USERTYPE %>
-                            </td>
-                            <td>
-                                <%= element.APPROVED %>
-                            </td>
-                        </tr>
+            <div class="heading">
+                <h1>User Report</h1>
+            </div>
+            <div class="tableFixHead">
+                <table id='table'>
+                    <thead>
+                        <th id='userNameHeader'>Username.</th>
+                        <th id='firstNameHeader'>First Name.</th>
+                        <th id='lastNameHeader'>Last Name.</th>
+                        <th id='typeHeader'>User Type.</th>
+                        <th id='statusHeader'>Status.</th>
+                    </thead>
+                    <tbody>
+                        <%TextRow.forEach(element=>{ %>
+                        <% let
+                            link=`./edit?USERNAME=${element.USERNAME}`;%>
+                            <tr>
+                                <td><a href=<%=link%>>
+                                    <%= element.USERNAME %>
+                                </td>
+                                <td>
+                                    <%= element.FIRSTNAME %>
+                                </td>
+                                <td>
+                                    <%= element.LASTNAME %>
+                                </td>
+                                <td>
+                                    <%= element.USERTYPE %>
+                                </td>
+                                <td>
+                                    <%= element.APPROVED %>
+                                </td>
+                            </tr>
                         <% })%>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="whitespace">
+
         </div>
     </div>
     <script src="/ejsscripts/allusers.js"></script>

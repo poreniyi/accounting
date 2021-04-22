@@ -8,49 +8,64 @@
     </head>
     <body>
         <%- include('../_partial/_header'); -%>
-        <h1>Add New User</h1>
-        <div class="tablecontainer">
+        <div class="buffer">
+            <div class="whitespace">
+                
+
+            </div>
             <div class="container">
-                <table>
-                    <tbody>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">First Name</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">User Type</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">Submit</th>
-                        <tr>
-                            <form action="./add" method="POST">
-                            <td>
-                                <input type="text" name="firstname" id="inputFirstName" value="" required>
-                            </td>
-                            <td>
-                                <input type="text" name="lastname" id="inputLastName" value="" required>
-                            </td>
-                            <td>
-                                <input type="email" name="email" id="inputEmail" value=""  required>
-                            </td>
-                            <td>
-                                <input type="date" name="DOB" id="inputDOB" value="" required>
-                            </td>
-                            <td style="width: 14.2857%; height: 18px; text-align: center;" >
-                                <select value = "" name="usertype" id="inputUserType">
-                                    <option value="Accountant">Accountant </option>
-                                        <option value="Manager">Manager</option>
-                                </select>
-                            </td>
-                            <td style="width: 14.2857%; height: 18px; text-align: center;" >
-                                <select value = "" name="approved" id="inputApproved">
-                                        <option value="0">Inactive</option>
-                                        <option value="1">Active </option>
-                                </select>
-                            </td>
-                            <td>   <button type="submit">Submit Changes</button></td>
-                        </form>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="heading">
+                    <h1>Add New User</h1>
+                </div>
+                <div class="tableFixHead">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 14.2857%; height: 18px; text-align: center;">First Name</th>
+                                <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
+                                <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
+                                <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
+                                <th style="width: 14.2857%; height: 18px; text-align: center;">User Type</th>
+                                <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
+                                <th style="width: 14.2857%; height: 18px; text-align: center;">Submit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <form action="./add" method="POST">
+                                    <td>
+                                        <input type="text" name="firstname" id="inputFirstName" value="" required>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="lastname" id="inputLastName" value="" required>
+                                    </td>
+                                    <td>
+                                        <input type="email" name="email" id="inputEmail" value=""  required>
+                                    </td>
+                                    <td>
+                                        <input type="date" name="DOB" id="inputDOB" value="" required>
+                                    </td>
+                                    <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                                        <select value = "" name="usertype" id="inputUserType">
+                                            <option value="Accountant">Accountant </option>
+                                                <option value="Manager">Manager</option>
+                                        </select>
+                                    </td>
+                                    <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                                        <select value = "" name="approved" id="inputApproved">
+                                                <option value="0">Inactive</option>
+                                                <option value="1">Active </option>
+                                        </select>
+                                    </td>
+                                    <td><button type="submit">Submit Changes</button></td>
+                                </form>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="whitespace">
+
             </div>
         </div>
     </body>

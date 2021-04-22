@@ -14,14 +14,15 @@
     width: 100%;
 }
 
-#RejectForm {
-    margin-top: .5em;
+#approveForm {
+    margin-top: 2.5em;
     margin-left: 25%;
 }
 
-#approveForm {
-    margin-top: 2.5em;
-    margin-left: 30%;
+#RejectForm {
+    margin-top: .5em;
+    margin-left: 25%;
+    display: block;
 }
 
 table, th, td {

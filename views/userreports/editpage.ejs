@@ -8,64 +8,76 @@
     </head>
     <body>
         <%- include('../_partial/_header'); -%>
-        <h1>Edit User</h1>
-        <div class="tablecontainer">
+        <div class="buffer">
+            <div class="whitespace">
+
+            </div>
             <div class="container">
-                <table>
-                    <tbody>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">Username</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">First Name</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
-                        <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
-                         <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
-                         <th style="width: 14.2857%; height: 18px; text-align: center;">PED</th>
-                         <th style="width: 14.2857%; height: 18px; text-align: center;">User Type</th>
-                         <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>   
-                        <tr>
-                            <form action="./edit" method="POST">
-                            <td>
-                                <input readonly type="text" name="username" value='<%=TextRow[0].USERNAME%>'>
-                            </td>
-                            <td>
-                                <input type="text" name="firstname" id="inputFirstName" value='<%=TextRow[0].FIRSTNAME%>'>
-                            </td>
-                            <td>
-                                <input type="text" name="lastname" id="inputLastName" value='<%=TextRow[0].LASTNAME%>'>
-                            </td>
-                            <td>
-                                <input type="text" name="email" id="inputEmail" value="<%=TextRow[0].EMAIL%>"  >
-                            </td>
-                            <td>
-                                <input type="text" name="DOB" id="inputDOB" value="<%=TextRow[0].DOB%>">
-                            </td>
-                            <td>
-                                <input type="text" name="PED" id="inputPED" value="<%=TextRow[0].PED%>">
-                            </td>
-                            <td style="width: 14.2857%; height: 18px; text-align: center;" >
-                                <select value = "<%=TextRow[0].USERTYPE%>" name="usertype" id="inputUserType">
-                                    <option value="<%=TextRow[0].USERTYPE%>" 'selected':'' ><%=TextRow[0].USERTYPE %></option>
-                                    <% if(TextRow[0].USERTYPE == 'Accountant'){  %>
-                                        <option value="Manager">Manager</option>
-                                    <% }  else { %>
-                                        <option value="Accountant">Accountant </option>
-                                    <% } %>
-                                </select>
-                            </td>
-                            <td style="width: 14.2857%; height: 18px; text-align: center;" >
-                                <select value = "<%=TextRow[0].APPROVED%>" name ="approved" id="inputApproved">
-                                    <option value="<%=TextRow[0].APPROVED%>" 'selected':'' ><%=TextRow[0].APPROVED%></option>
-                                    <% if(TextRow[0].APPROVED == 'Active'){  %>
-                                        <option value="0">Inactive</option>
-                                    <% }  else { %>
-                                        <option value="1">Active </option>
-                                    <% } %>
-                                </select>
-                            </td>
-                            <td>   <button type="submit">Submit Changes</button></td>
-                        </form>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="heading">
+                    <h1>Edit User</h1>
+                </div>
+                <div class="tableFixHead">
+                    <table id='table'>
+                        <thead>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">Username</th>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">First Name</th>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">Last Name</th>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">Email</th>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">DOB</th>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">PED</th>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">User Type</th>
+                            <th style="width: 14.2857%; height: 18px; text-align: center;">Status</th>
+                        </thead>
+                        <tbody>   
+                            <tr>
+                                <form action="./edit" method="POST">
+                                    <td>
+                                        <input readonly type="text" name="username" value='<%=TextRow[0].USERNAME%>'>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="firstname" id="inputFirstName" value='<%=TextRow[0].FIRSTNAME%>'>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="lastname" id="inputLastName" value='<%=TextRow[0].LASTNAME%>'>
+                                    </td>
+                                    <td>
+                                        <input type="text" name="email" id="inputEmail" value="<%=TextRow[0].EMAIL%>"  >
+                                    </td>
+                                    <td>
+                                        <input type="text" name="DOB" id="inputDOB" value="<%=TextRow[0].DOB%>">
+                                    </td>
+                                    <td>
+                                        <input type="text" name="PED" id="inputPED" value="<%=TextRow[0].PED%>">
+                                    </td>
+                                    <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                                        <select value = "<%=TextRow[0].USERTYPE%>" name="usertype" id="inputUserType">
+                                            <option value="<%=TextRow[0].USERTYPE%>" 'selected':'' ><%=TextRow[0].USERTYPE %></option>
+                                            <% if(TextRow[0].USERTYPE == 'Accountant'){  %>
+                                                <option value="Manager">Manager</option>
+                                            <% }  else { %>
+                                                <option value="Accountant">Accountant </option>
+                                            <% } %>
+                                        </select>
+                                    </td>
+                                    <td style="width: 14.2857%; height: 18px; text-align: center;" >
+                                        <select value = "<%=TextRow[0].APPROVED%>" name ="approved" id="inputApproved">
+                                            <option value="<%=TextRow[0].APPROVED%>" 'selected':'' ><%=TextRow[0].APPROVED%></option>
+                                            <% if(TextRow[0].APPROVED == 'Active'){  %>
+                                                <option value="0">Inactive</option>
+                                            <% }  else { %>
+                                                <option value="1">Active </option>
+                                            <% } %>
+                                        </select>
+                                    </td>
+                                    <td><button type="submit">Submit Changes</button></td>
+                                </form>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="whitespace">
+
             </div>
         </div>
     </body>

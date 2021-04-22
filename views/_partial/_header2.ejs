@@ -1,0 +1,92 @@
+<head>
+    <meta charset="utf-8">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="/stylesheets/header2.css"> 
+    <link rel='icon' href='/images/logo.png' sizes='any'>
+
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+  <script>
+
+    // Enable pusher logging - don't include this in production
+   // Pusher.logToConsole = true;
+
+    var pusher = new Pusher('e1fbc504d4bda8da70f1', {
+      cluster: 'mt1'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function(data) {
+
+        console.log(data.message);
+      alert(`A new transaction has been made\n${data.message}:${data.ID}`);
+    });
+  </script>
+</head>
+ 
+<header>
+    <nav>
+        <div class="navbar-nav navbar-right">
+            <% if(currentUser != null) { %>
+                <ul id="user-navbar">
+                    <div class="nav-options">
+                        <li><img src='/images/profile.png'></li>
+                        <li><a href="#">Welcome <%= currentUser %>! (<%=userType%>)</a></li>
+                        <li><a href="#" class="hide-desktop">
+                            <img src='/images/hamburger.png' alt="toggle menu" class="menu" id="menu">
+                        </a></li>
+                        <ul class="show-desktop hide-mobile" id="nav">
+                            <li><a href="/<%=userType%>/dashboard">Home</a></li>
+                            <%let notificationPageLink=`/./${userType.toLowerCase()}/notifications`%>
+                            <%if(userType=='Manager'){ %>
+                                <li><a href=<%=notificationPageLink%>>Notifications</a></li>
+                                <% }%>
+                            <%let journalPageLink=`/./${userType.toLowerCase()}/journal`%>
+                            <li><a href=<%= journalPageLink%> class="tooltip" id="journalTool">Journal</a></li>
+                            <li><a href="/logout" class="tooltip" id="logoutTool">Logout</a></li>
+                        </ul>
+                    </div>
+                    <%- include('../_partial/help/baseHelp'); -%>
+
+                </ul>
+            <%}else{%>
+                <ul id="default-navbar">
+                    <div class="nav-options">
+                        <li><a class="navbar-brand" href="/">Mankara</a></li>
+                        <li><a href="#" class="hide-desktop">
+                            <img src='/images/hamburger.png' alt="toggle menu" class="menu" id="menu">
+                        </a></li>
+                        <ul class="show-desktop hide-mobile" id="nav">
+                            <li><a href="/login">Log In</a></li>
+                            <li><a href="/forgotPassowrd">Forgot Password</a></li>
+                            <li><a href="/signup">Signup</a></li>
+                        </ul>
+                    </div>
+                </ul>
+            <% } %>
+        </div>
+    </nav>
+    <%if(userType){ %>
+        <% let dashboard=`/./${userType.toLowerCase()}/dashboard`%>
+        <a href=<%=dashboard%>><img src='/images/cubelogo/cube1.png' id="logo"></a>
+    <% }else{%>
+        <img src='/images/cubelogo/cube1.png' id="logo">
+    <%}%>
+</header>
+
+<script>
+    
+    var menu = document.getElementById('menu');
+    var nav = document.getElementById('nav');
+    var exit = document.getElementById('exit');
+
+    menu.addEventListener('click', function(e) {
+        nav.classList.toggle('hide-mobile');
+        e.preventDefault();
+    });
+
+    exit.addEventListener('click', function(e) {
+        nav.classList.add('hide-mobile');
+        e.preventDefault();
+    });
+
+</script>

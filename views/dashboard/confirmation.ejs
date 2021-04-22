@@ -5,25 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmation</title>
+    <link rel="stylesheet" href="stylesheets/login.css">
 </head>
-<%- include('../_partial/_header'); -%>
+<%- include('../_partial/_header2'); -%>
 
 <body>
-    <div id='messageBody'>
-        <%= data.message%>
-    </div>
-    <div id='confirmationData'>
-        <%= data.data%>
-    </div>
-        <a href=<%=data.Previous %>>
-            <button>
-                Go back
-            </button>
-            <div>
-                <a href=<%=data.ViewResult %>><button>
-                   View Entry
-                </button></a>
+    <div class="buffer">
+        <div class="whitespace">
+
+        </div>
+        <div class="container">
+            <div id='messageBody'>
+                <%= data.message%>
             </div>
-        </a>
+            <div id='confirmationData'>
+                <%= data.data%>
+            </div>
+                <a href=<%=data.Previous %>>
+                    <button>
+                        Go back
+                    </button>
+                    <div>
+                        <a href=<%=data.ViewResult %>><button>
+                           View Entry
+                        </button></a>
+                    </div>
+                </a>
+        </div>
+        <div class="whitespace">
+
+        </div>
+    </div>
 </body>
 </html>
