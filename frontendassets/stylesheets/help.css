@@ -12,7 +12,7 @@
 #overlayLabel{
   position: absolute;
   top:2em;
-  right:9em;
+  right:6em;
   visibility: visible;
 }
 label {
@@ -42,4 +42,14 @@ label {
 #trigger{
   color: rgb(255, 255, 255);
 
+}
+
+@media only screen and (min-width: 650px)  {
+  
+  #overlayLabel{
+    position: absolute;
+    top:2em;
+    right:9em;
+    visibility: visible;
+  }
 }

@@ -1,91 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel='stylesheet' href='/stylesheets/statements/statementSelect.css'>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Statements</title>
 </head>
-<%- include('../_partial/_header'); -%>
-
 <body>
-    <div>
-        <form id='form' action='' method="POST">
-            <input required id='balanceSheet' type='radio' name='Statement' value="BalanceSheet" onclick="javascript:statementCheck();">
-            <label for='balanceSheet'>Balance Sheet</label>
-            <input id='trialBalance' type='radio' name='Statement' value="TrialBalance" onclick="javascript:statementCheck();">
-            <label for='trialBalance'>Trial Balance</label>
-            <input id='IncomeStatement' type='radio' name='Statement' value="IncomeStatement" onclick="javascript:statementCheck();">
-            <label for='IncomeStatement'>Income Statement</label>
-            <input id='retainedEarnings' type='radio' name='Statement' value="RetainedEarnings" onclick="javascript:statementCheck();">
-            <label for='retainedEarnings'>Retained Earnings</label>
-            <script>
-                function statementCheck()
-                {
-                    if(document.getElementById('balanceSheet').checked)
+    <%- include('../_partial/_header'); -%>
+    <div class="buffer">
+        <div class="whitespace">
+
+        </div>
+        <div class="container">
+            <form id='form' action='' method="POST">
+                <input required id='balanceSheet' type='radio' name='Statement' value="BalanceSheet" onclick="javascript:statementCheck();">
+                <label for='balanceSheet'>Balance Sheet</label>
+                <input id='trialBalance' type='radio' name='Statement' value="TrialBalance" onclick="javascript:statementCheck();">
+                <label for='trialBalance'>Trial Balance</label>
+                <input id='IncomeStatement' type='radio' name='Statement' value="IncomeStatement" onclick="javascript:statementCheck();">
+                <label for='IncomeStatement'>Income Statement</label>
+                <input id='retainedEarnings' type='radio' name='Statement' value="RetainedEarnings" onclick="javascript:statementCheck();">
+                <label for='retainedEarnings'>Retained Earnings</label>
+                <script>
+                    function statementCheck()
                     {
-                        document.getElementById('datepicker').style.visibility = 'visible';
+                        if(document.getElementById('balanceSheet').checked)
+                        {
+                            document.getElementById('datepicker').style.visibility = 'visible';
+                        }
+                        else
+                            document.getElementById('datepicker').style.visibility = 'hidden';
                     }
-                    else
-                        document.getElementById('datepicker').style.visibility = 'hidden';
-                }
-            </script>
-            <div id="datepicker" style="visibility: hidden">
-            <div id=dates>
-                <select id='periodSelect'>
-                    <option>Yearly</option>
-                    <option>Quarterly</option>
-                    <option>Monthly</option>
-                    <option>Manual</option>
-                </select>
-                <%let date=new Date();%>
-                <div id='periods'>
-                    <div id='years'>
-                        <label for='yearsSelect'> Year</label>
-                        <select id='yearsSelect'>
-                            <%for(let i=2010;i<=date.getFullYear();i++){%>
-                                <option><%=i%></option>
-                            <%}%>
-                        </select>
-                    </div>
-                    <div id='quarters'>
-                        <label for='quartersSelect'> Quarter</label>
-                        <select id='quartersSelect'>
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                    <div id='months'>
-                        <label for='monthsSelect'>Month</label>
-                        <select id='monthsSelect'>
-                            <% let val2=''%>
-                            <% const formatter = new Intl.DateTimeFormat('us', { month: 'long' });%>
-                            <% let month=''%>
-                            <%for(let i=1;i<=12;i++){%>
-                                <%if(i<10){%>
-                                    <%val2=`0${i}`%>
-                               <% }else val2=i%>
-                               <%month=formatter.format(new Date('200',i-1))%>
-                               <option value=<%-val2%>><%=month%></option>
-                            <%}%>
-                        </select>
-                    </div>
+                </script>
+                <div id="datepicker" style="visibility: hidden">
+                <div id=dates>
+                    <select id='periodSelect'>
+                        <option>Yearly</option>
+                        <option>Quarterly</option>
+                        <option>Monthly</option>
+                        <option>Manual</option>
                     </select>
-                    <div id='manual'>
-                        <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
-                        <% val=date.toISOString()%>
-                        <%val=val.split('T')[0]%>
-                        <input  readonly name='startDate' id='startDate'  value="2010-01-01" max='<%=val%>'  min="2010-01-01" type='date'>
-                        <input  readonly name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2010-01-01" type='date'>
+                    <%let date=new Date();%>
+                    <div id='periods'>
+                        <div id='years'>
+                            <label for='yearsSelect'> Year</label>
+                            <select id='yearsSelect'>
+                                <%for(let i=2010;i<=date.getFullYear();i++){%>
+                                    <option><%=i%></option>
+                                <%}%>
+                            </select>
+                        </div>
+                        <div id='quarters'>
+                            <label for='quartersSelect'> Quarter</label>
+                            <select id='quartersSelect'>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                        <div id='months'>
+                            <label for='monthsSelect'>Month</label>
+                            <select id='monthsSelect'>
+                                <% let val2=''%>
+                                <% const formatter = new Intl.DateTimeFormat('us', { month: 'long' });%>
+                                <% let month=''%>
+                                <%for(let i=1;i<=12;i++){%>
+                                    <%if(i<10){%>
+                                        <%val2=`0${i}`%>
+                                   <% }else val2=i%>
+                                   <%month=formatter.format(new Date('200',i-1))%>
+                                   <option value=<%-val2%>><%=month%></option>
+                                <%}%>
+                            </select>
+                        </div>
+                        </select>
+                        <div id='manual'>
+                            <%let val=`${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`%>
+                            <% val=date.toISOString()%>
+                            <%val=val.split('T')[0]%>
+                            <input  readonly name='startDate' id='startDate'  value="2010-01-01" max='<%=val%>'  min="2010-01-01" type='date'>
+                            <input  readonly name='endDate' id='endDate'  value='<%=val%>'  max='<%=val%>' min="2010-01-01" type='date'>
+                        </div>
                     </div>
+                 
                 </div>
-             
-            </div>
-            </div>
-            <button type='submit'>Submit</button>
-        </form>
+                </div>
+                <button type='submit'>Submit</button>
+            </form>
+        </div>
+        <div class="whitespace">
+
+        </div>
     </div>
     <script src='/ejsscripts/financialStatements/accountStatements.js'></script>
 </body>

@@ -10,218 +10,230 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-    <div id='AllTables'>
-        <h1><%=NAME%> : <%=NUMBER%></h1>
-        <h2>All Account Info</h2>
-        <div id='AccountInfo'>
-            <table id='allInfoTable'>
-                <tr>
-                    <th>Name</th>
-                    <td><%=NAME%></td>
-                </tr>
-                <tr>
-                    <th>Number</th>
-                    <td><%=NUMBER%></td>
-                </tr>
-                <tr>
-                    <th>Description</th>
-                    <td><%=DESCRIPTION%></td>
-                </tr>
-                <tr>
-                    <th>Normal Side</th>
-                    <td><%=NORMALSIDE%></td>
-                </tr>
-                <tr>
-                    <th>Category</th>
-                    <td><%=CATEGORY%></td>
-                </tr>
-                <tr>
-                    <th>Sub Category</th>
-                    <td><%=SUBCATEGORY%></td>
-                </tr>
-                <tr>
-                    <th>InitialBalance</th>
-                    <td><%=INITIALBALANCE%></td>
-                </tr>
-                <tr>
-                    <th>Debit</th>
-                    <td><%=DEBIT%></td>
-                </tr>
-                <tr>
-                    <th>Credit</th>
-                    <td><%=CREDIT%></td>
-                </tr>
-                <tr>
-                    <th>Balance</th>
-                    <td><%=BALANCE%></td>
-                </tr>
-                <tr>
-                    <th>Doc</th>
-                    <td><%=DOC%></td>
-                </tr>
-                <tr>
-                    <th>Statement</th>
-                    <td><%=STATEMENT%></td>
-                </tr>
-                <tr>
-                    <th>Creator</th>
-                    <td><%=USERNAME%></td>
-                </tr>
-                <tr>
-                    <th>Comment</th>
-                    <td><%=COMMENT%></td>
-                </tr>
-                <tr>
-                    <th>Status</th>
-                    <td><%=STATUS%></td>
-                </tr>
-            </table>
+    <%- include('../_partial/_header'); -%>
+    <div class="buffer">
+        <div class="whitespace">
+
         </div>
-        <h2>Edit Account</h2>
-        <div id='EditInfo'>
-            <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action=''>
-                <table id='table'>
-                    <th>Field</th>
-                    <th>Edit Field</th>
-                    <tr>
-                        <th>Name</th>
-                        <td class='formInput'><input name='Name' type="text"value=<%=NAME %>></td>
-                    </tr>
-                    <tr>
-                        <th>Number</th>
-                        <td class='formInput'><input name='Number' type="text"value=<%=NUMBER %> ></td>
-                    </tr>
-                    <tr>
-                        <th>Description</th>
-                        <td class='formInput'><input name='Description'type="text" value='<%=DESCRIPTION %>'></td>
-                    </tr> 
-                    <tr hidden>
-                        <th>Normal Side</th>
-                        <td class='formInput'>
-                            <input name="Normal"  type='text' value=<%=NORMALSIDE%>>
-                        </td>
-                    </tr> 
-                    <tr>
-                        <th>Category</th>
-                        <td class='formInput'>
-                            <% if(CATEGORY =='Asset'){%>
-                                <input type="radio" required id="Asset" name="Category" value="Asset" checked>
-                                <label for="Asset">Asset</label>
-                                <input type="radio" required id="Liability" name="Category" value="Liability">
-                                <label for="Liability">Liability</label>
-                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
-                                <label for="Revenue">Revenue</label>
-                                <input type="radio" required id="Expense" name="Category" value="Expense">
-                                <label for="Expense">Expense</label>
-                                <input type="radio" required id="Equity" name="Category" value="Equity">
-                                <label for="Equity">Equity</label>
-                            <%} else if(CATEGORY == 'Liability'){%>
-                                <input type="radio" required id="Asset" name="Category" value="Asset" >
-                                <label for="Asset">Asset</label>
-                                <input type="radio" required id="Liability" name="Category" value="Liability" checked>
-                                <label for="Liability">Liability</label>
-                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
-                                <label for="Revenue">Revenue</label>
-                                <input type="radio" required id="Expense" name="Category" value="Expense">
-                                <label for="Expense">Expense</label>
-                                <input type="radio" required id="Equity" name="Category" value="Equity">
-                                <label for="Equity">Equity</label>
-                            <%} else if(CATEGORY == 'Revenue'){%>
-                                <input type="radio" required id="Asset" name="Category" value="Asset" >
-                                <label for="Asset">Asset</label>
-                                <input type="radio" required id="Liability" name="Category" value="Liability">
-                                <label for="Liability">Liability</label>
-                                <input type="radio" required id="Revenue" name="Category" value="Revenue" checked>
-                                <label for="Revenue">Revenue</label>
-                                <input type="radio" required id="Expense" name="Category" value="Expense">
-                                <label for="Expense">Expense</label>
-                                <input type="radio" required id="Equity" name="Category" value="Equity">
-                                <label for="Equity">Equity</label>
-                            <%} else if(CATEGORY == 'Expense'){%>
-                                <input type="radio" required id="Asset" name="Category" value="Asset" >
-                                <label for="Asset">Asset</label>
-                                <input type="radio" required id="Liability" name="Category" value="Liability">
-                                <label for="Liability">Liability</label>
-                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
-                                <label for="Revenue">Revenue</label>
-                                <input type="radio" required id="Expense" name="Category" value="Expense" checked>
-                                <label for="Expense">Expense</label>
-                                <input type="radio" required id="Equity" name="Category" value="Equity">
-                                <label for="Equity">Equity</label>
-                            <%}else{%>
-                                <input type="radio" required id="Asset" name="Category" value="Asset" >
-                                <label for="Asset">Asset</label>
-                                <input type="radio" required id="Liability" name="Category" value="Liability">
-                                <label for="Liability">Liability</label>
-                                <input type="radio" required id="Revenue" name="Category" value="Revenue">
-                                <label for="Revenue">Revenue</label>
-                                <input type="radio" required id="Expense" name="Category" value="Expense">
-                                <label for="Expense">Expense</label>
-                                <input type="radio" required id="Equity" name="Category" value="Equity" checked>
-                                <label for="Equity">Equity</label>
-                            <%}%>
-                        </td>
-                    </tr>  
-                    <tr>
-                        <th>SubCategory</th>
-                        <td class='formInput'><input name='SubCategory' type="text"value=<%=SUBCATEGORY %>></td>
-                    </tr>
-                    <tr hidden>
-                        <th>InitialBalance</th>
-                        <td class='formInput'><input name='InitialBalance'type="number"value=<%=INITIALBALANCE %>></td>
-                    </tr>
-                    <tr hidden>
-                        <th>Debit</th>
-                        <td class='formInput'><input name='Debit' type="number" value=<%=DEBIT %>></td>
-                    </tr>
-                    <tr hidden>
-                        <th>Credit</th>
-                        <td class='formInput'><input name='Credit' type="number"value=<%=CREDIT %>></td>
-                    </tr>
-                    <tr hidden>
-                        <th>Balance</th>
-                        <td class='formInput'><input name='Balance' type="text"value=<%=BALANCE %> readonly ></td>
-                    </tr>
-                    <tr hidden>
-                        <th>Doc</th>
-                        <td class='formInput'><input type="datetime" name='DOC' type="text" value=<%=`${DOC.getMonth()+1}/${DOC.getDate()}/${DOC.getFullYear()}` %> readonly></td>
-                    </tr>
-                    <tr>
-                        <th>Statement</th>
-                        <td class='formInput'>
-                            <input type="text" name="Statement" value='<%=STATEMENT%>' hidden > <%=STATEMENT %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Creator</th>
-                        <td class='formInput'>
-                            <input type="text" name='Username' value='<%=USERNAME %>' hidden> <%=USERNAME %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Comment</th>
-                        <td class='formInput'><input name='Comment' type="text" value=<%=COMMENT %>></td>
-                    </tr>
-                    <tr>
-                        <th>Status</th>
-                        <td class='formInput'>
-                            <select form='form' name='Status' id = "status">
-                                <% if(STATUS =='Active'){%>
-                                    <option value='1' selected>Current: Active</option>
-                                    <option value='0'>Deactivated</option>
+        <div class="container">
+            <div id='AllTables'>
+                <h1><%=NAME%> : <%=NUMBER%></h1>
+                <h2>All Account Info</h2>
+                <div id='AccountInfo'>
+                    <table id='allInfoTable'>
+                        <tr>
+                            <th>Name</th>
+                            <td><%=NAME%></td>
+                        </tr>
+                        <tr>
+                            <th>Number</th>
+                            <td><%=NUMBER%></td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td><%=DESCRIPTION%></td>
+                        </tr>
+                        <tr>
+                            <th>Normal Side</th>
+                            <td><%=NORMALSIDE%></td>
+                        </tr>
+                        <tr>
+                            <th>Category</th>
+                            <td><%=CATEGORY%></td>
+                        </tr>
+                        <tr>
+                            <th>Sub Category</th>
+                            <td><%=SUBCATEGORY%></td>
+                        </tr>
+                        <tr>
+                            <th>InitialBalance</th>
+                            <td><%=INITIALBALANCE%></td>
+                        </tr>
+                        <tr>
+                            <th>Debit</th>
+                            <td><%=DEBIT%></td>
+                        </tr>
+                        <tr>
+                            <th>Credit</th>
+                            <td><%=CREDIT%></td>
+                        </tr>
+                        <tr>
+                            <th>Balance</th>
+                            <td><%=BALANCE%></td>
+                        </tr>
+                        <tr>
+                            <th>Doc</th>
+                            <td><%=DOC%></td>
+                        </tr>
+                        <tr>
+                            <th>Statement</th>
+                            <td><%=STATEMENT%></td>
+                        </tr>
+                        <tr>
+                            <th>Creator</th>
+                            <td><%=USERNAME%></td>
+                        </tr>
+                        <tr>
+                            <th>Comment</th>
+                            <td><%=COMMENT%></td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td><%=STATUS%></td>
+                        </tr>
+                    </table>
+                </div>
+                <h2>Edit Account</h2>
+                <div id='EditInfo'>
+                    <form id='form' onsubmit="return confirm('Do you really want to submit the form?');" method="POST" action=''>
+                        <table id='table'>
+                            <th>Field</th>
+                            <th>Edit Field</th>
+                            <tr>
+                                <th>Name</th>
+                                <td class='formInput'><input name='Name' type="text"value=<%=NAME %>></td>
+                            </tr>
+                            <tr>
+                                <th>Number</th>
+                                <td class='formInput'><input name='Number' type="text"value=<%=NUMBER %> ></td>
+                            </tr>
+                            <tr>
+                                <th>Description</th>
+                                <td class='formInput'><input name='Description'type="text" value='<%=DESCRIPTION %>'></td>
+                            </tr> 
+                            <tr hidden>
+                                <th>Normal Side</th>
+                                <td class='formInput'>
+                                    <input name="Normal"  type='text' value=<%=NORMALSIDE%>>
+                                </td>
+                            </tr> 
+                            <tr>
+                                <th>Category</th>
+                                <td class='formInput'>
+                                    <% if(CATEGORY =='Asset'){%>
+                                        <input type="radio" required id="Asset" name="Category" value="Asset" checked>
+                                        <label for="Asset">Asset</label>
+                                        <input type="radio" required id="Liability" name="Category" value="Liability">
+                                        <label for="Liability">Liability</label>
+                                        <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                        <label for="Revenue">Revenue</label>
+                                        <input type="radio" required id="Expense" name="Category" value="Expense">
+                                        <label for="Expense">Expense</label>
+                                        <input type="radio" required id="Equity" name="Category" value="Equity">
+                                        <label for="Equity">Equity</label>
+                                    <%} else if(CATEGORY == 'Liability'){%>
+                                        <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                        <label for="Asset">Asset</label>
+                                        <input type="radio" required id="Liability" name="Category" value="Liability" checked>
+                                        <label for="Liability">Liability</label>
+                                        <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                        <label for="Revenue">Revenue</label>
+                                        <input type="radio" required id="Expense" name="Category" value="Expense">
+                                        <label for="Expense">Expense</label>
+                                        <input type="radio" required id="Equity" name="Category" value="Equity">
+                                        <label for="Equity">Equity</label>
+                                    <%} else if(CATEGORY == 'Revenue'){%>
+                                        <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                        <label for="Asset">Asset</label>
+                                        <input type="radio" required id="Liability" name="Category" value="Liability">
+                                        <label for="Liability">Liability</label>
+                                        <input type="radio" required id="Revenue" name="Category" value="Revenue" checked>
+                                        <label for="Revenue">Revenue</label>
+                                        <input type="radio" required id="Expense" name="Category" value="Expense">
+                                        <label for="Expense">Expense</label>
+                                        <input type="radio" required id="Equity" name="Category" value="Equity">
+                                        <label for="Equity">Equity</label>
+                                    <%} else if(CATEGORY == 'Expense'){%>
+                                        <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                        <label for="Asset">Asset</label>
+                                        <input type="radio" required id="Liability" name="Category" value="Liability">
+                                        <label for="Liability">Liability</label>
+                                        <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                        <label for="Revenue">Revenue</label>
+                                        <input type="radio" required id="Expense" name="Category" value="Expense" checked>
+                                        <label for="Expense">Expense</label>
+                                        <input type="radio" required id="Equity" name="Category" value="Equity">
+                                        <label for="Equity">Equity</label>
                                     <%}else{%>
-                                    <option value='0' selected> Current: Deactivated</option>
-                                    <option value='1'>Active</option>
-                                <%}%>
-                            </select>
-                        </td>
-                    </tr>
-                    <td hidden class='formInput'><input name='OriginalName' type="text" value=<%=NAME %>></td>
-                    <td hidden class='formInput'><input name='OriginalNumber' type="text" value=<%=NUMBER %>></td>
-                </table>
-                <button type="submit">Submit</button>
-            </form>
+                                        <input type="radio" required id="Asset" name="Category" value="Asset" >
+                                        <label for="Asset">Asset</label>
+                                        <input type="radio" required id="Liability" name="Category" value="Liability">
+                                        <label for="Liability">Liability</label>
+                                        <input type="radio" required id="Revenue" name="Category" value="Revenue">
+                                        <label for="Revenue">Revenue</label>
+                                        <input type="radio" required id="Expense" name="Category" value="Expense">
+                                        <label for="Expense">Expense</label>
+                                        <input type="radio" required id="Equity" name="Category" value="Equity" checked>
+                                        <label for="Equity">Equity</label>
+                                    <%}%>
+                                </td>
+                            </tr>  
+                            <tr>
+                                <th>SubCategory</th>
+                                <td class='formInput'><input name='SubCategory' type="text"value=<%=SUBCATEGORY %>></td>
+                            </tr>
+                            <tr hidden>
+                                <th>InitialBalance</th>
+                                <td class='formInput'><input name='InitialBalance'type="number"value=<%=INITIALBALANCE %>></td>
+                            </tr>
+                            <tr hidden>
+                                <th>Debit</th>
+                                <td class='formInput'><input name='Debit' type="number" value=<%=DEBIT %>></td>
+                            </tr>
+                            <tr hidden>
+                                <th>Credit</th>
+                                <td class='formInput'><input name='Credit' type="number"value=<%=CREDIT %>></td>
+                            </tr>
+                            <tr hidden>
+                                <th>Balance</th>
+                                <td class='formInput'><input name='Balance' type="text"value=<%=BALANCE %> readonly ></td>
+                            </tr>
+                            <tr hidden>
+                                <th>Doc</th>
+                                <td class='formInput'><input type="datetime" name='DOC' type="text" value=<%=`${DOC.getMonth()+1}/${DOC.getDate()}/${DOC.getFullYear()}` %> readonly></td>
+                            </tr>
+                            <tr>
+                                <th>Statement</th>
+                                <td class='formInput'>
+                                    <input type="text" name="Statement" value='<%=STATEMENT%>' hidden > <%=STATEMENT %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Creator</th>
+                                <td class='formInput'>
+                                    <input type="text" name='Username' value='<%=USERNAME %>' hidden> <%=USERNAME %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Comment</th>
+                                <td class='formInput'><input name='Comment' type="text" value=<%=COMMENT %>></td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td class='formInput'>
+                                    <select form='form' name='Status' id = "status">
+                                        <% if(STATUS =='Active'){%>
+                                            <option value='1' selected>Current: Active</option>
+                                            <option value='0'>Deactivated</option>
+                                            <%}else{%>
+                                            <option value='0' selected> Current: Deactivated</option>
+                                            <option value='1'>Active</option>
+                                        <%}%>
+                                    </select>
+                                </td>
+                            </tr>
+                            <td hidden class='formInput'><input name='OriginalName' type="text" value=<%=NAME %>></td>
+                            <td hidden class='formInput'><input name='OriginalNumber' type="text" value=<%=NUMBER %>></td>
+                        </table>
+                        <button type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="whitespace">
+
         </div>
     </div>
+    
 </body>
 </html>

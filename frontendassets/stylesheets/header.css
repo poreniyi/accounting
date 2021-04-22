@@ -6,8 +6,10 @@ body {
 }
 
 header {
+    z-index: 2;
+    margin: 0;
+    position: fixed;
     width: 100%;
-    display: block;
     background-color: #005a50;
     border-bottom: solid #005a50 5px;
     display: flex;
@@ -18,6 +20,7 @@ nav {
     height: 100%;
     display: block;
     margin: 1%;
+    margin-bottom: 0;
     bottom: 0;
 }
 
@@ -36,27 +39,52 @@ nav {
     width: 70px;
 }
 
+.navbar-nav a img {
+    height: 12px;
+    width: 12px;
+}
+
 nav ul {
     padding-inline-start: 0;
 }
 nav ul li {
-    display: inline-block;
+    list-style-type: none;
+    text-decoration: none;
+    color: #FFFFFF;
+    margin: .1em;
+    margin-top: .25em;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #FFFFFF;
-    display: right;
     width: 50%;
     margin: auto 0;
     text-align: center;
-    padding: 1em;
+    padding: .25em;
 }
 
 nav ul li a:hover {
     background-color: #979797;
 }
-header img {
+
+.hide-mobile {
+    display: none;
+}
+
+.menu img {
+    width: 25px;
+    height: 25px;
+}
+
+a img {
+    width: 100px;
+    height: 100px;
+    top: 0px;
+    right: 0px;
+}
+
+img#logo {
     width: 100px;
     height: 100px;
     top: 0px;
@@ -70,6 +98,10 @@ header img {
 #default-navbar {
     position: absolute;
     top: 5%;
+}
+
+#default-navbar li {
+    display: inline;
 }
 
 a.tooltip {
@@ -96,3 +128,21 @@ a#logoutTool:hover::after {
     content: "Logout";
 }
 
+@media only screen and (min-width: 650px)  {
+    .hide-desktop {
+        display: none;
+    }
+
+    .show-desktop {
+        display: inline;
+        margin: 0 auto 13% auto;
+    }
+
+    .show-desktop li {
+        display: inline;
+    }
+
+    .show-desktop .hide-desktop {
+        display: none;
+    }
+}

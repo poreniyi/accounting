@@ -10,70 +10,82 @@
 <%- include('../_partial/_header'); -%>
 
 <body>
-    <h1>View Transaction</h1>
-    <div class="container">
-        <%   let formatter = new Intl.NumberFormat('en-US',{minimumFractionDigits:2}); %>
+    <%- include('../_partial/_header'); -%>
+    <div class="buffer">
+        <div class="whitespace">
 
-        <table id='infoTable'>
-            <tr>
-                <th>TransactionID:</th>
-                <td><%=data.TextRow[0].ID%></td>
-            </tr>
-            <tr>
-                <th>Status:</th>
-                <td><%=data.TextRow[0].STATUS%></td>
-            </tr>
-            <tr>
-                <th>Description:</th>
-                <td><%=data.TextRow[0].DESCRIPTION%></td>
-            </tr>
-            <tr>
-                <th>Date Created:</th>
-                <td><%=data.TextRow[0].DATE%></td>
-            </tr>
-            <tr>
-                <th><%=data.TextRow[0].STATUS%> By:</th>
-                <td><%=data.TextRow[0].USERNAME%></td>
-            </tr>
-            <tr>
-                <th>COMMENT:</th>
-                <td><%=data.TextRow[0].COMMENT ||'None'%></td>
-            </tr>
-            <tr>
-                <th>AMOUNT:</th>
-        
-                <td><%=formatter.format(amount)%></td>
-            </tr>
-        </table>
-        <table id='accountTable'>
-            <tr>
-                <th>Normal</th>
-                <th>Account Affected</th>
-                <th>Debit</th>
-                <th>Credit</th>
-            </tr>
-            <%data.TextRow.forEach(element=>{%>
-                <tr>
-                    <td><%=element.NORMALSIDE%></td>
-                    <td><a href=<%=`/./${userType}/ledger/${element.ACCOUNT}`%>><%=element.ACCOUNT%></a></td>
-                    <td><%=formatter.format(element.DEBIT)%></td>
-                    <td><%=formatter.format(element.CREDIT)%> </td>
-                </tr>
-                <% })%>
-        </table>
-    </div>
-    <div class= "approvalScreen">
-        <%if(data.TextRow[0].STATUS=='Pending' && userType.toLowerCase() == 'manager' ){ %>
-            <form id="approveForm"  action=<%='./Approve/'+data.TextRow[0].ID%> method="POST">
-                <button id='Approve'>Approve Transaction</button> 
-            </form>
-            <form id='RejectForm' action=<%='./Reject/'+data.TextRow[0].ID%> method="POST" >
-                <div>
-                    <label for='comment'>Comment</label><textarea  required form='RejectForm' id=Comment cols="50" rows='4' name='comment'></textarea>
-                    <button id='Reject'>Reject Transaction</button>
-                </div>
-            </form>
-       <% } %>
+        </div>
+        <div class="container">
+            <%   let formatter = new Intl.NumberFormat('en-US',{minimumFractionDigits:2}); %>
+            <div class="heading">
+                <h1>View Transaction</h1>
+            </div>
+            <div class="charts">
+                <table id='infoTable'>
+                    <tr>
+                        <th>TransactionID:</th>
+                        <td><%=data.TextRow[0].ID%></td>
+                    </tr>
+                    <tr>
+                        <th>Status:</th>
+                        <td><%=data.TextRow[0].STATUS%></td>
+                    </tr>
+                    <tr>
+                        <th>Description:</th>
+                        <td><%=data.TextRow[0].DESCRIPTION%></td>
+                    </tr>
+                    <tr>
+                        <th>Date Created:</th>
+                        <td><%=data.TextRow[0].DATE%></td>
+                    </tr>
+                    <tr>
+                        <th><%=data.TextRow[0].STATUS%> By:</th>
+                        <td><%=data.TextRow[0].USERNAME%></td>
+                    </tr>
+                    <tr>
+                        <th>COMMENT:</th>
+                        <td><%=data.TextRow[0].COMMENT ||'None'%></td>
+                    </tr>
+                    <tr>
+                        <th>AMOUNT:</th>
+                
+                        <td><%=formatter.format(amount)%></td>
+                    </tr>
+                </table>
+                <table id='accountTable'>
+                    <tr>
+                        <th>Normal</th>
+                        <th>Account Affected</th>
+                        <th>Debit</th>
+                        <th>Credit</th>
+                    </tr>
+                    <%data.TextRow.forEach(element=>{%>
+                        <tr>
+                            <td><%=element.NORMALSIDE%></td>
+                            <td><a href=<%=`/./${userType}/ledger/${element.ACCOUNT}`%>><%=element.ACCOUNT%></a></td>
+                            <td><%=formatter.format(element.DEBIT)%></td>
+                            <td><%=formatter.format(element.CREDIT)%> </td>
+                        </tr>
+                    <% })%>
+                </table>
+            </div>
+            <div class= "approvalScreen">
+                <%if(data.TextRow[0].STATUS=='Pending' && userType.toLowerCase() == 'manager' ){ %>
+                    <form id="approveForm"  action=<%='./Approve/'+data.TextRow[0].ID%> method="POST">
+                        <button id='Approve'>Approve Transaction</button> 
+                    </form>
+                    <form id='RejectForm' action=<%='./Reject/'+data.TextRow[0].ID%> method="POST" >
+                        <div>
+                            <label for='comment'>Comment</label><textarea  required form='RejectForm' id=Comment cols="50" rows='4' name='comment'></textarea>
+                            <button id='Reject'>Reject Transaction</button>
+                        </div>
+                    </form>
+               <% } %>
+            </div>
+        </div>
+        <div class="whitespace">
+
+        </div>
     </div>
 </body>
 </html>
